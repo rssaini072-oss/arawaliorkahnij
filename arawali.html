@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>अरावली पर्वत माला – RPSC RAS/PSI Revision</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --saffron: #FF6B1A;
+  --deep-saffron: #E85D04;
+  --gold: #F4A261;
+  --cream: #FFF8F0;
+  --forest: #1B4332;
+  --sage: #2D6A4F;
+  --mint: #40916C;
+  --sky: #1A4F8A;
+  --azure: #2166AC;
+  --light-blue: #AEE3F5;
+  --maroon: #9B2335;
+  --rose: #E63946;
+  --purple: #6A0572;
+  --lavender: #C77DFF;
+  --dark: #1A1A2E;
+  --mid: #2D2D44;
+  --text: #1C1C1C;
+  --text-light: #4A4A4A;
+  --border: #E0D5C8;
+  --white: #FFFFFF;
+  --shadow: 0 4px 20px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.18);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  background: linear-gradient(135deg, #FFF8F0 0%, #FDEBD0 50%, #FFF0E6 100%);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--sage) 40%, var(--saffron) 100%);
+  padding: 18px 20px 14px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.header h1 {
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 800;
+  color: #FFF;
+  letter-spacing: 0.5px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+.header p {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.78rem;
+  margin-top: 3px;
+  font-weight: 500;
+}
+.badge-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.badge {
+  background: rgba(255,255,255,0.22);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* TABS */
+.tab-bar {
+  display: flex;
+  background: var(--dark);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  position: sticky;
+  top: 74px;
+  z-index: 99;
+  border-bottom: 3px solid var(--saffron);
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  flex: none;
+  padding: 11px 18px;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+  white-space: nowrap;
+  margin-bottom: -3px;
+}
+.tab-btn:hover { color: var(--gold); }
+.tab-btn.active {
+  color: var(--saffron);
+  border-bottom-color: var(--saffron);
+  background: rgba(255,107,26,0.1);
+}
+
+/* TAB CONTENT */
+.tab-content { display: none; padding: 16px 12px 40px; max-width: 1100px; margin: 0 auto; }
+.tab-content.active { display: block; }
+
+/* SECTION HEADING */
+.section-title {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--forest);
+  margin: 20px 0 10px;
+  padding-left: 10px;
+  border-left: 4px solid var(--saffron);
+}
+
+/* CARD GRID */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--saffron);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 60px; height: 60px;
+  background: radial-gradient(circle, rgba(255,107,26,0.08) 0%, transparent 70%);
+  border-radius: 0 0 0 60px;
+}
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.card.green { border-top-color: var(--sage); }
+.card.blue { border-top-color: var(--azure); }
+.card.maroon { border-top-color: var(--maroon); }
+.card.purple { border-top-color: var(--purple); }
+.card.gold { border-top-color: var(--gold); }
+
+.card h3 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.card-icon { font-size: 1.1rem; }
+
+/* TRICK BOX */
+.trick-box {
+  background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+  border: 1.5px solid var(--gold);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-top: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #7B3F00;
+}
+.trick-box::before { content: "🧠 Trick: "; font-weight: 800; }
+
+/* INFO ROW */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 0.8rem;
+  gap: 8px;
+}
+.info-row:last-child { border-bottom: none; }
+.info-label { color: var(--text-light); font-weight: 500; flex-shrink: 0; }
+.info-val { color: var(--dark); font-weight: 700; text-align: right; }
+
+/* TABLE */
+.table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: var(--shadow); margin-bottom: 18px; }
+table { width: 100%; border-collapse: collapse; background: var(--white); font-size: 0.8rem; }
+thead { background: linear-gradient(135deg, var(--forest), var(--sage)); }
+thead th { color: #fff; padding: 10px 12px; font-family: 'Baloo 2', cursive; font-weight: 700; text-align: left; font-size: 0.82rem; }
+tbody tr:nth-child(even) { background: #F8FFF8; }
+tbody tr:hover { background: #E8F5E9; }
+td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+td:first-child { font-weight: 600; color: var(--forest); }
+.rank-badge {
+  background: var(--saffron);
+  color: #fff;
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  margin-right: 4px;
+}
+
+/* HIGHLIGHT BOX */
+.highlight-box {
+  background: linear-gradient(135deg, var(--sky), var(--azure));
+  color: #fff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+.highlight-box strong { font-size: 0.88rem; display: block; margin-bottom: 6px; }
+
+/* MCQ */
+.mcq-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  background: var(--white);
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.score-display {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--forest);
+}
+.score-display span { color: var(--saffron); }
+.mcq-controls { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--forest); color: #fff; }
+.btn-primary:hover { background: var(--sage); }
+.btn-danger { background: var(--rose); color: #fff; }
+.btn-danger:hover { background: var(--maroon); }
+.btn-gold { background: var(--saffron); color: #fff; }
+.btn-gold:hover { background: var(--deep-saffron); }
+
+.mcq-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--border);
+  transition: border-color 0.3s;
+}
+.mcq-card.attempted-correct { border-left-color: var(--sage); background: #F0FFF4; }
+.mcq-card.attempted-wrong { border-left-color: var(--rose); background: #FFF5F5; }
+.mcq-card.attempted-skip { border-left-color: var(--gold); background: #FFFBF0; }
+
+.q-num {
+  font-family: 'Baloo 2', cursive;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pyq-tag {
+  background: var(--maroon);
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.future-tag {
+  background: var(--azure);
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.q-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  color: var(--dark);
+}
+.options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+@media (max-width: 500px) { .options { grid-template-columns: 1fr; } }
+
+.opt-btn {
+  padding: 8px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--cream);
+  cursor: pointer;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s;
+  color: var(--dark);
+}
+.opt-btn:hover:not(:disabled) { border-color: var(--saffron); background: #FFF3E0; }
+.opt-btn.correct { background: #E8F5E9; border-color: var(--sage); color: var(--forest); font-weight: 700; }
+.opt-btn.wrong { background: #FFEBEE; border-color: var(--rose); color: var(--maroon); }
+.opt-btn:disabled { cursor: not-allowed; }
+
+.explanation {
+  margin-top: 8px;
+  background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.76rem;
+  color: #1A237E;
+  display: none;
+  line-height: 1.6;
+}
+.explanation.show { display: block; }
+
+/* PROGRESS BAR */
+.progress-bar-wrap { background: var(--border); border-radius: 10px; height: 6px; margin: 10px 0; }
+.progress-bar { background: linear-gradient(90deg, var(--sage), var(--saffron)); border-radius: 10px; height: 6px; transition: width 0.4s; }
+
+/* RESULT POPUP */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+}
+.popup-overlay.show { display: flex; }
+.popup-box {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 28px 24px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes popIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.popup-emoji { font-size: 3rem; margin-bottom: 10px; }
+.popup-title { font-family: 'Baloo 2', cursive; font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+.popup-score { font-size: 2.5rem; font-weight: 800; color: var(--saffron); font-family: 'Baloo 2', cursive; margin: 10px 0; }
+.popup-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin: 14px 0; }
+.popup-stat { background: var(--cream); border-radius: 10px; padding: 8px; }
+.popup-stat-val { font-size: 1.3rem; font-weight: 800; font-family: 'Baloo 2', cursive; }
+.popup-stat-lbl { font-size: 0.7rem; color: var(--text-light); font-weight: 500; }
+.popup-message { font-size: 0.85rem; color: var(--text-light); margin: 10px 0 16px; line-height: 1.6; }
+
+/* LAST MINUTE */
+.lm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.lm-card {
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  position: relative;
+  overflow: hidden;
+}
+.lm-card.saffron { background: linear-gradient(135deg, #FF8C42, #FF6B1A); color: #fff; }
+.lm-card.green { background: linear-gradient(135deg, #40916C, #1B4332); color: #fff; }
+.lm-card.blue { background: linear-gradient(135deg, #2166AC, #0D3B6E); color: #fff; }
+.lm-card.maroon { background: linear-gradient(135deg, #C0392B, #8B0000); color: #fff; }
+.lm-card.purple { background: linear-gradient(135deg, #7B2D8B, #4A0055); color: #fff; }
+.lm-card.gold { background: linear-gradient(135deg, #F4A261, #E07B39); color: #fff; }
+.lm-card.dark { background: linear-gradient(135deg, #2D2D44, #1A1A2E); color: #fff; }
+
+.lm-card h3 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  border-bottom: 2px solid rgba(255,255,255,0.3);
+  padding-bottom: 6px;
+}
+.lm-card ul { padding-left: 0; list-style: none; }
+.lm-card ul li::before { content: "→ "; font-weight: 700; }
+.lm-card ul li { margin-bottom: 3px; }
+
+.super-mnemonic {
+  background: linear-gradient(135deg, #1A1A2E, #2D2D44);
+  color: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 14px;
+  border: 2px solid var(--saffron);
+}
+.super-mnemonic h3 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--saffron);
+  margin-bottom: 10px;
+}
+.mnemonic-item {
+  background: rgba(255,107,26,0.12);
+  border-left: 3px solid var(--saffron);
+  border-radius: 0 8px 8px 0;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.mnemonic-item strong { color: var(--gold); display: block; font-size: 0.85rem; margin-bottom: 3px; }
+
+/* TAGS */
+.tag { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 0.68rem; font-weight: 700; margin: 2px; }
+.tag-green { background: #E8F5E9; color: var(--forest); }
+.tag-orange { background: #FFF3E0; color: #E65100; }
+.tag-blue { background: #E3F2FD; color: #0D3B6E; }
+.tag-red { background: #FFEBEE; color: #8B0000; }
+.tag-purple { background: #F3E5F5; color: #4A0055; }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .lm-grid { grid-template-columns: 1fr; }
+  .tab-btn { padding: 9px 13px; font-size: 0.76rem; }
+}
+
+.divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+.important-note {
+  background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+  border: 1.5px solid var(--gold);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  color: #7B3F00;
+  margin-bottom: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.important-note::before { content: "⭐ "; }
+
+.flip-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flip-header .arrow { transition: transform 0.3s; }
+.flip-header.open .arrow { transform: rotate(180deg); }
+.flip-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.flip-body.open { max-height: 2000px; }
+
+/* Section separator */
+.section-sep {
+  text-align: center;
+  margin: 24px 0 16px;
+  position: relative;
+}
+.section-sep::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+}
+.section-sep span {
+  position: relative;
+  background: linear-gradient(135deg, #FFF8F0, #FDEBD0);
+  padding: 0 12px;
+  font-family: 'Baloo 2', cursive;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--saffron);
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏔️ अरावली पर्वत माला – भौतिक भूगोल</h1>
+  <p>राजस्थान की भौतिक रचना | DeenDayal Sir Notes पर आधारित</p>
+  <div class="badge-row">
+    <span class="badge">RPSC RAS Pre</span>
+    <span class="badge">PSI Exam</span>
+    <span class="badge">50 MCQs</span>
+    <span class="badge">Complete Revision</span>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('revision')">📖 Revision</button>
+  <button class="tab-btn" onclick="showTab('summary')">📊 Summary Table</button>
+  <button class="tab-btn" onclick="showTab('mcq')">🎯 RJ PYQ (50)</button>
+  <button class="tab-btn" onclick="showTab('lastminute')">⚡ Last Minute</button>
+</div>
+
+<!-- ============ TAB 1: REVISION ============ -->
+<div id="revision" class="tab-content active">
+
+  <div class="section-title">🌍 मध्यवर्ती अरावली पर्वतीय प्रदेश</div>
+
+  <div class="card-grid">
+    <div class="card green">
+      <h3><span class="card-icon">🏔️</span> बुनियादी तथ्य</h3>
+      <div class="info-row"><span class="info-label">निर्माण</span><span class="info-val">एन्जोइक महाकल्प के डीकम्बियन युग</span></div>
+      <div class="info-row"><span class="info-label">क्षेत्रफल</span><span class="info-val">9%</span></div>
+      <div class="info-row"><span class="info-label">जनसंख्या</span><span class="info-val">10%</span></div>
+      <div class="info-row"><span class="info-label">अवशेष</span><span class="info-val">गोंडवाना लैंड</span></div>
+      <div class="info-row"><span class="info-label">मिट्टी</span><span class="info-val">भूरी, लाल पथरीली</span></div>
+      <div class="info-row"><span class="info-label">वनस्पति</span><span class="info-val">पर्वतीय वन</span></div>
+      <div class="info-row"><span class="info-label">वर्षा</span><span class="info-val">50–90 सेमी</span></div>
+      <div class="info-row"><span class="info-label">जलवायु</span><span class="info-val">उपआर्द्र</span></div>
+      <div class="info-row"><span class="info-label">फसल</span><span class="info-val">मक्का</span></div>
+      <div class="trick-box">क्षेत्र 9%, जन 10% → "9 से 10 चलो अरावली"</div>
+    </div>
+
+    <div class="card blue">
+      <h3><span class="card-icon">📏</span> अरावली की स्थिति और लम्बाई</h3>
+      <div class="info-row"><span class="info-label">तुलना</span><span class="info-val">अमेरिका के अप्लेशियन पर्वत से</span></div>
+      <div class="info-row"><span class="info-label">दिशा</span><span class="info-val">दक्षिण-पश्चिम → उत्तर-पूर्व</span></div>
+      <div class="info-row"><span class="info-label">कुल लम्बाई</span><span class="info-val">692 किमी</span></div>
+      <div class="info-row"><span class="info-label">विस्तार</span><span class="info-val">पालनपुर (गुजरात) → राजसीना (दिल्ली)</span></div>
+      <div class="info-row"><span class="info-label">राज में लम्बाई</span><span class="info-val">550 किमी (80%)</span></div>
+      <div class="info-row"><span class="info-label">राज में विस्तार</span><span class="info-val">माउंट आबू → खेतड़ी (झुंझुनू)</span></div>
+      <div class="trick-box">692 km कुल, 550 km राज → "6 बार 9 = 54 पर 550 याद है"</div>
+    </div>
+
+    <div class="card maroon">
+      <h3><span class="card-icon">🪨</span> शैल संरचना</h3>
+      <div class="info-row"><span class="info-label">उत्तरी अरावली</span><span class="info-val">बालुका / क्वार्ट्ज</span></div>
+      <div class="info-row"><span class="info-label">मध्य भाग</span><span class="info-val">नीस (Gneiss)</span></div>
+      <div class="info-row"><span class="info-label">दक्षिणी भाग</span><span class="info-val">ग्रेनाइट पहाड़ियाँ</span></div>
+      <div class="info-row"><span class="info-label">शोधकर्ता</span><span class="info-val">A.M. हेरान (1936–1954)</span></div>
+      <div class="trick-box">उत्तर-मध्य-दक्षिण → "बालू-नीस-ग्रेनाइट" = BNG याद करो</div>
+    </div>
+
+    <div class="card purple">
+      <h3><span class="card-icon">🏷️</span> अरावली के उपनाम</h3>
+      <div class="info-row"><span class="info-label">English</span><span class="info-val">एपो क्लोषी (Aravalli)</span></div>
+      <div class="info-row"><span class="info-label">विष्णु पुराण</span><span class="info-val">परिपत्र</span></div>
+      <div class="info-row"><span class="info-label">उदयपुर</span><span class="info-val">अडड़ा वड़ा</span></div>
+      <div class="info-row"><span class="info-label">हिंदी</span><span class="info-val">आड़ा हुल्ला</span></div>
+      <div class="info-row"><span class="info-label">सिरोही</span><span class="info-val">आबू गुलाब</span></div>
+      <div class="trick-box">सिरोही = आबू गुलाब → "सिरोही में आबू है तो गुलाब तो होगा"</div>
+    </div>
+  </div>
+
+  <div class="section-title">🗺️ अरावली का विस्तार – जिले</div>
+
+  <div class="highlight-box">
+    <strong>📌 अरावली का विस्तार 17 जिलों में है (नई सीमाओं के अनुसार)</strong>
+    सिरोही, उदयपुर, सलूम्बर, डूंगरपुर, चित्तौड़गढ़, भीलवाड़ा, राजसमंद, पाली, ब्यावर, अजमेर, जयपुर, डीडवाना-कुचामन, सीकर, झुंझुनू, कोटपुतली-बहरोड़, भर्तृहरि नगर, अलवर
+  </div>
+
+  <div class="card-grid">
+    <div class="card green">
+      <h3><span class="card-icon">📋</span> H.M. सक्सेना के अनुसार (7 जिले)</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;font-size:0.8rem;">
+        <div>
+          <div style="background:#1B4332;color:#fff;text-align:center;padding:4px;border-radius:6px 6px 0 0;font-size:0.72rem;font-weight:700;">दक्षिणी (3)</div>
+          <div style="background:#E8F5E9;padding:6px;border-radius:0 0 6px 6px;text-align:center;">सिरोही<br>उदयपुर<br>राजसमंद</div>
+        </div>
+        <div>
+          <div style="background:#0D3B6E;color:#fff;text-align:center;padding:4px;border-radius:6px 6px 0 0;font-size:0.72rem;font-weight:700;">मध्य (1)</div>
+          <div style="background:#E3F2FD;padding:6px;border-radius:0 0 6px 6px;text-align:center;">अजमेर</div>
+        </div>
+        <div>
+          <div style="background:#8B0000;color:#fff;text-align:center;padding:4px;border-radius:6px 6px 0 0;font-size:0.72rem;font-weight:700;">उत्तरी (3)</div>
+          <div style="background:#FFEBEE;padding:6px;border-radius:0 0 6px 6px;text-align:center;">जयपुर<br>दौसा<br>अलवर</div>
+        </div>
+      </div>
+      <div class="trick-box">S-U-R | A | J-D-A → "सुर-अजा" = याद</div>
+    </div>
+
+    <div class="card blue">
+      <h3><span class="card-icon">⛰️</span> अरावली का सर्वोच्च व न्यूनतम भाग</h3>
+      <div class="info-row"><span class="info-label">सर्वोच्च भाग</span><span class="info-val">गुरु शिखर (1722 मीटर)</span></div>
+      <div class="info-row"><span class="info-label">न्यूनतम भाग</span><span class="info-val">पुष्कर घाटी (अजमेर)</span></div>
+      <div class="info-row"><span class="info-label">सर्वाधिक ऊंचाई जिला</span><span class="info-val">सिरोही</span></div>
+      <div class="info-row"><span class="info-label">सर्वाधिक विस्तार</span><span class="info-val">उदयपुर</span></div>
+      <div class="info-row"><span class="info-label">सर्वाधिक लम्बाई</span><span class="info-val">पाली</span></div>
+      <div class="info-row"><span class="info-label">काटफाटा अन्तराल</span><span class="info-val">अजमेर</span></div>
+      <div class="trick-box">ऊंचाई=सिरोही, विस्तार=उदयपुर, लम्बाई=पाली → "SUP (सिरोही-उदयपुर-पाली)"</div>
+    </div>
+  </div>
+
+  <div class="section-title">🔵 अरावली के 3 लघु खंड</div>
+
+  <div class="card-grid">
+    <div class="card saffron" style="border-top-color:#FF6B1A;">
+      <h3><span class="card-icon">1️⃣</span> उत्तरी अरावली</h3>
+      <div class="info-row"><span class="info-label">विस्तार</span><span class="info-val">खेतड़ी (झुंझुनू) → सांगा-सील (जयपुर)</span></div>
+      <div class="info-row"><span class="info-label">औसत ऊंचाई</span><span class="info-val">550 मीटर</span></div>
+      <div class="info-row"><span class="info-label">विशेषता</span><span class="info-val">खण्डित अवस्था में</span></div>
+      <div class="info-row"><span class="info-label">कृषि क्षेत्र</span><span class="info-val">पालखेत, मालखेत, नेरावाली</span></div>
+      <div class="trick-box">उत्तरी = खेतड़ी से जयपुर → "खे-जय" = 550m</div>
+    </div>
+
+    <div class="card green">
+      <h3><span class="card-icon">2️⃣</span> मध्य अरावली</h3>
+      <div class="info-row"><span class="info-label">विस्तार</span><span class="info-val">सांगा (जयपुर) → देवगढ़ (राजसमंद)</span></div>
+      <div class="info-row"><span class="info-label">औसत ऊंचाई</span><span class="info-val">700 मीटर</span></div>
+      <div class="info-row"><span class="info-label">मुख्य चोटी</span><span class="info-val">भोरायजी/गोरमजी – 933.75 मी</span></div>
+      <div class="trick-box">मध्य = 700 मीटर → "सात सौ बीच में"</div>
+    </div>
+
+    <div class="card maroon">
+      <h3><span class="card-icon">3️⃣</span> दक्षिणी अरावली</h3>
+      <div class="info-row"><span class="info-label">विस्तार</span><span class="info-val">देवगढ़ (राजसमंद) → माउंट आबू (सिरोही)</span></div>
+      <div class="info-row"><span class="info-label">औसत ऊंचाई</span><span class="info-val">900 मीटर</span></div>
+      <div class="info-row"><span class="info-label">विशेषता</span><span class="info-val">सबसे ऊंचा भाग</span></div>
+      <div class="trick-box">दक्षिण = सबसे ऊंचा (900m) → "दक्षिण में दम है"</div>
+    </div>
+  </div>
+
+  <div class="section-title">🏔️ अरावली की प्रमुख चोटियां</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>चोटी का नाम</th><th>जिला</th><th>ऊंचाई (मीटर)</th><th>विशेष</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="rank-badge">1</span></td><td>गुरु शिखर</td><td>सिरोही</td><td><strong>1722</strong></td><td>सर्वोच्च, 5650 फीट, हिंदू आल्प्स/स्वर्ग माथा</td></tr>
+        <tr><td><span class="rank-badge">2</span></td><td>शोर भोटी</td><td>सिरोही</td><td>1597</td><td>—</td></tr>
+        <tr><td><span class="rank-badge">3</span></td><td>देलवाड़ा</td><td>सिरोही</td><td>1442</td><td>—</td></tr>
+        <tr><td><span class="rank-badge">4</span></td><td>जरगा</td><td>उदयपुर</td><td>1431</td><td>—</td></tr>
+        <tr><td><span class="rank-badge">5</span></td><td>अचलगढ़</td><td>सिरोही</td><td>1380</td><td>—</td></tr>
+        <tr><td><span class="rank-badge">6</span></td><td>आबू</td><td>सिरोही</td><td>1295</td><td>—</td></tr>
+        <tr><td><span class="rank-badge">7</span></td><td>कुंभलगढ़</td><td>राजसमंद</td><td>1224</td><td>—</td></tr>
+        <tr><td><span class="rank-badge">8</span></td><td>जोगिया भाकरी/चोगिया</td><td>उदयपुर</td><td>1183</td><td>—</td></tr>
+        <tr><td><span class="rank-badge">9</span></td><td>जराभम पहाड़ी</td><td>सिरोही</td><td>1090</td><td>—</td></tr>
+        <tr><td><span class="rank-badge">10</span></td><td>रघुनाथ गढ़</td><td>सीकर</td><td>1055</td><td>उत्तरी अरावली की सर्वोच्च</td></tr>
+        <tr><td>11</td><td>मालखेत</td><td>सीकर</td><td>1053</td><td>24 कोसिय परिक्रमा</td></tr>
+        <tr><td>12</td><td>लोहागर्ल</td><td>झुंझुनू</td><td>1051</td><td>—</td></tr>
+        <tr><td>13</td><td>अर्जुनकेश्वर</td><td>सिरोही</td><td>1017</td><td>—</td></tr>
+        <tr><td>14</td><td>कमलनाथ</td><td>उदयपुर</td><td>1001</td><td>—</td></tr>
+        <tr><td>15</td><td>माठड़ा भागरा</td><td>उदयपुर</td><td>989</td><td>—</td></tr>
+        <tr><td>16</td><td>सज्जनगढ़</td><td>उदयपुर</td><td>938</td><td>—</td></tr>
+        <tr><td>17</td><td>भोरायजी/गोरमजी</td><td>ब्यावर</td><td>933.75</td><td>मध्य अरावली की सर्वोच्च</td></tr>
+        <tr><td>18</td><td>खोह पहाड़ी</td><td>जयपुर</td><td>920</td><td>—</td></tr>
+        <tr><td>19</td><td>नारागढ़</td><td>अजमेर</td><td>870/873</td><td>—</td></tr>
+        <tr><td>20</td><td>डोरा पर्वत</td><td>जालौर</td><td>869</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="important-note">गुरु शिखर पर 5 मीटर का ऋषि दैत्यच का आश्रम बना है → आश्रम सहित ऊंचाई 1727 मीटर | कर्नल टॉड ने इसे "संतो का शिखर" कहा | अरब सागर का पिता = अरावली</div>
+
+  <div class="section-title">🛤️ अरावली के प्रमुख दर्रे (PASS)</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>दर्रे का नाम</th><th>जिला</th><th>महत्व</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>जीलवा/पगलया की नाल</td><td>पाली-उदयपुर</td><td>मारवाड़ → मेवाड़ का लंग रास्ता</td></tr>
+        <tr><td>2</td><td>केवड़ा की नाल</td><td>उदयपुर</td><td>उदयपुर → सलूम्बर</td></tr>
+        <tr><td>3</td><td>फुलवारी की नाल</td><td>उदयपुर-सलूम्बर</td><td>राज का सबसे बड़ा दर्रा, महाराणा प्रताप की कर्मस्थली</td></tr>
+        <tr><td>4</td><td>देबारी दर्रा</td><td>उदयपुर</td><td>NH 76/27 गुजरता है</td></tr>
+        <tr><td>5</td><td>हाथी दर्रा</td><td>उदयपुर-सिरोही</td><td>उदयपुर को सिरोही से जोड़ता है</td></tr>
+        <tr><td>6</td><td>ढेकड़ दर्रा</td><td>सलूम्बर</td><td>—</td></tr>
+        <tr><td>7</td><td>हाथी गुडा की नाल</td><td>कुंभलगढ़ (राजसमंद)</td><td>राजसमंद-पाली के मध्य</td></tr>
+        <tr><td>8</td><td>बोरंग दर्रा</td><td>सिरोही</td><td>—</td></tr>
+        <tr><td>9</td><td>देसुरी की नाल</td><td>पाली</td><td>पाली → राजसमंद का रास्ता</td></tr>
+        <tr><td>10</td><td>वर दर्रा</td><td>ब्यावर</td><td>—</td></tr>
+        <tr><td>11</td><td>पीपली दर्रा</td><td>ब्यावर</td><td>—</td></tr>
+        <tr><td>12</td><td>कामली घाट दर्रा</td><td>राजसमंद</td><td>ग्रेट अरावली सफारी ट्रेन शुरू</td></tr>
+        <tr><td>13</td><td>पखेरिया, सुराघाट, कन्दवाली, सोमेश्वर, शिवपुर घाट</td><td>ब्यावर</td><td>—</td></tr>
+        <tr><td>14</td><td>गोरम घाट दर्रा</td><td>राजसमंद</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="important-note">फुलवारी की नाल → राज का सबसे बड़ा दर्रा | दर्रे/नाल को मान्यता: RSRTC (1964) और RTDC (1979) देते हैं।</div>
+
+  <div class="section-title">🏘️ अरावली की प्रमुख पहाड़ियां</div>
+
+  <div class="card-grid">
+    <div class="card gold">
+      <h3><span class="card-icon">🏔️</span> प्रमुख पहाड़ियां</h3>
+      <div class="info-row"><span class="info-label">मुक-दवाड़ा</span><span class="info-val">कोटा व झालावाड़</span></div>
+      <div class="info-row"><span class="info-label">भाखरी पहाड़ियां</span><span class="info-val">सिरोही – नीचे झुलान वाला</span></div>
+      <div class="info-row"><span class="info-label">मालखेत/खण्डेला</span><span class="info-val">सीकर</span></div>
+      <div class="info-row"><span class="info-label">खुण्डा/सुच्चा पर्वत</span><span class="info-val">जालौर – 2006 में राज का पहला रोप-वे</span></div>
+      <div class="info-row"><span class="info-label">मालाणी पहाड़ियां</span><span class="info-val">बालोतरा व जालौर</span></div>
+      <div class="info-row"><span class="info-label">गिरवा की पहाड़ी</span><span class="info-val">उदयपुर – तस्तरीनुमा</span></div>
+      <div class="info-row"><span class="info-label">चिड़िया टूक</span><span class="info-val">मेहरानगढ़ (जोधपुर)</span></div>
+      <div class="info-row"><span class="info-label">मेरवाड़ा की पहाड़ी</span><span class="info-val">टोंडगढ़ (ब्यावर) – मारवाड़ को मेवाड़ से अलग</span></div>
+      <div class="info-row"><span class="info-label">दप्पन का मैदान</span><span class="info-val">प्रतापगढ़-बांसवाड़ा</span></div>
+      <div class="info-row"><span class="info-label">ईगल पहाड़ी</span><span class="info-val">जयपुर (अजगढ़ दुर्ग)</span></div>
+      <div class="trick-box">खुण्डा पर्वत = जालौर का पहला रोपवे 2006 → "जाल में खुंडा फंसा"</div>
+    </div>
+
+    <div class="card green">
+      <h3><span class="card-icon">✨</span> अरावली की विशेषताएं</h3>
+      <div style="font-size:0.8rem;line-height:1.9;">
+        <div>① राजस्थान में सर्वाधिक जैव विविधता वाला क्षेत्र</div>
+        <div>② सर्वाधिक वन्य जीव निवास करते हैं</div>
+        <div>③ पश्चिमी मरुस्थल का पूर्वी विस्तार रोकती है</div>
+        <div>④ समुद्र तल से औसत ऊंचाई = <strong>930 मीटर</strong></div>
+        <div>⑤ राज्य की अधिकांश नदियों का उद्गम</div>
+        <div>⑥ सर्वाधिक खनिज संपदा इसी क्षेत्र में</div>
+        <div>⑦ जल विभाजन का काम करती है</div>
+        <div>⑧ नदी जल को अरब सागर व बंगाल की खाड़ी में विभाजित</div>
+        <div>⑨ अरावली के समानांतर होने से वर्षा कम</div>
+        <div>⑩ न्यूनतम जनसंख्या निवास</div>
+        <div>⑪ वर्षा को दो भागों में विभाजित → पश्चिम &lt;50 सेमी, पूर्व &gt;50 सेमी</div>
+      </div>
+      <div class="trick-box">अरावली = "जैव-वन-रोक-उद्गम-खनिज-जलविभाजन" = JVRUKJal</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ TAB 2: SUMMARY ============ -->
+<div id="summary" class="tab-content">
+
+  <div class="section-title">📊 Master Summary Table</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>टॉपिक</th><th>मुख्य तथ्य</th><th>संख्या/नाम</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>कुल लम्बाई</td><td>अरावली की संपूर्ण लम्बाई</td><td><strong>692 किमी</strong></td></tr>
+        <tr><td>राज में लम्बाई</td><td>राजस्थान में अरावली</td><td><strong>550 किमी (80%)</strong></td></tr>
+        <tr><td>दिशा</td><td>विस्तार की दिशा</td><td>SW → NE (दक्षिण-पश्चिम → उत्तर-पूर्व)</td></tr>
+        <tr><td>विस्तार (भारत)</td><td>पालनपुर → राजसीना दिल्ली</td><td>692 किमी</td></tr>
+        <tr><td>विस्तार (राज)</td><td>माउंट आबू → खेतड़ी</td><td>550 किमी</td></tr>
+        <tr><td>क्षेत्रफल %</td><td>राज के कुल क्षेत्र का</td><td><strong>9%</strong></td></tr>
+        <tr><td>जनसंख्या %</td><td>राज की कुल जनसंख्या का</td><td><strong>10%</strong></td></tr>
+        <tr><td>वर्षा</td><td>मध्यवर्ती प्रदेश</td><td>50–90 सेमी</td></tr>
+        <tr><td>औसत ऊंचाई</td><td>समुद्र तल से</td><td><strong>930 मीटर</strong></td></tr>
+        <tr><td>सर्वोच्च चोटी</td><td>गुरु शिखर</td><td><strong>1722 मीटर</strong></td></tr>
+        <tr><td>आश्रम सहित</td><td>गुरु शिखर + आश्रम</td><td><strong>1727 मीटर</strong></td></tr>
+        <tr><td>उत्तरी अरावली ऊंची</td><td>रघुनाथ गढ़</td><td>1055 मीटर</td></tr>
+        <tr><td>मध्य अरावली ऊंची</td><td>भोरायजी/गोरमजी</td><td>933.75 मीटर</td></tr>
+        <tr><td>उत्तरी ऊंचाई</td><td>लघु खंड औसत</td><td>550 मीटर</td></tr>
+        <tr><td>मध्य ऊंचाई</td><td>लघु खंड औसत</td><td>700 मीटर</td></tr>
+        <tr><td>दक्षिणी ऊंचाई</td><td>लघु खंड औसत</td><td>900 मीटर</td></tr>
+        <tr><td>बड़ा दर्रा</td><td>राज का सबसे बड़ा</td><td>फुलवारी की नाल</td></tr>
+        <tr><td>प्रथम रोपवे</td><td>2006 में शुरू</td><td>खुण्डा/सुच्चा पर्वत (जालौर)</td></tr>
+        <tr><td>RSRTC स्थापना</td><td>राजस्थान पथ परिवहन</td><td>1964</td></tr>
+        <tr><td>RTDC स्थापना</td><td>राजस्थान पर्यटन विकास</td><td>1979</td></tr>
+        <tr><td>H.M. सक्सेना जिले</td><td>अरावली में</td><td>7 जिले</td></tr>
+        <tr><td>कुल जिले विस्तार</td><td>अरावली में</td><td>17 जिले</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">⚡ Quick Reference Table – Topic-wise</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Category</th><th>First/Max</th><th>Second</th><th>Third</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>सर्वोच्च चोटियां (सिरोही)</strong></td><td>गुरु शिखर 1722</td><td>शोर भोटी 1597</td><td>देलवाड़ा 1442</td></tr>
+        <tr><td><strong>उदयपुर चोटियां</strong></td><td>जरगा 1431</td><td>जोगिया भाकरी 1183</td><td>—</td></tr>
+        <tr><td><strong>उत्तरी अरावली (सीकर)</strong></td><td>रघुनाथ गढ़ 1055</td><td>मालखेत 1053</td><td>—</td></tr>
+        <tr><td><strong>उत्तरी (झुंझुनू)</strong></td><td>लोहागर्ल 1051</td><td>—</td><td>—</td></tr>
+        <tr><td><strong>दर्रे (उदयपुर)</strong></td><td>फुलवारी की नाल (सबसे बड़ा)</td><td>देबारी (NH 27)</td><td>हाथी दर्रा</td></tr>
+        <tr><td><strong>दर्रे (राजसमंद)</strong></td><td>कामली घाट</td><td>गोरम घाट</td><td>हाथी गुड़ा</td></tr>
+        <tr><td><strong>दर्रे (ब्यावर)</strong></td><td>वर दर्रा</td><td>पीपली दर्रा</td><td>पखेरिया</td></tr>
+        <tr><td><strong>पहाड़ियां (जालौर)</strong></td><td>मालाणी</td><td>खुण्डा/सुच्चा (रोपवे)</td><td>—</td></tr>
+        <tr><td><strong>पहाड़ियां (सिरोही)</strong></td><td>भाखरी</td><td>—</td><td>—</td></tr>
+        <tr><td><strong>पहाड़ियां (उदयपुर)</strong></td><td>गिरवा (तस्तरी)</td><td>देशहरो</td><td>—</td></tr>
+        <tr><td><strong>H.M.सक्सेना दक्षिणी</strong></td><td>सिरोही</td><td>उदयपुर</td><td>राजसमंद</td></tr>
+        <tr><td><strong>H.M.सक्सेना उत्तरी</strong></td><td>जयपुर</td><td>दौसा</td><td>अलवर</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">🔠 अरावली से जुड़े महत्वपूर्ण नाम</div>
+
+  <div class="card-grid">
+    <div class="card blue">
+      <h3>📌 नामों की तुलना तालिका</h3>
+      <div class="info-row"><span class="info-label">गुरु शिखर उपनाम</span><span class="info-val">हिंदू आल्प्स / स्वर्ग माथा</span></div>
+      <div class="info-row"><span class="info-label">कर्नल टॉड ने कहा</span><span class="info-val">संतो का शिखर</span></div>
+      <div class="info-row"><span class="info-label">संतो के संत</span><span class="info-val">रैदास</span></div>
+      <div class="info-row"><span class="info-label">संतो की खान</span><span class="info-val">हर्मकोट (झुंझुनू) – एक लाख 32 संत</span></div>
+      <div class="info-row"><span class="info-label">अरब सागर का पिता</span><span class="info-val">अरावली</span></div>
+      <div class="info-row"><span class="info-label">A.M. हेरान शोध</span><span class="info-val">1936–1954 (स्कॉट लैंड)</span></div>
+      <div class="info-row"><span class="info-label">तुलना</span><span class="info-val">अमेरिका के अप्लेशियन से</span></div>
+    </div>
+
+    <div class="card maroon">
+      <h3>🗓️ RSRTC व RTDC</h3>
+      <div class="info-row"><span class="info-label">RSRTC</span><span class="info-val">राजस्थान राज्य पथ परिवहन निगम (1964)</span></div>
+      <div class="info-row"><span class="info-label">RTDC</span><span class="info-val">राजस्थान पर्यटन विकास निगम (1979)</span></div>
+      <div class="info-row"><span class="info-label">दर्रा मान्यता</span><span class="info-val">दोनों विभाग देते हैं</span></div>
+      <div class="trick-box">64 → 79 → RSRTC पहले, RTDC बाद में</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ TAB 3: MCQ ============ -->
+<div id="mcq" class="tab-content">
+
+  <div class="mcq-header">
+    <div>
+      <div class="score-display">स्कोर: <span id="scoreDisplay">0</span> | प्रश्न: <span id="qDone">0</span>/50</div>
+      <div class="progress-bar-wrap" style="width:200px">
+        <div class="progress-bar" id="progressBar" style="width:0%"></div>
+      </div>
+      <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px;">+1 सही | -⅓ गलत | 0 छोड़ने पर</div>
+    </div>
+    <div class="mcq-controls">
+      <button class="btn btn-gold" onclick="submitAll()">📊 Result देखें</button>
+      <button class="btn btn-danger" onclick="resetQuiz()">🔄 Reset</button>
+    </div>
+  </div>
+
+  <div id="quizContainer"></div>
+</div>
+
+<!-- ============ TAB 4: LAST MINUTE ============ -->
+<div id="lastminute" class="tab-content">
+
+  <div class="super-mnemonic">
+    <h3>🧠 Super Mnemonics – इंटरनेट पर प्रचलित Tricks</h3>
+
+    <div class="mnemonic-item">
+      <strong>🏔️ "गुरु ने शोर मचाया, देलवाड़ा में जरगा अचला आबू कुंभलगढ़ जोगिया"</strong>
+      गुरु शिखर(1722) → शोर भोटी(1597) → देलवाड़ा(1442) → जरगा(1431) → अचलगढ़(1380) → आबू(1295) → कुंभलगढ़(1224) → जोगिया(1183) — Top 8 याद रहे
+    </div>
+
+    <div class="mnemonic-item">
+      <strong>🗺️ "सुर-अजा" = H.M. सक्सेना के 7 जिले</strong>
+      सुर = सिरोही-उदयपुर-राजसमंद (दक्षिण) | अज = अजमेर (मध्य) | अजा = अलवर-जयपुर-दौसा (उत्तर) — "सुर अजा गाते हैं अरावली में"
+    </div>
+
+    <div class="mnemonic-item">
+      <strong>🎯 "BNG" = शैल संरचना</strong>
+      B = बालुका (उत्तर) | N = नीस (मध्य) | G = ग्रेनाइट (दक्षिण) — "उत्तर से दक्षिण जाते हुए BNG"
+    </div>
+
+    <div class="mnemonic-item">
+      <strong>🛤️ "फुलवारी सबसे बड़ी नाल" – प्रताप की कर्मस्थली</strong>
+      फुलवारी की नाल = राज का सबसे बड़ा दर्रा + महाराणा प्रताप का सैन्य प्रशिक्षण स्थल → "फुलवारी में फूल खिले, प्रताप का दल खेले"
+    </div>
+
+    <div class="mnemonic-item">
+      <strong>⛰️ "550-700-900" – तीन खंडों की ऊंचाई</strong>
+      उत्तर=550 | मध्य=700 | दक्षिण=900 → "उत्तर कम, दक्षिण ज्यादा" — हर 150 बढ़ता है!
+    </div>
+
+    <div class="mnemonic-item">
+      <strong>🔢 "9% क्षेत्र, 10% जनसंख्या, 930m ऊंचाई"</strong>
+      9-10-930 → "नौ से दस और नौ सौ तीस" = तीनों में 9 है!
+    </div>
+
+    <div class="mnemonic-item">
+      <strong>📐 "SUP चोटी" = सर्वाधिक ऊंचाई-विस्तार-लम्बाई</strong>
+      S = सिरोही (सर्वाधिक ऊंचाई) | U = उदयपुर (सर्वाधिक विस्तार) | P = पाली (सर्वाधिक लम्बाई) → "SUP करो अरावली में"
+    </div>
+  </div>
+
+  <div class="section-title">⚡ Compact Flash Cards</div>
+  <div class="lm-grid">
+
+    <div class="lm-card saffron">
+      <h3>📏 लम्बाई & क्षेत्र</h3>
+      <ul>
+        <li>कुल: 692 किमी (पालनपुर→दिल्ली)</li>
+        <li>राज में: 550 किमी = 80%</li>
+        <li>दिशा: SW → NE</li>
+        <li>क्षेत्रफल: 9% | जन: 10%</li>
+        <li>औसत ऊंचाई: 930 मीटर</li>
+        <li>17 जिलों में विस्तार</li>
+      </ul>
+    </div>
+
+    <div class="lm-card green">
+      <h3>🏔️ टॉप चोटियां</h3>
+      <ul>
+        <li>गुरु शिखर: 1722m (सिरोही)</li>
+        <li>आश्रम सहित: 1727m</li>
+        <li>शोर भोटी: 1597m</li>
+        <li>देलवाड़ा: 1442m</li>
+        <li>जरगा: 1431m (उदयपुर)</li>
+        <li>रघुनाथ गढ़: 1055m (उत्तरी)</li>
+      </ul>
+    </div>
+
+    <div class="lm-card blue">
+      <h3>🔵 3 खंड</h3>
+      <ul>
+        <li>उत्तरी: खेतड़ी→सांगा | 550m</li>
+        <li>मध्य: सांगा→देवगढ़ | 700m</li>
+        <li>दक्षिणी: देवगढ़→माउंट आबू | 900m</li>
+        <li>मध्य की चोटी: गोरमजी 933.75m</li>
+        <li>दक्षिणी = सबसे ऊंचा</li>
+      </ul>
+    </div>
+
+    <div class="lm-card maroon">
+      <h3>🛤️ महत्वपूर्ण दर्रे</h3>
+      <ul>
+        <li>फुलवारी: सबसे बड़ा दर्रा (उदयपुर)</li>
+        <li>देबारी: NH 27 गुजरता है</li>
+        <li>जीलवा/पगलया: मारवाड़→मेवाड़</li>
+        <li>कामली घाट: ग्रेट अरावली सफारी</li>
+        <li>देसुरी: पाली→राजसमंद</li>
+      </ul>
+    </div>
+
+    <div class="lm-card purple">
+      <h3>🏘️ पहाड़ियां</h3>
+      <ul>
+        <li>गिरवा: तस्तरीनुमा (उदयपुर)</li>
+        <li>खुण्डा: पहला रोपवे 2006 (जालौर)</li>
+        <li>मेरवाड़ा: मारवाड़-मेवाड़ अलग</li>
+        <li>चिड़िया टूक: मेहरानगढ़ (जोधपुर)</li>
+        <li>ईगल पहाड़ी: अजगढ़ (जयपुर)</li>
+      </ul>
+    </div>
+
+    <div class="lm-card gold">
+      <h3>🏷️ उपनाम & तथ्य</h3>
+      <ul>
+        <li>हिंदू आल्प्स / स्वर्ग माथा = गुरु शिखर</li>
+        <li>अरब सागर का पिता = अरावली</li>
+        <li>संतो का शिखर = कर्नल टॉड</li>
+        <li>सिरोही में = आबू गुलाब</li>
+        <li>उत्तरी खण्डित अवस्था में</li>
+      </ul>
+    </div>
+
+    <div class="lm-card dark">
+      <h3>📊 H.M. सक्सेना के 7 जिले</h3>
+      <ul>
+        <li>दक्षिणी: सिरोही, उदयपुर, राजसमंद</li>
+        <li>मध्य: अजमेर</li>
+        <li>उत्तरी: जयपुर, दौसा, अलवर</li>
+        <li>Trick: "सुर-अजा"</li>
+      </ul>
+    </div>
+
+    <div class="lm-card saffron">
+      <h3>📅 महत्वपूर्ण वर्ष</h3>
+      <ul>
+        <li>RSRTC स्थापना: 1964</li>
+        <li>RTDC स्थापना: 1979</li>
+        <li>A.M. हेरान शोध: 1936–1954</li>
+        <li>खुण्डा रोपवे: 2006</li>
+        <li>दप्पन का अकाल: 1899 (विक्रम 1956)</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- RESULT POPUP -->
+<div class="popup-overlay" id="resultPopup">
+  <div class="popup-box">
+    <div class="popup-emoji" id="popupEmoji">🎯</div>
+    <div class="popup-title">परिणाम</div>
+    <div class="popup-score" id="popupScore">0</div>
+    <div class="popup-stats">
+      <div class="popup-stat">
+        <div class="popup-stat-val" id="correctCount" style="color:var(--sage)">0</div>
+        <div class="popup-stat-lbl">✅ सही</div>
+      </div>
+      <div class="popup-stat">
+        <div class="popup-stat-val" id="wrongCount" style="color:var(--rose)">0</div>
+        <div class="popup-stat-lbl">❌ गलत</div>
+      </div>
+      <div class="popup-stat">
+        <div class="popup-stat-val" id="skipCount" style="color:var(--gold)">0</div>
+        <div class="popup-stat-lbl">⏭ छोड़े</div>
+      </div>
+    </div>
+    <div class="popup-message" id="popupMsg">—</div>
+    <button class="btn btn-primary" onclick="closePopup()" style="width:100%;padding:10px">बंद करें</button>
+  </div>
+</div>
+
+<script>
+// ============= QUIZ DATA =============
+const questions = [
+  // --- PYQ STYLE (25) ---
+  {q:"अरावली पर्वत माला की कुल लम्बाई कितनी है?",opts:["550 किमी","692 किमी","724 किमी","480 किमी"],ans:1,exp:"अरावली की कुल लम्बाई 692 किमी है – पालनपुर (गुजरात) से राजसीना (दिल्ली) तक।",tag:"pyq"},
+  {q:"राजस्थान में अरावली की लम्बाई कितनी है?",opts:["480 किमी","550 किमी","620 किमी","692 किमी"],ans:1,exp:"राजस्थान में अरावली 550 किमी है जो कुल का 80% है – माउंट आबू से खेतड़ी तक।",tag:"pyq"},
+  {q:"गुरु शिखर की ऊंचाई कितनी है?",opts:["1597 मीटर","1442 मीटर","1722 मीटर","1431 मीटर"],ans:2,exp:"गुरु शिखर अरावली की सर्वोच्च चोटी है – 1722 मीटर (5650 फीट), सिरोही जिले में।",tag:"pyq"},
+  {q:"H.M. सक्सेना के अनुसार राजस्थान में अरावली का विस्तार कितने जिलों में है?",opts:["5","7","9","11"],ans:1,exp:"H.M. सक्सेना के अनुसार अरावली का विस्तार राज के 7 जिलों में है – 3 दक्षिणी + 1 मध्य + 3 उत्तरी।",tag:"pyq"},
+  {q:"अरावली पर्वत माला की तुलना किस देश के पर्वत से की जाती है?",opts:["फ्रांस के आल्प्स","अमेरिका के अप्लेशियन","चीन के हिमालय","रूस के यूराल"],ans:1,exp:"अरावली की तुलना अमेरिका के अप्लेशियन पर्वत से की जाती है।",tag:"pyq"},
+  {q:"राजस्थान का सबसे बड़ा दर्रा कौन सा है?",opts:["देबारी दर्रा","जीलवा की नाल","फुलवारी की नाल","देसुरी की नाल"],ans:2,exp:"फुलवारी की नाल राज का सबसे बड़ा दर्रा है, यह उदयपुर-सलूम्बर में है और महाराणा प्रताप की कर्मस्थली है।",tag:"pyq"},
+  {q:"अरावली पर्वत माला के मध्यवर्ती प्रदेश में कुल क्षेत्रफल का कितना प्रतिशत है?",opts:["7%","9%","11%","13%"],ans:1,exp:"अरावली का मध्यवर्ती पर्वतीय प्रदेश राज के कुल क्षेत्रफल का 9% है।",tag:"pyq"},
+  {q:"कर्नल टॉड ने गुरु शिखर को क्या कहा था?",opts:["हिमालय का शिखर","संतो का शिखर","देवो का शिखर","राजपूतो का शिखर"],ans:1,exp:"कर्नल टॉड ने गुरु शिखर को 'संतो का शिखर' कहा था। इसे हिंदू आल्प्स व स्वर्ग माथा भी कहते हैं।",tag:"pyq"},
+  {q:"अरावली पर्वत किस दिशा में फैली है?",opts:["पूर्व से पश्चिम","उत्तर से दक्षिण","दक्षिण-पश्चिम से उत्तर-पूर्व","उत्तर-पश्चिम से दक्षिण-पूर्व"],ans:2,exp:"अरावली दक्षिण-पश्चिम (SW) से उत्तर-पूर्व (NE) दिशा में फैली है।",tag:"pyq"},
+  {q:"देबारी दर्रे से कौन सा राष्ट्रीय राजमार्ग गुजरता है?",opts:["NH 48","NH 58","NH 76/27","NH 12"],ans:2,exp:"देबारी दर्रा उदयपुर में स्थित है और इससे NH 76/27 गुजरता है।",tag:"pyq"},
+  {q:"निम्न में से कौन सी चोटी उदयपुर जिले में नहीं है?",opts:["जरगा","जोगिया भाकरी","कमलनाथ","रघुनाथ गढ़"],ans:3,exp:"रघुनाथ गढ़ सीकर जिले में है, यह उत्तरी अरावली की सर्वोच्च चोटी (1055 मीटर) है। बाकी सभी उदयपुर में हैं।",tag:"pyq"},
+  {q:"अरावली में शोध किसने किया था?",opts:["H.M. सक्सेना","A.M. हेरान","कर्नल टॉड","जेम्स टॉड"],ans:1,exp:"A.M. हेरान ने 1936–1954 के बीच अरावली की बनावट पर शोध किया था (स्कॉटलैंड के विद्वान)।",tag:"pyq"},
+  {q:"अरावली पर्वत श्रेणी के उत्तरी भाग में कौन सी शैल पाई जाती है?",opts:["ग्रेनाइट","नीस","बालुका/क्वार्ट्ज","बेसाल्ट"],ans:2,exp:"अरावली के उत्तरी भाग में बालुका/क्वार्ट्ज, मध्य में नीस और दक्षिणी में ग्रेनाइट शैल पाई जाती है।",tag:"pyq"},
+  {q:"राज में अरावली का सर्वाधिक विस्तार किस जिले में है?",opts:["सिरोही","राजसमंद","उदयपुर","पाली"],ans:2,exp:"उदयपुर जिले में अरावली का सर्वाधिक विस्तार है।",tag:"pyq"},
+  {q:"राजस्थान में पहला रोपवे कब और कहाँ शुरू हुआ?",opts:["2004, जालौर","2006, जालौर","2006, उदयपुर","2008, सिरोही"],ans:1,exp:"राजस्थान का पहला रोपवे 2006 में खुण्डा/सुच्चा पर्वत (जालौर) में शुरू हुआ।",tag:"pyq"},
+  {q:"RSRTC की स्थापना किस वर्ष हुई?",opts:["1956","1960","1964","1971"],ans:2,exp:"राजस्थान राज्य पथ परिवहन निगम (RSRTC) की स्थापना 1964 में हुई।",tag:"pyq"},
+  {q:"मध्य अरावली की सर्वोच्च चोटी कौन सी है?",opts:["रघुनाथ गढ़","भोरायजी/गोरमजी","नारागढ़","तारागढ़"],ans:1,exp:"भोरायजी/गोरमजी (933.75 मीटर, हाँडगढ़, ब्यावर) मध्य अरावली की सर्वोच्च चोटी है।",tag:"pyq"},
+  {q:"मेरवाड़ा की पहाड़ी किस जिले में है?",opts:["राजसमंद","पाली","ब्यावर/अजमेर","उदयपुर"],ans:2,exp:"मेरवाड़ा की पहाड़ी टोंडगढ़ (ब्यावर/अजमेर) में है। यह मारवाड़ के मैदान को मेवाड़ से अलग करती है।",tag:"pyq"},
+  {q:"गिरवा पहाड़ी किस जिले में है और इसकी आकृति कैसी है?",opts:["राजसमंद – पहाड़ी","उदयपुर – तस्तरीनुमा","सिरोही – गोल","पाली – लंबी"],ans:1,exp:"गिरवा की पहाड़ी उदयपुर में है और इसकी आकृति तस्तरीनुमा (प्लेट जैसी) है।",tag:"pyq"},
+  {q:"अरावली का पूर्ण दक्षिणी छोर कहाँ माना जाता है?",opts:["माउंट आबू (सिरोही)","पालनपुर (गुजरात)","खेतड़ी (झुंझुनू)","राजसीना (दिल्ली)"],ans:1,exp:"अरावली का मुख्य भूमि पर दक्षिणी बिंदु पालनपुर (गुजरात) है, लेकिन इसकी सुदूर दक्षिणी जड़ें अरब सागर में हैं।",tag:"pyq"},
+  {q:"अरावली के मध्य भाग में पश्चिमी मरुस्थल का पूर्वी विस्तार किस जिले से बढ़ रहा है?",opts:["जयपुर","पाली","अजमेर","सीकर"],ans:2,exp:"अजमेर में अरावली के मध्य अन्तराल होने से पश्चिमी मरुस्थल का पूर्वी विस्तार अजमेर जिले से बढ़ रहा है।",tag:"pyq"},
+  {q:"जीलवा की नाल / पगलया की नाल का क्या महत्व है?",opts:["उदयपुर से सिरोही का रास्ता","मारवाड़ से मेवाड़ का लम्बा रास्ता (पाली-उदयपुर)","जयपुर से अजमेर का रास्ता","मारवाड़ से मेवाड़ का छोटा रास्ता"],ans:1,exp:"जीलवा/पगलया की नाल मारवाड़ से मेवाड़ का लम्बा रास्ता है – पाली और उदयपुर के बीच।",tag:"pyq"},
+  {q:"RTDC की स्थापना किस वर्ष हुई?",opts:["1967","1972","1975","1979"],ans:3,exp:"राजस्थान पर्यटन विकास निगम (RTDC) की स्थापना 1979 में हुई।",tag:"pyq"},
+  {q:"कुंभलगढ़ चोटी किस जिले में है और इसकी ऊंचाई क्या है?",opts:["उदयपुर – 1183m","राजसमंद – 1224m","सिरोही – 1380m","पाली – 1100m"],ans:1,exp:"कुंभलगढ़ चोटी राजसमंद जिले में 1224 मीटर की ऊंचाई पर है।",tag:"pyq"},
+  {q:"'हाथी दर्रा' किन जिलों को जोड़ता है?",opts:["सिरोही-पाली","राजसमंद-पाली","उदयपुर-सिरोही","उदयपुर-राजसमंद"],ans:2,exp:"हाथी दर्रा उदयपुर को सिरोही से जोड़ता है।",tag:"pyq"},
+
+  // --- FUTURE PYQ STYLE (25) ---
+  {q:"अरावली पर्वत माला किस महाकल्प में बनी?",opts:["मेसोजोइक","एन्जोइक","सेनोजोइक","पेलियोजोइक"],ans:1,exp:"अरावली का निर्माण एन्जोइक महाकल्प के डीकम्बियन युग में हुआ।",tag:"future"},
+  {q:"उत्तरी अरावली की खंडित पहाड़ियों के बीच कृषि योग्य क्षेत्र को क्या कहते हैं?",opts:["मरुस्थल","पालखेत/मालखेत/नेरावाली","खादर","बांगर"],ans:1,exp:"उत्तरी अरावली में खण्डित अवस्था में पहाड़ियां हैं और बीच के कृषि क्षेत्र को पालखेत, मालखेत, नेरावाली कहते हैं।",tag:"future"},
+  {q:"अरावली पर्वत माला को 'अरब सागर का पिता' क्यों कहते हैं?",opts:["यह अरब सागर के पास है","इसकी दक्षिणी जड़ें अरब सागर में हैं","इससे अरब सागर में नदियां जाती हैं","यह अरब सागर की ओर ढलती है"],ans:1,exp:"अरावली पर्वत की सुदूर दक्षिणी जड़ें अरब सागर में हैं, इसलिए इसे 'अरब सागर का पिता' कहते हैं।",tag:"future"},
+  {q:"मुक-दवाड़ा की पहाड़ियां किन जिलों में हैं?",opts:["सिरोही-जालौर","उदयपुर-राजसमंद","कोटा-झालावाड़","अजमेर-पाली"],ans:2,exp:"मुक-दवाड़ा की पहाड़ियां कोटा व झालावाड़ जिलों में हैं।",tag:"future"},
+  {q:"'देसुरी की नाल' किन जिलों के बीच रास्ता देती है?",opts:["उदयपुर से राजसमंद","पाली से राजसमंद","जयपुर से अजमेर","सिरोही से पाली"],ans:1,exp:"देसुरी की नाल पाली जिले में स्थित है और पाली से राजसमंद का रास्ता देती है।",tag:"future"},
+  {q:"अरावली के दक्षिणी भाग में कौन सी शैल पाई जाती है?",opts:["नीस","क्वार्ट्ज","ग्रेनाइट","बेसाल्ट"],ans:2,exp:"अरावली के दक्षिणी भाग में ग्रेनाइट पहाड़ियों का विस्तार है।",tag:"future"},
+  {q:"'चिड़िया टूक' पहाड़ी किस किले से संबंधित है?",opts:["चित्तौड़गढ़","कुंभलगढ़","मेहरानगढ़","रणथम्भौर"],ans:2,exp:"चिड़िया टूक पहाड़ी मेहरानगढ़ (जोधपुर) में है।",tag:"future"},
+  {q:"'ग्रेट अरावली सफारी ट्रेन' किस दर्रे से होकर गुजरती है?",opts:["फुलवारी की नाल","कामली घाट (राजसमंद)","देसुरी की नाल","गोरम घाट"],ans:1,exp:"ग्रेट अरावली सफारी ट्रेन कामली घाट क्षेत्र (राजसमंद) में पर्यटकों के लिए चलाई गई है।",tag:"future"},
+  {q:"अरावली क्षेत्र में समुद्र तल से औसत ऊंचाई कितनी है?",opts:["750 मीटर","850 मीटर","930 मीटर","1000 मीटर"],ans:2,exp:"अरावली पर्वत माला की समुद्र तल से औसत ऊंचाई 930 मीटर है।",tag:"future"},
+  {q:"'दप्पन का मैदान' किन जिलों के मध्य है?",opts:["जयपुर-अजमेर","प्रतापगढ़-बांसवाड़ा","कोटा-बारां","उदयपुर-चित्तौड़"],ans:1,exp:"दप्पन का मैदान प्रतापगढ़ व बांसवाड़ा के मध्य है। दप्पन पर्वत उदयपुर में है।",tag:"future"},
+  {q:"'केवड़ा की नाल' दर्रा किन स्थानों के बीच है?",opts:["पाली से उदयपुर","उदयपुर से सलूम्बर","राजसमंद से पाली","सिरोही से उदयपुर"],ans:1,exp:"केवड़ा की नाल उदयपुर जिले में है और उदयपुर से सलूम्बर का रास्ता देती है।",tag:"future"},
+  {q:"भाखरी पहाड़ियां किस जिले में हैं और इनकी विशेषता क्या है?",opts:["जालौर – सबसे ऊंची","सिरोही – नीचे झुलान वाली","उदयपुर – तस्तरी","राजसमंद – खनिज"],ans:1,exp:"भाखरी पहाड़ियां सिरोही जिले में हैं और इनकी विशेषता है कि ये नीचे झुलान वाली हैं।",tag:"future"},
+  {q:"अरावली का 'काटफाटा अन्तराल' किस जिले में है?",opts:["पाली","उदयपुर","अजमेर","सिरोही"],ans:2,exp:"अरावली का काटफाटा (अन्तराल) भाग अजमेर जिले में है, जिससे पश्चिमी मरुस्थल का पूर्वी विस्तार बढ़ रहा है।",tag:"future"},
+  {q:"'मालखेत' पहाड़ी किस जिले में है और यहाँ क्या प्रसिद्ध है?",opts:["झुंझुनू – 1051 मीटर","सीकर – 1053 मीटर, 24 कोसिय परिक्रमा","अलवर – पर्यटन","जयपुर – दर्गा"],ans:1,exp:"मालखेत पहाड़ी सीकर (1053 मीटर) में है और यहाँ 24 कोसिय परिक्रमा प्रसिद्ध है।",tag:"future"},
+  {q:"सिरोही में अरावली को किस नाम से जाना जाता है?",opts:["आड़ा हुल्ला","आबू गुलाब","अड़ड़ा वड़ा","परिपत्र"],ans:1,exp:"सिरोही में अरावली को 'आबू गुलाब' के नाम से जाना जाता है।",tag:"future"},
+  {q:"अरावली पर्वत माला की सबसे बड़ी विशेषता क्या है कि यह राज्य को वर्षा की दृष्टि से कैसे विभाजित करती है?",opts:["पूर्व >50 सेमी, पश्चिम <50 सेमी","उत्तर >50, दक्षिण <50","पश्चिम >50, पूर्व <50","उत्तर <50, दक्षिण >50"],ans:0,exp:"अरावली के पश्चिम में वर्षा 50 सेमी से कम और पूर्व दिशा में 50 सेमी से अधिक होती है।",tag:"future"},
+  {q:"'हाथी गुड़ा की नाल' किन जिलों के मध्य है?",opts:["उदयपुर-पाली","राजसमंद-पाली","सिरोही-पाली","जालौर-पाली"],ans:1,exp:"हाथी गुड़ा की नाल कुंभलगढ़ (राजसमंद) में है और राजसमंद व पाली के मध्य स्थित है।",tag:"future"},
+  {q:"'लोहागर्ल' तीर्थस्थल किस जिले में है और इसकी प्रसिद्धि क्या है?",opts:["सीकर – 1055m","झुंझुनू – 1051m, मालकेतु की 24 कोसिय परिक्रमा","अलवर – 900m","जयपुर – 800m"],ans:1,exp:"लोहागर्ल झुंझुनू (1051 मीटर) में है और यहाँ से मालकेतु की 24 कोसिय परिक्रमा होती है।",tag:"future"},
+  {q:"'आमती पहाड़ियां' किस जिले में हैं?",opts:["कोटा","झालावाड़ – शाहबाद (बारां)","बारां","बूंदी"],ans:1,exp:"आमती पहाड़ियां शाहबाद (बारां) जिले में हैं।",tag:"future"},
+  {q:"'देशहरो' क्षेत्र किस जिले में है?",opts:["सिरोही","राजसमंद","उदयपुर","पाली"],ans:2,exp:"देशहरो उदयपुर जिले में है – यह उदयपुर की अरगा व राणा चोटियों के मध्य का क्षेत्र है जो वर्षभर हरा भरा रहता है।",tag:"future"},
+  {q:"'दप्पन का अकाल' किस वर्ष पड़ा था?",opts:["1891","1899","1905","1920"],ans:1,exp:"दप्पन का अकाल 1899 ई.सन (विक्रम संवत 1956) में पड़ा था।",tag:"future"},
+  {q:"'त्रिकूट पहाड़ी' किस जिले में है?",opts:["जोधपुर","जैसलमेर","बाड़मेर","जालौर"],ans:1,exp:"त्रिकूट पहाड़ी जैसलमेर जिले में है।",tag:"future"},
+  {q:"अरावली क्षेत्र में मुख्यतः किस फसल की खेती होती है?",opts:["गेहूं","चावल","मक्का","कपास"],ans:2,exp:"अरावली के मध्यवर्ती पर्वतीय प्रदेश में मुख्य फसल मक्का है।",tag:"future"},
+  {q:"'ईगल पहाड़ी' किस दुर्ग से संबंधित है?",opts:["आमेर दुर्ग","नाहरगढ़","जयगढ़","अजगढ़ दुर्ग (जयपुर)"],ans:3,exp:"ईगल पहाड़ी जयपुर में अजगढ़ दुर्ग से संबंधित है।",tag:"future"},
+  {q:"अरावली के भूगर्भिक दृष्टि से मुख्यतः कितने समूहों में बांटा जाता है?",opts:["2","3","4","5"],ans:1,exp:"भूगर्भिक दृष्टि से अरावली को मुख्यतः 3 समूहों में बांटा जाता है – अरावली शुपर समूह (ग्रेनाइट, नीस) और देहली समूह (दिल्ली क्वार्ट्ज)।",tag:"future"},
+  {q:"'सारण की पहाड़ियां' किस जिले में हैं?",opts:["सिरोही","जालौर","पाली","राजसमंद"],ans:2,exp:"सारण की पहाड़ियां पाली जिले में हैं।",tag:"future"},
+];
+
+// STATE
+let userAnswers = Array(questions.length).fill(null);
+let score = 0;
+let correct = 0;
+let wrong = 0;
+
+function buildQuiz() {
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = '';
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'mcq-card';
+    card.id = `card-${i}`;
+    card.innerHTML = `
+      <div class="q-num">
+        <span>प्रश्न ${i+1}</span>
+        <span class="${q.tag === 'pyq' ? 'pyq-tag' : 'future-tag'}">${q.tag === 'pyq' ? '📜 PYQ Style' : '🔮 Future PYQ'}</span>
+      </div>
+      <div class="q-text">${q.q}</div>
+      <div class="options" id="opts-${i}">
+        ${q.opts.map((opt, j) => `<button class="opt-btn" onclick="selectAns(${i},${j})">${String.fromCharCode(65+j)}. ${opt}</button>`).join('')}
+      </div>
+      <div class="explanation" id="exp-${i}">💡 ${q.exp}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function selectAns(qIdx, optIdx) {
+  if (userAnswers[qIdx] !== null) return;
+  userAnswers[qIdx] = optIdx;
+  const opts = document.querySelectorAll(`#opts-${qIdx} .opt-btn`);
+  opts.forEach((btn, j) => {
+    btn.disabled = true;
+    if (j === questions[qIdx].ans) btn.classList.add('correct');
+    else if (j === optIdx) btn.classList.add('wrong');
+  });
+  document.getElementById(`exp-${qIdx}`).classList.add('show');
+  const card = document.getElementById(`card-${qIdx}`);
+  if (optIdx === questions[qIdx].ans) {
+    card.classList.add('attempted-correct');
+    score += 1; correct++;
+  } else {
+    card.classList.add('attempted-wrong');
+    score -= 1/3; wrong++;
+  }
+  updateHeader();
+  const done = userAnswers.filter(a => a !== null).length;
+  if (done === questions.length) { setTimeout(showResult, 500); }
+}
+
+function updateHeader() {
+  const done = userAnswers.filter(a => a !== null).length;
+  document.getElementById('scoreDisplay').textContent = score.toFixed(2);
+  document.getElementById('qDone').textContent = done;
+  document.getElementById('progressBar').style.width = (done/questions.length*100)+'%';
+}
+
+function submitAll() {
+  // Mark skipped
+  userAnswers.forEach((a, i) => {
+    if (a === null) {
+      document.getElementById(`card-${i}`).classList.add('attempted-skip');
+      const opts = document.querySelectorAll(`#opts-${i} .opt-btn`);
+      opts.forEach((btn, j) => {
+        btn.disabled = true;
+        if (j === questions[i].ans) btn.classList.add('correct');
+      });
+      document.getElementById(`exp-${i}`).classList.add('show');
+    }
+  });
+  showResult();
+}
+
+function showResult() {
+  const skip = userAnswers.filter(a => a === null).length;
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong;
+  document.getElementById('skipCount').textContent = skip;
+  document.getElementById('popupScore').textContent = score.toFixed(2);
+  const pct = correct / questions.length * 100;
+  let emoji = '😢', msg = 'और मेहनत करें। अरावली को दोबारा पढ़ें!';
+  if (pct >= 80) { emoji = '🏆'; msg = 'शानदार! आप अरावली के माहिर हैं!'; }
+  else if (pct >= 60) { emoji = '👍'; msg = 'अच्छा प्रयास! थोड़ी और Practice करें।'; }
+  else if (pct >= 40) { emoji = '📚'; msg = 'ठीक है, लेकिन कमजोर टॉपिक्स Revise करें।'; }
+  document.getElementById('popupEmoji').textContent = emoji;
+  document.getElementById('popupMsg').textContent = msg;
+  document.getElementById('resultPopup').classList.add('show');
+}
+
+function closePopup() {
+  document.getElementById('resultPopup').classList.remove('show');
+}
+
+function resetQuiz() {
+  userAnswers = Array(questions.length).fill(null);
+  score = 0; correct = 0; wrong = 0;
+  updateHeader();
+  buildQuiz();
+  closePopup();
+  window.scrollTo(0,0);
+}
+
+// TABS
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// INIT
+buildQuiz();
+</script>
+</body>
+</html>

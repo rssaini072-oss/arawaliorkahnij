@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>खनिज संपदा — राजस्थान | RPSC RAS & PSI Revision</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --amber:#F59E0B;--orange:#EA580C;--emerald:#059669;--blue:#1D4ED8;
+  --red:#DC2626;--purple:#7C3AED;--cyan:#0891B2;--lime:#65A30D;
+  --bg:#080A0F;--card:#0E1118;--border:#1C2030;--text:#E2E8F0;--dim:#64748B;--r:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans Devanagari',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+.header{background:linear-gradient(135deg,#060810 0%,#0F1020 50%,#0A0808 100%);padding:14px 16px 0;text-align:center;border-bottom:3px solid var(--amber);position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(60deg,transparent,transparent 18px,rgba(245,158,11,.025) 18px,rgba(245,158,11,.025) 36px);}
+.hbadge{display:inline-flex;gap:8px;align-items:center;background:rgba(245,158,11,.12);border:1px solid var(--amber);border-radius:20px;padding:3px 14px;font-size:11px;color:var(--amber);letter-spacing:1.5px;margin-bottom:6px;font-family:'Rajdhani',sans-serif;}
+.header h1{font-size:clamp(20px,5vw,32px);font-weight:900;background:linear-gradient(90deg,#FCD34D,#F59E0B,#EA580C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hsub{font-size:12px;color:rgba(255,255,255,.5);margin:3px 0 10px;font-family:'Rajdhani',sans-serif;letter-spacing:2px;}
+
+.tabs{display:flex;overflow-x:auto;background:#04050A;border-bottom:2px solid var(--border);scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tb{flex-shrink:0;padding:11px 16px;border:none;background:transparent;color:var(--dim);font-family:'Noto Sans Devanagari',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;}
+.tb:hover{color:var(--text);background:rgba(245,158,11,.06);}
+.tb.active{color:var(--amber);border-bottom-color:var(--amber);background:rgba(245,158,11,.08);}
+
+.tab-content{display:none;padding:16px;max-width:1200px;margin:0 auto;animation:fadeIn .3s ease;}
+.tab-content.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:700px){.grid2{grid-template-columns:1fr;}}
+.full-card{grid-column:1/-1;}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:14px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.c-am::before{background:linear-gradient(90deg,var(--amber),#FCD34D);}
+.c-or::before{background:linear-gradient(90deg,var(--orange),#F97316);}
+.c-em::before{background:linear-gradient(90deg,var(--emerald),#10B981);}
+.c-bl::before{background:linear-gradient(90deg,var(--blue),#3B82F6);}
+.c-re::before{background:linear-gradient(90deg,var(--red),#EF4444);}
+.c-pu::before{background:linear-gradient(90deg,var(--purple),#A855F7);}
+.c-cy::before{background:linear-gradient(90deg,var(--cyan),#06B6D4);}
+.c-li::before{background:linear-gradient(90deg,var(--lime),#84CC16);}
+
+.card-title{font-size:15px;font-weight:800;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.badge{color:#000;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;font-family:'Rajdhani',sans-serif;white-space:nowrap;}
+.badge.am{background:var(--amber);}
+.badge.or{background:var(--orange);color:#fff;}
+.badge.em{background:var(--emerald);color:#fff;}
+.badge.bl{background:var(--blue);color:#fff;}
+.badge.re{background:var(--red);color:#fff;}
+.badge.pu{background:var(--purple);color:#fff;}
+.badge.cy{background:var(--cyan);}
+.badge.li{background:var(--lime);}
+
+ul.clist{list-style:none;padding:0;}
+ul.clist li{padding:4px 0 4px 16px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.04);position:relative;}
+ul.clist li::before{content:'▸';position:absolute;left:0;color:var(--amber);}
+ul.clist li:last-child{border-bottom:none;}
+
+.mnemo{background:rgba(245,158,11,.08);border:1px dashed var(--amber);border-radius:8px;padding:8px 12px;margin-top:10px;font-size:12px;color:var(--amber);}
+.mnemo span{font-weight:700;font-size:13px;}
+
+.hl{background:rgba(245,158,11,.1);border-left:3px solid var(--amber);padding:6px 10px;border-radius:4px;font-size:12px;margin-top:8px;}
+.hl-em{background:rgba(5,150,105,.1);border-left-color:var(--emerald);}
+.hl-bl{background:rgba(29,78,216,.1);border-left-color:#3B82F6;}
+.hl-re{background:rgba(220,38,38,.12);border-left-color:#EF4444;}
+.hl-pu{background:rgba(124,58,237,.12);border-left-color:#A855F7;}
+.hl-cy{background:rgba(8,145,178,.1);border-left-color:#06B6D4;}
+
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px;}
+th{background:rgba(245,158,11,.18);color:var(--amber);padding:7px 10px;text-align:left;border:1px solid var(--border);}
+td{padding:6px 10px;border:1px solid var(--border);vertical-align:top;}
+tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+tr:hover td{background:rgba(245,158,11,.05);}
+
+.sec-head{font-size:18px;font-weight:800;color:var(--amber);margin:20px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:10px;}
+.sec-head::before{content:'';display:block;width:4px;height:22px;background:var(--orange);border-radius:2px;}
+
+.mcq-wrap{margin-bottom:16px;}
+.mcq-q{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px;position:relative;}
+.mcq-q::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--orange));}
+.q-num{font-size:11px;font-weight:700;color:var(--amber);font-family:'Rajdhani',sans-serif;margin-bottom:6px;}
+.q-text{font-size:13px;font-weight:600;margin-bottom:10px;line-height:1.5;}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+@media(max-width:500px){.opts{grid-template-columns:1fr;}}
+.opt{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:7px;padding:8px 12px;font-size:12px;cursor:pointer;transition:all .2s;text-align:left;color:var(--text);font-family:'Noto Sans Devanagari',sans-serif;}
+.opt:hover{background:rgba(245,158,11,.1);border-color:var(--amber);}
+.opt.correct{background:rgba(5,150,105,.2)!important;border-color:#10B981!important;color:#6EE7B7!important;}
+.opt.wrong{background:rgba(220,38,38,.2)!important;border-color:#EF4444!important;color:#FCA5A5!important;}
+.opt.revealed-correct{background:rgba(5,150,105,.1)!important;border-color:#10B981!important;}
+.opt:disabled{cursor:default;}
+.expl{display:none;margin-top:10px;background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.3);border-radius:7px;padding:8px 12px;font-size:12px;color:#6EE7B7;line-height:1.5;}
+.expl.show{display:block;}
+
+.score-bar{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.score-num{font-size:24px;font-weight:900;color:var(--amber);font-family:'Rajdhani',sans-serif;}
+.btn-reset{background:linear-gradient(135deg,var(--amber),var(--orange));color:#000;border:none;padding:8px 16px;border-radius:7px;font-family:'Noto Sans Devanagari',sans-serif;font-size:12px;font-weight:700;cursor:pointer;}
+.btn-result{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;border:none;padding:8px 16px;border-radius:7px;font-family:'Noto Sans Devanagari',sans-serif;font-size:12px;font-weight:700;cursor:pointer;}
+
+.lm-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px;margin-bottom:10px;}
+.lm-title{font-size:13px;font-weight:800;color:var(--amber);margin-bottom:8px;}
+.lm-item{font-size:12px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;gap:8px;flex-wrap:wrap;}
+.lm-item:last-child{border-bottom:none;}
+.lm-key{color:var(--orange);font-weight:700;min-width:120px;flex-shrink:0;}
+
+.super-mnemo{background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(234,88,12,.06));border:2px solid var(--amber);border-radius:var(--r);padding:14px;margin-bottom:14px;}
+.super-mnemo h3{color:var(--amber);font-size:14px;margin-bottom:10px;}
+.mnemo-item{font-size:12px;padding:4px 0;border-bottom:1px solid rgba(245,158,11,.1);}
+.mnemo-item:last-child{border-bottom:none;}
+.mnemo-word{color:#FCD34D;font-weight:800;}
+
+.chip{display:inline-block;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:5px;padding:2px 8px;font-size:11px;color:var(--amber);margin:2px;}
+.chip.em{background:rgba(5,150,105,.1);border-color:rgba(5,150,105,.3);color:#6EE7B7;}
+.chip.bl{background:rgba(29,78,216,.1);border-color:rgba(29,78,216,.3);color:#93C5FD;}
+.chip.re{background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.3);color:#FCA5A5;}
+.chip.pu{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.3);color:#C4B5FD;}
+
+.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1000;align-items:center;justify-content:center;}
+.popup-overlay.show{display:flex;}
+.popup{background:#0C0E18;border:2px solid var(--amber);border-radius:16px;padding:30px;max-width:400px;width:90%;text-align:center;}
+.popup h2{font-size:24px;color:var(--amber);margin-bottom:10px;}
+.popup .final-score{font-size:48px;font-weight:900;font-family:'Rajdhani',sans-serif;}
+.popup .grade{font-size:16px;margin:10px 0;}
+.popup button{background:linear-gradient(135deg,var(--amber),var(--orange));color:#000;border:none;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;margin-top:14px;font-family:'Noto Sans Devanagari',sans-serif;}
+
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="hbadge">⛏️ RPSC RAS PRE &nbsp;|&nbsp; PSI 2025 &nbsp;|&nbsp; RAJ. GEOGRAPHY</div>
+  <h1>खनिज संपदा — Mineral Resources</h1>
+  <div class="hsub">राजस्थान &nbsp;|&nbsp; दीनदयाल सर नोट्स से &nbsp;|&nbsp; धात्विक + अधात्विक + शक्ति खनिज</div>
+  <div class="tabs">
+    <button class="tb active" onclick="showTab('revision',this)">📚 Revision</button>
+    <button class="tb" onclick="showTab('summary',this)">📊 Summary Table</button>
+    <button class="tb" onclick="showTab('rjpyq',this)">🎯 RJ PYQ (50)</button>
+    <button class="tb" onclick="showTab('lastmin',this)">⚡ Last Minute</button>
+  </div>
+</div>
+
+<!-- ===== TAB 1: REVISION ===== -->
+<div id="revision" class="tab-content active">
+
+<div class="sec-head">📌 खनिज संपदा — परिचय</div>
+<div class="grid2">
+
+<div class="card c-am">
+  <div class="card-title"><span class="badge am">परिचय</span> राजस्थान में खनिज — मूल तथ्य</div>
+  <ul class="clist">
+    <li>खनिज संपदा → <b>धात्विक खनिज, अधात्विक खनिज, प्राकृतिक कोयला/तेल/गैस</b></li>
+    <li>खनिजों की दृष्टि से राज्य का सम्पन्न जिला → <b>उदयपुर</b></li>
+    <li>राज्य का <b>70% खनिज अरावली पर्वतीय क्षेत्र</b> में है</li>
+    <li>राजस्थान राज्य खनिज एवं विज्ञान विभाग → <b>उदयपुर (1949)</b></li>
+    <li>राजस्थान को <b>खनिजों का आजारवाल</b> कहते हैं</li>
+    <li>खनिज भंडारों की दृष्टि से राज्य का स्थान → <b>दूसरा</b> (पहला — झारखंड)</li>
+    <li>देश के कुल खनिज उत्पादन में राज्य का <b>22% योगदान</b></li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "उदय-सत्तर-दूज-बाईस" → उदयपुर सम्पन्न, 70% अरावली, दूसरा स्थान, 22% योगदान</div>
+</div>
+
+<div class="card c-or">
+  <div class="card-title"><span class="badge or">नीति</span> खनिज नीति एवं उत्पादन</div>
+  <ul class="clist">
+    <li>राज्य में कुल <b>81 प्रकार</b> के खनिजों की खोज की गई है</li>
+    <li>जिसमें <b>58 प्रकार</b> के खनिजों का दोहन हो रहा है</li>
+    <li>राजस्थान की प्रथम खनिज नीति → <b>1978</b> (मैरोलिट रेखाबंद)</li>
+    <li>दूसरी खनिज नीति → <b>1994</b></li>
+    <li>नवीन खनिज नीति → <b>2015</b></li>
+    <li>विजन 2020 → 15 अगस्त 1999 को शुरू (खनिजों को पौष्टिक आधार)</li>
+    <li>विजन 2025 → राज्य को तम्बाकू मुक्त करने हेतु (2012)</li>
+  </ul>
+  <div class="hl hl-bl">📌 देश के कुल खनिज उत्पादन का राज्य <b>15% धात्विक, 25% अधात्विक, 26% लघु खनिज</b> उत्पादित करता है</div>
+  <div class="mnemo"><span>🧠 Trick:</span> "78-94-2015 नीति" + "81 खोज, 58 दोहन"</div>
+</div>
+
+<div class="card c-em full-card">
+  <div class="card-title"><span class="badge em">आय</span> खनिजों से आय में स्थान एवं MeitEmp</div>
+  <div class="grid2">
+    <ul class="clist">
+      <li>खनिजों से होने वाली आय में राज्य → <b>5वाँ स्थान</b></li>
+      <li>लोह खनिजों से होने वाली आय → <b>4वाँ स्थान</b></li>
+      <li>अलोह खनिजों से होने वाली आय → <b>1वाँ स्थान</b></li>
+      <li>राज्य में 44 जिलों के खनन व 23 अज्ञान खनिजों का दोहन</li>
+    </ul>
+    <ul class="clist">
+      <li><b>MeitEmp</b> → राजस्थान का जास्पर, वोलेस्टोनाइट, गार्नेट में एकाधिकार</li>
+      <li>जास्पर — 100%</li>
+      <li>वोलेस्टोनाइट — 100%</li>
+      <li>जस्ता/कैडमियम — 99% | फ्लोराइड — 96%</li>
+      <li>जिप्सम — 93% | मार्बल — 90%</li>
+      <li>एस्बेस्टस — 89% | सॉफ्टस्टोन — 87%</li>
+      <li>रॉक फॉस्फेट — 75% | कैल्साइट — 71%</li>
+      <li>अभ्रक — 22%</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+<div class="sec-head">🔩 धात्विक खनिज (Metallic Minerals)</div>
+<div class="grid2">
+
+<div class="card c-am">
+  <div class="card-title"><span class="badge am">सीसा-जस्ता</span> Lead-Zinc — जुड़वाँ खनिज</div>
+  <ul class="clist">
+    <li>विश्व भंडार — ऑस्ट्रेलिया | उत्पादन — चीन</li>
+    <li>भारत में सर्वाधिक — <b>राजस्थान</b></li>
+    <li>अभिलेख → जोलैना | राज्य में खोजी गई उत्तम खान → <b>जावर (सलूम्बर)</b></li>
+    <li>जावर की खोज → <b>राणा लाखा के काल में</b></li>
+    <li>राज्य में बड़ी खान → <b>देवारी (उदयपुर)</b> — वर्तमान में बंद</li>
+    <li>केंद्र सरकार → हिन्दुस्तान जिंक लिमिटेड स्थापना देवारी — <b>10 जनवरी 1966</b></li>
+    <li>राजस्थान का एकमात्र जिंक स्मेल्टर का कारखाना → <b>पन्देरिया (चित्तौड़गढ़) 1990-91</b></li>
+  </ul>
+  <div class="hl"><b>प्रमुख भंडार:</b> भानियाँ मगरा, जाषा माला (सलूम्बर), देवारी (उदयपुर), रामपुरा अगूचा (भीलवाड़ा) — <b>विश्व की सिंगल ओपन खान</b>, राजपुरा दरिबा (राजसमंद), भोपाल का बरवाड़ा (सवाई माधोपुर), धूपरा की पाल, माँडो की पाल (डूंगरपुर), वारडालिया (बाँसवाड़ा), गुड़ा, किशोरीदास (अलवर), साबा, काजला, काखड़ (अजमेर)</div>
+  <div class="mnemo"><span>🧠 Trick:</span> "जावर-राणालाखा-देवारी-1966-पन्देरिया" → सीसा-जस्ता की कड़ी</div>
+</div>
+
+<div class="card c-or">
+  <div class="card-title"><span class="badge or">चाँदी</span> Silver — चाँदी</div>
+  <ul class="clist">
+    <li>विश्व — मेक्सिको | भारत — राजस्थान (पूरे भारत की 90%)</li>
+    <li>विश्व की पहली चाँदी सुनालमत यार्ड</li>
+    <li>जिन खानों से सीसा पत्ता निकलता है वहीं से चाँदी</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "चाँदी = सीसे की साथी — 90% भारत = राजस्थान"</div>
+</div>
+
+<div class="card c-em">
+  <div class="card-title"><span class="badge em">सोना</span> Gold — सोना</div>
+  <ul class="clist">
+    <li>विश्व भंडार — USA | उत्पादन — चीन</li>
+    <li>भारत में प्रसिद्ध खान → कोलार की खान/हट्टी की खान — कर्नाटक</li>
+    <li>राजस्थान में सर्वाधिक → <b>बाँसवाड़ा</b></li>
+    <li>खान → आनंदपुर, रुकिमा, जागलपुरा (बाँसवाड़ा), रामपुर खेड़ा (उदयपुर), निमराण माला, बलरगाँव, अजारी (सिरोही)</li>
+    <li>नवीन भंडार → हाची पहाड़, भीनगाँव (अजमेर), वासकड़ीगाँव (दौसा), मुंडियाबास (कोटपुतली, करौली)</li>
+    <li>मुंडियाबास — सोना, चाँदी, तांबा तीनों के एक साथ भंडार</li>
+    <li>सोने का पठार → धातोल (बाँसवाड़ा)</li>
+    <li>राज्य में सोने की खोज → ऑस्ट्रेलिया की कंपनी <b>Indogold</b> द्वारा</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "बाँसवाड़ा सोने का भंडार — धातोल पठार — Indogold खोज"</div>
+</div>
+
+<div class="card c-bl">
+  <div class="card-title"><span class="badge bl">लोहा</span> Iron — लोहा</div>
+  <ul class="clist">
+    <li>विश्व भंडार — ऑस्ट्रेलिया | उत्पादन — चीन</li>
+    <li>भारत में लोहे की किस्म → <b>Magnetite</b> (75%) कर्नाटक | <b>Hematite</b> (25%) ओडिशा</li>
+    <li>राज्य में सर्वाधिक → <b>जयपुर</b></li>
+    <li>प्रमुख खान → मोरिजा, बिनोला (जयपुर), नीमला, राजमहेला (दौसा), भोर, कोकिला — नीम का धाना (सीकर), डाकला, सिंचाना (झुंझुनू), धुर इन्दोर, नाथरा की पाल (उदयपुर), लोहारपुरा (बूँदी), कमलपुरा, लोपा (बाँसवाड़ा), तलवारा, खामिरचा, लोहारिचा (डूंगरपुर), सगा, पापरपाल (जालावाड़)</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "लोहा = मोरिजा-बिनोला (जयपुर) सर्वाधिक"</div>
+</div>
+
+<div class="card c-re">
+  <div class="card-title"><span class="badge re">मैंगनीज</span> Manganese — मैंगनीज</div>
+  <ul class="clist">
+    <li>भारत — ओडिशा (सर्वाधिक)</li>
+    <li>उपभोग → इस्पात रोल, रासायनिक उपयोग</li>
+    <li>राज्य में सर्वाधिक → <b>बाँसवाड़ा</b></li>
+    <li>प्रमुख खान → लीलवाला, कालाखूंटा (बाँसवाड़ा), नेगड़िया, स्वरूपुरा, लामेसरा (उदयपुर)</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "मैंगनीज = बाँसवाड़ा + ओडिशा (भारत)"</div>
+</div>
+
+<div class="card c-cy">
+  <div class="card-title"><span class="badge cy">ताँबा</span> Copper — ताँबा</div>
+  <ul class="clist">
+    <li>विश्व — चीली | उपभोग → इलेक्ट्रॉनिक सामान, कर्तन</li>
+    <li>आहड़ सभ्यता के लोग इस धातु से परिचित थे</li>
+    <li>गणेश्वर सभ्यता (नीम का धाना) → ताम्र भूगीन सभ्यताओं की जननी</li>
+    <li>देश का सबसे बड़ा ताँबा जलाने का संयंत्र → <b>खेतड़ी (झुंझुनू) 1967</b></li>
+    <li>खेतड़ी → देश की सबसे बड़ी खान, निर्यात → अमेरिका</li>
+    <li>प्रमुख खान → खोद दरिबा, मुंडियाबास (कोटपुतली, करौली), अजनी (सलूम्बर), गंगास केल्ट, रेलमगरा (राजसमंद), खेतड़ी, सिंघाना (झुंझुनू), बन्नेवाली की ढाणी, नीम का धाना (सीकर)</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "ताँबा = खेतड़ी (झुंझुनू) — गणेश्वर सभ्यता की जननी — 1967"</div>
+</div>
+
+<div class="card c-pu">
+  <div class="card-title"><span class="badge pu">टंगस्टन</span> Tungsten + बेरिलियम + अन्य</div>
+  <ul class="clist">
+    <li><b>टंगस्टन</b> → विश्व — चीन | भारत — कर्नाटक</li>
+    <li>देश की सबसे बड़ी टंगस्टन की खान → <b>रेवत पहाड़ी, डेगाना (नागौर)</b></li>
+    <li>उपयोग → कल्चतन्तु बनाने हेतु</li>
+    <li>प्रमुख खान → आबू वाल्दा (सिरोही), नाना करार (पाली), बिजावल (नागौर)</li>
+    <li><b>बेरिलियम</b> → आर्थिक रिचेस्टरो में, रासायनिक उपयोग</li>
+    <li>प्रमुख खान → भाटपरा, चंपा घुड़ा (उदयपुर), महकेरसा (भीलवाड़ा), आमेर (राजसमंद), सूजरवाड़ा (जयपुर), काँदा खिन्दरी (अजमेर), झुसाण → राढपुरा (भीलवाड़ा)</li>
+    <li><b>लिथियम</b> → अजमेर</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "टंगस्टन = डेगाना (नागौर) सबसे बड़ी खान"</div>
+</div>
+
+<div class="card c-li">
+  <div class="card-title"><span class="badge li">हीरा + एस्बेस्टस</span> Diamond + Asbestos</div>
+  <ul class="clist">
+    <li><b>हीरा</b> → केसरपुरा, मानपुरा (प्रतापगढ़)</li>
+    <li><b>एस्बेस्टस</b> → रेशेदार खनिज | राज्य में सर्वाधिक — <b>उदयपुर</b></li>
+    <li>प्रमुख खान → ऋषभदेव, झाड़ोल, बेलाना (उदयपुर), खेरवाड़ा (सलूम्बर), जीदरदा, नाथद्वारा (राजसमंद), देवल (डूंगरपुर), सेंदरा (पाली), नरौमा, अर्जुनपुरा (अजमेर), डोलोमाइट (अचरपुर)</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "एस्बेस्टस = उदयपुर सर्वाधिक | हीरा = प्रतापगढ़"</div>
+</div>
+
+</div>
+
+<div class="sec-head">🪨 अधात्विक खनिज (Non-Metallic Minerals)</div>
+<div class="grid2">
+
+<div class="card c-am">
+  <div class="card-title"><span class="badge am">जिप्सम</span> Gypsum — प्रमुख पलनदा खनिज</div>
+  <ul class="clist">
+    <li>महत्त्वपूर्ण पलनदा खनिज है</li>
+    <li>विश्व भंडार — USA | उत्पादन — चीन</li>
+    <li>भारत में सर्वाधिक → <b>राजस्थान</b> (93% देश का)</li>
+    <li>अन्यनाम → हरसौठ, सेलखड़ी, सेलेनाइट, गोंदली</li>
+    <li>उपयोग → लवणीय भिड़ी को उपजाऊ बनाने, चिकित्सा, POP के रूप में</li>
+    <li>सर्वाधिक भंडार → <b>जोथु भांगलोद (नागौर)</b></li>
+    <li>वर्तमान में बड़ी खान → <b>बिलसरासर (बीकानेर)</b></li>
+    <li>अपखंड (पश्चिमी राजस्थान) → गंगानगर, हनुमानगढ़, बीकानेर, बाड़मेर, नागौर, जोधपुर</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "जिप्सम = नागौर (सर्वाधिक) + 93% देश का + POP"</div>
+</div>
+
+<div class="card c-em">
+  <div class="card-title"><span class="badge em">संगमरमर</span> Marble — राज्य में सर्वाधिक</div>
+  <ul class="clist">
+    <li>भारत में सर्वाधिक → <b>राजस्थान</b> (90% देश का)</li>
+    <li>राज्य में सर्वाधिक खान → <b>राजसमंद</b></li>
+    <li>उत्तम खान → <b>R.K. मार्बल (काँकरोली, राजसमंद)</b></li>
+    <li>मंडी → <b>किशनगढ़ (अजमेर)</b> — एशिया की बड़ी मंडी</li>
+    <li>विश्व प्रसिद्ध संगमरमर → <b>मकराना (नागौर)</b></li>
+    <li>काला संगमरमर → कालादेरा, जैसलाणा (जयपुर)</li>
+    <li>पीला संगमरमर → पिंधुला (जैसलमेर)</li>
+    <li>हरा संगमरमर → ऋषभदेव (उदयपुर)</li>
+    <li>सफेद संगमरमर → मकराना (नागौर)</li>
+    <li>शेष सफेद → राजसमंद | लाल → धौलपुर</li>
+    <li>सिलरंगा → खादरा (पाली) | गुलाबी → आभा माला (जालोर)</li>
+    <li>बादामी → जोधपुर | हल्का हरा → डूंगरपुर</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "संगमरमर = 90% देश, मकराना-सफेद-विश्व प्रसिद्ध, मंडी = किशनगढ़"</div>
+</div>
+
+<div class="card c-bl">
+  <div class="card-title"><span class="badge bl">अभ्रक</span> Mica + तामड़ा (Garnet)</div>
+  <ul class="clist">
+    <li><b>अभ्रक</b> → उपयोग — विपुल रोधी ईट बनाने</li>
+    <li>सफेद अभ्रक → रूबी | सर्वाधिक → <b>भीलवाड़ा</b></li>
+    <li>प्रमुख खान → बनेड़ा, दाँता, झूणाप: लोहारिया (भीलवाड़ा), संवाग (उदयपुर), आमेल (राजसमंद)</li>
+    <li><b>तामड़ा/गार्नेट</b> → रक्तमणी, गार्नेट | उपयोग — आभूषण बनाने में</li>
+    <li>राज्य में दो प्रकार → जेम (सर्वाधिक) + एम्बेसिव</li>
+    <li>सर्वाधिक → <b>टोंक</b></li>
+    <li>प्रमुख खान → राजमहल, जावरी, कत्रलानपुर (टोंक), सरवाड़ा (अजमेर), कनलपुरा (भीलवाड़ा), बागोरवा (सीकर), महवा नीम का धाना (सीकर)</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "अभ्रक = भीलवाड़ा (22%) | तामड़ा = टोंक सर्वाधिक"</div>
+</div>
+
+<div class="card c-re">
+  <div class="card-title"><span class="badge re">चीना पत्थर + फ्लोराइट</span> China Clay + Fluorite</div>
+  <ul class="clist">
+    <li><b>चीना पत्थर (China Clay)</b> → Soft Stone, मुलायम पत्थर</li>
+    <li>सर्वाधिक भंडार → <b>उदयपुर</b></li>
+    <li>प्रमुख खान → सिकोरा, डिंसी, नाथरा की पाल (उदयपुर), उसन, लागड़ (राजसमंद), देवल, कजादा, पीपलोदा (डूंगरपुर)</li>
+    <li>चीना पत्थर से हाथियाँ व खिलौने बनाए जाते हैं — <b>रम्मड़ा कला</b></li>
+    <li>रम्मड़ा गालियाँकोट (डूंगरपुर) की पहचान है</li>
+    <li><b>फ्लोराइट/फ्लोरस्पार</b> → सर्वाधिक → <b>जालोर</b></li>
+    <li>प्रमुख → नारसौली, खांबी, पाबरमाला, कोटड़ा (जालोर)</li>
+    <li>क्लोस्पार → माँडो की पाल (डूंगरपुर), कोटड़ा, भीनमाल (जालोर)</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "चीना पत्थर = उदयपुर (रम्मड़ा कला) | फ्लोराइट = जालोर"</div>
+</div>
+
+<div class="card c-pu">
+  <div class="card-title"><span class="badge pu">रॉक फॉस्फेट + हीरा</span> Rock Phosphate + Diamond</div>
+  <ul class="clist">
+    <li><b>रॉक फॉस्फेट</b> → इससे जमीन में अम्लीयता कम करने हेतु <b>राजफान उर्वरक</b> तैयार किया जाता है</li>
+    <li>राज्य में सर्वाधिक → <b>उदयपुर</b></li>
+    <li>प्रमुख खान → जानपुरा, शाबा कोहड़ा (उदयपुर), किरमानीमा, लाड़ी (जैसलमेर), सालोपत (बाँसवाड़ा), ओकरपुरा (सीकर), अन्चरोल (जयपुर)</li>
+    <li><b>ग्रेनाइट</b> → सर्वाधिक — <b>जालोर</b></li>
+    <li>नारसौली, खांबी, पाबरमाला, कोटड़ा (जालोर)</li>
+    <li><b>पायराइट्स</b> → शालीदपुरा (सीकर)</li>
+    <li><b>कैल्साइट</b> → सीकर | <b>केरोनाइट</b> → बीकानेर, बाड़मेर</li>
+    <li><b>फापरवले, बालवले</b> → बीकानेर | <b>वोलेस्टोनाइट</b> → सिरोही</li>
+    <li><b>डोलोमाइट</b> → उदयपुर | <b>बेराइट्स</b> → उदयपुर</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "रॉकफॉस्फेट = उदयपुर + राजफान उर्वरक | ग्रेनाइट = जालोर"</div>
+</div>
+
+<div class="card c-cy">
+  <div class="card-title"><span class="badge cy">अन्य</span> जिप्सम विशेष + अन्य अधात्विक</div>
+  <ul class="clist">
+    <li><b>फुलतानी मिट्टी</b> → बीकानेर, बाड़मेर</li>
+    <li><b>गेरू पत्थर</b> → धरमन + चित्तौड़गढ़</li>
+    <li><b>काँच बालू</b> → जयपुर, सेउ, सांगोद (जयपुर), बारोदिया (बूँदी)</li>
+    <li><b>चीनी मिट्टी</b> → सीकर</li>
+    <li><b>यूरेनियम</b> → उदयपुर | खान → उमरा (उदयपुर), खंडेला (सीकर), नवीन → झूणाप, जहाजपुर (भीलवाड़ा)</li>
+    <li><b>चूना पत्थर (Limestone)</b> → सर्वाधिक → <b>जोधपुर</b></li>
+    <li>प्रमुख → किलाड़ा (जोधपुर), सोजत, भटवाड़ा (पाली), शंभूपुरा (चित्तौड़गढ़), साम (जैसलमेर), झुंझवा, गोहन (नागौर)</li>
+    <li><b>सेंड स्टोन (बलुआ पत्थर)</b> → मकराना (नागौर)</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "चूना पत्थर = जोधपुर सर्वाधिक | यूरेनियम = उदयपुर"</div>
+</div>
+
+</div>
+
+<div class="sec-head">⚡ शक्ति संसाधन (Energy Resources)</div>
+<div class="grid2">
+
+<div class="card c-am full-card">
+  <div class="card-title"><span class="badge am">कोयला</span> Coal — 4 प्रकार</div>
+  <div class="grid2">
+    <div>
+      <ul class="clist">
+        <li>① <b>एन्थ्रेसाइट</b> → कार्बन 40-90% (पुराना कम)</li>
+        <li>② <b>बिटुमिन</b> → घरों में उपयोग (70-80%)</li>
+        <li>③ <b>लिग्नाइट</b> → रंग भूरा (35-50%) — राज्य में सर्वाधिक</li>
+        <li>④ <b>पीट</b> → घटिया किस्म (35 से कम)</li>
+      </ul>
+      <div class="hl hl-em">📌 राज्य में सर्वाधिक → <b>लिग्नाइट कोयला</b><br>भंडार: तमिलनाडु ①, राजस्थान ②<br>उत्पादन: तमिलनाडु ①, गुजरात ②, राजस्थान ③<br>राज्य में सर्वाधिक → ① बाड़मेर ② बीकानेर</div>
+    </div>
+    <div>
+      <ul class="clist">
+        <li>लिग्नाइट की खान → पलाना, बरसिंह, गुड़ा, रानेरी, हाड़ला, बानिमाला, गाड़ियापाला (बीकानेर), पालिपा, बोथिया, घिरल, सेनाड़ी, भरकला, घुरला, सिंघरी (बाड़मेर), रामगाढ़, झुंडियावाला (जैसलमेर), कासनाऊ, मालाकुण्ड, भेड़ला, भोकाला (नागौर)</li>
+      </ul>
+      <div class="mnemo"><span>🧠 Trick:</span> "लिग्नाइट = बाड़मेर①+बीकानेर② → राज्य में | देश में तमिलनाडु-राजस्थान-गुजरात"</div>
+    </div>
+  </div>
+</div>
+
+<div class="card c-or">
+  <div class="card-title"><span class="badge or">खनिज तेल</span> Petroleum — खनिज तेल</div>
+  <ul class="clist">
+    <li>राज्य में पेट्रोलियम निदेशालय की स्थापना → <b>1997 (जयपुर)</b></li>
+    <li>राज्य प्रतिदिन <b>1,75,000 बैरल</b> तेल का उत्पादन करता है (1 बैरल = 159 लीटर)</li>
+    <li>देश के कुल उत्पादन में राजस्थान का योगदान → <b>24%</b></li>
+    <li>राज्य का स्थान → भंडारों की दृष्टि से <b>5वाँ</b>, उत्पादन में <b>दूसरा</b></li>
+    <li>राज्य सर्वोपम भंडार → <b>जैसलमेर</b></li>
+    <li>राज्य में सर्वाधिक भंडार → <b>बाड़मेर</b></li>
+    <li>नए जिलों के गठन के बाद सर्वाधिक भंडार → <b>बालोतरा</b></li>
+    <li>उत्तम तेल कुआँ → <b>सिड़ेवाला (जैसलमेर)</b></li>
+    <li>तेल क्षेत्र → V, M, B, A, S (वागरी, मंगला, भाग्यम, ऐश्वर्या, सरस्वती)</li>
+  </ul>
+  <div class="hl hl-bl">📌 <b>4 प्रमुख तेल बेसिन:</b> ① बाड़मेर-सांचौर बेसिन (बाड़मेर, जालोर) ② राजस्थान शेल्फ बेसिन (जैसलमेर, बीकानेर) ③ बीकानेर-नागौर बेसिन (बीकानेर, नागौर, गंगानगर, चुरू) ④ विंध्यन बेसिन (टोंकेली, सवाई माधोपुर, कोतली, झालावाड़, भीलवाड़ा)</div>
+  <div class="mnemo"><span>🧠 Trick:</span> "मंगला = उत्तम तेल कुआँ | बाड़मेर = सर्वाधिक भंडार | 24% देश में"</div>
+</div>
+
+<div class="card c-em">
+  <div class="card-title"><span class="badge em">प्राकृतिक गैस</span> Natural Gas — प्राकृतिक गैस</div>
+  <ul class="clist">
+    <li>राज्य का स्थान → <b>5वाँ</b></li>
+    <li>सर्वाधिक उत्पादन → <b>जैसलमेर</b></li>
+    <li>सर्वोपम भंडार → <b>बाड़मेर</b></li>
+    <li>प्रथम कुआँ → सिड़ेवाला (जैसलमेर)</li>
+    <li>राज्य में CBM (कोल बेड मिथेन) के भंडार → <b>धोलाबर (जैसलमेर)</b></li>
+    <li>तेल खोजने वाली कंपनी → ① केकर्न एनर्जी — स्कॉटलैंड ② HPCL → भारत सरकार ③ ऑयल इंटरनेशनल → नीदरलैंड</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "गैस = जैसलमेर सर्वाधिक | CBM = धोलाबर"</div>
+</div>
+
+<div class="card c-bl">
+  <div class="card-title"><span class="badge bl">बाड़मेर रिफाइनरी</span> Barmer Refinery</div>
+  <ul class="clist">
+    <li>देश की <b>26वीं रिफाइनरी</b> है, क्षमता की दृष्टि से</li>
+    <li>देश की <b>BS-6 इंजन</b> पर संचारित देश की <b>उत्तम रिफाइनरी</b></li>
+    <li>शिलान्यास → <b>22 सितम्बर 2013</b></li>
+    <li>साझिमाला गाँव — पंचपड़ा (बालोतरा) में स्थित</li>
+    <li>राज्य सरकार <b>26%</b> व <b>HPCL 74%</b> की भागीदारी</li>
+  </ul>
+  <div class="mnemo"><span>🧠 Trick:</span> "बाड़मेर रिफाइनरी = 26वीं, BS-6, 22 सित. 2013, RJ=26%, HPCL=74%"</div>
+</div>
+
+</div>
+</div>
+
+<!-- ===== TAB 2: SUMMARY TABLE ===== -->
+<div id="summary" class="tab-content">
+<div class="sec-head">📊 Master Summary — खनिज संपदा राजस्थान</div>
+
+<div class="card c-am full-card">
+  <div class="card-title"><span class="badge am">Master Table</span> खनिज — विश्व/भारत/राजस्थान एक नजर में</div>
+  <table>
+    <tr><th>खनिज</th><th>विश्व भंडार</th><th>विश्व उत्पादन</th><th>भारत सर्वाधिक</th><th>RJ सर्वाधिक जिला</th><th>विशेष तथ्य</th></tr>
+    <tr><td><b>सीसा-जस्ता</b></td><td>ऑस्ट्रेलिया</td><td>चीन</td><td>राजस्थान</td><td>उदयपुर (जावर)</td><td>जावर = राणालाखा, HZL 1966</td></tr>
+    <tr><td><b>चाँदी</b></td><td>मेक्सिको</td><td>—</td><td>राजस्थान 90%</td><td>—</td><td>सीसे के साथ निकलती है</td></tr>
+    <tr><td><b>सोना</b></td><td>USA</td><td>चीन</td><td>कर्नाटक</td><td>बाँसवाड़ा</td><td>Indogold खोज, धातोल पठार</td></tr>
+    <tr><td><b>लोहा</b></td><td>ऑस्ट्रेलिया</td><td>चीन</td><td>कर्नाटक (Magnetite)</td><td>जयपुर</td><td>Magnetite 75%, Hematite 25%</td></tr>
+    <tr><td><b>मैंगनीज</b></td><td>—</td><td>—</td><td>ओडिशा</td><td>बाँसवाड़ा</td><td>इस्पात + रासायनिक उपयोग</td></tr>
+    <tr><td><b>ताँबा</b></td><td>चीली</td><td>—</td><td>—</td><td>झुंझुनू (खेतड़ी)</td><td>खेतड़ी 1967, गणेश्वर सभ्यता</td></tr>
+    <tr><td><b>टंगस्टन</b></td><td>चीन</td><td>—</td><td>कर्नाटक</td><td>नागौर (डेगाना)</td><td>कल्च तन्तु (filament)</td></tr>
+    <tr><td><b>जिप्सम</b></td><td>USA</td><td>चीन</td><td>राजस्थान 93%</td><td>नागौर</td><td>POP, बड़ी खान = बीकानेर</td></tr>
+    <tr><td><b>संगमरमर</b></td><td>—</td><td>—</td><td>राजस्थान 90%</td><td>राजसमंद</td><td>मकराना सफेद, मंडी = किशनगढ़</td></tr>
+    <tr><td><b>अभ्रक</b></td><td>—</td><td>—</td><td>—</td><td>भीलवाड़ा (22%)</td><td>रूबी = सफेद अभ्रक</td></tr>
+    <tr><td><b>तामड़ा (गार्नेट)</b></td><td>—</td><td>—</td><td>—</td><td>टोंक</td><td>आभूषण निर्माण</td></tr>
+    <tr><td><b>फ्लोराइट</b></td><td>—</td><td>—</td><td>—</td><td>जालोर</td><td>—</td></tr>
+    <tr><td><b>रॉक फॉस्फेट</b></td><td>—</td><td>—</td><td>—</td><td>उदयपुर</td><td>राजफान उर्वरक</td></tr>
+    <tr><td><b>एस्बेस्टस</b></td><td>—</td><td>—</td><td>—</td><td>उदयपुर</td><td>रेशेदार खनिज</td></tr>
+    <tr><td><b>चीना पत्थर</b></td><td>—</td><td>—</td><td>—</td><td>उदयपुर</td><td>रम्मड़ा कला (डूंगरपुर)</td></tr>
+    <tr><td><b>चूना पत्थर</b></td><td>—</td><td>—</td><td>—</td><td>जोधपुर</td><td>Limestone</td></tr>
+    <tr><td><b>ग्रेनाइट</b></td><td>—</td><td>—</td><td>—</td><td>जालोर</td><td>—</td></tr>
+    <tr><td><b>खनिज तेल</b></td><td>—</td><td>—</td><td>—</td><td>बाड़मेर (भंडार)</td><td>24% देश में, 2रा स्थान</td></tr>
+    <tr><td><b>प्राकृतिक गैस</b></td><td>—</td><td>—</td><td>—</td><td>जैसलमेर (उत्पादन)</td><td>5वाँ स्थान</td></tr>
+    <tr><td><b>लिग्नाइट</b></td><td>—</td><td>—</td><td>तमिलनाडु</td><td>बाड़मेर</td><td>राज्य में 3रा (देश में)</td></tr>
+  </table>
+</div>
+
+<div class="sec-head">🏆 Quick Reference — एकाधिकार व विशेष</div>
+<div class="card c-or full-card">
+  <div class="card-title"><span class="badge or">Monopoly</span> राजस्थान का एकाधिकार वाले खनिज</div>
+  <table>
+    <tr><th>खनिज</th><th>राजस्थान का %</th><th>विशेष स्थान</th></tr>
+    <tr><td>जास्पर (Jasper)</td><td><b>100%</b></td><td>पूर्ण एकाधिकार</td></tr>
+    <tr><td>वोलेस्टोनाइट</td><td><b>100%</b></td><td>पूर्ण एकाधिकार</td></tr>
+    <tr><td>जस्ता/कैडमियम</td><td><b>99%</b></td><td>—</td></tr>
+    <tr><td>फ्लोराइड</td><td><b>96%</b></td><td>—</td></tr>
+    <tr><td>जिप्सम</td><td><b>93%</b></td><td>नागौर बड़ा भंडार</td></tr>
+    <tr><td>संगमरमर</td><td><b>90%</b></td><td>मकराना, किशनगढ़</td></tr>
+    <tr><td>एस्बेस्टस</td><td><b>89%</b></td><td>उदयपुर</td></tr>
+    <tr><td>सॉफ्टस्टोन</td><td><b>87%</b></td><td>—</td></tr>
+    <tr><td>रॉक फॉस्फेट</td><td><b>75%</b></td><td>उदयपुर</td></tr>
+    <tr><td>कैल्साइट</td><td><b>71%</b></td><td>—</td></tr>
+    <tr><td>कोल्हा स्टोन/फेल्सपार/केल्माइट/सैंडस्टोन</td><td><b>70% each</b></td><td>—</td></tr>
+    <tr><td>अभ्रक</td><td><b>22%</b></td><td>भीलवाड़ा</td></tr>
+  </table>
+</div>
+
+<div class="card c-em full-card">
+  <div class="card-title"><span class="badge em">Special Facts</span> महत्वपूर्ण विशेष तथ्य</div>
+  <div class="grid2">
+    <ul class="clist">
+      <li>जावर की खान → राणालाखा के काल में खोज</li>
+      <li>HZL स्थापना → 10 जनवरी 1966, देवारी (उदयपुर)</li>
+      <li>जिंक स्मेल्टर → पन्देरिया (चित्तौड़गढ़) 1990-91</li>
+      <li>खेतड़ी → देश का सबसे बड़ा ताँबा संयंत्र (1967)</li>
+      <li>रामपुरा अगूचा → विश्व की सिंगल ओपन खान (भीलवाड़ा)</li>
+      <li>मकराना → विश्व प्रसिद्ध सफेद संगमरमर</li>
+      <li>किशनगढ़ → एशिया की बड़ी संगमरमर मंडी</li>
+      <li>मुंडियाबास → सोना, चाँदी, ताँबा तीनों एक साथ</li>
+    </ul>
+    <ul class="clist">
+      <li>डेगाना (नागौर) → देश की सबसे बड़ी टंगस्टन खान</li>
+      <li>बाड़मेर रिफाइनरी → 26वीं, BS-6, 22 सित. 2013</li>
+      <li>मंगला → उत्तम तेल कुआँ (बालोतरा)</li>
+      <li>CBM → धोलाबर (जैसलमेर)</li>
+      <li>राज्य की नवीन खनिज नीति → 2015</li>
+      <li>खनिज विभाग → उदयपुर (1949)</li>
+      <li>रम्मड़ा कला → गालियाँकोट (डूंगरपुर)</li>
+      <li>Indogold (ऑस्ट्रेलिया) → राज्य में सोने की खोज</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ===== TAB 3: RJ PYQ (50) ===== -->
+<div id="rjpyq" class="tab-content">
+<div class="score-bar">
+  <div>
+    <div class="score-num" id="rj-score">0.00</div>
+    <div style="font-size:11px;color:var(--dim);" id="rj-progress">प्रश्न हल करें और Score देखें</div>
+  </div>
+  <div style="display:flex;gap:8px;">
+    <button class="btn-result" onclick="showResult('rj')">📊 Result</button>
+    <button class="btn-reset" onclick="resetQuiz('rj')">🔄 Reset</button>
+  </div>
+</div>
+<div id="rj-questions"></div>
+</div>
+
+<!-- ===== TAB 4: LAST MINUTE ===== -->
+<div id="lastmin" class="tab-content">
+
+<div class="super-mnemo">
+  <h3>🧠 Super Mnemonics — खनिज संपदा</h3>
+  <div class="mnemo-item">📌 <span class="mnemo-word">राज्य परिचय:</span> उदयपुर सम्पन्न, 70% अरावली, 2रा भंडार, 22% देश में, 81 खोज, 58 दोहन</div>
+  <div class="mnemo-item">📌 <span class="mnemo-word">MeitEmp (एकाधिकार):</span> जास्पर=100%, वोलेस्टो=100%, जस्ता=99%, फ्लो=96%, जिप्सम=93%, मार्बल=90%</div>
+  <div class="mnemo-item">📌 <span class="mnemo-word">सीसा-जस्ता:</span> "जावर-राणालाखा-देवारी-HZL 1966-पन्देरिया 1990"</div>
+  <div class="mnemo-item">📌 <span class="mnemo-word">ताँबा खेतड़ी:</span> "खेतड़ी=1967, झुंझुनू, देश का सबसे बड़ा संयंत्र, निर्यात=अमेरिका"</div>
+  <div class="mnemo-item">📌 <span class="mnemo-word">सोना:</span> "बाँसवाड़ा सर्वाधिक, धातोल पठार, Indogold (ऑस्ट्रेलिया), मुंडियाबास = तीनों एक साथ"</div>
+  <div class="mnemo-item">📌 <span class="mnemo-word">संगमरमर:</span> "90% देश, RJ=राजसमंद खान, मकराना=सफेद=विश्व प्रसिद्ध, किशनगढ़=एशिया मंडी"</div>
+  <div class="mnemo-item">📌 <span class="mnemo-word">जिप्सम:</span> "93% देश, नागौर सर्वाधिक, बड़ी खान=बीकानेर, पश्चिमी RJ"</div>
+  <div class="mnemo-item">📌 <span class="mnemo-word">तेल:</span> "24% देश, 2रा उत्पादन, 5वाँ भंडार, बाड़मेर=भंडार, जैसलमेर=गैस"</div>
+  <div class="mnemo-item">📌 <span class="mnemo-word">कोयला:</span> "लिग्नाइट=RJ में सर्वाधिक, बाड़मेर①+बीकानेर②, देश में तमिलनाडु①"</div>
+  <div class="mnemo-item">📌 <span class="mnemo-word">बाड़मेर रिफाइनरी:</span> "26वीं, BS-6, 22 सित 2013, RJ=26%, HPCL=74%"</div>
+</div>
+
+<div class="grid2">
+
+<div class="lm-card">
+  <div class="lm-title">⚡ धात्विक — Key Numbers</div>
+  <div class="lm-item"><span class="lm-key">HZL स्थापना</span>10 जनवरी 1966, देवारी (उदयपुर)</div>
+  <div class="lm-item"><span class="lm-key">जिंक स्मेल्टर</span>पन्देरिया (चित्तौड़गढ़) 1990-91</div>
+  <div class="lm-item"><span class="lm-key">ताँबा संयंत्र</span>खेतड़ी (झुंझुनू) 1967</div>
+  <div class="lm-item"><span class="lm-key">टंगस्टन बड़ी खान</span>डेगाना (नागौर)</div>
+  <div class="lm-item"><span class="lm-key">सोना सर्वाधिक</span>बाँसवाड़ा</div>
+  <div class="lm-item"><span class="lm-key">लोहा सर्वाधिक</span>जयपुर</div>
+  <div class="lm-item"><span class="lm-key">रामपुरा अगूचा</span>विश्व की सिंगल ओपन खान (भीलवाड़ा)</div>
+</div>
+
+<div class="lm-card">
+  <div class="lm-title">⚡ अधात्विक — Key Numbers</div>
+  <div class="lm-item"><span class="lm-key">जिप्सम 93%</span>सर्वाधिक = नागौर, बड़ी खान = बीकानेर</div>
+  <div class="lm-item"><span class="lm-key">संगमरमर 90%</span>राजसमंद खान, मकराना (सफेद), मंडी = किशनगढ़</div>
+  <div class="lm-item"><span class="lm-key">अभ्रक 22%</span>सर्वाधिक = भीलवाड़ा</div>
+  <div class="lm-item"><span class="lm-key">तामड़ा/गार्नेट</span>सर्वाधिक = टोंक</div>
+  <div class="lm-item"><span class="lm-key">फ्लोराइट 96%</span>सर्वाधिक = जालोर</div>
+  <div class="lm-item"><span class="lm-key">रॉक फॉस्फेट</span>सर्वाधिक = उदयपुर</div>
+  <div class="lm-item"><span class="lm-key">चूना पत्थर</span>सर्वाधिक = जोधपुर</div>
+</div>
+
+<div class="lm-card">
+  <div class="lm-title">⚡ शक्ति संसाधन</div>
+  <div class="lm-item"><span class="lm-key">लिग्नाइट सर्वाधिक</span>बाड़मेर → बीकानेर</div>
+  <div class="lm-item"><span class="lm-key">खनिज तेल</span>24% देश, 2रा उत्पादन, 5वाँ भंडार</div>
+  <div class="lm-item"><span class="lm-key">सर्वाधिक भंडार</span>बाड़मेर (तेल)</div>
+  <div class="lm-item"><span class="lm-key">उत्तम कुआँ</span>मंगला (बालोतरा)</div>
+  <div class="lm-item"><span class="lm-key">गैस सर्वाधिक</span>जैसलमेर उत्पादन</div>
+  <div class="lm-item"><span class="lm-key">CBM</span>धोलाबर (जैसलमेर)</div>
+  <div class="lm-item"><span class="lm-key">रिफाइनरी</span>26वीं, BS-6, बालोतरा</div>
+</div>
+
+<div class="lm-card">
+  <div class="lm-title">⚡ विशेष एकाधिकार</div>
+  <div class="lm-item"><span class="lm-key">जास्पर 100%</span>पूर्ण एकाधिकार</div>
+  <div class="lm-item"><span class="lm-key">वोलेस्टोनाइट</span>100% — पूर्ण एकाधिकार</div>
+  <div class="lm-item"><span class="lm-key">जस्ता/कैडमियम</span>99%</div>
+  <div class="lm-item"><span class="lm-key">फ्लोराइड</span>96%</div>
+  <div class="lm-item"><span class="lm-key">जिप्सम</span>93%</div>
+  <div class="lm-item"><span class="lm-key">संगमरमर</span>90%</div>
+  <div class="lm-item"><span class="lm-key">एस्बेस्टस</span>89%</div>
+</div>
+
+<div class="lm-card full-card">
+  <div class="lm-title">⚡ EXAM में अक्सर पूछे जाने वाले Facts</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px;margin-top:6px;">
+    <div class="chip">खनिज भंडार = दूसरा (झारखंड पहला)</div>
+    <div class="chip em">70% खनिज = अरावली में</div>
+    <div class="chip bl">उदयपुर = खनिज विभाग 1949</div>
+    <div class="chip re">22% देश का खनिज योगदान</div>
+    <div class="chip">81 खोज, 58 दोहन</div>
+    <div class="chip em">जावर = राणालाखा काल</div>
+    <div class="chip bl">HZL = 10 जन. 1966</div>
+    <div class="chip re">खेतड़ी = 1967, झुंझुनू</div>
+    <div class="chip">मकराना = सफेद संगमरमर</div>
+    <div class="chip em">मंगला = उत्तम तेल कुआँ</div>
+    <div class="chip bl">रिफाइनरी = 26वीं, BS-6</div>
+    <div class="chip re">डेगाना = बड़ी टंगस्टन खान</div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="result-popup">
+  <div class="popup">
+    <h2>🎯 Result</h2>
+    <div class="final-score" id="popup-score" style="color:var(--amber);">0</div>
+    <div class="grade" id="popup-grade"></div>
+    <div id="popup-detail" style="font-size:13px;color:var(--dim);margin-top:8px;"></div>
+    <button onclick="document.getElementById('result-popup').classList.remove('show')">✅ ठीक है</button>
+  </div>
+</div>
+
+<script>
+const rjQuestions = [
+  {q:"राजस्थान में खनिज भंडारों की दृष्टि से देश में राजस्थान का कौन सा स्थान है?",opts:["पहला","दूसरा","तीसरा","चौथा"],ans:1,exp:"खनिज भंडारों की दृष्टि से राजस्थान देश में दूसरे स्थान पर है। पहला स्थान झारखंड का है।"},
+  {q:"राजस्थान में खनिजों की दृष्टि से सम्पन्न जिला कौन सा है?",opts:["जयपुर","जोधपुर","अजमेर","उदयपुर"],ans:3,exp:"खनिजों की दृष्टि से राजस्थान का सम्पन्न जिला उदयपुर है।"},
+  {q:"राजस्थान का कितने प्रतिशत खनिज अरावली पर्वतीय क्षेत्र में है?",opts:["50%","60%","70%","80%"],ans:2,exp:"राजस्थान का 70% खनिज अरावली पर्वतीय क्षेत्र में पाया जाता है।"},
+  {q:"राजस्थान राज्य खनिज एवं विज्ञान विभाग की स्थापना कब और कहाँ हुई?",opts:["1947, जयपुर","1949, उदयपुर","1952, अजमेर","1955, जोधपुर"],ans:1,exp:"राजस्थान राज्य खनिज एवं विज्ञान विभाग की स्थापना 1949 में उदयपुर में हुई।"},
+  {q:"राजस्थान को 'खनिजों का आजारवाल' किसलिए कहते हैं?",opts:["खनिज भंडार में प्रथम","विविध खनिजों की उपलब्धता","अरावली की उपस्थिति","सभी"],ans:1,exp:"राजस्थान में विविध प्रकार के खनिजों की उपलब्धता के कारण इसे 'खनिजों का आजारवाल' कहते हैं।"},
+  {q:"देश के कुल खनिज उत्पादन में राजस्थान का कितना प्रतिशत योगदान है?",opts:["15%","19%","22%","25%"],ans:2,exp:"देश के कुल खनिज उत्पादन में राजस्थान का 22% योगदान है।"},
+  {q:"राजस्थान की नवीन खनिज नीति कब घोषित हुई?",opts:["1994","2010","2015","2018"],ans:2,exp:"राजस्थान की नवीन खनिज नीति 2015 में घोषित की गई।"},
+  {q:"राजस्थान में कितने प्रकार के खनिजों की खोज की गई है?",opts:["65","73","81","90"],ans:2,exp:"राजस्थान में कुल 81 प्रकार के खनिजों की खोज की गई है, जिसमें से 58 का दोहन हो रहा है।"},
+  {q:"जावर की खान (सीसा-जस्ता) की खोज किसके काल में हुई?",opts:["राणा प्रताप","राणा लाखा","राणा कुंभा","राणा सांगा"],ans:1,exp:"जावर की खान की खोज राणा लाखा के काल में हुई। यह सलूम्बर (उदयपुर) में स्थित है।"},
+  {q:"हिन्दुस्तान जिंक लिमिटेड (HZL) की स्थापना कब और कहाँ हुई?",opts:["5 जनवरी 1964, अजमेर","10 जनवरी 1966, देवारी","15 अगस्त 1947, जयपुर","26 जनवरी 1950, उदयपुर"],ans:1,exp:"HZL की स्थापना 10 जनवरी 1966 को देवारी (उदयपुर) में की गई।"},
+  {q:"राजस्थान का एकमात्र जिंक स्मेल्टर का कारखाना कहाँ है?",opts:["देवारी (उदयपुर)","जावर (सलूम्बर)","पन्देरिया (चित्तौड़गढ़)","रामपुरा (भीलवाड़ा)"],ans:2,exp:"राजस्थान का एकमात्र जिंक स्मेल्टर पन्देरिया (चित्तौड़गढ़) में है, जो 1990-91 में स्थापित हुआ।"},
+  {q:"विश्व की सिंगल ओपन खान (सिंगल ओपन माइन) कहाँ स्थित है?",opts:["जावर (उदयपुर)","देवारी (उदयपुर)","रामपुरा अगूचा (भीलवाड़ा)","खेतड़ी (झुंझुनू)"],ans:2,exp:"रामपुरा अगूचा (भीलवाड़ा) विश्व की सिंगल ओपन खान है।"},
+  {q:"देश का सबसे बड़ा ताँबा जलाने का संयंत्र कहाँ है?",opts:["देवारी (उदयपुर)","रामपुरा (भीलवाड़ा)","खेतड़ी (झुंझुनू)","डेगाना (नागौर)"],ans:2,exp:"खेतड़ी (झुंझुनू) में देश का सबसे बड़ा ताँबा संयंत्र 1967 में स्थापित हुआ।"},
+  {q:"जिप्सम के उत्पादन में राजस्थान का देश में कितना प्रतिशत है?",opts:["73%","80%","89%","93%"],ans:3,exp:"जिप्सम उत्पादन में राजस्थान का देश में 93% योगदान है।"},
+  {q:"राजस्थान में जिप्सम का सर्वाधिक भंडार किस जिले में है?",opts:["बीकानेर","जोधपुर","नागौर","बाड़मेर"],ans:2,exp:"राजस्थान में जिप्सम का सर्वाधिक भंडार नागौर जिले में (जोथु भांगलोद) है।"},
+  {q:"संगमरमर उत्पादन में राजस्थान का देश में कितना प्रतिशत है?",opts:["70%","80%","90%","95%"],ans:2,exp:"संगमरमर उत्पादन में राजस्थान का देश में 90% योगदान है।"},
+  {q:"एशिया की सबसे बड़ी संगमरमर मंडी कहाँ स्थित है?",opts:["राजसमंद","मकराना (नागौर)","किशनगढ़ (अजमेर)","उदयपुर"],ans:2,exp:"किशनगढ़ (अजमेर) एशिया की सबसे बड़ी संगमरमर मंडी है।"},
+  {q:"विश्व प्रसिद्ध सफेद संगमरमर कहाँ से निकलता है?",opts:["राजसमंद","मकराना (नागौर)","किशनगढ़ (अजमेर)","धौलपुर"],ans:1,exp:"मकराना (नागौर) का सफेद संगमरमर विश्व प्रसिद्ध है। ताजमहल इसी से बना है।"},
+  {q:"देश की सबसे बड़ी टंगस्टन की खान कहाँ है?",opts:["सिरोही","पाली","नागौर (डेगाना)","जालोर"],ans:2,exp:"देश की सबसे बड़ी टंगस्टन की खान रेवत पहाड़ी, डेगाना (नागौर) में है।"},
+  {q:"राजस्थान में सोने की खोज किस कंपनी द्वारा की जा रही है?",opts:["ONGC","Indogold (ऑस्ट्रेलिया)","Hindalco","HPCL"],ans:1,exp:"राजस्थान में सोने की खोज ऑस्ट्रेलिया की कंपनी Indogold द्वारा की जा रही है।"},
+  {q:"राजस्थान में सोने का सर्वाधिक भंडार किस जिले में है?",opts:["उदयपुर","डूंगरपुर","बाँसवाड़ा","सिरोही"],ans:2,exp:"राजस्थान में सोने का सर्वाधिक भंडार बाँसवाड़ा में है।"},
+  {q:"राजस्थान में अभ्रक का सर्वाधिक उत्पादन किस जिले में होता है?",opts:["उदयपुर","राजसमंद","भीलवाड़ा","जयपुर"],ans:2,exp:"राजस्थान में अभ्रक का सर्वाधिक उत्पादन भीलवाड़ा जिले में होता है।"},
+  {q:"रम्मड़ा कला किससे संबंधित है?",opts:["गलीचे बनाना","चीना पत्थर से हाथी-खिलौने बनाना","संगमरमर नक्काशी","मिट्टी के बर्तन"],ans:1,exp:"रम्मड़ा कला चीना पत्थर से हाथियाँ व खिलौने बनाने की कला है। यह गालियाँकोट (डूंगरपुर) की पहचान है।"},
+  {q:"देश के कुल खनिज तेल उत्पादन में राजस्थान का कितना % है?",opts:["15%","19%","24%","30%"],ans:2,exp:"देश के कुल खनिज तेल उत्पादन में राजस्थान का 24% योगदान है।"},
+  {q:"बाड़मेर रिफाइनरी का शिलान्यास कब हुआ?",opts:["15 अगस्त 2010","22 सितम्बर 2013","26 जनवरी 2015","1 अप्रैल 2016"],ans:1,exp:"बाड़मेर रिफाइनरी का शिलान्यास 22 सितम्बर 2013 को हुआ।"},
+  {q:"बाड़मेर रिफाइनरी में राज्य सरकार व HPCL की भागीदारी कितनी है?",opts:["RJ 49% HPCL 51%","RJ 26% HPCL 74%","RJ 51% HPCL 49%","RJ 74% HPCL 26%"],ans:1,exp:"बाड़मेर रिफाइनरी में राज्य सरकार 26% व HPCL 74% की भागीदारी है।"},
+  {q:"राजस्थान में CBM (कोल बेड मिथेन) के भंडार कहाँ हैं?",opts:["बाड़मेर","बीकानेर","जैसलमेर (धोलाबर)","जोधपुर"],ans:2,exp:"राजस्थान में CBM के भंडार जैसलमेर के धोलाबर में हैं।"},
+  {q:"राजस्थान में लिग्नाइट कोयले का सर्वाधिक उत्पादन किस जिले में होता है?",opts:["बीकानेर","जैसलमेर","बाड़मेर","नागौर"],ans:2,exp:"राजस्थान में लिग्नाइट कोयले का सर्वाधिक उत्पादन बाड़मेर जिले में होता है।"},
+  {q:"राजस्थान में फ्लोराइट का सर्वाधिक उत्पादन किस जिले में है?",opts:["सिरोही","पाली","जालोर","बाड़मेर"],ans:2,exp:"राजस्थान में फ्लोराइट का सर्वाधिक उत्पादन जालोर जिले में होता है।"},
+  {q:"राजस्थान में मैंगनीज का सर्वाधिक भंडार किस जिले में है?",opts:["उदयपुर","डूंगरपुर","बाँसवाड़ा","सिरोही"],ans:2,exp:"राजस्थान में मैंगनीज का सर्वाधिक भंडार बाँसवाड़ा जिले में है।"},
+  {q:"राजस्थान में तामड़ा (गार्नेट) का सर्वाधिक उत्पादन कहाँ होता है?",opts:["जयपुर","टोंक","अजमेर","भीलवाड़ा"],ans:1,exp:"राजस्थान में तामड़ा (गार्नेट) का सर्वाधिक उत्पादन टोंक जिले में होता है।"},
+  {q:"राजस्थान में लोहे का सर्वाधिक उत्पादन किस जिले में होता है?",opts:["झुंझुनू","दौसा","जयपुर","सीकर"],ans:2,exp:"राजस्थान में लोहे का सर्वाधिक उत्पादन जयपुर जिले में होता है। मोरिजा, बिनोला यहाँ की प्रमुख खानें हैं।"},
+  {q:"राजस्थान में एस्बेस्टस का सर्वाधिक उत्पादन कहाँ होता है?",opts:["राजसमंद","अजमेर","भीलवाड़ा","उदयपुर"],ans:3,exp:"राजस्थान में एस्बेस्टस का सर्वाधिक उत्पादन उदयपुर जिले में होता है।"},
+  {q:"चाँदी के उत्पादन में भारत में राजस्थान का कितना % है?",opts:["60%","75%","85%","90%"],ans:3,exp:"चाँदी के उत्पादन में राजस्थान का भारत में 90% योगदान है।"},
+  {q:"राजस्थान में पेट्रोलियम निदेशालय की स्थापना कब हुई?",opts:["1990","1994","1997","2000"],ans:2,exp:"राजस्थान में पेट्रोलियम निदेशालय की स्थापना 1997 में जयपुर में हुई।"},
+  {q:"राजस्थान में जास्पर (Jasper) के उत्पादन में देश का कितना % है?",opts:["80%","90%","99%","100%"],ans:3,exp:"राजस्थान में जास्पर के उत्पादन में देश का 100% योगदान है। राजस्थान का पूर्ण एकाधिकार है।"},
+  {q:"गणेश्वर सभ्यता किस खनिज से संबंधित है?",opts:["सोना","लोहा","ताँबा","चाँदी"],ans:2,exp:"गणेश्वर सभ्यता (नीम का धाना, सीकर) ताँबे से संबंधित है। इसे ताम्र भूगीन सभ्यताओं की जननी कहते हैं।"},
+  {q:"राजस्थान में रॉक फॉस्फेट का सर्वाधिक भंडार किस जिले में है?",opts:["जयपुर","जैसलमेर","उदयपुर","बाँसवाड़ा"],ans:2,exp:"राजस्थान में रॉक फॉस्फेट का सर्वाधिक भंडार उदयपुर जिले में है।"},
+  {q:"बाड़मेर रिफाइनरी देश की कौन सी रिफाइनरी है?",opts:["20वीं","24वीं","26वीं","28वीं"],ans:2,exp:"बाड़मेर रिफाइनरी देश की 26वीं रिफाइनरी है और BS-6 इंजन पर संचारित देश की उत्तम रिफाइनरी है।"},
+  {q:"राजस्थान में खनिज तेल के भंडार की दृष्टि से किस जिले में सर्वाधिक है?",opts:["जैसलमेर","बाड़मेर","बीकानेर","नागौर"],ans:1,exp:"राजस्थान में खनिज तेल का सर्वाधिक भंडार बाड़मेर जिले में है।"},
+  {q:"राजस्थान में खनिज तेल का उत्तम तेल कुआँ कहाँ है?",opts:["सिड़ेवाला (जैसलमेर)","मंगला (बालोतरा)","आगरा","तिलवाड़ा"],ans:1,exp:"राजस्थान में उत्तम तेल कुआँ मंगला (बालोतरा) है।"},
+  {q:"मुंडियाबास किसके लिए प्रसिद्ध है?",opts:["केवल सोना","केवल ताँबा","सोना, चाँदी, ताँबा तीनों","केवल चाँदी"],ans:2,exp:"मुंडियाबास (कोटपुतली, करौली) में सोना, चाँदी और ताँबा तीनों के भंडार एक साथ मिले हैं।"},
+  {q:"राजस्थान में प्राकृतिक गैस उत्पादन में सर्वाधिक कौन सा जिला है?",opts:["बाड़मेर","बीकानेर","जैसलमेर","नागौर"],ans:2,exp:"राजस्थान में प्राकृतिक गैस उत्पादन में जैसलमेर जिला सर्वाधिक है।"},
+  {q:"राजस्थान में चूना पत्थर का सर्वाधिक उत्पादन किस जिले में होता है?",opts:["अजमेर","जैसलमेर","नागौर","जोधपुर"],ans:3,exp:"राजस्थान में चूना पत्थर का सर्वाधिक उत्पादन जोधपुर जिले में होता है।"},
+  {q:"राजस्थान में ग्रेनाइट का सर्वाधिक उत्पादन कहाँ होता है?",opts:["जोधपुर","सिरोही","जालोर","पाली"],ans:2,exp:"राजस्थान में ग्रेनाइट का सर्वाधिक उत्पादन जालोर जिले में होता है।"},
+  {q:"राजस्थान में वोलेस्टोनाइट के उत्पादन में देश का कितना % है?",opts:["80%","90%","99%","100%"],ans:3,exp:"राजस्थान वोलेस्टोनाइट के उत्पादन में 100% योगदान करता है — पूर्ण एकाधिकार।"},
+  {q:"राजस्थान में हीरे की खान कहाँ है?",opts:["उदयपुर","बाँसवाड़ा","प्रतापगढ़","सिरोही"],ans:2,exp:"राजस्थान में हीरे की खान केसरपुरा, मानपुरा (प्रतापगढ़) में है।"},
+  {q:"राजस्थान में यूरेनियम का सर्वाधिक भंडार किस जिले में है?",opts:["जयपुर","सीकर","उदयपुर","अजमेर"],ans:2,exp:"राजस्थान में यूरेनियम का सर्वाधिक भंडार उदयपुर जिले में है।"},
+  {q:"सीसा-जस्ता की विश्व में भंडार की दृष्टि से कौन सा देश पहले स्थान पर है?",opts:["चीन","USA","ऑस्ट्रेलिया","रूस"],ans:2,exp:"सीसा-जस्ता के भंडारों की दृष्टि से ऑस्ट्रेलिया विश्व में पहले स्थान पर है।"},
+  {q:"राजस्थान में खनिजों से होने वाली आय में राज्य का देश में कौन सा स्थान है?",opts:["3रा","4था","5वाँ","6ठा"],ans:2,exp:"खनिजों से होने वाली आय में राजस्थान देश में 5वें स्थान पर है।"},
+];
+
+const state = { rj: {answered:{}, score:0} };
+
+function renderQuiz(prefix, questions) {
+  const container = document.getElementById(prefix+'-questions');
+  container.innerHTML = '';
+  questions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'mcq-wrap';
+    div.innerHTML = `
+      <div class="mcq-q" id="${prefix}-q${i}">
+        <div class="q-num">खनिज संपदा PYQ #${i+1}</div>
+        <div class="q-text">${q.q}</div>
+        <div class="opts">
+          ${q.opts.map((o,j)=>`<button class="opt" onclick="selectAns('${prefix}',${i},${j})" id="${prefix}-opt${i}-${j}">(${String.fromCharCode(65+j)}) ${o}</button>`).join('')}
+        </div>
+        <div class="expl" id="${prefix}-expl${i}">💡 ${q.exp}</div>
+      </div>`;
+    container.appendChild(div);
+  });
+}
+
+function selectAns(prefix, qi, oi) {
+  const q = rjQuestions[qi];
+  if (state[prefix].answered[qi] !== undefined) return;
+  state[prefix].answered[qi] = oi;
+  document.querySelectorAll(`[id^="${prefix}-opt${qi}-"]`).forEach(b=>b.disabled=true);
+  const sel = document.getElementById(`${prefix}-opt${qi}-${oi}`);
+  const cor = document.getElementById(`${prefix}-opt${qi}-${q.ans}`);
+  if (oi===q.ans) { sel.classList.add('correct'); state[prefix].score+=1; }
+  else { sel.classList.add('wrong'); cor.classList.add('revealed-correct'); state[prefix].score-=1/3; }
+  document.getElementById(`${prefix}-expl${qi}`).classList.add('show');
+  updateScore(prefix);
+}
+
+function updateScore(prefix) {
+  const answered = Object.keys(state[prefix].answered).length;
+  document.getElementById(`${prefix}-score`).textContent = state[prefix].score.toFixed(2);
+  document.getElementById(`${prefix}-progress`).textContent = `${answered}/${rjQuestions.length} हल किए`;
+}
+
+function resetQuiz(prefix) {
+  state[prefix] = {answered:{}, score:0};
+  renderQuiz(prefix, rjQuestions);
+  document.getElementById(`${prefix}-score`).textContent = '0.00';
+  document.getElementById(`${prefix}-progress`).textContent = 'प्रश्न हल करें और Score देखें';
+}
+
+function showResult(prefix) {
+  const total = rjQuestions.length;
+  const answered = Object.keys(state[prefix].answered).length;
+  const score = parseFloat(state[prefix].score.toFixed(2));
+  const pct = score/total*100;
+  let grade, color;
+  if(pct>=80){grade='🏆 Outstanding! बहुत बढ़िया!';color='#10B981';}
+  else if(pct>=60){grade='🎯 Good! अच्छा प्रयास!';color='#FCD34D';}
+  else if(pct>=40){grade='📚 Average — और पढ़ो!';color='#F97316';}
+  else{grade='💪 Keep Trying — हार मत मानो!';color='#EF4444';}
+  document.getElementById('popup-score').textContent = score;
+  document.getElementById('popup-score').style.color = color;
+  document.getElementById('popup-grade').textContent = grade;
+  document.getElementById('popup-detail').textContent = `${answered}/${total} प्रश्न हल किए | अधिकतम = ${total}`;
+  document.getElementById('result-popup').classList.add('show');
+}
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tb').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+renderQuiz('rj', rjQuestions);
+</script>
+</body>
+</html>
