@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>विधानमंडल — RPSC/PSI Revision 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #FF6B2B;
+    --saffron-light: #FFE8DC;
+    --green: #1A8A4A;
+    --green-light: #D4F0E1;
+    --blue: #1565C0;
+    --blue-light: #DDEEFF;
+    --purple: #6A1B9A;
+    --purple-light: #EDE7F6;
+    --gold: #F9A825;
+    --gold-light: #FFF8E1;
+    --red: #C62828;
+    --red-light: #FFEBEE;
+    --teal: #00695C;
+    --teal-light: #E0F2F1;
+    --dark: #1A1A2E;
+    --card-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    background: #F0F2F5;
+    color: #1A1A2E;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+    color: white;
+    padding: 18px 20px 14px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .header-badge {
+    background: var(--saffron);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+  .header h1 {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+  .header h1 span { color: var(--gold); }
+
+  /* SEARCH BOX */
+  .search-wrap {
+    position: relative;
+    max-width: 500px;
+    margin-bottom: 2px;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 9px 16px 9px 40px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 30px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 14px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    outline: none;
+    transition: all 0.3s;
+  }
+  .search-wrap input::placeholder { color: rgba(255,255,255,0.5); }
+  .search-wrap input:focus {
+    background: rgba(255,255,255,0.18);
+    border-color: var(--gold);
+  }
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    opacity: 0.7;
+  }
+  #search-results {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 200;
+    display: none;
+  }
+  #search-results.active { display: block; }
+  .search-item {
+    padding: 10px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    color: #1A1A2E;
+    font-size: 13px;
+    transition: background 0.2s;
+  }
+  .search-item:hover { background: var(--saffron-light); }
+  .search-item strong { color: var(--saffron); }
+
+  /* TABS */
+  .tabs-bar {
+    display: flex;
+    gap: 4px;
+    background: white;
+    padding: 10px 12px 0;
+    border-bottom: 2px solid #e8e8e8;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    padding: 9px 16px;
+    border: none;
+    background: transparent;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    border-radius: 10px 10px 0 0;
+    transition: all 0.2s;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+  }
+  .tab-btn:hover { color: var(--saffron); background: var(--saffron-light); }
+  .tab-btn.active {
+    color: var(--saffron);
+    background: var(--saffron-light);
+    border-bottom-color: var(--saffron);
+    font-weight: 700;
+  }
+
+  /* MAIN CONTENT */
+  .content { padding: 18px 14px 40px; max-width: 1100px; margin: 0 auto; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 16px;
+    font-weight: 800;
+    padding: 10px 16px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  @media(max-width:650px){ .cards-grid { grid-template-columns: 1fr; } }
+
+  /* TOPIC CARD */
+  .topic-card {
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--card-shadow);
+    border-left: 5px solid;
+    animation: fadeUp 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(16px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  .topic-card .card-title {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .topic-card .card-body {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .topic-card .mnemonic {
+    margin-top: 12px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.6);
+    border-left: 3px solid;
+  }
+  .mnemonic-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* COLOR THEMES */
+  .blue-card { background: var(--blue-light); border-color: var(--blue); }
+  .blue-card .card-title { color: var(--blue); }
+  .blue-card .mnemonic { border-color: var(--blue); color: var(--blue); }
+
+  .green-card { background: var(--green-light); border-color: var(--green); }
+  .green-card .card-title { color: var(--green); }
+  .green-card .mnemonic { border-color: var(--green); color: var(--green); }
+
+  .saffron-card { background: var(--saffron-light); border-color: var(--saffron); }
+  .saffron-card .card-title { color: var(--saffron); }
+  .saffron-card .mnemonic { border-color: var(--saffron); color: var(--saffron); }
+
+  .purple-card { background: var(--purple-light); border-color: var(--purple); }
+  .purple-card .card-title { color: var(--purple); }
+  .purple-card .mnemonic { border-color: var(--purple); color: var(--purple); }
+
+  .gold-card { background: var(--gold-light); border-color: var(--gold); }
+  .gold-card .card-title { color: #7B5800; }
+  .gold-card .mnemonic { border-color: var(--gold); color: #7B5800; }
+
+  .red-card { background: var(--red-light); border-color: var(--red); }
+  .red-card .card-title { color: var(--red); }
+  .red-card .mnemonic { border-color: var(--red); color: var(--red); }
+
+  .teal-card { background: var(--teal-light); border-color: var(--teal); }
+  .teal-card .card-title { color: var(--teal); }
+  .teal-card .mnemonic { border-color: var(--teal); color: var(--teal); }
+
+  /* HIGHLIGHT */
+  .hl-saffron { background: var(--saffron); color: white; padding: 1px 7px; border-radius: 5px; font-weight: 700; }
+  .hl-blue { background: var(--blue); color: white; padding: 1px 7px; border-radius: 5px; font-weight: 700; }
+  .hl-green { background: var(--green); color: white; padding: 1px 7px; border-radius: 5px; font-weight: 700; }
+  .hl-red { background: var(--red); color: white; padding: 1px 7px; border-radius: 5px; font-weight: 700; }
+  .hl-purple { background: var(--purple); color: white; padding: 1px 7px; border-radius: 5px; font-weight: 700; }
+  .hl-gold { background: var(--gold); color: #333; padding: 1px 7px; border-radius: 5px; font-weight: 700; }
+  .underline-imp { text-decoration: underline; text-decoration-color: var(--saffron); text-decoration-thickness: 2px; font-weight: 700; }
+
+  /* TABLE */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 12.5px; border-radius: 12px; overflow: hidden; box-shadow: var(--card-shadow); }
+  .data-table th { background: var(--dark); color: white; padding: 10px 12px; text-align: left; font-size: 12px; }
+  .data-table td { padding: 9px 12px; border-bottom: 1px solid #eee; }
+  .data-table tr:nth-child(even) td { background: #f8f9ff; }
+  .data-table tr:hover td { background: var(--blue-light); }
+  .table-wrap { border-radius: 12px; overflow: hidden; margin-bottom: 18px; }
+
+  /* MCQ */
+  .mcq-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: var(--card-shadow);
+    border-top: 4px solid var(--saffron);
+  }
+  .mcq-card.correct-border { border-top-color: var(--green); }
+  .mcq-card.wrong-border { border-top-color: var(--red); }
+  .mcq-qnum {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--saffron);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .mcq-q {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    color: #1A1A2E;
+  }
+  .mcq-options { display: grid; gap: 8px; }
+  .mcq-opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 2px solid #E0E0E0;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 13px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    background: white;
+    text-align: left;
+    width: 100%;
+    color: #1A1A2E;
+  }
+  .mcq-opt:hover:not(:disabled) { border-color: var(--saffron); background: var(--saffron-light); }
+  .mcq-opt.selected-correct { background: var(--green-light); border-color: var(--green); color: var(--green); font-weight: 700; }
+  .mcq-opt.selected-wrong { background: var(--red-light); border-color: var(--red); color: var(--red); font-weight: 700; }
+  .mcq-opt.reveal-correct { background: var(--green-light); border-color: var(--green); color: var(--green); font-weight: 700; }
+  .mcq-opt:disabled { cursor: default; }
+  .opt-label { font-weight: 700; min-width: 22px; font-size: 13px; }
+  .mcq-explanation {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #FFF8E1;
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+    font-size: 12.5px;
+    color: #5D4037;
+    display: none;
+  }
+  .mcq-explanation.show { display: block; }
+
+  /* SCORE DISPLAY */
+  .score-bar {
+    background: white;
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 18px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .score-num { font-size: 28px; font-weight: 800; }
+  .score-detail { font-size: 13px; color: #666; line-height: 1.7; }
+  .submit-btn {
+    background: linear-gradient(135deg, var(--saffron), #E64A19);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: block;
+    margin: 20px auto;
+  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,43,0.4); }
+
+  /* RESULT POPUP */
+  .popup-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+  }
+  .popup-overlay.show { display: flex; }
+  .popup-box {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    animation: popIn 0.3s ease;
+    position: relative;
+  }
+  @keyframes popIn {
+    from { transform: scale(0.7); opacity:0; }
+    to { transform: scale(1); opacity:1; }
+  }
+  .popup-emoji { font-size: 64px; margin-bottom: 12px; }
+  .popup-title { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+  .popup-score { font-size: 48px; font-weight: 800; color: var(--saffron); }
+  .popup-detail { font-size: 14px; color: #666; margin-top: 10px; line-height: 1.8; }
+  .popup-close {
+    margin-top: 20px;
+    background: var(--saffron);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+
+  /* LAST MINUTE */
+  .lm-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    box-shadow: var(--card-shadow);
+    border-left: 5px solid;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .lm-card .lm-title {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .super-mnemonic {
+    background: linear-gradient(135deg, #1A1A2E, #0F3460);
+    color: white;
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 14px;
+  }
+  .super-mnemonic .sm-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .sm-item {
+    display: flex; gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+  }
+  .sm-letter { color: var(--gold); font-weight: 800; min-width: 30px; font-size: 18px; }
+  .sm-text { color: #E0E0E0; }
+
+  /* FULL-WIDTH CARD */
+  .full-card {
+    grid-column: 1/-1;
+  }
+
+  /* PROGRESS TRACKER */
+  .progress-info {
+    background: white;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #555;
+    display: flex; gap: 16px; flex-wrap: wrap;
+    box-shadow: var(--card-shadow);
+  }
+  .progress-info span { display: flex; align-items: center; gap: 6px; }
+
+  /* MCQ tab selector */
+  .mcq-tab-btns {
+    display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap;
+  }
+  .mcq-tab-btn {
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    background: white;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .mcq-tab-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
+
+  .hidden { display: none; }
+
+  /* RJ COLOR SCHEME */
+  .rj-mcq .mcq-card { border-top-color: var(--saffron); }
+  /* States */
+  .states-mcq .mcq-card { border-top-color: var(--blue); }
+
+  /* info pill */
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    margin: 2px;
+  }
+  .pill-blue { background: var(--blue); color: white; }
+  .pill-green { background: var(--green); color: white; }
+  .pill-red { background: var(--red); color: white; }
+  .pill-saffron { background: var(--saffron); color: white; }
+  .pill-gold { background: var(--gold); color: #333; }
+  .pill-purple { background: var(--purple); color: white; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span class="header-badge">RPSC/PSI 2025</span>
+    <h1>🏛️ <span>विधानमंडल</span> — पूर्ण Revision</h1>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="हिंदी में topic खोजें... जैसे विधानसभा, अध्यक्ष, सीट..." autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+</div>
+
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="openTab('revision')">📖 Revision</button>
+  <button class="tab-btn" onclick="openTab('summary')">📊 Summary Table</button>
+  <button class="tab-btn" onclick="openTab('rjpyq')">🏅 RJ PYQ (30)</button>
+  <button class="tab-btn" onclick="openTab('statespyq')">🗺️ States PYQ (30)</button>
+  <button class="tab-btn" onclick="openTab('lastminute')">⚡ Last Minute</button>
+</div>
+
+<div class="content">
+
+<!-- ====================== TAB 1: REVISION ====================== -->
+<div id="tab-revision" class="tab-panel active">
+
+  <div class="section-title" style="background:var(--saffron-light);color:var(--saffron);">🏛️ विधानमंडल — संविधान के अनुच्छेद 168–212 (भाग-6, तीसरा अध्याय)</div>
+
+  <div class="cards-grid">
+
+    <!-- CARD 1 -->
+    <div class="topic-card blue-card" data-topics="विधानमंडल संरचना अनुच्छेद 168">
+      <div class="card-title">📜 अनु. 168 — विधानमंडल की संरचना</div>
+      <div class="card-body">
+        • विधानमंडल = <span class="hl-blue">राज्यपाल + विधानसभा + विधानपरिषद</span><br>
+        • विधानमंडल के सदन: (i) विधानसभा (ii) विधानपरिषद<br>
+        • <span class="underline-imp">राजस्थान में विधानमंडल = राज्यपाल + विधानसभा</span><br>
+        (विधानपरिषद नहीं है)
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"रा.वि.वि" = राज्यपाल + विधानसभा + विधानपरिषद</strong><br>
+        राजस्थान में बस "रा.वि" = राज्यपाल + विधानसभा
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="topic-card green-card" data-topics="विधानसभा विधानपरिषद सदन नाम">
+      <div class="card-title">🏠 सदनों के अन्य नाम</div>
+      <div class="card-body">
+        <strong>विधानसभा (Lower House):</strong><br>
+        → उत्यक्ष सदन, निम्न सदन, प्रथम सदन<br>
+        → जनता का सदन, लोकप्रिय सदन<br>
+        → <span class="hl-green">स्थायी सदन, अनिवार्य सदन</span><br><br>
+        <strong>विधानपरिषद (Upper House):</strong><br>
+        → अप्रत्यक्ष, उच्च सदन, द्वितीय सदन<br>
+        → <span class="hl-blue">स्थायी सदन, वैकल्पिक सदन</span>
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>विधानसभा = अनिवार्य | विधानपरिषद = वैकल्पिक</strong><br>
+        "अनिवार्य नीचे, वैकल्पिक ऊपर"
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="topic-card saffron-card" data-topics="विधानपरिषद अनुच्छेद 169 सृजन उत्सादन">
+      <div class="card-title">⚖️ अनु. 169 — विधानपरिषद: सृजन व उत्सादन</div>
+      <div class="card-body">
+        • विधानपरिषद बनाने/हटाने की <span class="hl-saffron">अंतिम शक्ति संसद</span> को है<br>
+        • प्रक्रिया: राज्य की विधानसभा → <span class="underline-imp">विशेष बहुमत</span> से प्रस्ताव → संसद को भेजना<br>
+        • <span class="hl-blue">यह संविधान संशोधन नहीं माना जाएगा</span><br><br>
+        <strong>महत्वपूर्ण उदाहरण:</strong><br>
+        🔸 तेलंगाना → 2014 में विधानपरिषद का सृजन<br>
+        🔸 J&K → 2019 में विधानपरिषद का समापन<br>
+        🔸 <span class="hl-saffron">राजस्थान</span> → 2012 में प्रस्ताव → 2013 में संसद को भेजा → रुका (शांगारामे नाथन)
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"राज. ने 2012 में माँगी, संसद ने 2013 सुनी"</strong><br>
+        J&K गई 2019, तेलंगाना आई 2014
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="topic-card purple-card" data-topics="विधानसभा संरचना अनुच्छेद 170 सीट">
+      <div class="card-title">🗳️ अनु. 170 — विधानसभा की संरचना</div>
+      <div class="card-body">
+        • गठन → <span class="hl-purple">प्रत्यक्ष निर्वाचन</span> (जनता द्वारा चुने प्रतिनिधि)<br>
+        • अधिकतम सीट → <span class="hl-saffron">500</span><br>
+        • न्यूनतम सीट → <span class="hl-green">60</span><br><br>
+        <strong>अपवाद (60 से कम):</strong>
+        <span class="pill pill-blue">पुदुचेरी-30</span>
+        <span class="pill pill-green">सिक्किम-32</span>
+        <span class="pill pill-saffron">गोवा-40</span>
+        <span class="pill pill-red">मिजोरम-40</span><br><br>
+        <strong>राज्यों की सीटें:</strong><br>
+        UP-403 | प.बंगाल-294 | महाराष्ट्र-288 | बिहार-243<br>
+        <span class="underline-imp">राजस्थान-200</span> | तमिलनाडु-234
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"पु.सि.गो.मि = 30, 32, 40, 40"</strong><br>
+        पुदुचेरी सिक्किम गोवा मिजोरम — ये चारों 60 से कम!
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="topic-card red-card" data-topics="विधानसभा आरक्षण अनुच्छेद 332 SC ST राजस्थान">
+      <div class="card-title">🛡️ विधानसभा में आरक्षण (अनु. 332)</div>
+      <div class="card-body">
+        • अनु. 332 के तहत SC व ST को आरक्षण<br><br>
+        <strong>राजस्थान विधानसभा (200 सीट):</strong><br>
+        <span class="hl-red">SC → 34 सीटें</span> | <span class="hl-blue">ST → 25 सीटें</span> = <span class="hl-green">कुल 59 आरक्षित</span><br><br>
+        🔹 <span class="underline-imp">बांसवाड़ा, डूंगरपुर, प्रतापगढ़</span> की सभी सीटें ST आरक्षित<br>
+        🔹 <span class="underline-imp">जैसलमेर व राजसमंद</span> में कोई आरक्षित सीट नहीं
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"बाडूप्र (BDP) = सब ST" — बांसवाड़ा, डूंगरपुर, प्रतापगढ़</strong><br>
+        "जैसे राज. में 0 = जैसलमेर + राजसमंद"
+      </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="topic-card teal-card" data-topics="विधानपरिषद संरचना अनुच्छेद 171 KUMBAT">
+      <div class="card-title">🏛️ अनु. 171 — विधानपरिषद की संरचना</div>
+      <div class="card-body">
+        • यह <span class="hl-saffron">अप्रत्यक्ष सदन + स्थायी सदन</span> है<br>
+        • वैकल्पिक सदन — कभी भी समाप्त किया जा सकता है<br>
+        • वर्तमान में भारत के <span class="hl-blue">6 राज्यों में विधानपरिषद</span> है:<br><br>
+        <strong style="color:var(--teal);">K U M B A T याद करो:</strong><br>
+        <span class="pill pill-blue">K-कर्नाटक</span>
+        <span class="pill pill-green">U-UP</span>
+        <span class="pill pill-saffron">M-महाराष्ट्र</span>
+        <span class="pill pill-red">B-बिहार</span>
+        <span class="pill pill-purple">A-आंध्रप्रदेश</span>
+        <span class="pill pill-gold">T-तेलंगाना</span><br><br>
+        <strong>विधानपरिषद के सदस्यों का निर्वाचन:</strong><br>
+        ⅓ → विधानसभा सदस्यों द्वारा | ⅓ → स्थानीय निकाय (पंचायत+नगरपालिका)<br>
+        1/12 → माध्यमिक शिक्षक (3 वर्ष अनुभव) | 1/12 → स्नातक विद्यार्थी (3 वर्ष)<br>
+        <span class="hl-teal">1/6 → राज्यपाल द्वारा मनोनीत</span> (साहित्य, कला, विज्ञान, समाजसेवा, सहकारी आंदोलन)
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Super Trick</div>
+        <strong>KUMBAT = Karnataka, UP, Maharashtra, Bihar, Andhra, Telangana</strong><br>
+        "कुम्भ में नहाओ, 6 राज्य जानो!"
+      </div>
+    </div>
+
+    <!-- CARD 7 -->
+    <div class="topic-card gold-card" data-topics="विधानपरिषद सीट कार्यकाल">
+      <div class="card-title">🔢 विधानपरिषद — सीटें व कार्यकाल</div>
+      <div class="card-body">
+        • विधानपरिषद में <span class="hl-saffron">5/6 सदस्य निर्वाचित + 1/6 मनोनीत</span><br>
+        • कार्यकाल: <span class="hl-blue">6 वर्ष</span> (प्रत्येक 2 वर्ष में 1/3 सदस्य सेवानिवृत्त)<br>
+        • चुनाव → <span class="underline-imp">आनुपातिक प्रतिनिधित्व वाली एकल संक्रमणीय पद्धति</span><br><br>
+        <strong>सीटें (न्यूनतम 40):</strong><br>
+        UP-100 | बिहार-75 | कर्नाटक-75 | महाराष्ट्र-78<br>
+        आंध्रप्रदेश-58 | तेलंगाना-40
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"U75 B75 M78 A58 T40" — UP बिहार महाराष्ट्र आंध्र तेलंगाना</strong>
+      </div>
+    </div>
+
+    <!-- CARD 8 -->
+    <div class="topic-card blue-card" data-topics="विधानसभा कार्यकाल 5 वर्ष आपातकाल 42वां संशोधन">
+      <div class="card-title">⏱️ विधानसभा — कार्यकाल</div>
+      <div class="card-body">
+        • <span class="hl-blue">सामान्यतः 5 वर्ष</span><br>
+        • आपातकाल में → एक बार में <span class="hl-red">1 वर्ष</span> तक बढ़ाया जा सकता है<br><br>
+        • <strong>42वाँ संशोधन 1976</strong> (इंदिरा गांधी) → 5 वर्ष → 6 वर्ष<br>
+        • <strong>44वाँ संशोधन 1978</strong> → 6 वर्ष → वापस <span class="hl-green">5 वर्ष</span><br><br>
+        <strong>राजस्थान विशेष:</strong><br>
+        🔸 <span class="underline-imp">5वीं विधानसभा (1972-77)</span> = सर्वाधिक कार्यकाल (5 वर्ष से ज्यादा)<br>
+        🔸 6वीं (1977-80) व 9वीं (1990-92) = 5 वर्ष से कम
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"42 ने बढ़ाया 6, 44 ने वापस 5 किया"</strong><br>
+        इंदिरा ने बढ़ाया, जनता पार्टी ने घटाया
+      </div>
+    </div>
+
+    <!-- CARD 9 -->
+    <div class="topic-card green-card" data-topics="विधानमंडल सदस्य योग्यता अनुच्छेद 173">
+      <div class="card-title">✅ अनु. 173 — विधानमंडल सदस्यों की योग्यता</div>
+      <div class="card-body">
+        • भारत का नागरिक होना आवश्यक<br>
+        • न्यूनतम आयु:<br>
+        &nbsp;&nbsp;→ <span class="hl-green">विधानसभा = 25 वर्ष</span><br>
+        &nbsp;&nbsp;→ <span class="hl-blue">विधानपरिषद = 30 वर्ष</span><br>
+        • अन्य योग्यताएं संसद द्वारा विधि बनाकर निर्धारित की जाती हैं
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"नीचे 25, ऊपर 30"</strong><br>
+        (निम्न सदन = 25, उच्च सदन = 30)
+      </div>
+    </div>
+
+    <!-- CARD 10 -->
+    <div class="topic-card saffron-card" data-topics="अनुच्छेद 174 राज्यपाल सत्र सत्रावसान विघटन">
+      <div class="card-title">📅 अनु. 174 — राज्यपाल: सत्र, सत्रावसान, विघटन</div>
+      <div class="card-body">
+        • राज्यपाल विधानमंडल के सत्र की <span class="hl-saffron">आहूति, सत्रावसान व विघटन</span> करता है<br>
+        • विधिरित = सत्र आमंत्रित करना<br><br>
+        <strong>सत्र:</strong><br>
+        🔹 बजट सत्र → Feb - May<br>
+        🔹 मानसून सत्र → July - Sept<br>
+        🔹 शीतकाल सत्र → Nov - Dec<br><br>
+        • <span class="hl-blue">दो सत्रों के मध्य 6 माह से ज्यादा अंतराल नहीं</span><br>
+        • विधानसभा के सत्र का स्थगन/स्थगन = <span class="hl-green">विधानसभा अध्यक्ष</span> करता है
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"बजट = FebMay | मानसून = JulySept | शीत = NovDec"</strong><br>
+        6 माह गैप नहीं — "छः माह नहीं"
+      </div>
+    </div>
+
+    <!-- CARD 11 -->
+    <div class="topic-card purple-card" data-topics="विधानसभा अध्यक्ष उपाध्यक्ष अनुच्छेद 178 179">
+      <div class="card-title">🪑 अनु. 178-179 — विधानसभा अध्यक्ष व उपाध्यक्ष</div>
+      <div class="card-body">
+        • चुनाव के बाद <span class="hl-purple">अध्यक्ष व उपाध्यक्ष का चुनाव यथाशीघ्र</span> होता है<br>
+        • स्पीकर के चुनाव की तारीख → <span class="hl-saffron">राज्यपाल</span> निर्धारित करता है<br>
+        • उपाध्यक्ष की तारीख → <span class="hl-green">अध्यक्ष</span> निर्धारित करता है<br><br>
+        <strong>हटाने की प्रक्रिया (अनु. 179):</strong><br>
+        • <span class="underline-imp">14 दिन पूर्व सूचना</span> देनी होगी<br>
+        • विधानसभा में साधारण बहुमत से पास करके हटाया जाता है<br>
+        • अध्यक्ष ↔ उपाध्यक्ष को त्यागपत्र देते हैं<br><br>
+        <strong>Note:</strong> अध्यक्ष व उपाध्यक्ष को <span class="hl-red">अलग से शपथ नहीं</span> दिलाई जाती — केवल विधानसभा सदस्य के रूप में शपथ
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"14 दिन सूचना, फिर साधारण बहुमत"</strong><br>
+        विधानसभा अध्यक्ष = Speaker | उपाध्यक्ष = Deputy Speaker
+      </div>
+    </div>
+
+    <!-- CARD 12 -->
+    <div class="topic-card red-card" data-topics="राजस्थान विधानसभा अध्यक्ष स्पीकर सूची">
+      <div class="card-title">📋 राजस्थान विधानसभा अध्यक्षों की सूची</div>
+      <div class="card-body">
+        <table class="data-table" style="font-size:12px;">
+          <thead><tr><th>विधानसभा</th><th>अध्यक्ष</th><th>उपाध्यक्ष</th></tr></thead>
+          <tbody>
+            <tr><td>प्रथम (1952-57)</td><td class="underline-imp">नरोत्तम लाल जोशी (झुंझुनू)</td><td>लाल सिंह शक्तावत</td></tr>
+            <tr><td>द्वितीय (1957-62)</td><td>रामनिवास मिर्धा</td><td>निरंजन आचार्य</td></tr>
+            <tr><td>तृतीय (1962-67)</td><td>रामनिवास मिर्धा</td><td>नारायण सिंह मसूड़ा</td></tr>
+          </tbody>
+        </table>
+        <br>🔸 <span class="hl-saffron">नरोत्तम लाल जोशी</span> → सर्वाधिक बार अध्यक्ष (2 बार)<br>
+        🔸 <span class="hl-blue">रामनिवास मिर्धा</span> → सर्वाधिक कार्यकाल वाले अध्यक्ष<br>
+        🔸 राजस्थान में स्पीकर हटाने का प्रस्ताव <span class="hl-red">6 बार लाया गया</span> — एक बार भी पारित नहीं
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"पहले स्पीकर = NLJ (नरोत्तम लाल जोशी) — झुंझुनू से जकात आंदोलन वाले"</strong>
+      </div>
+    </div>
+
+    <!-- CARD 13 -->
+    <div class="topic-card teal-card" data-topics="अनुच्छेद 177 मंत्री महाधिवक्ता विधानमंडल">
+      <div class="card-title">⚖️ अनु. 177 — मंत्री व महाधिवक्ता</div>
+      <div class="card-body">
+        • सरकार के मंत्री व महाधिवक्ता — विधानमंडल के दोनों सदनों में:<br>
+        &nbsp;&nbsp;→ <span class="hl-teal">भाग ले सकते हैं</span><br>
+        &nbsp;&nbsp;→ <span class="hl-green">बोल सकते हैं</span><br>
+        &nbsp;&nbsp;→ <span class="hl-red">मतदान नहीं कर सकते</span><br>
+        • मतदान उसी सदन में करेंगे जिस सदन के सदस्य हों<br><br>
+        🔹 <span class="underline-imp">महाधिवक्ता</span> → विधानमंडल में भाषण दे सकता है पर <span class="hl-red">मतदान नहीं</span>
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"मंत्री बोले, वोट नहीं"</strong><br>
+        महाधिवक्ता भी — "बोले हाँ, वोट ना"
+      </div>
+    </div>
+
+    <!-- CARD 14 -->
+    <div class="topic-card blue-card" data-topics="राजस्थान विधानसभा भवन जयपुर इतिहास">
+      <div class="card-title">🏢 राजस्थान विधानसभा — भवन व इतिहास</div>
+      <div class="card-body">
+        • वर्तमान भवन: <span class="hl-blue">लाल कोठी, जवाली नगर, जयपुर</span><br>
+        • पहले: सवाई मानसिंह टाउन हॉल में बैठती थी<br>
+        • भवन की स्थापत्य शैली = <span class="hl-saffron">जयपुर + मेवाड़ + शेखावाटी + मारवाड़</span> शैली का सम्मिश्रण<br>
+        • चार गेट: <span class="hl-green">उत्तरी, दक्षिणी, पूर्वी, पश्चिमी</span><br><br>
+        <strong>नवीनतम विधानसभा भवन:</strong><br>
+        → 6 Nov 2001 को उद्घाटन<br>
+        → राष्ट्रपति → K.R. नारायण | CM → अशोक गहलोत | राज्यपाल → अंशुमान सिंह
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"जयमेशामार" = जयपुर + मेवाड़ + शेखावाटी + मारवाड़ शैली</strong>
+      </div>
+    </div>
+
+    <!-- CARD 15 -->
+    <div class="topic-card saffron-card" data-topics="राजस्थान प्रथम विधानसभा 1952 इतिहास">
+      <div class="card-title">📅 प्रथम विधानसभा (1952) — ऐतिहासिक तथ्य</div>
+      <div class="card-body">
+        • राज. में पहला चुनाव → <span class="hl-saffron">जनवरी 1952</span><br>
+        • प्रथम विधानसभा का गठन → <span class="underline-imp">23 फरवरी 1952</span><br>
+        • प्रथम बैठक → <span class="hl-blue">29 मार्च 1952</span><br>
+        • <span class="hl-red">अजमेर-मेरवाड़ा की अलग विधानसभा = धारा सभा (30 सीट)</span><br>
+        • धारा सभा का नेतृत्व → <span class="underline-imp">हरिभाऊ उपाध्याय</span><br>
+        • 1 Nov 1956 को अजमेर-मेरवाड़ा राजस्थान में शामिल → 160+30 = 190 सीट<br>
+        • प्रथम विधानसभा की निर्वाचन सीट = <span class="hl-green">160</span> (120 एकल + 20×2 द्वि सदनीय = 40)
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"जनवरी-52 चुनाव, 23 फरवरी गठन, 29 मार्च बैठक"</strong>
+      </div>
+    </div>
+
+    <!-- CARD 16 -->
+    <div class="topic-card purple-card" data-topics="राजस्थान महिला विधायक MLA पहली">
+      <div class="card-title">👩 राजस्थान की पहली महिला MLA व अन्य</div>
+      <div class="card-body">
+        • <span class="underline-imp">पहली महिला MLA</span> → <span class="hl-purple">यशोदा देवी</span> (समाजवादी पार्टी)<br>
+        &nbsp;&nbsp;→ 1953 में बांसवाड़ा उपचुनाव से<br>
+        • <span class="underline-imp">दूसरी महिला MLA</span> → <span class="hl-blue">कमला बेनीवाल</span> (1954)<br>
+        &nbsp;&nbsp;→ उप मंत्री → <span class="hl-saffron">राज्य की पहली महिला मंत्री</span><br>
+        • पहली महिला राज्यसभा सदस्य → <span class="hl-green">शारदा भार्गव</span> (कांग्रेस)<br>
+        • पहली महिला लोकसभा सदस्य → <span class="hl-red">गायत्री देवी</span> (स्वतंत्र पार्टी)<br>
+        • प्रथम विधानसभा में 4 महिलाएं चुनाव लड़ीं — चारों हारीं
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"यशोदा पहली MLA, कमला पहली मंत्री, शारदा RS, गायत्री LS"</strong>
+      </div>
+    </div>
+
+    <!-- CARD 17 — full width -->
+    <div class="topic-card gold-card full-card" data-topics="राजस्थान विधानसभा सीट इतिहास 1952 1977 200">
+      <div class="card-title">📊 राजस्थान विधानसभा की सीटों का इतिहास</div>
+      <div class="card-body">
+        <div class="cards-grid" style="margin-bottom:0">
+          <div>
+            <table class="data-table">
+              <thead><tr><th>वर्ष</th><th>सीटें</th></tr></thead>
+              <tbody>
+                <tr><td>1952</td><td class="hl-saffron" style="display:inline-block">160</td></tr>
+                <tr><td>1957</td><td>176</td></tr>
+                <tr><td>1967</td><td>184</td></tr>
+                <tr><td>1977</td><td class="underline-imp">200 (2026 तक)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <strong>प्रथम विधानसभा चुनाव 1952 — दलीय स्थिति:</strong><br>
+            कांग्रेस → 82 | राम राज्य परिषद → 24 | जनसंघ → 8<br>
+            कृषक प्रजा पार्टी → 7 | हिन्दू सभा → 2 | कृषक मजदूर → 2<br>
+            <span class="hl-green">35 निर्दलीय</span> → आज तक सर्वाधिक | <span class="hl-blue">7 निर्विरोध</span> → आज 14 बचे
+          </div>
+        </div>
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-label">🧠 Trick</div>
+        <strong>"52=160, 57=176, 67=184, 77=200" — 16, 8, 16 का क्रम (+16, +8, +16)</strong>
+      </div>
+    </div>
+
+  </div><!-- end cards-grid -->
+</div>
+
+<!-- ====================== TAB 2: SUMMARY ====================== -->
+<div id="tab-summary" class="tab-panel">
+  <div class="section-title" style="background:var(--blue-light);color:var(--blue);">📊 Master Summary Table — विधानमंडल</div>
+  
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr><th>अनुच्छेद</th><th>विषय</th><th>मुख्य बिंदु</th><th>परीक्षा में महत्व</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>168</strong></td><td>विधानमंडल संरचना</td><td>राज्यपाल + विधानसभा + विधानपरिषद (राज. में केवल 2)</td><td class="pill pill-red">⭐⭐⭐</td></tr>
+        <tr><td><strong>169</strong></td><td>विधानपरिषद: सृजन/उत्सादन</td><td>अंतिम शक्ति संसद, राज्य विधानसभा विशेष बहुमत प्रस्ताव</td><td class="pill pill-red">⭐⭐⭐</td></tr>
+        <tr><td><strong>170</strong></td><td>विधानसभा संरचना</td><td>अधिकतम 500, न्यूनतम 60, राज. 200</td><td class="pill pill-red">⭐⭐⭐</td></tr>
+        <tr><td><strong>171</strong></td><td>विधानपरिषद संरचना</td><td>6 राज्य (KUMBAT), 5/6 निर्वाचित + 1/6 मनोनीत</td><td class="pill pill-red">⭐⭐⭐</td></tr>
+        <tr><td><strong>172</strong></td><td>विधानसभा कार्यकाल</td><td>5 वर्ष, आपातकाल में 1 वर्ष विस्तार</td><td class="pill pill-saffron">⭐⭐</td></tr>
+        <tr><td><strong>173</strong></td><td>सदस्य योग्यता</td><td>VA=25 वर्ष, VP=30 वर्ष, भारतीय नागरिक</td><td class="pill pill-red">⭐⭐⭐</td></tr>
+        <tr><td><strong>174</strong></td><td>सत्र/विघटन</td><td>राज्यपाल आहूत करता है, 6 माह से ज्यादा अंतर नहीं</td><td class="pill pill-saffron">⭐⭐</td></tr>
+        <tr><td><strong>176</strong></td><td>राज्यपाल का अभिभाषण</td><td>प्रत्येक वर्ष प्रथम बैठक में</td><td class="pill pill-blue">⭐</td></tr>
+        <tr><td><strong>177</strong></td><td>मंत्री/महाधिवक्ता</td><td>भाग-बोल सकते हैं, मतदान नहीं</td><td class="pill pill-saffron">⭐⭐</td></tr>
+        <tr><td><strong>178</strong></td><td>अध्यक्ष/उपाध्यक्ष</td><td>चुनाव बाद, स्पीकर तारीख राज्यपाल तय करता है</td><td class="pill pill-saffron">⭐⭐</td></tr>
+        <tr><td><strong>179</strong></td><td>अध्यक्ष हटाना</td><td>14 दिन पूर्व नोटिस, साधारण बहुमत</td><td class="pill pill-saffron">⭐⭐</td></tr>
+        <tr><td><strong>332</strong></td><td>SC/ST आरक्षण</td><td>राज. में SC=34, ST=25, कुल=59 सीट</td><td class="pill pill-red">⭐⭐⭐</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title" style="background:var(--green-light);color:var(--green);">⚡ Quick Reference Table — राजस्थान Specific</div>
+  
+  <div class="cards-grid">
+    <div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th colspan="2">🏛️ राजस्थान विधानसभा — Key Facts</th></tr></thead>
+          <tbody>
+            <tr><td>कुल सीटें</td><td class="underline-imp">200 (1977 से)</td></tr>
+            <tr><td>SC आरक्षित</td><td>34 सीटें</td></tr>
+            <tr><td>ST आरक्षित</td><td>25 सीटें</td></tr>
+            <tr><td>कार्यकाल</td><td>5 वर्ष</td></tr>
+            <tr><td>वर्तमान भवन</td><td>लाल कोठी, जयपुर (2001)</td></tr>
+            <tr><td>प्रथम गठन</td><td>23 Feb 1952</td></tr>
+            <tr><td>प्रथम बैठक</td><td>29 March 1952</td></tr>
+            <tr><td>पहले स्पीकर</td><td>नरोत्तम लाल जोशी</td></tr>
+            <tr><td>पहली महिला MLA</td><td>यशोदा देवी (1953)</td></tr>
+            <tr><td>पहली महिला मंत्री</td><td>कमला बेनीवाल (1954)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th colspan="2">🗺️ तुलनात्मक तालिका</th></tr></thead>
+          <tbody>
+            <tr><td></td><td><strong>विधानसभा vs विधानपरिषद</strong></td></tr>
+            <tr><td>प्रकार</td><td>प्रत्यक्ष vs अप्रत्यक्ष</td></tr>
+            <tr><td>सदन स्तर</td><td>निम्न vs उच्च</td></tr>
+            <tr><td>अनिवार्यता</td><td>अनिवार्य vs वैकल्पिक</td></tr>
+            <tr><td>न्यूनतम आयु</td><td>25 वर्ष vs 30 वर्ष</td></tr>
+            <tr><td>कार्यकाल</td><td>5 वर्ष vs 6 वर्ष (स्थायी)</td></tr>
+            <tr><td>भारत में</td><td>सभी राज्यों में vs 6 राज्यों में</td></tr>
+            <tr><td>अधिकतम सीट</td><td>500 vs VA की 1/3</td></tr>
+            <tr><td>न्यूनतम सीट</td><td>60 vs 40</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th colspan="2">🏆 KUMBAT राज्यों की विधानपरिषद सीटें</th></tr></thead>
+          <tbody>
+            <tr><td>Karnataka (K)</td><td>75</td></tr>
+            <tr><td>UP (U)</td><td>100</td></tr>
+            <tr><td>Maharashtra (M)</td><td>78</td></tr>
+            <tr><td>Bihar (B)</td><td>75</td></tr>
+            <tr><td>Andhra Pradesh (A)</td><td>58</td></tr>
+            <tr><td>Telangana (T)</td><td>40</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== TAB 3: RJ PYQ ====================== -->
+<div id="tab-rjpyq" class="tab-panel">
+  <div class="section-title" style="background:var(--saffron-light);color:var(--saffron);">🏅 राजस्थान PYQ — 30 MCQs (RPSC/PSI Pattern)</div>
+  
+  <div class="score-bar" id="rj-score-bar">
+    <div>
+      <div class="score-num" id="rj-score">0</div>
+      <div style="font-size:12px;color:#888;">अंक</div>
+    </div>
+    <div class="score-detail" id="rj-progress-text">0 / 30 प्रश्न हल किए</div>
+    <div style="margin-left:auto;">
+      <span class="pill pill-green" id="rj-correct-count">✓ सही: 0</span>
+      <span class="pill pill-red" id="rj-wrong-count">✗ गलत: 0</span>
+    </div>
+  </div>
+  
+  <div id="rj-mcq-container" class="rj-mcq"></div>
+  <button class="submit-btn" onclick="submitMCQ('rj')">📊 Result देखें</button>
+</div>
+
+<!-- ====================== TAB 4: STATES PYQ ====================== -->
+<div id="tab-statespyq" class="tab-panel">
+  <div class="section-title" style="background:var(--blue-light);color:var(--blue);">🗺️ अन्य राज्यों के PYQ — 30 MCQs (State Exams Pattern)</div>
+  
+  <div class="score-bar" id="st-score-bar">
+    <div>
+      <div class="score-num" id="st-score">0</div>
+      <div style="font-size:12px;color:#888;">अंक</div>
+    </div>
+    <div class="score-detail" id="st-progress-text">0 / 30 प्रश्न हल किए</div>
+    <div style="margin-left:auto;">
+      <span class="pill pill-green" id="st-correct-count">✓ सही: 0</span>
+      <span class="pill pill-red" id="st-wrong-count">✗ गलत: 0</span>
+    </div>
+  </div>
+  
+  <div id="st-mcq-container" class="states-mcq"></div>
+  <button class="submit-btn" onclick="submitMCQ('st')">📊 Result देखें</button>
+</div>
+
+<!-- ====================== TAB 5: LAST MINUTE ====================== -->
+<div id="tab-lastminute" class="tab-panel">
+  <div class="section-title" style="background:#1A1A2E;color:var(--gold);">⚡ Last Minute Revision — परीक्षा से पहले यही पढ़ो!</div>
+
+  <div class="super-mnemonic">
+    <div class="sm-title">🧠 Super Mnemonic #1 — KUMBAT (विधानपरिषद वाले 6 राज्य)</div>
+    <div class="sm-item"><span class="sm-letter">K</span><span class="sm-text">Karnataka — 75 सीट</span></div>
+    <div class="sm-item"><span class="sm-letter">U</span><span class="sm-text">Uttar Pradesh — 100 सीट</span></div>
+    <div class="sm-item"><span class="sm-letter">M</span><span class="sm-text">Maharashtra — 78 सीट</span></div>
+    <div class="sm-item"><span class="sm-letter">B</span><span class="sm-text">Bihar — 75 सीट</span></div>
+    <div class="sm-item"><span class="sm-letter">A</span><span class="sm-text">Andhra Pradesh — 58 सीट</span></div>
+    <div class="sm-item"><span class="sm-letter">T</span><span class="sm-text">Telangana — 40 सीट</span></div>
+  </div>
+
+  <div class="super-mnemonic">
+    <div class="sm-title">🧠 Super Mnemonic #2 — पुसिगोमि (60 से कम वाले राज्य)</div>
+    <div class="sm-item"><span class="sm-letter">पु</span><span class="sm-text">पुदुचेरी — 30 सीट</span></div>
+    <div class="sm-item"><span class="sm-letter">सि</span><span class="sm-text">सिक्किम — 32 सीट</span></div>
+    <div class="sm-item"><span class="sm-letter">गो</span><span class="sm-text">गोवा — 40 सीट</span></div>
+    <div class="sm-item"><span class="sm-letter">मि</span><span class="sm-text">मिजोरम — 40 सीट</span></div>
+  </div>
+
+  <div class="super-mnemonic">
+    <div class="sm-title">🧠 Super Mnemonic #3 — BDP (ST जिले — बांसवाड़ा, डूंगरपुर, प्रतापगढ़)</div>
+    <div class="sm-item"><span class="sm-letter">B</span><span class="sm-text">Banswara — सभी सीटें ST आरक्षित</span></div>
+    <div class="sm-item"><span class="sm-letter">D</span><span class="sm-text">Dungarpur — सभी सीटें ST आरक्षित</span></div>
+    <div class="sm-item"><span class="sm-letter">P</span><span class="sm-text">Pratapgarh — सभी सीटें ST आरक्षित</span></div>
+    <div class="sm-item"><span class="sm-letter">0</span><span class="sm-text">Jaisalmer + Rajsamand — कोई आरक्षित सीट नहीं!</span></div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="lm-card" style="border-color:var(--saffron);">
+      <div class="lm-title" style="color:var(--saffron);">🔢 नंबर याद करो</div>
+      विधानसभा: अधिकतम <strong>500</strong>, न्यूनतम <strong>60</strong>, राजस्थान <strong>200</strong><br>
+      विधानपरिषद: न्यूनतम <strong>40</strong> (VA की 1/3 अधिकतम)<br>
+      योग्यता: VA=<strong>25</strong> वर्ष, VP=<strong>30</strong> वर्ष<br>
+      SC: <strong>34</strong> सीट | ST: <strong>25</strong> सीट | कुल आरक्षित: <strong>59</strong>
+    </div>
+
+    <div class="lm-card" style="border-color:var(--blue);">
+      <div class="lm-title" style="color:var(--blue);">📅 महत्वपूर्ण तारीखें</div>
+      राज. पहला चुनाव → <strong>Jan 1952</strong><br>
+      प्रथम विधानसभा गठन → <strong>23 Feb 1952</strong><br>
+      प्रथम बैठक → <strong>29 March 1952</strong><br>
+      नया भवन उद्घाटन → <strong>6 Nov 2001</strong><br>
+      200 सीट → <strong>1977 से</strong>
+    </div>
+
+    <div class="lm-card" style="border-color:var(--green);">
+      <div class="lm-title" style="color:var(--green);">👑 पहले पद</div>
+      पहले स्पीकर → <strong>नरोत्तम लाल जोशी</strong> (झुंझुनू)<br>
+      पहले उपाध्यक्ष → <strong>लाल सिंह शक्तावत</strong><br>
+      पहली महिला MLA → <strong>यशोदा देवी</strong> (बांसवाड़ा, 1953)<br>
+      पहली महिला मंत्री → <strong>कमला बेनीवाल</strong> (1954)<br>
+      धारा सभा नेता → <strong>हरिभाऊ उपाध्याय</strong>
+    </div>
+
+    <div class="lm-card" style="border-color:var(--purple);">
+      <div class="lm-title" style="color:var(--purple);">⚖️ प्रक्रिया</div>
+      स्पीकर हटाना → <strong>14 दिन नोटिस + साधारण बहुमत</strong><br>
+      सत्र → राज्यपाल आहूत | स्थगन → अध्यक्ष<br>
+      2 सत्रों में → <strong>6 माह से ज्यादा अंतर नहीं</strong><br>
+      मंत्री → बोल सकते, <strong>वोट नहीं</strong><br>
+      VP का सृजन/समापन → अंतिम शक्ति <strong>संसद</strong>
+    </div>
+
+    <div class="lm-card" style="border-color:var(--gold);">
+      <div class="lm-title" style="color:#7B5800;">🔄 42वाँ vs 44वाँ संशोधन</div>
+      <strong>42वाँ (1976)</strong>: 5→6 वर्ष (इंदिरा) — VA + LS<br>
+      <strong>44वाँ (1978)</strong>: 6→5 वर्ष वापस<br>
+      5वीं विधानसभा (1972-77) = <strong>सर्वाधिक कार्यकाल</strong><br>
+      6वीं + 9वीं = <strong>5 वर्ष से कम</strong>
+    </div>
+
+    <div class="lm-card" style="border-color:var(--red);">
+      <div class="lm-title" style="color:var(--red);">🚨 परीक्षा Trap Points</div>
+      ❌ स्पीकर शपथ अलग से नहीं — VA सदस्य के रूप में होती है<br>
+      ❌ स्पीकर हटाने का प्रस्ताव राज. में 6 बार — एक बार भी पास नहीं<br>
+      ❌ विधानपरिषद = अनुच्छेद 169 से सृजन (168 नहीं)<br>
+      ❌ VP का समापन = संविधान संशोधन नहीं माना जाता<br>
+      ❌ जैसलमेर + राजसमंद = 0 आरक्षित सीट
+    </div>
+  </div>
+</div>
+
+</div><!-- end content -->
+
+<!-- POPUP -->
+<div class="popup-overlay" id="resultPopup">
+  <div class="popup-box">
+    <div class="popup-emoji" id="popup-emoji">🎉</div>
+    <div class="popup-title" id="popup-title">परिणाम</div>
+    <div class="popup-score" id="popup-score">0</div>
+    <div class="popup-detail" id="popup-detail"></div>
+    <button class="popup-close" onclick="closePopup()">✕ बंद करें</button>
+  </div>
+</div>
+
+<script>
+// ============ TAB SYSTEM ============
+function openTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ============ SEARCH SYSTEM ============
+const searchData = [];
+document.querySelectorAll('[data-topics]').forEach(card => {
+  const topics = card.getAttribute('data-topics').split(' ');
+  const title = card.querySelector('.card-title')?.textContent || '';
+  const body = card.querySelector('.card-body')?.textContent?.slice(0, 100) || '';
+  topics.forEach(t => {
+    if(t) searchData.push({ keyword: t, title, body, card });
+  });
+});
+
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('search-results');
+
+searchInput.addEventListener('input', function() {
+  const q = this.value.trim();
+  if(q.length < 2) { searchResults.classList.remove('active'); return; }
+  const found = searchData.filter(d => 
+    d.keyword.includes(q) || d.title.includes(q) || d.body.includes(q)
+  ).slice(0, 8);
+  if(found.length === 0) { searchResults.classList.remove('active'); return; }
+  const unique = [...new Map(found.map(f => [f.title, f])).values()];
+  searchResults.innerHTML = unique.map(d => 
+    `<div class="search-item" onclick="scrollToCard('${encodeURIComponent(d.title)}')">
+      <strong>${d.title.slice(2, 30)}</strong><br><small style="color:#888">${d.body.slice(0,60)}...</small>
+    </div>`
+  ).join('');
+  searchResults.classList.add('active');
+});
+
+function scrollToCard(titleEnc) {
+  const title = decodeURIComponent(titleEnc);
+  searchResults.classList.remove('active');
+  searchInput.value = '';
+  // Switch to revision tab
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-revision').classList.add('active');
+  document.querySelector('.tab-btn').classList.add('active');
+  // Find and highlight
+  const cards = document.querySelectorAll('.topic-card');
+  for(let card of cards) {
+    const ct = card.querySelector('.card-title')?.textContent || '';
+    if(ct.includes(title.slice(2,20))) {
+      setTimeout(() => {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.style.outline = '3px solid var(--saffron)';
+        setTimeout(() => card.style.outline = '', 2000);
+      }, 100);
+      break;
+    }
+  }
+}
+
+document.addEventListener('click', e => {
+  if(!searchInput.contains(e.target) && !searchResults.contains(e.target))
+    searchResults.classList.remove('active');
+});
+
+// ============ MCQ DATA ============
+const rjMCQs = [
+  { q: "राजस्थान विधानसभा में वर्तमान में कुल कितनी सीटें हैं?", opts: ["176", "184", "200", "204"], ans: 2, exp: "1977 से राजस्थान विधानसभा में 200 सीटें हैं जो 2026 तक बनी रहेंगी।" },
+  { q: "राजस्थान विधानसभा की प्रथम बैठक कब हुई थी?", opts: ["23 फरवरी 1952", "29 मार्च 1952", "1 जनवरी 1952", "15 अगस्त 1951"], ans: 1, exp: "प्रथम विधानसभा का गठन 23 फरवरी को हुआ पर प्रथम बैठक 29 मार्च 1952 को हुई।" },
+  { q: "राजस्थान विधानसभा के प्रथम अध्यक्ष कौन थे?", opts: ["रामनिवास मिर्धा", "लाल सिंह शक्तावत", "नरोत्तम लाल जोशी", "हरिभाऊ उपाध्याय"], ans: 2, exp: "नरोत्तम लाल जोशी (झुंझुनू) राजस्थान विधानसभा के प्रथम अध्यक्ष थे।" },
+  { q: "राजस्थान की प्रथम महिला MLA कौन थीं?", opts: ["कमला बेनीवाल", "यशोदा देवी", "वसुंधरा राजे", "शारदा भार्गव"], ans: 1, exp: "यशोदा देवी 1953 में बांसवाड़ा उपचुनाव से समाजवादी पार्टी से प्रथम महिला MLA बनीं।" },
+  { q: "राजस्थान विधानसभा में SC के लिए कितनी सीटें आरक्षित हैं?", opts: ["25", "30", "34", "36"], ans: 2, exp: "अनु. 332 के तहत राजस्थान विधानसभा में SC के लिए 34 सीटें आरक्षित हैं।" },
+  { q: "राजस्थान विधानसभा में ST के लिए कितनी सीटें आरक्षित हैं?", opts: ["20", "22", "25", "28"], ans: 2, exp: "राजस्थान विधानसभा में ST के लिए 25 सीटें आरक्षित हैं।" },
+  { q: "राजस्थान में विधानपरिषद के सृजन हेतु विधानसभा ने प्रस्ताव कब पास किया?", opts: ["2010", "2012", "2014", "2016"], ans: 1, exp: "2012 में राजस्थान विधानसभा ने विधानपरिषद सृजन हेतु प्रस्ताव पास कर 2013 में संसद को भेजा।" },
+  { q: "राजस्थान की किस विधानसभा का कार्यकाल 5 वर्ष से अधिक रहा?", opts: ["4वीं", "5वीं", "6वीं", "7वीं"], ans: 1, exp: "5वीं विधानसभा (1972-1977) का कार्यकाल 5 वर्ष से अधिक रहा — आपातकाल के कारण।" },
+  { q: "किस जिले में राजस्थान विधानसभा की कोई भी सीट आरक्षित नहीं है?", opts: ["बांसवाड़ा", "जोधपुर", "जैसलमेर", "अजमेर"], ans: 2, exp: "जैसलमेर और राजसमंद में कोई भी सीट SC/ST के लिए आरक्षित नहीं है।" },
+  { q: "राजस्थान विधानसभा के नवीन भवन का उद्घाटन किस राष्ट्रपति ने किया?", opts: ["APJ Abdul Kalam", "K.R. नारायण", "शंकर दयाल शर्मा", "वेंकटरमण"], ans: 1, exp: "6 नवंबर 2001 को राष्ट्रपति K.R. नारायण ने नवीन विधानसभा भवन का उद्घाटन किया।" },
+  { q: "राजस्थान विधानसभा का नया भवन कहाँ स्थित है?", opts: ["सिविल लाइंस, जयपुर", "लाल कोठी, जयपुर", "मालवीय नगर, जयपुर", "हवा महल के पास"], ans: 1, exp: "राजस्थान विधानसभा का नया भवन लाल कोठी, जवाली नगर, जयपुर में है।" },
+  { q: "राजस्थान विधानसभा अध्यक्ष को हटाने का प्रस्ताव कितनी बार लाया गया?", opts: ["2 बार", "4 बार", "6 बार", "8 बार"], ans: 2, exp: "राजस्थान विधानसभा में स्पीकर हटाने का प्रस्ताव 6 बार लाया गया पर एक बार भी पारित नहीं हुआ।" },
+  { q: "राजस्थान की प्रथम महिला मंत्री कौन थीं?", opts: ["यशोदा देवी", "कमला बेनीवाल", "गायत्री देवी", "शारदा भार्गव"], ans: 1, exp: "कमला बेनीवाल 1954 में उप मंत्री बनकर राजस्थान की प्रथम महिला मंत्री बनीं।" },
+  { q: "राजस्थान में 'धारा सभा' किस क्षेत्र की विधानसभा को कहते थे?", opts: ["जयपुर", "जोधपुर", "अजमेर-मेरवाड़ा", "उदयपुर"], ans: 2, exp: "अजमेर-मेरवाड़ा की अलग विधानसभा को 'धारा सभा' कहा जाता था जिसमें 30 सीटें थीं।" },
+  { q: "प्रथम राजस्थान विधानसभा में कितने निर्दलीय विधायक चुने गए — जो आज तक सर्वाधिक?", opts: ["25", "30", "35", "40"], ans: 2, exp: "प्रथम विधानसभा (1952) में 35 निर्दलीय विधायक चुने गए जो आज तक सर्वाधिक है।" },
+  { q: "राजस्थान विधानसभा की वर्तमान में कुल कितनी सीटें SC+ST के लिए आरक्षित हैं?", opts: ["54", "57", "59", "62"], ans: 2, exp: "SC=34 + ST=25 = कुल 59 सीटें आरक्षित हैं राजस्थान विधानसभा में।" },
+  { q: "राजस्थान विधानसभा भवन की स्थापत्य शैली में कौन सी शैली शामिल नहीं है?", opts: ["जयपुर शैली", "मेवाड़ शैली", "मुगल शैली", "मारवाड़ शैली"], ans: 2, exp: "राजस्थान विधानसभा भवन में जयपुर, मेवाड़, शेखावाटी और मारवाड़ शैली का मिश्रण है। मुगल शैली नहीं।" },
+  { q: "प्रथम राजस्थान विधानसभा चुनाव में कांग्रेस को कितनी सीटें मिलीं?", opts: ["75", "80", "82", "88"], ans: 2, exp: "1952 के प्रथम विधानसभा चुनाव में कांग्रेस को 160 में से 82 सीटें मिलीं।" },
+  { q: "प्रथम राजस्थान विधानसभा के उपाध्यक्ष कौन थे?", opts: ["नरोत्तम लाल जोशी", "रामनिवास मिर्धा", "लाल सिंह शक्तावत", "संग्राम सिंह"], ans: 2, exp: "प्रथम विधानसभा के उपाध्यक्ष लाल सिंह शक्तावत थे।" },
+  { q: "1 नवंबर 1956 को अजमेर-मेरवाड़ा के राजस्थान में शामिल होने के बाद कुल कितनी सीटें हो गईं?", opts: ["170", "180", "190", "200"], ans: 2, exp: "1956 में अजमेर-मेरवाड़ा की 30 सीटें मिलाने के बाद 160+30=190 सीटें हो गईं।" },
+  { q: "राजस्थान विधानसभा की कितनी विधानसभाओं का कार्यकाल 5 वर्ष से कम रहा?", opts: ["1", "2", "3", "4"], ans: 1, exp: "6वीं (1977-80) और 9वीं (1990-92) — 2 विधानसभाओं का कार्यकाल 5 वर्ष से कम रहा।" },
+  { q: "राजस्थान विधानसभा की प्रथम बैठक के समय प्रोटेम स्पीकर कौन थे?", opts: ["नरोत्तम लाल जोशी", "लाल सिंह शक्तावत", "संग्राम सिंह", "हरिभाऊ उपाध्याय"], ans: 2, exp: "प्रोटेम स्पीकर संग्राम सिंह थे जिन्होंने प्रथम विधानसभा की प्रथम बैठक की अध्यक्षता की।" },
+  { q: "राजस्थान में कौन से 3 जिलों की सभी विधानसभा सीटें ST के लिए आरक्षित हैं?", opts: ["बांसवाड़ा, उदयपुर, सिरोही", "बांसवाड़ा, डूंगरपुर, प्रतापगढ़", "डूंगरपुर, चित्तौड़, प्रतापगढ़", "बांसवाड़ा, राजसमंद, उदयपुर"], ans: 1, exp: "बांसवाड़ा, डूंगरपुर और प्रतापगढ़ (BDP) की सभी सीटें ST के लिए आरक्षित हैं।" },
+  { q: "किस संवैधानिक संशोधन द्वारा विधानसभा का कार्यकाल 5 से बढ़ाकर 6 वर्ष किया गया?", opts: ["38वाँ", "40वाँ", "42वाँ", "44वाँ"], ans: 2, exp: "42वाँ संविधान संशोधन 1976 (इंदिरा गांधी के समय) — विधानसभा + लोकसभा का कार्यकाल 5→6 वर्ष।" },
+  { q: "राजस्थान की पहली महिला राज्यसभा सांसद कौन थीं?", opts: ["कमला बेनीवाल", "यशोदा देवी", "शारदा भार्गव", "गायत्री देवी"], ans: 2, exp: "शारदा भार्गव (कांग्रेस) राजस्थान की पहली महिला राज्यसभा सांसद थीं।" },
+  { q: "राजस्थान की पहली महिला लोकसभा सांसद कौन थीं?", opts: ["कमला बेनीवाल", "शारदा भार्गव", "यशोदा देवी", "गायत्री देवी"], ans: 3, exp: "गायत्री देवी (स्वतंत्र पार्टी) राजस्थान की पहली महिला लोकसभा सांसद थीं।" },
+  { q: "राजस्थान विधानसभा में कितने सदस्य थे जब 1977 में 200 सीटें निर्धारित हुईं?", opts: ["184", "190", "196", "200"], ans: 0, exp: "1967 में 184 सीटें थीं, 1977 में बढ़कर 200 हो गईं।" },
+  { q: "प्रथम राजस्थान विधानसभा में राम राज्य परिषद को कितनी सीटें मिलीं?", opts: ["16", "20", "24", "28"], ans: 2, exp: "1952 के चुनाव में राम राज्य परिषद को 24 सीटें मिलीं।" },
+  { q: "धारा सभा (अजमेर-मेरवाड़ा) में कुल कितनी सीटें थीं?", opts: ["20", "25", "30", "35"], ans: 2, exp: "अजमेर-मेरवाड़ा की 'धारा सभा' में 30 सीटें थीं।" },
+  { q: "किस वर्ष से राजस्थान विधानसभा की 200 सीटें मानी जाने लगीं?", opts: ["1972", "1975", "1977", "1980"], ans: 2, exp: "1977 के चुनाव से राजस्थान विधानसभा की सीटें 200 हो गईं।" },
+];
+
+const stMCQs = [
+  { q: "भारतीय संविधान के किस अनुच्छेद के अंतर्गत राज्य विधानमंडल का गठन होता है?", opts: ["अनु. 163", "अनु. 168", "अनु. 170", "अनु. 172"], ans: 1, exp: "अनु. 168 के अंतर्गत राज्य विधानमंडल की संरचना का वर्णन है।" },
+  { q: "वर्तमान में भारत के कितने राज्यों में विधानपरिषद है?", opts: ["5", "6", "7", "8"], ans: 1, exp: "वर्तमान में 6 राज्यों में विधानपरिषद है: KUMBAT (Karnataka, UP, Maharashtra, Bihar, Andhra, Telangana)।" },
+  { q: "किस अनुच्छेद के अंतर्गत विधानपरिषद का सृजन व उत्सादन होता है?", opts: ["अनु. 168", "अनु. 169", "अनु. 170", "अनु. 171"], ans: 1, exp: "अनु. 169 — विधानपरिषद का सृजन व उत्सादन। अंतिम शक्ति संसद को।" },
+  { q: "विधानसभा की अधिकतम सदस्य संख्या क्या है?", opts: ["400", "450", "500", "550"], ans: 2, exp: "विधानसभा की अधिकतम सदस्य संख्या 500 है (अनु. 170)।" },
+  { q: "विधानसभा की न्यूनतम सदस्य संख्या कितनी होनी चाहिए?", opts: ["40", "50", "60", "75"], ans: 2, exp: "विधानसभा की न्यूनतम सदस्य संख्या 60 है। अपवाद: पुदुचेरी (30), सिक्किम (32)।" },
+  { q: "विधानपरिषद के सदस्यों का कार्यकाल कितने वर्ष होता है?", opts: ["4 वर्ष", "5 वर्ष", "6 वर्ष", "7 वर्ष"], ans: 2, exp: "विधानपरिषद का कार्यकाल 6 वर्ष है। हर 2 वर्ष में 1/3 सदस्य सेवानिवृत्त होते हैं।" },
+  { q: "विधानपरिषद के कितने सदस्य राज्यपाल द्वारा मनोनीत किए जाते हैं?", opts: ["1/4", "1/6", "1/8", "1/12"], ans: 1, exp: "विधानपरिषद के 1/6 सदस्य राज्यपाल द्वारा मनोनीत किए जाते हैं (साहित्य, कला, विज्ञान, समाजसेवा)।" },
+  { q: "विधानसभा सदस्य बनने की न्यूनतम आयु कितनी है?", opts: ["21 वर्ष", "23 वर्ष", "25 वर्ष", "30 वर्ष"], ans: 2, exp: "विधानसभा सदस्य की न्यूनतम आयु 25 वर्ष है (अनु. 173)।" },
+  { q: "विधानपरिषद सदस्य बनने की न्यूनतम आयु कितनी है?", opts: ["25 वर्ष", "28 वर्ष", "30 वर्ष", "35 वर्ष"], ans: 2, exp: "विधानपरिषद सदस्य की न्यूनतम आयु 30 वर्ष है (अनु. 173)।" },
+  { q: "विधानसभा के सत्र की आहूति कौन करता है?", opts: ["मुख्यमंत्री", "विधानसभा अध्यक्ष", "राज्यपाल", "राष्ट्रपति"], ans: 2, exp: "अनु. 174 के अनुसार राज्यपाल विधानमंडल के सत्र की आहूति, सत्रावसान व विघटन करता है।" },
+  { q: "दो सत्रों के बीच अधिकतम कितने माह का अंतर हो सकता है?", opts: ["3 माह", "4 माह", "6 माह", "9 माह"], ans: 2, exp: "अनु. 174 के अनुसार दो सत्रों के बीच 6 माह से अधिक अंतर नहीं होना चाहिए।" },
+  { q: "निम्न में से किसे विधानपरिषद 'स्थायी सदन' कहा जाता है?", opts: ["क्योंकि इसे भंग किया जा सकता है", "क्योंकि इसके सदस्य जीवन भर रहते हैं", "क्योंकि इसे कभी भंग नहीं किया जाता", "क्योंकि यह हमेशा सत्र में रहता है"], ans: 2, exp: "विधानपरिषद को स्थायी सदन कहते हैं क्योंकि इसे भंग नहीं किया जाता, केवल 1/3 सदस्य प्रति 2 वर्ष में बदलते हैं।" },
+  { q: "किस राज्य में विधानसभा की सर्वाधिक सीटें हैं?", opts: ["महाराष्ट्र", "पश्चिम बंगाल", "बिहार", "उत्तर प्रदेश"], ans: 3, exp: "उत्तर प्रदेश में 403 सीटें हैं जो सर्वाधिक है।" },
+  { q: "किस राज्य की विधानसभा में सबसे कम सीटें हैं (अपवाद छोड़कर)?", opts: ["गोवा", "सिक्किम", "पुदुचेरी", "मिजोरम"], ans: 1, exp: "सिक्किम में 32 सीटें हैं (पुदुचेरी में 30 सबसे कम)।" },
+  { q: "विधानसभा अध्यक्ष को हटाने से पूर्व कितने दिन की नोटिस देनी होती है?", opts: ["7 दिन", "10 दिन", "14 दिन", "21 दिन"], ans: 2, exp: "अनु. 179 — विधानसभा अध्यक्ष को हटाने हेतु 14 दिन पूर्व नोटिस अनिवार्य है।" },
+  { q: "विधानपरिषद के 1/3 सदस्य किसके द्वारा निर्वाचित होते हैं?", opts: ["राज्यपाल", "विधानसभा सदस्यों द्वारा", "स्थानीय निकायों के प्रतिनिधि", "स्नातक मतदाता"], ans: 1, exp: "1/3 सदस्य विधानसभा सदस्यों द्वारा निर्वाचित होते हैं।" },
+  { q: "तेलंगाना में विधानपरिषद का सृजन किस वर्ष हुआ?", opts: ["2012", "2013", "2014", "2015"], ans: 2, exp: "तेलंगाना में 2014 में राज्य गठन के समय विधानपरिषद का सृजन हुआ।" },
+  { q: "J&K में विधानपरिषद का समापन किस वर्ष हुआ?", opts: ["2018", "2019", "2020", "2021"], ans: 1, exp: "2019 में J&K को केंद्रशासित प्रदेश बनाए जाने पर विधानपरिषद का समापन हो गया।" },
+  { q: "किस राज्य की विधानपरिषद में सर्वाधिक सीटें हैं?", opts: ["महाराष्ट्र", "उत्तर प्रदेश", "कर्नाटक", "बिहार"], ans: 1, exp: "उत्तर प्रदेश की विधानपरिषद में 100 सीटें हैं जो सर्वाधिक है।" },
+  { q: "किस अनुच्छेद के तहत SC/ST को विधानसभा में आरक्षण दिया जाता है?", opts: ["अनु. 330", "अनु. 331", "अनु. 332", "अनु. 333"], ans: 2, exp: "अनु. 332 के तहत राज्य विधानसभाओं में SC/ST के लिए सीटें आरक्षित की जाती हैं।" },
+  { q: "विधानसभा के सत्र का स्थगन करने का अधिकार किसे है?", opts: ["राज्यपाल", "मुख्यमंत्री", "विधानसभा अध्यक्ष", "राष्ट्रपति"], ans: 2, exp: "विधानसभा के सत्र का स्थगन (Adjournment) विधानसभा अध्यक्ष करता है।" },
+  { q: "विधानपरिषद के 1/12 सदस्य किनके द्वारा निर्वाचित होते हैं?", opts: ["विधानसभा सदस्यों द्वारा", "स्थानीय निकाय प्रतिनिधि", "माध्यमिक स्तर के शिक्षक", "स्नातक मतदाता"], ans: 2, exp: "1/12 सदस्य माध्यमिक स्तर के शिक्षकों (3 वर्ष अनुभव) द्वारा निर्वाचित होते हैं।" },
+  { q: "विधानसभा का सामान्यतः कार्यकाल कितने वर्ष होता है?", opts: ["3 वर्ष", "4 वर्ष", "5 वर्ष", "6 वर्ष"], ans: 2, exp: "विधानसभा का सामान्य कार्यकाल 5 वर्ष है।" },
+  { q: "विधानपरिषद के सदस्यों का चुनाव किस पद्धति से होता है?", opts: ["प्रत्यक्ष मतदान", "आनुपातिक प्रतिनिधित्व एकल संक्रमणीय", "सूची पद्धति", "बहुमत पद्धति"], ans: 1, exp: "विधानपरिषद के सदस्यों का चुनाव आनुपातिक प्रतिनिधित्व वाली एकल संक्रमणीय पद्धति से होता है।" },
+  { q: "विधानसभा अध्यक्ष का चुनाव होने की तारीख कौन निर्धारित करता है?", opts: ["मुख्यमंत्री", "राज्यपाल", "विधानसभा अध्यक्ष स्वयं", "संसद"], ans: 1, exp: "अनु. 178 — स्पीकर के चुनाव की तारीख राज्यपाल निर्धारित करता है।" },
+  { q: "विधानपरिषद के गठन हेतु किस बहुमत की आवश्यकता होती है?", opts: ["साधारण बहुमत", "पूर्ण बहुमत", "विशेष बहुमत", "सर्वसम्मति"], ans: 2, exp: "विधानपरिषद सृजन/उत्सादन हेतु राज्य विधानसभा में विशेष बहुमत से प्रस्ताव पारित करना होता है।" },
+  { q: "महाराष्ट्र विधानपरिषद में कुल कितनी सीटें हैं?", opts: ["72", "75", "78", "82"], ans: 2, exp: "महाराष्ट्र विधानपरिषद में 78 सीटें हैं।" },
+  { q: "44वें संविधान संशोधन 1978 द्वारा विधानसभा का कार्यकाल क्या किया गया?", opts: ["5 वर्ष से बढ़ाकर 6 वर्ष", "6 वर्ष से घटाकर 5 वर्ष", "4 वर्ष से बढ़ाकर 5 वर्ष", "कोई परिवर्तन नहीं"], ans: 1, exp: "44वाँ संशोधन 1978 — 42वें द्वारा बढ़ाए गए 6 वर्ष को वापस 5 वर्ष किया गया।" },
+  { q: "राज्यपाल विधानमंडल के सदस्यों को शपथ कब दिलाता है?", opts: ["निर्वाचन के बाद", "प्रथम बैठक से पूर्व", "राज्यपाल शपथ नहीं दिलाता", "विघटन के बाद"], ans: 2, exp: "राज्यपाल विधानसभा सदस्यों को प्रथम बैठक से पूर्व शपथ दिलाता है।" },
+  { q: "विधानसभा अध्यक्ष व उपाध्यक्ष को किसके रूप में शपथ दिलाई जाती है?", opts: ["विधानसभा अध्यक्ष के रूप में", "विधानसभा सदस्य के रूप में", "राज्यपाल दिलाता है विशेष शपथ", "कोई शपथ नहीं"], ans: 1, exp: "विधानसभा अध्यक्ष/उपाध्यक्ष को अलग से शपथ नहीं दिलाई जाती — केवल विधानसभा सदस्य के रूप में शपथ होती है।" },
+];
+
+// ============ MCQ RENDERING ============
+function renderMCQs(list, containerId, prefix) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = list.map((q, i) => `
+    <div class="mcq-card" id="${prefix}-card-${i}">
+      <div class="mcq-qnum">प्रश्न ${i+1}/30 &nbsp;|&nbsp; +1 सही / -⅓ गलत</div>
+      <div class="mcq-q">${q.q}</div>
+      <div class="mcq-options">
+        ${q.opts.map((o, j) => `
+          <button class="mcq-opt" id="${prefix}-opt-${i}-${j}" 
+            onclick="selectOpt('${prefix}',${i},${j},'${prefix}-card-${i}')">
+            <span class="opt-label">${String.fromCharCode(65+j)}.</span> ${o}
+          </button>
+        `).join('')}
+      </div>
+      <div class="mcq-explanation" id="${prefix}-exp-${i}">
+        💡 <strong>व्याख्या:</strong> ${q.exp}
+      </div>
+    </div>
+  `).join('');
+}
+
+renderMCQs(rjMCQs, 'rj-mcq-container', 'rj');
+renderMCQs(stMCQs, 'st-mcq-container', 'st');
+
+// ============ MCQ LOGIC ============
+const mcqState = {
+  rj: { answers: new Array(30).fill(null), score: 0, correct: 0, wrong: 0 },
+  st: { answers: new Array(30).fill(null), score: 0, correct: 0, wrong: 0 }
+};
+
+function selectOpt(prefix, qIdx, optIdx, cardId) {
+  const state = mcqState[prefix];
+  if(state.answers[qIdx] !== null) return; // already answered
+  const questions = prefix === 'rj' ? rjMCQs : stMCQs;
+  const correctIdx = questions[qIdx].ans;
+  
+  // Mark answer
+  state.answers[qIdx] = optIdx;
+  
+  // Update buttons
+  const opts = document.querySelectorAll(`[id^="${prefix}-opt-${qIdx}-"]`);
+  opts.forEach(btn => btn.disabled = true);
+  
+  const selectedBtn = document.getElementById(`${prefix}-opt-${qIdx}-${optIdx}`);
+  const correctBtn = document.getElementById(`${prefix}-opt-${qIdx}-${correctIdx}`);
+  
+  if(optIdx === correctIdx) {
+    selectedBtn.classList.add('selected-correct');
+    state.correct++;
+    state.score += 1;
+  } else {
+    selectedBtn.classList.add('selected-wrong');
+    correctBtn.classList.add('reveal-correct');
+    state.wrong++;
+    state.score -= 1/3;
+  }
+  
+  // Show explanation
+  document.getElementById(`${prefix}-exp-${qIdx}`).classList.add('show');
+  
+  // Update score display
+  updateScoreBar(prefix);
+}
+
+function updateScoreBar(prefix) {
+  const state = mcqState[prefix];
+  const answered = state.answers.filter(a => a !== null).length;
+  document.getElementById(`${prefix}-score`).textContent = Math.round(state.score * 100) / 100;
+  document.getElementById(`${prefix}-progress-text`).textContent = `${answered} / 30 प्रश्न हल किए`;
+  document.getElementById(`${prefix}-correct-count`).textContent = `✓ सही: ${state.correct}`;
+  document.getElementById(`${prefix}-wrong-count`).textContent = `✗ गलत: ${state.wrong}`;
+}
+
+function submitMCQ(prefix) {
+  const state = mcqState[prefix];
+  const answered = state.answers.filter(a => a !== null).length;
+  const finalScore = Math.round(state.score * 100) / 100;
+  const pct = Math.round((state.correct / 30) * 100);
+  
+  let emoji = '😕', title = 'और प्रयास करें';
+  if(pct >= 80) { emoji = '🏆'; title = 'शानदार!'; }
+  else if(pct >= 60) { emoji = '👍'; title = 'अच्छा प्रयास!'; }
+  else if(pct >= 40) { emoji = '📚'; title = 'और पढ़ें'; }
+  
+  document.getElementById('popup-emoji').textContent = emoji;
+  document.getElementById('popup-title').textContent = title;
+  document.getElementById('popup-score').textContent = finalScore;
+  document.getElementById('popup-detail').innerHTML = `
+    कुल प्रश्न: 30 | हल किए: ${answered}<br>
+    ✅ सही: <strong>${state.correct}</strong> &nbsp;|&nbsp; ❌ गलत: <strong>${state.wrong}</strong><br>
+    प्रतिशत: <strong>${pct}%</strong><br><br>
+    ${pct >= 70 ? '🎉 परीक्षा के लिए तैयार हैं!' : '📖 Revision करें और फिर कोशिश करें!'}
+  `;
+  document.getElementById('resultPopup').classList.add('show');
+}
+
+function closePopup() {
+  document.getElementById('resultPopup').classList.remove('show');
+}
+</script>
+</body>
+</html>

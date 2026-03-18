@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>पंचायतीराज — Revision File | RPSC PSI & RAS</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Baloo+2:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --saffron: #FF6B2B;
+  --saffron-light: #FF8C5A;
+  --saffron-bg: #FFF3ED;
+  --green: #1A7A4A;
+  --green-light: #2EAD69;
+  --green-bg: #EDFAF3;
+  --blue: #1A5FA8;
+  --blue-light: #2E82D4;
+  --blue-bg: #EDF4FF;
+  --purple: #6B3FA0;
+  --purple-bg: #F5EEFF;
+  --amber: #C67C0A;
+  --amber-bg: #FFF8E6;
+  --teal: #0F7A7A;
+  --teal-bg: #E6FAFA;
+  --coral: #C0392B;
+  --coral-bg: #FDECEA;
+  --pink: #A0296B;
+  --pink-bg: #FDEEF6;
+  --bg: #F7F3EE;
+  --surface: #FFFFFF;
+  --text: #1A1208;
+  --text-muted: #6B5B45;
+  --text-faint: #A89880;
+  --border: #E8DDD0;
+  --border-strong: #C8B9A8;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Baloo 2', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #1A1208 0%, #2D1F0A 50%, #1A3A1A 100%);
+  padding: 20px 24px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 3px solid var(--saffron);
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.header-badge {
+  background: var(--saffron);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.header h1 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #FFFFFF;
+  flex: 1;
+}
+.header h1 span { color: var(--saffron); }
+
+/* SEARCH */
+.search-wrap {
+  position: relative;
+  margin-bottom: 10px;
+}
+.search-wrap input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 30px;
+  color: white;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.2s;
+}
+.search-wrap input::placeholder { color: rgba(255,255,255,0.5); }
+.search-wrap input:focus { background: rgba(255,255,255,0.18); border-color: var(--saffron); }
+.search-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.5);
+  font-size: 16px;
+  pointer-events: none;
+}
+.search-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  z-index: 200;
+  max-height: 220px;
+  overflow-y: auto;
+}
+.search-dropdown.show { display: block; }
+.sd-item {
+  padding: 9px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s;
+}
+.sd-item:last-child { border-bottom: none; }
+.sd-item:hover { background: var(--saffron-bg); }
+.sd-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* TABS */
+.tabs-wrap {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+.tab-btn {
+  padding: 7px 14px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: white; border-color: rgba(255,255,255,0.4); }
+.tab-btn.active {
+  background: var(--saffron);
+  border-color: var(--saffron);
+  color: white;
+}
+
+/* MAIN */
+.main { padding: 16px; max-width: 960px; margin: 0 auto; }
+.tab-panel { display: none; animation: fadeIn 0.3s ease; }
+.tab-panel.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* SECTION TITLE */
+.sec-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 18px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--saffron);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sec-title::before { content: ''; display: inline-block; width: 4px; height: 18px; background: var(--saffron); border-radius: 2px; }
+
+/* GRID */
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-bottom: 14px; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 14px; }
+
+/* CARDS */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: var(--shadow-hover); }
+.card-blue { border-top: 3px solid var(--blue); }
+.card-green { border-top: 3px solid var(--green); }
+.card-amber { border-top: 3px solid var(--amber); }
+.card-purple { border-top: 3px solid var(--purple); }
+.card-coral { border-top: 3px solid var(--coral); }
+.card-teal { border-top: 3px solid var(--teal); }
+.card-saffron { border-top: 3px solid var(--saffron); }
+.card-pink { border-top: 3px solid var(--pink); }
+
+.card h3 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.card h3.blue { color: var(--blue); }
+.card h3.green { color: var(--green); }
+.card h3.amber { color: var(--amber); }
+.card h3.purple { color: var(--purple); }
+.card h3.coral { color: var(--coral); }
+.card h3.teal { color: var(--teal); }
+.card h3.saffron { color: var(--saffron); }
+.card h3.pink { color: var(--pink); }
+
+.card ul { padding-left: 16px; }
+.card ul li { font-size: 12.5px; line-height: 1.8; color: var(--text); }
+.card ul li b { color: var(--text); }
+
+/* TAGS */
+.tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+.tag {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.tag-blue { background: var(--blue-bg); color: var(--blue); }
+.tag-green { background: var(--green-bg); color: var(--green); }
+.tag-amber { background: var(--amber-bg); color: var(--amber); }
+.tag-red { background: var(--coral-bg); color: var(--coral); }
+.tag-purple { background: var(--purple-bg); color: var(--purple); }
+.tag-teal { background: var(--teal-bg); color: var(--teal); }
+.tag-saffron { background: var(--saffron-bg); color: var(--saffron); }
+.tag-pink { background: var(--pink-bg); color: var(--pink); }
+
+/* MNEMONIC */
+.mnemonic {
+  background: linear-gradient(135deg, var(--purple-bg), var(--teal-bg));
+  border: 1px solid #C8B5E8;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 12px;
+  margin-top: 8px;
+  color: var(--purple);
+  font-weight: 500;
+}
+.mnemonic strong { color: var(--teal); }
+
+/* HIGHLIGHT */
+.hl { background: var(--amber-bg); border-radius: 3px; padding: 1px 5px; color: var(--amber); font-weight: 600; font-size: 11.5px; }
+.hl-red { background: var(--coral-bg); color: var(--coral); border-radius: 3px; padding: 1px 5px; font-weight: 600; font-size: 11.5px; }
+
+/* TABLE */
+.table-wrap { overflow-x: auto; margin: 8px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th {
+  background: #F0EAE0;
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text);
+  border-bottom: 1px solid var(--border-strong);
+  white-space: nowrap;
+}
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: #FAFAF8; }
+tr:hover td { background: var(--saffron-bg); }
+
+/* MCQ */
+.score-bar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  box-shadow: var(--shadow);
+}
+.score-label { font-size: 13px; font-weight: 700; color: var(--text); }
+.score-nums { display: flex; gap: 12px; font-size: 13px; }
+.sn-val { font-weight: 700; color: var(--blue); }
+.sn-c { font-weight: 700; color: var(--green); }
+.sn-w { font-weight: 700; color: var(--coral); }
+
+.mcq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+}
+.mcq-q { font-size: 13px; font-weight: 600; margin-bottom: 10px; line-height: 1.6; color: var(--text); }
+.mcq-q .qnum { color: var(--saffron); font-weight: 800; margin-right: 4px; }
+.exam-badge { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 700; margin-left: 6px; vertical-align: middle; }
+.eb-rj { background: var(--saffron-bg); color: var(--saffron); }
+.eb-st { background: var(--green-bg); color: var(--green); }
+
+.opts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.opt-btn {
+  padding: 8px 11px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 12px;
+  text-align: left;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+.opt-btn:hover:not(:disabled) { background: var(--blue-bg); border-color: var(--blue); }
+.opt-btn.correct { background: var(--green-bg) !important; border-color: var(--green) !important; color: var(--green) !important; font-weight: 700; }
+.opt-btn.wrong { background: var(--coral-bg) !important; border-color: var(--coral) !important; color: var(--coral) !important; }
+.opt-btn.show-correct { background: var(--green-bg) !important; border-color: var(--green) !important; color: var(--green) !important; }
+.opt-btn:disabled { cursor: default; }
+
+.explanation {
+  display: none;
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: var(--blue-bg);
+  border-radius: var(--radius-sm);
+  font-size: 11.5px;
+  color: var(--blue);
+  border-left: 3px solid var(--blue-light);
+}
+.explanation.show { display: block; }
+
+.submit-btn {
+  display: block;
+  margin: 20px auto 0;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, var(--saffron), #FF8C2B);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(255,107,43,0.3);
+  transition: all 0.2s;
+}
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,43,0.4); }
+
+/* RESULT MODAL */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+}
+.overlay.show { display: flex; }
+.modal {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 360px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+.modal-grade { font-size: 48px; margin-bottom: 8px; }
+.modal-title { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+.modal-stats { background: var(--bg); border-radius: var(--radius); padding: 14px; margin-bottom: 16px; text-align: left; }
+.modal-stat { display: flex; justify-content: space-between; padding: 5px 0; font-size: 13px; border-bottom: 1px solid var(--border); }
+.modal-stat:last-child { border-bottom: none; }
+.modal-stat b { color: var(--saffron); }
+.modal-close {
+  padding: 10px 28px;
+  background: var(--saffron);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* LAST MINUTE */
+.lm-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--purple);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px;
+  box-shadow: var(--shadow);
+}
+.lm-card h4 { font-size: 12.5px; font-weight: 700; color: var(--purple); margin-bottom: 4px; }
+.lm-card p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+.lm-card p b { color: var(--text); }
+
+.super-mnemonic {
+  background: linear-gradient(135deg, #1A1208, #2D1F0A);
+  border-radius: var(--radius);
+  padding: 16px;
+  color: white;
+}
+.super-mnemonic h3 { font-size: 14px; font-weight: 700; color: var(--saffron); margin-bottom: 10px; }
+.sm-item { font-size: 12.5px; line-height: 1.8; margin-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px; }
+.sm-item:last-child { border-bottom: none; margin-bottom: 0; }
+.sm-item .key { color: var(--saffron-light); font-weight: 700; }
+.sm-item .val { color: rgba(255,255,255,0.8); }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .header h1 { font-size: 16px; }
+  .opts-grid { grid-template-columns: 1fr; }
+  .grid2 { grid-template-columns: 1fr; }
+  .score-bar { flex-direction: column; align-items: flex-start; }
+  .main { padding: 10px; }
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+
+/* IMPORTANT ROW */
+td.imp { color: var(--saffron); font-weight: 700; }
+td.green-val { color: var(--green); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <span class="header-badge">RPSC PSI 2025</span>
+    <h1>पंचायती<span>राज</span> — Complete Revision</h1>
+    <span class="header-badge" style="background:var(--green)">RAS Pre</span>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="हिंदी में topic खोजें... जैसे: बलवंत राय मेहता, 73वां संशोधन, ग्राम सभा" autocomplete="off">
+    <div class="search-dropdown" id="searchDrop"></div>
+  </div>
+  <div class="tabs-wrap">
+    <button class="tab-btn active" onclick="showTab('revision',this)">📚 Revision</button>
+    <button class="tab-btn" onclick="showTab('summary',this)">📊 Summary Table</button>
+    <button class="tab-btn" onclick="showTab('rjpyq',this)">🏜 RJ PYQ (30)</button>
+    <button class="tab-btn" onclick="showTab('stpyq',this)">🇮🇳 States PYQ (30)</button>
+    <button class="tab-btn" onclick="showTab('lastmin',this)">⚡ Last Minute</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ======================== REVISION TAB ======================== -->
+<div id="revision" class="tab-panel active">
+
+  <div class="sec-title" id="sec-committee">पंचायतीराज समितियां</div>
+  <div class="grid2">
+
+    <div class="card card-blue" id="balwant">
+      <h3 class="blue">1. बलवंत राय मेहता समिति (1957)</h3>
+      <div class="tags">
+        <span class="tag tag-blue">गठन: Jan 1957</span>
+        <span class="tag tag-blue">रिपोर्ट: Nov 1957</span>
+      </div>
+      <ul>
+        <li><b>त्रिस्तरीय (3 tier) ढांचे</b> की सिफारिश</li>
+        <li>ग्राम → <b>ग्राम पंचायत</b></li>
+        <li>ब्लॉक/खंड → <b>पंचायत समिति</b></li>
+        <li>जिला → <b>जिला परिषद</b></li>
+        <li>जिला परिषद अध्यक्ष → <span class="hl">जिलाधिकारी</span></li>
+        <li>ग्राम पंचायत अध्यक्ष → <b>उत्पत्यक्ष (प्रत्यक्ष)</b></li>
+        <li>पंचायत समिति/जिला परिषद → <b>अप्रत्यक्ष</b></li>
+        <li><span class="hl">लोकतांत्रिक विकेन्द्रीकरण के जनक = B.R. मेहता</span></li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"बलवंत ने 3 बार बोला"</strong> → त्रिस्तरीय | Jan बनाई → Nov में रिपोर्ट</div>
+    </div>
+
+    <div class="card card-green" id="ashok">
+      <h3 class="green">2. अशोक मेहता समिति (1977)</h3>
+      <div class="tags">
+        <span class="tag tag-green">गठन: Sep 1977</span>
+        <span class="tag tag-green">रिपोर्ट: 1978</span>
+        <span class="tag tag-red">लागू नहीं हुई</span>
+      </div>
+      <ul>
+        <li><b>द्विस्तरीय ढांचा</b> → मंडल + जिला स्तर</li>
+        <li><span class="hl">पहली बार संवैधानिक दर्जे की सिफारिश</span></li>
+        <li><b>पहली बार पंचायतीराज हेतु अलग समिति</b></li>
+        <li>SC/ST आरक्षण की सिफारिश</li>
+        <li>कराधान शक्तियां (Tax)</li>
+        <li>कार्यकाल: <span class="hl">4 वर्ष</span></li>
+        <li>राजनीतिक पार्टी चुनाव में भागीदार</li>
+        <li>न्याय पंचायत की सिफारिश</li>
+        <li>लागू नहीं → <span class="hl-red">मोरारजी देसाई सरकार गिरी</span></li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"अशोक ने 2 दिया"</strong> → द्विस्तरीय | संविधान दर्जा <strong>FIRST TIME</strong></div>
+    </div>
+
+    <div class="card card-amber" id="gvk">
+      <h3 class="amber">3. G.V.K. राव समिति (1985)</h3>
+      <div class="tags">
+        <span class="tag tag-amber">कार्ड समिति</span>
+        <span class="tag tag-saffron">राजीव गांधी सरकार</span>
+      </div>
+      <ul>
+        <li>निर्धनता उन्मूलन कार्यक्रम की समीक्षा हेतु</li>
+        <li><b>चार स्तरीय ढांचा</b> (ग्राम/खंड/जिला/राज्य)</li>
+        <li>खंड पंचायत → <span class="hl">सर्वाधिक शक्तिशाली</span></li>
+        <li>जिला स्तर पर जिला विकास आयुक्त</li>
+        <li>कार्यकाल: <span class="hl">5 वर्ष</span></li>
+        <li>PRB को <span class="hl-red">"बिना जड़ की घास"</span> कहा</li>
+        <li>संवैधानिक दर्जा नहीं दिया</li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"GVK = 4 कदम + घास बिना जड़"</strong> → 4 tier + famous quote</div>
+    </div>
+
+    <div class="card card-purple" id="lm">
+      <h3 class="purple">4. L.M. सिंघवी समिति (1986)</h3>
+      <div class="tags">
+        <span class="tag tag-purple">पंचायतीराज पुनरुद्धार समिति</span>
+        <span class="tag tag-saffron">राजीव गांधी</span>
+      </div>
+      <ul>
+        <li>त्रिस्तरीय ढांचा</li>
+        <li><span class="hl">संवैधानिक दर्जे की सिफारिश</span></li>
+        <li>न्याय पंचायत</li>
+        <li><span class="hl">राज्य वित्त आयोग की सिफारिश</span></li>
+        <li>राजनीतिक दल चुनाव में भागीदार — <span class="hl-red">नहीं</span></li>
+        <li><span class="hl">महिला आरक्षण की सिफारिश</span></li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"सिंघवी = 73वें का पिता"</strong> → इसी की सिफारिश पर 73वां संशोधन आया</div>
+    </div>
+
+    <div class="card card-teal" id="thugan">
+      <h3 class="teal">5. पी.के. थुगन समिति (1988)</h3>
+      <div class="tags">
+        <span class="tag tag-teal">रिपोर्ट: 1989</span>
+        <span class="tag tag-saffron">राजीव गांधी सरकार</span>
+      </div>
+      <ul>
+        <li>त्रिस्तरीय</li>
+        <li>संवैधानिक दर्जा</li>
+        <li>कार्यकाल: 5 वर्ष</li>
+        <li><span class="hl">पंचायतीराज को संघसूची का विषय बनाने की सिफारिश</span></li>
+        <li>ग्राम पंचायतों को सीमित न्यायिक अधिकार</li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"थुगन ने Union List मांगी"</strong> → संघसूची की अनोखी सिफारिश</div>
+    </div>
+
+    <div class="card card-coral" id="gadgil">
+      <h3 class="coral">6. गाडगिल समिति (1988)</h3>
+      <div class="tags">
+        <span class="tag tag-red">राजीव गांधी सरकार</span>
+      </div>
+      <ul>
+        <li>संवैधानिक दर्जा</li>
+        <li>त्रिस्तरीय</li>
+        <li>तीनों में प्रत्यक्ष चुनाव</li>
+        <li><span class="hl">राज्य चुनाव आयोग की सिफारिश</span></li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"गाडगिल = राज्य चुनाव आयोग का जनक"</strong></div>
+    </div>
+
+  </div>
+
+  <div class="sec-title" id="sec-73">73वां संविधान संशोधन (1992)</div>
+  <div class="grid2">
+
+    <div class="card card-saffron" id="amend73">
+      <h3 class="saffron">73वां संशोधन — मुख्य तथ्य</h3>
+      <ul>
+        <li>लोकसभा में पास: <span class="hl">22 दिसंबर 1992</span></li>
+        <li>राज्यसभा में पास: <span class="hl">23 दिसंबर 1992</span></li>
+        <li>राष्ट्रपति के हस्ताक्षर: <span class="hl">20 अप्रैल 1993</span></li>
+        <li>लागू: <span class="hl">24 अप्रैल 1993</span> → <b>पंचायतीराज दिवस</b></li>
+        <li>भाग 9 → अनुच्छेद <span class="hl">243 से 243-O</span></li>
+        <li>11वीं अनुसूची → <span class="hl">29 विषय</span></li>
+        <li>PM: P.V. नरसिम्हा राव | राष्ट्रपति: शंकर दयाल शर्मा</li>
+        <li>राज्यपाल: M. मरीचन्ना रेड्डी</li>
+        <li>CM: बाबासाहेब (राजस्थान)</li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"22-23 Dec = LS-RS | 24 Apr = पंचायत दिवस"</strong></div>
+    </div>
+
+    <div class="card card-blue" id="art243">
+      <h3 class="blue">73वां — महत्वपूर्ण Articles</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Article</th><th>विषय</th></tr>
+          <tr><td>243</td><td>परिभाषाएं</td></tr>
+          <tr><td>243A</td><td>ग्राम सभा (संवैधानिक)</td></tr>
+          <tr><td>243B</td><td>ग्राम पंचायत गठन (त्रिस्तरीय)</td></tr>
+          <tr><td>243C</td><td>पंचायतों की संरचना</td></tr>
+          <tr><td>243D</td><td>आरक्षण (SC/ST + महिला 1/3)</td></tr>
+          <tr><td>243E</td><td>कार्यकाल (5 वर्ष)</td></tr>
+          <tr><td>243F</td><td>सदस्यों की अयोग्यता (21 वर्ष)</td></tr>
+          <tr><td>243G</td><td>कार्य, शक्तियां, उत्तरदायित्व</td></tr>
+          <tr><td>243H</td><td>कर अधिरोपण की शक्ति</td></tr>
+          <tr><td>243I</td><td>राज्य वित्त आयोग (पंचायत)</td></tr>
+          <tr><td>243J</td><td>लेखापरीक्षण</td></tr>
+          <tr><td>243K</td><td>राज्य निर्वाचन आयोग</td></tr>
+          <tr><td>243L</td><td>केन्द्रशासित प्रदेशों पर लागू</td></tr>
+          <tr><td>243M</td><td>छूट प्राप्त क्षेत्र</td></tr>
+          <tr><td>243N</td><td>पूर्व कानूनों को रद्द</td></tr>
+          <tr><td>243O</td><td>न्यायालय से बार</td></tr>
+        </table>
+      </div>
+      <div class="mnemonic">🧠 Trick: <strong>A=सभा B=गठन C=संरचना D=आरक्षण E=कार्यकाल F=अयोग्यता G=कार्य H=कर I=वित्त J=लेखा K=चुनाव</strong></div>
+    </div>
+
+    <div class="card card-green" id="reservation">
+      <h3 class="green">आरक्षण (अनुच्छेद 243D)</h3>
+      <ul>
+        <li>SC/ST → <span class="hl">जनसंख्या अनुपात में</span></li>
+        <li>महिला → <span class="hl">1/3 (2009 के बाद राज्य 50% कर सकते हैं)</span></li>
+        <li>OBC → <span class="hl">विधानमंडल तय करेगा</span></li>
+        <li>Art 243C: सरपंच-प्रत्यक्ष | प्रधान-अप्रत्यक्ष</li>
+        <li>जिला प्रमुख-अप्रत्यक्ष</li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"SC-ST=जन अनुपात, महिला=1/3 या आधा, OBC=विधान"</strong></div>
+    </div>
+
+    <div class="card card-purple" id="sec">
+      <h3 class="purple">राज्य निर्वाचन आयोग (Art 243K)</h3>
+      <ul>
+        <li>राजस्थान गठन: <span class="hl">17 जून 1994</span></li>
+        <li>कार्य प्रारंभ: जुलाई 1994</li>
+        <li>कार्यकाल: <span class="hl">5 वर्ष या 65 वर्ष</span></li>
+        <li>नियुक्ति: <b>राज्यपाल</b> | त्यागपत्र: राज्यपाल को</li>
+        <li>हटाना: <span class="hl">HC जज के समान</span></li>
+        <li>वेतन: <span class="hl">2.25 लाख</span></li>
+        <li>योग्यता: IAS स्तर का अधिकारी</li>
+        <li>कार्य: चुनाव कराना, मतदाता सूची</li>
+      </ul>
+    </div>
+
+    <div class="card card-teal" id="sfc">
+      <h3 class="teal">राज्य वित्त आयोग (Art 243I/Y)</h3>
+      <ul>
+        <li>हर <span class="hl">5 वर्ष</span> में राज्यपाल गठन करेगा</li>
+        <li>कार्य: राज्य व पंचायत/नगरपालिका के मध्य वित्त आवंटन</li>
+        <li>सदस्य: 1+4 (अधिकतम)</li>
+        <li>6वां वित्त आयोग: राजस्व का <span class="hl">6.75%</span></li>
+        <li>पंचायत 75% → ग्राम पं. 75%, पं.स. 20%, जि.प. 5%</li>
+        <li>नगरपालिका: 25%</li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"6.75% = 75 पंचायत 25 नगर" | ग्राम सबसे ज्यादा</strong></div>
+    </div>
+
+    <div class="card card-coral" id="rajsec">
+      <h3 class="coral">राजस्थान के निर्वाचन आयुक्त</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>क्रम</th><th>नाम</th><th>वर्ष</th></tr>
+          <tr><td>1st</td><td>अमर सिंह राठौड़ <span class="hl">(सर्वाधिक)</span></td><td>1994-2000</td></tr>
+          <tr><td>2nd</td><td>N.R. भसीन <span class="hl-red">(न्यूनतम)</span></td><td>2000-2002</td></tr>
+          <tr><td>3rd</td><td>इन्द्रजीत खन्ना</td><td>2002-2007</td></tr>
+          <tr><td>4th</td><td>अशोक कुमार पाडे</td><td>2008-2013</td></tr>
+          <tr><td>5th</td><td>राम लुभाया</td><td>2013-2017</td></tr>
+          <tr><td>6th</td><td>प्रेम सिंह मेहरा</td><td>2017-2022</td></tr>
+          <tr><td>7th</td><td class="green-val">मधुकर गुप्ता (वर्तमान)</td><td>2022-अब</td></tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-title" id="sec-rj">राजस्थान पंचायतीराज</div>
+  <div class="grid2">
+
+    <div class="card card-saffron" id="rjhistory">
+      <h3 class="saffron">राजस्थान में पंचायतीराज इतिहास</h3>
+      <ul>
+        <li><span class="hl">2 Oct 1959</span> → पं. नेहरू ने नागौर जिले के <b>बगड़ी पंचायत</b> का उद्घाटन</li>
+        <li>→ 11 Oct 1959 → <b>आंध्रप्रदेश</b> (दूसरा राज्य)</li>
+        <li>चुनाव 1960 → आंध्रप्रदेश + राजस्थान</li>
+        <li>राष्ट्रपति: डॉ. राजेंद्र प्रसाद</li>
+        <li>राज्यपाल: सरदार गुरुमुख निहाल सिंह</li>
+        <li>CM: <span class="hl">मोहनलाल सुखाड़िया</span></li>
+        <li>पंचवर्षीय योजना: दूसरी पंचवर्षीय योजना</li>
+        <li><span class="hl-red">1960 के दशक = पंचायतीराज का संकटकाल</span></li>
+        <li><span class="hl">राजीव गांधी = आधुनिक पंचायतीराज के जनक</span></li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"2 Oct 1959 = नागौर = नेहरू | बगड़ी पंचायत"</strong></div>
+    </div>
+
+    <div class="card card-green" id="rjact">
+      <h3 class="green">राजस्थान पंचायतीराज अधिनियम</h3>
+      <ul>
+        <li>राज. पंचायतीराज विभाग: <span class="hl">1949</span></li>
+        <li>राज. ग्राम पंचायत Act: 1953 (Jan 1954 लागू)</li>
+        <li>पंचायत समिति व जिला परिषद Act: <span class="hl">1959</span></li>
+        <li><span class="hl">राजस्थान पंचायतीराज Act 1994 → 23 अप्रैल 1994</span></li>
+        <li>राजस्थान पंचायतीराज नियम: <span class="hl">1996</span></li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"1953 Act → 1994 Act → 1996 नियम"</strong></div>
+    </div>
+
+    <div class="card card-amber" id="rjcurrent">
+      <h3 class="amber">वर्तमान में राजस्थान पंचायतीराज</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>पद</th><th>पहले</th><th>वर्तमान</th></tr>
+          <tr><td>जिला प्रमुख</td><td>33</td><td class="imp">41</td></tr>
+          <tr><td>जिला परिषद सदस्य</td><td>1014</td><td class="imp">1150</td></tr>
+          <tr><td>प्रधान</td><td>352</td><td class="imp">437</td></tr>
+          <tr><td>पंचायत समिति सदस्य</td><td>6426</td><td class="imp">7701</td></tr>
+          <tr><td>सरपंच</td><td>11320</td><td class="imp">14781 (3440 नई)</td></tr>
+          <tr><td>वार्डपंच</td><td>107707</td><td class="imp">142107</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card card-purple" id="rjvfa">
+      <h3 class="purple">राज. राज्य वित्त आयोग अध्यक्ष</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>क्रम</th><th>नाम</th><th>वर्ष</th></tr>
+          <tr><td>1st</td><td>K.K. गोयल</td><td>1995-2000</td></tr>
+          <tr><td>2nd</td><td>हीरालाल देवपुरा</td><td>2000-2005</td></tr>
+          <tr><td>3rd</td><td>माठिणम्य चन्द मुराणा</td><td>2005-2010</td></tr>
+          <tr><td>4th</td><td>B.D. कल्ला</td><td>2010-2015</td></tr>
+          <tr><td>5th</td><td>ज्योति किरण</td><td>2015-2020</td></tr>
+          <tr><td>6th</td><td>प्रद्युमन सिंह</td><td>2020-2025</td></tr>
+          <tr><td>7th</td><td class="green-val">सरोज चतुर्वेदी</td><td>वर्तमान</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card card-teal" id="gramsabha">
+      <h3 class="teal">ग्राम सभा (Art. 243A)</h3>
+      <ul>
+        <li>ग्राम के पंजीकृत मतदाता = ग्राम सभा सदस्य</li>
+        <li>अध्यक्ष: <b>सरपंच</b> | उपाध्यक्ष: उपसरपंच</li>
+        <li>बैठक: वर्ष में <span class="hl">न्यूनतम 2 बार</span></li>
+        <li>वर्तमान: <span class="hl">4 बैठकें</span> — 26 Jan, 15 Aug, 1 May, 2 Oct</li>
+        <li>राज. पहली ग्राम सभा: <span class="hl">26 Jan 1999</span>, सांगानेर के बुहाना पंचायत में</li>
+        <li>राजस्थान = <span class="hl">वाड़ी सभा</span> → 7 जून 2000 (भारत का पहला राज्य)</li>
+      </ul>
+    </div>
+
+    <div class="card card-pink" id="rjpesa">
+      <h3 class="pink">PESA Act 1996</h3>
+      <ul>
+        <li><b>Panchayat Extension to Scheduled Areas Act</b></li>
+        <li>दीलिप सिंह भूरिया समिति → गठन 1994 → सिफारिश 1996</li>
+        <li>PESA Act → <span class="hl">24 दिसंबर 1996</span></li>
+        <li>भारत के <span class="hl">10 राज्यों</span> में लागू</li>
+        <li>राजस्थान के <span class="hl">8 जिलों</span> में लागू</li>
+        <li>पूर्णतः लागू: बांसवाड़ा, उदयपुर, डूंगरपुर</li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"PESA = 5th Schedule = 10 राज्य = 24 Dec 1996"</strong></div>
+    </div>
+
+  </div>
+
+  <div class="sec-title" id="sec-74">नगरीय स्वशासन (74वां संशोधन)</div>
+  <div class="grid2">
+
+    <div class="card card-blue" id="amend74">
+      <h3 class="blue">74वां संविधान संशोधन (1992)</h3>
+      <ul>
+        <li>LS: 22 Dec 1992 | RS: 23 Dec 1992</li>
+        <li>राष्ट्रपति हस्ताक्षर: 20 Apr 1993</li>
+        <li>लागू: <span class="hl">1 जून 1993</span></li>
+        <li>भाग 9A → अनुच्छेद <span class="hl">243P से 243ZG</span></li>
+        <li>12वीं अनुसूची → <span class="hl">18 विषय</span></li>
+        <li><span class="hl">लॉर्ड रिपन = नगरीय स्वशासन के जनक</span></li>
+        <li>1688 → मद्रास में पहला नगर निगम</li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"74वां = 1 जून 1993 | 12वीं सूची = 18 विषय"</strong></div>
+    </div>
+
+    <div class="card card-green" id="nagarstruc">
+      <h3 class="green">नगरीय निकाय (Art. 243Q)</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>क्षेत्र</th><th>निकाय</th><th>प्रमुख</th></tr>
+          <tr><td>संक्रमणकालीन</td><td>नगरपालिका</td><td>अध्यक्ष/चेयरमैन (EV)</td></tr>
+          <tr><td>लघुतर नगरीय</td><td>नगर परिषद</td><td>सभापति (AIV)</td></tr>
+          <tr><td>वृहत्तर नगरीय</td><td>नगर निगम</td><td>मेयर/महापौर (AIV)</td></tr>
+        </table>
+      </div>
+      <ul>
+        <li>राज. पहली निर्वाचित नगरपालिका → <span class="hl">ब्यावर</span></li>
+        <li>राज. प्रथम नगर निगम → <span class="hl">जयपुर (1869)</span></li>
+        <li>माउंट आबू(1864)→अजमेर(1866)→दतावर(1867)→जयपुर(1869)</li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"माउंट अज़ दत जय" = 64 66 67 69</strong></div>
+    </div>
+
+    <div class="card card-amber" id="nagarposts">
+      <h3 class="amber">नगरीय निकाय — त्यागपत्र</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>पद</th><th>त्यागपत्र/शपथ</th></tr>
+          <tr><td>नगरपालिका अध्यक्ष</td><td>जिला कलेक्टर को</td></tr>
+          <tr><td>सभापति (नगर परिषद)</td><td>संभागीय आयुक्त को</td></tr>
+          <tr><td>मेयर (नगर निगम)</td><td>संभागीय आयुक्त को</td></tr>
+          <tr><td>शपथ — नगरपालिका</td><td>जिला कलेक्टर</td></tr>
+          <tr><td>शपथ — नगर परिषद/निगम</td><td>जिला कलेक्टर</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card card-coral" id="rjsamitilocal">
+      <h3 class="coral">राजस्थान की स्थानीय समितियां</h3>
+      <ul>
+        <li>साहिक अली समिति → <span class="hl">1964</span></li>
+        <li>गिरधारी लाल व्यास समिति → <span class="hl">1973</span></li>
+        <li>हरलाल सिंह खर्रा समिति → <span class="hl">1990</span></li>
+        <li>गुलाब चन्द कटारिया समिति → <span class="hl">2009</span></li>
+      </ul>
+      <div class="mnemonic">🧠 Trick: <strong>"साहिक(64) गिरधारी(73) हरलाल(90) गुलाब(09)"</strong></div>
+    </div>
+
+    <div class="card card-teal" id="jilaaayojan">
+      <h3 class="teal">जिला आयोजन समिति (Art. 243ZD)</h3>
+      <ul>
+        <li>सदस्य: <span class="hl">25</span> | अध्यक्ष: <b>जिला प्रमुख</b></li>
+        <li>4/5 भाग → पंचायत/नगरपालिका से (20 सदस्य)</li>
+        <li>3 पदेन: जिला कलेक्टर, CEO, ACEO</li>
+        <li>2 सदस्य: राज्य सरकार मनोनीत (सांसद + वरिष्ठ विधायक)</li>
+        <li>उद्देश्य: ग्रामीण-शहरी स्वशासन समन्वय</li>
+      </ul>
+    </div>
+
+    <div class="card card-pink" id="panchayatchunavrj">
+      <h3 class="pink">राजस्थान पंचायतीराज चुनाव इतिहास</h3>
+      <ul>
+        <li>1960, 1965, 1978, 1981, 1988 → चुनाव विभाग द्वारा</li>
+        <li>6वें (1995) से → <span class="hl">निर्वाचन आयोग द्वारा</span></li>
+        <li>7th→2000 | 8th→2005 | 9th→2010 | 10th→2015 | 11th→2020</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================== SUMMARY TAB ======================== -->
+<div id="summary" class="tab-panel">
+
+  <div class="sec-title">समितियां — Master Comparison Table</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>समिति</th><th>वर्ष</th><th>सरकार</th><th>ढांचा</th><th>कार्यकाल</th><th>संवैधानिक दर्जा</th><th>विशेष बात</th></tr>
+      <tr><td>बलवंत राय मेहता</td><td class="imp">1957</td><td>नेहरू</td><td>त्रिस्तरीय</td><td>—</td><td>नहीं</td><td>लोकतांत्रिक विकेन्द्रीकरण के जनक</td></tr>
+      <tr><td>अशोक मेहता</td><td class="imp">1977</td><td>जनता</td><td>द्विस्तरीय</td><td>4 वर्ष</td><td>सिफारिश (लागू नहीं)</td><td>पहली बार अलग समिति, SC/ST आरक्षण, Tax</td></tr>
+      <tr><td>GVK राव</td><td class="imp">1985</td><td>राजीव</td><td>चार स्तरीय</td><td>5 वर्ष</td><td>नहीं</td><td>"बिना जड़ की घास", खंड सबसे शक्तिशाली</td></tr>
+      <tr><td>LM सिंघवी</td><td class="imp">1986</td><td>राजीव</td><td>त्रिस्तरीय</td><td>—</td><td>सिफारिश</td><td>महिला आरक्षण, राज्य वित्त आयोग</td></tr>
+      <tr><td>पी.के. थुगन</td><td class="imp">1988</td><td>राजीव</td><td>त्रिस्तरीय</td><td>5 वर्ष</td><td>सिफारिश</td><td>संघसूची में पंचायतीराज</td></tr>
+      <tr><td>गाडगिल</td><td class="imp">1988</td><td>राजीव</td><td>त्रिस्तरीय</td><td>—</td><td>सिफारिश</td><td>राज्य चुनाव आयोग की सिफारिश</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-title">संविधान संशोधन Quick Reference</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>संशोधन</th><th>विषय</th><th>लागू तिथि</th><th>भाग</th><th>अनुसूची</th><th>विषयों की संख्या</th></tr>
+      <tr><td>64वां (1989)</td><td>पंचायतीराज (असफल)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td>65वां (1989)</td><td>नगरीय (असफल)</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td class="imp">73वां (1992)</td><td>पंचायतीराज</td><td class="imp">24 Apr 1993</td><td>भाग 9</td><td>11वीं</td><td class="imp">29</td></tr>
+      <tr><td class="imp">74वां (1992)</td><td>नगरीय स्वशासन</td><td class="imp">1 Jun 1993</td><td>भाग 9A</td><td>12वीं</td><td class="imp">18</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-title">Quick Reference — महत्वपूर्ण तथ्य</div>
+  <div class="table-wrap">
+    <table>
+      <tr><th>विषय</th><th>मुख्य तथ्य</th></tr>
+      <tr><td>पंचायतीराज प्रारंभ (भारत)</td><td class="imp">2 October 1959, नागौर, बगड़ी पंचायत, राजस्थान</td></tr>
+      <tr><td>पंचायतीराज दिवस</td><td class="imp">24 अप्रैल</td></tr>
+      <tr><td>73वां — पहला लागू करने वाला राज्य</td><td class="green-val">कर्नाटक</td></tr>
+      <tr><td>73वां — पहला चुनाव कराने वाला राज्य</td><td class="green-val">मध्यप्रदेश (May-Jun 1994)</td></tr>
+      <tr><td>राज. पंचायतीराज Act</td><td class="imp">23 अप्रैल 1994</td></tr>
+      <tr><td>राज. SEC गठन</td><td class="imp">17 जून 1994</td></tr>
+      <tr><td>Art 243M — छूट</td><td>नागालैंड, मेघालय, मिजोरम, मणिपुर पर्वत, WB दार्जिलिंग</td></tr>
+      <tr><td>PESA Act</td><td class="imp">24 दिसंबर 1996 | 10 राज्य | राज. 8 जिले</td></tr>
+      <tr><td>SEC वेतन</td><td class="imp">2.25 लाख</td></tr>
+      <tr><td>ग्राम सभा बैठक (वर्तमान)</td><td>4 बार: 26 Jan, 15 Aug, 1 May, 2 Oct</td></tr>
+      <tr><td>लॉर्ड रिपन</td><td>नगरीय स्वशासन के जनक</td></tr>
+      <tr><td>नगर निगम पहली बार (भारत)</td><td class="imp">1688, मद्रास</td></tr>
+      <tr><td>राज. पहली निर्वाचित नगरपालिका</td><td class="imp">ब्यावर</td></tr>
+      <tr><td>राज. प्रथम नगर निगम</td><td class="imp">जयपुर (1869)</td></tr>
+      <tr><td>वाड़ी सभा — भारत का पहला राज्य</td><td class="imp">राजस्थान (7 जून 2000)</td></tr>
+      <tr><td>राज. पहली ग्राम सभा</td><td class="imp">26 Jan 1999, सांगानेर, बुहाना पंचायत</td></tr>
+      <tr><td>6वां वित्त आयोग अध्यक्ष (वर्तमान)</td><td class="green-val">सरोज चतुर्वेदी (7वां)</td></tr>
+      <tr><td>SEC वर्तमान (राज.)</td><td class="green-val">मधुकर गुप्ता (7वें, 2022-)</td></tr>
+    </table>
+  </div>
+
+  <div class="grid2">
+    <div class="card card-blue">
+      <h3 class="blue">11वीं अनुसूची — 29 विषय (पंचायत)</h3>
+      <p style="font-size:12px;line-height:1.8;color:var(--text-muted)">कृषि, भूमि सुधार, लघु सिंचाई, पशुपालन, मत्स्य पालन, सामाजिक वानिकी, लघु वन उपज, लघु उद्योग, खादी, ग्रामीण आवास, पीने का पानी, ईंधन-चारा, सड़क, ग्रामीण विद्युतीकरण, गरीबी उन्मूलन, शिक्षा, तकनीकी प्रशिक्षण, बाजार/मेले, स्वास्थ्य-स्वच्छता, परिवार कल्याण, महिला व बाल विकास, समाज कल्याण, कमजोर वर्ग, PDS, सांस्कृतिक, पुस्तकालय, खेल, सार्वजनिक वितरण, सामुदायिक संपत्ति रखरखाव</p>
+    </div>
+    <div class="card card-green">
+      <h3 class="green">12वीं अनुसूची — 18 विषय (नगरपालिका)</h3>
+      <p style="font-size:12px;line-height:1.8;color:var(--text-muted)">नगर नियोजन, भूमि उपयोग, सार्वजनिक स्वास्थ्य, अग्निशमन, शहरी वानिकी, झुग्गी सुधार, शहरी गरीबी उन्मूलन, पार्क/उद्यान, सड़क/पुल, जल आपूर्ति, सार्वजनिक परिवहन, बूचड़खाना, विद्युत वितरण, शिक्षा, सांस्कृतिक/शैक्षणिक, कब्रिस्तान, जन्म/मृत्यु पंजीयन, वाणिज्यिक उपयोग</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ======================== RJ PYQ TAB ======================== -->
+<div id="rjpyq" class="tab-panel">
+  <div class="score-bar">
+    <span class="score-label">🏜 राजस्थान PYQ — 30 प्रश्न | +1 सही / -⅓ गलत</span>
+    <div class="score-nums">
+      <span>स्कोर: <span class="sn-val" id="rj-score">0</span></span>
+      <span>✅ <span class="sn-c" id="rj-correct">0</span></span>
+      <span>❌ <span class="sn-w" id="rj-wrong">0</span></span>
+    </div>
+  </div>
+  <div id="rjq-container"></div>
+  <button class="submit-btn" onclick="submitMCQ('rj')">परिणाम देखें →</button>
+</div>
+
+<!-- ======================== STATES PYQ TAB ======================== -->
+<div id="stpyq" class="tab-panel">
+  <div class="score-bar">
+    <span class="score-label">🇮🇳 अन्य राज्य PYQ — 30 प्रश्न | +1 सही / -⅓ गलत</span>
+    <div class="score-nums">
+      <span>स्कोर: <span class="sn-val" id="st-score">0</span></span>
+      <span>✅ <span class="sn-c" id="st-correct">0</span></span>
+      <span>❌ <span class="sn-w" id="st-wrong">0</span></span>
+    </div>
+  </div>
+  <div id="stq-container"></div>
+  <button class="submit-btn" onclick="submitMCQ('st')">परिणाम देखें →</button>
+</div>
+
+<!-- ======================== LAST MINUTE TAB ======================== -->
+<div id="lastmin" class="tab-panel">
+  <div class="sec-title">⚡ Last Minute Compact Cards</div>
+  <div class="grid2">
+    <div class="lm-card"><h4>समितियां क्रम</h4><p>बलवंत(57) → अशोक(77) → GVK(85) → LM सिंघवी(86) → थुगन(88) → गाडगिल(88)</p></div>
+    <div class="lm-card"><h4>73वां Key Dates</h4><p>22 Dec(LS) → 23 Dec(RS) → 20 Apr 93(हस्ताक्षर) → <b>24 Apr 1993 लागू</b></p></div>
+    <div class="lm-card"><h4>74वां Key Date</h4><p><b>1 June 1993</b> लागू | भाग 9A | 12वीं सूची <b>18 विषय</b></p></div>
+    <div class="lm-card"><h4>राजस्थान First</h4><p>2 Oct 1959 नागौर | 73वां पहले लागू: <b>कर्नाटक</b> | पहले चुनाव: <b>MP</b></p></div>
+    <div class="lm-card"><h4>Art 243D — आरक्षण</h4><p>SC/ST=जनसंख्या अनुपात | महिला=1/3 (<b>50% भी हो सकता</b>) | OBC=विधानमंडल</p></div>
+    <div class="lm-card"><h4>6वां वित्त आयोग</h4><p>6.75% | पंचायत 75% | नगर 25% | ग्राम पं. = 75% का <b>75%</b></p></div>
+    <div class="lm-card"><h4>PESA 1996</h4><p><b>24 Dec 1996</b> | 10 राज्य | राज. 8 जिले | भूरिया समिति 1994</p></div>
+    <div class="lm-card"><h4>SEC — राजस्थान</h4><p><b>17 Jun 1994</b> गठन | वेतन <b>2.25 लाख</b> | 5yr या 65yr | वर्तमान: मधुकर गुप्ता</p></div>
+    <div class="lm-card"><h4>ग्राम सभा 4 बैठकें</h4><p>26 Jan | 15 Aug | 1 May | 2 Oct</p></div>
+    <div class="lm-card"><h4>जिला आयोजन समिति</h4><p>Art 243ZD | <b>25 सदस्य</b> | अध्यक्ष=जिला प्रमुख | 20 चुने हुए</p></div>
+    <div class="lm-card"><h4>Art 243M — छूट प्राप्त</h4><p>नागालैंड, मेघालय, मिजोरम, मणिपुर (पर्वत), WB दार्जिलिंग</p></div>
+    <div class="lm-card"><h4>नगरीय इतिहास (राज.)</h4><p>माउंट आबू(64)→अजमेर(66)→दतावर(67)→जयपुर(69) | पहली नगरपालिका=ब्यावर</p></div>
+  </div>
+
+  <div class="sec-title">🧠 Super Mnemonics</div>
+  <div class="grid2">
+    <div class="super-mnemonic">
+      <h3>समितियां Mnemonic</h3>
+      <div class="sm-item"><span class="key">"बलवंत अशोक, GVK LM ने थुगन गाडगिल पढ़ाया"</span></div>
+      <div class="sm-item"><span class="key">B</span><span class="val">alvant(57) → </span><span class="key">A</span><span class="val">shok(77) → </span><span class="key">G</span><span class="val">VK(85) → </span><span class="key">L</span><span class="val">M(86) → </span><span class="key">T</span><span class="val">hugan(88) → </span><span class="key">G</span><span class="val">adgil(88)</span></div>
+      <div class="sm-item"><span class="key">अशोक</span><span class="val"> = पहली बार संवैधानिक दर्जे की मांग</span></div>
+      <div class="sm-item"><span class="key">GVK</span><span class="val"> = 4 tier + बिना जड़ की घास</span></div>
+      <div class="sm-item"><span class="key">सिंघवी</span><span class="val"> = 73वें का पिता (पुनरुद्धार समिति)</span></div>
+      <div class="sm-item"><span class="key">थुगन</span><span class="val"> = Union List की मांग (अनोखा)</span></div>
+      <div class="sm-item"><span class="key">गाडगिल</span><span class="val"> = SEC का जनक</span></div>
+    </div>
+    <div class="super-mnemonic">
+      <h3>73वां vs 74वां</h3>
+      <div class="sm-item"><span class="key">73</span><span class="val"> = 24 April = ग्रामीण = भाग 9 = 11वीं = 29 विषय</span></div>
+      <div class="sm-item"><span class="key">74</span><span class="val"> = 1 June = शहरी = भाग 9A = 12वीं = 18 विषय</span></div>
+      <div class="sm-item"><span class="key">Trick:</span><span class="val"> "73 गाँव (24 Apr) | 74 शहर (1 Jun)"</span></div>
+      <div class="sm-item"><span class="key">29 - 18</span><span class="val"> = अंतर 11 | 11वीं - 12वीं अनुसूची</span></div>
+    </div>
+    <div class="super-mnemonic">
+      <h3>Art 243 ABCDEFGHIJK</h3>
+      <div class="sm-item"><span class="key">A</span><span class="val">=ग्राम सभा | </span><span class="key">B</span><span class="val">=गठन | </span><span class="key">C</span><span class="val">=संरचना</span></div>
+      <div class="sm-item"><span class="key">D</span><span class="val">=आरक्षण | </span><span class="key">E</span><span class="val">=कार्यकाल | </span><span class="key">F</span><span class="val">=अयोग्यता</span></div>
+      <div class="sm-item"><span class="key">G</span><span class="val">=कार्य | </span><span class="key">H</span><span class="val">=कर | </span><span class="key">I</span><span class="val">=वित्त आयोग</span></div>
+      <div class="sm-item"><span class="key">J</span><span class="val">=लेखापरीक्षण | </span><span class="key">K</span><span class="val">=चुनाव आयोग</span></div>
+      <div class="sm-item"><span class="key">Trick:</span><span class="val"> "ABC DEFGH IJK = ग्राम से आयोग तक!"</span></div>
+    </div>
+    <div class="super-mnemonic">
+      <h3>राजस्थान Key Dates</h3>
+      <div class="sm-item"><span class="key">2 Oct 1959</span><span class="val"> = पहला पंचायतीराज (नागौर)</span></div>
+      <div class="sm-item"><span class="key">23 Apr 1994</span><span class="val"> = राज. पंचायतीराज Act</span></div>
+      <div class="sm-item"><span class="key">17 Jun 1994</span><span class="val"> = SEC गठन</span></div>
+      <div class="sm-item"><span class="key">26 Jan 1999</span><span class="val"> = पहली ग्राम सभा (बुहाना)</span></div>
+      <div class="sm-item"><span class="key">7 Jun 2000</span><span class="val"> = वाड़ी सभा (भारत में पहला)</span></div>
+      <div class="sm-item"><span class="key">24 Dec 1996</span><span class="val"> = PESA Act</span></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<!-- RESULT MODAL -->
+<div class="overlay" id="overlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-grade" id="modal-grade">🏆</div>
+    <div class="modal-title" id="modal-title">परिणाम</div>
+    <div class="modal-stats" id="modal-stats"></div>
+    <button class="modal-close" onclick="closeModal()">बंद करें</button>
+  </div>
+</div>
+
+<script>
+const rjQuestions = [
+  {q:"पंचायतीराज की शुरुआत भारत में सबसे पहले किस राज्य में हुई?",opts:["आंध्रप्रदेश","राजस्थान","मध्यप्रदेश","कर्नाटक"],ans:1,exp:"2 October 1959 को नागौर, राजस्थान में पं. नेहरू ने बगड़ी पंचायत का उद्घाटन किया।"},
+  {q:"राजस्थान में पंचायतीराज की शुरुआत किस जिले से हुई?",opts:["जयपुर","अजमेर","नागौर","जोधपुर"],ans:2,exp:"नागौर जिले के बगड़ी पंचायत से 2 Oct 1959 को।"},
+  {q:"राजस्थान पंचायतीराज Act कब लागू हुआ?",opts:["23 April 1994","24 April 1993","17 June 1994","1 June 1993"],ans:0,exp:"राजस्थान पंचायतीराज Act 1994 → 23 अप्रैल 1994 को लागू।"},
+  {q:"राजस्थान राज्य निर्वाचन आयोग का गठन कब हुआ?",opts:["24 April 1993","17 June 1994","23 April 1994","1 July 1994"],ans:1,exp:"राजस्थान SEC गठन: 17 जून 1994 | कार्य प्रारंभ: जुलाई 1994।"},
+  {q:"राजस्थान के राज्य निर्वाचन आयुक्त का वेतन कितना है?",opts:["1.50 लाख","2.00 लाख","2.25 लाख","2.50 लाख"],ans:2,exp:"SEC का वेतन 2.25 लाख रुपये है।"},
+  {q:"राजस्थान में वर्तमान में जिला प्रमुखों की कुल संख्या कितनी है?",opts:["33","36","41","50"],ans:2,exp:"नई पंचायतों के बाद राजस्थान में जिला प्रमुखों की संख्या 41 हो गई है।"},
+  {q:"राजस्थान में वाड़ी सभा का गठन करने वाला भारत का पहला राज्य कौनसा था?",opts:["कर्नाटक","राजस्थान","मध्यप्रदेश","महाराष्ट्र"],ans:1,exp:"राजस्थान 7 जून 2000 को वाड़ी सभा का गठन करने वाला भारत का पहला राज्य बना।"},
+  {q:"राजस्थान में 6वें राज्य वित्त आयोग के अनुसार राजस्व का कितना % पंचायत-नगरपालिका को मिलता है?",opts:["5%","6%","6.75%","7%"],ans:2,exp:"6वें वित्त आयोग में राजस्व का 6.75% → 75% पंचायत, 25% नगरपालिका।"},
+  {q:"राजस्थान में 6वें वित्त आयोग में ग्राम पंचायत को पंचायत के हिस्से का कितना % मिलता है?",opts:["50%","60%","75%","80%"],ans:2,exp:"पंचायत के 75% में से: ग्राम पंचायत 75%, पंचायत समिति 20%, जिला परिषद 5%।"},
+  {q:"राजस्थान की पहली निर्वाचित नगरपालिका कौनसी थी?",opts:["जयपुर","अजमेर","ब्यावर","जोधपुर"],ans:2,exp:"राजस्थान की पहली निर्वाचित नगरपालिका ब्यावर थी।"},
+  {q:"राजस्थान का प्रथम नगर निगम कहाँ स्थापित हुआ?",opts:["अजमेर","जोधपुर","जयपुर","कोटा"],ans:2,exp:"राजस्थान का प्रथम नगर निगम जयपुर में 1869 में स्थापित हुआ।"},
+  {q:"राजस्थान में PESA Act कितने जिलों में लागू है?",opts:["3","5","8","10"],ans:2,exp:"राजस्थान में PESA Act 8 जिलों में लागू है — 3 पूर्णतः (बांसवाड़ा, उदयपुर, डूंगरपुर)।"},
+  {q:"राजस्थान की पहली ग्राम सभा कब और कहाँ आयोजित हुई?",opts:["15 Aug 1998, जयपुर","26 Jan 1999, सांगानेर","2 Oct 1999, नागौर","1 May 2000, अजमेर"],ans:1,exp:"26 January 1999 को सांगानेर के बुहाना पंचायत में राजस्थान की पहली ग्राम सभा।"},
+  {q:"राजस्थान में ग्राम सभा की बैठक वर्तमान में वर्ष में कितनी बार होती है?",opts:["2","3","4","6"],ans:2,exp:"वर्तमान में 4 बार — 26 Jan, 15 Aug, 1 May, 2 Oct।"},
+  {q:"राजस्थान के 7वें राज्य वित्त आयोग के अध्यक्ष कौन हैं?",opts:["प्रद्युमन सिंह","B.D. कल्ला","सरोज चतुर्वेदी","मधुकर गुप्ता"],ans:2,exp:"राजस्थान के 7वें राज्य वित्त आयोग के अध्यक्ष सरोज चतुर्वेदी हैं।"},
+  {q:"राजस्थान में जिला आयोजन समिति के कितने सदस्य होते हैं?",opts:["15","20","25","30"],ans:2,exp:"Art 243ZD के तहत जिला आयोजन समिति में 25 सदस्य होते हैं।"},
+  {q:"राजस्थान के वर्तमान राज्य निर्वाचन आयुक्त (2025) कौन हैं?",opts:["प्रेम सिंह मेहरा","मधुकर गुप्ता","अमर सिंह राठौड़","राम लुभाया"],ans:1,exp:"मधुकर गुप्ता 2022 से राजस्थान के राज्य निर्वाचन आयुक्त हैं।"},
+  {q:"राजस्थान में पंचायतीराज की शुरुआत के समय मुख्यमंत्री कौन थे?",opts:["जयनारायण व्यास","मोहनलाल सुखाड़िया","हरिदेव जोशी","शिवचरण माथुर"],ans:1,exp:"2 October 1959 को मोहनलाल सुखाड़िया राजस्थान के मुख्यमंत्री थे।"},
+  {q:"राजस्थान में ग्राम सभा की न्यूनतम बैठक प्रति वर्ष कितनी होनी चाहिए?",opts:["1","2","3","4"],ans:1,exp:"न्यूनतम 2 बार (वर्तमान में 4 बार की जाती है)।"},
+  {q:"राजस्थान में पंचायतीराज के पहले चुनाव कब हुए?",opts:["1959","1960","1962","1965"],ans:1,exp:"राजस्थान में पंचायतीराज के पहले चुनाव 1960 में हुए।"},
+  {q:"राजस्थान में सर्वाधिक समय तक SEC रहने वाले आयुक्त कौन थे?",opts:["मधुकर गुप्ता","N.R. भसीन","अमर सिंह राठौड़","राम लुभाया"],ans:2,exp:"अमर सिंह राठौड़ (1994-2000) सर्वाधिक समय तक SEC रहे।"},
+  {q:"राजस्थान में ग्राम पंचायत के सरपंच का चुनाव किस विधि से होता है?",opts:["प्रत्यक्ष","अप्रत्यक्ष","मनोनयन","लॉटरी"],ans:0,exp:"सरपंच का चुनाव प्रत्यक्ष मतदान से होता है।"},
+  {q:"राजस्थान में पंचायत समिति के प्रधान का चुनाव किस विधि से होता है?",opts:["प्रत्यक्ष","अप्रत्यक्ष","मनोनयन","राज्यपाल द्वारा"],ans:1,exp:"प्रधान (पंचायत समिति) का चुनाव अप्रत्यक्ष विधि से होता है।"},
+  {q:"राजस्थान में जिला परिषद के जिला प्रमुख का त्यागपत्र किसे दिया जाता है?",opts:["मुख्यमंत्री","राज्यपाल","संभागीय आयुक्त","जिला कलेक्टर"],ans:2,exp:"जिला प्रमुख अपना त्यागपत्र संभागीय आयुक्त को देते हैं।"},
+  {q:"राजस्थान में SEC को हटाने की प्रक्रिया किसके समान है?",opts:["IAS अधिकारी","राज्यपाल","उच्च न्यायालय के जज","मुख्यमंत्री"],ans:2,exp:"SEC को हटाना उच्च न्यायालय के जज के समान प्रक्रिया से होता है।"},
+  {q:"राजस्थान में पंचायत सदस्यों के लिए न्यूनतम आयु कितनी है?",opts:["18 वर्ष","21 वर्ष","25 वर्ष","30 वर्ष"],ans:1,exp:"Art 243F: पंचायत सदस्यता के लिए न्यूनतम आयु 21 वर्ष है।"},
+  {q:"राजस्थान में 73वें संशोधन के बाद पहले पंचायत चुनाव कब हुए?",opts:["1993","1994","1995","1996"],ans:2,exp:"73वें संशोधन के बाद राजस्थान में 6वें पंचायत चुनाव 1995 में हुए।"},
+  {q:"राजस्थान में पंचायतीराज के संदर्भ में 'साहिक अली समिति' कब गठित हुई?",opts:["1960","1964","1973","1990"],ans:1,exp:"राजस्थान में पंचायतीराज से जुड़ी साहिक अली समिति 1964 में गठित हुई।"},
+  {q:"राजस्थान में पंचायत समिति का त्यागपत्र किसे दिया जाता है?",opts:["जिला प्रमुख","जिला कलेक्टर","BDO","मुख्यमंत्री"],ans:2,exp:"प्रधान अपना त्यागपत्र BDO (Block Development Officer) को देते हैं।"},
+  {q:"राजस्थान में माउंट आबू में नगरपालिका कब स्थापित हुई?",opts:["1860","1864","1869","1875"],ans:1,exp:"राजस्थान में माउंट आबू में पहली नगरपालिका 1864 में स्थापित हुई।"},
+];
+
+const stQuestions = [
+  {q:"बलवंत राय मेहता समिति की रिपोर्ट कब प्रस्तुत की गई?",opts:["Jan 1957","Nov 1957","Jan 1958","Nov 1958"],ans:1,exp:"बलवंत राय मेहता समिति का गठन Jan 1957 में और रिपोर्ट November 1957 में।"},
+  {q:"'लोकतांत्रिक विकेन्द्रीकरण' का जनक किसे माना जाता है?",opts:["अशोक मेहता","बलवंत राय मेहता","L.M. सिंघवी","राजीव गांधी"],ans:1,exp:"B.R. मेहता को लोकतांत्रिक विकेन्द्रीकरण का जनक कहा जाता है।"},
+  {q:"73वां संविधान संशोधन संविधान के किस भाग में जोड़ा गया?",opts:["भाग 8","भाग 9","भाग 9A","भाग 10"],ans:1,exp:"73वां संशोधन → भाग 9 | 74वां → भाग 9A।"},
+  {q:"11वीं अनुसूची में पंचायतों को कितने विषय दिए गए हैं?",opts:["18","21","29","33"],ans:2,exp:"11वीं अनुसूची में पंचायतों को 29 विषय दिए गए हैं।"},
+  {q:"12वीं अनुसूची में नगरपालिकाओं को कितने विषय दिए गए हैं?",opts:["12","15","18","21"],ans:2,exp:"12वीं अनुसूची में नगरपालिकाओं को 18 विषय दिए गए हैं।"},
+  {q:"73वां संशोधन किस तारीख को लागू हुआ?",opts:["22 December 1992","20 April 1993","24 April 1993","1 June 1993"],ans:2,exp:"73वां संशोधन 24 April 1993 को लागू हुआ। यही पंचायतीराज दिवस है।"},
+  {q:"भारत में 73वां संशोधन सबसे पहले किस राज्य ने लागू किया?",opts:["राजस्थान","मध्यप्रदेश","कर्नाटक","महाराष्ट्र"],ans:2,exp:"73वें CA को सबसे पहले लागू करने वाला राज्य कर्नाटक था।"},
+  {q:"73वें संशोधन के तहत पहला चुनाव किस राज्य ने कराया?",opts:["कर्नाटक","राजस्थान","मध्यप्रदेश","आंध्रप्रदेश"],ans:2,exp:"मध्यप्रदेश ने 73वें CA के बाद पहला चुनाव May-June 1994 में कराया।"},
+  {q:"अशोक मेहता समिति द्वारा किस ढांचे की सिफारिश की गई?",opts:["एकस्तरीय","द्विस्तरीय","त्रिस्तरीय","चार स्तरीय"],ans:1,exp:"अशोक मेहता समिति ने द्विस्तरीय ढांचे की सिफारिश की — मंडल स्तर + जिला स्तर।"},
+  {q:"GVK राव समिति ने पंचायतीराज को क्या कहा?",opts:["जड़ों की घास","बिना जड़ की घास","जड़ का पेड़","मजबूत पेड़"],ans:1,exp:"GVK राव ने पंचायतीराज को 'बिना जड़ की घास' कहा।"},
+  {q:"L.M. सिंघवी समिति को किस नाम से जाना जाता है?",opts:["कार्ड समिति","पंचायतीराज पुनरुद्धार समिति","विकास समिति","चुनाव सुधार समिति"],ans:1,exp:"LM सिंघवी समिति (1986) को 'पंचायतीराज पुनरुद्धार समिति' कहते हैं।"},
+  {q:"पंचायतीराज में ग्राम सभा का उल्लेख किस अनुच्छेद में है?",opts:["Art. 243","Art. 243A","Art. 243B","Art. 243C"],ans:1,exp:"Art. 243A में ग्राम सभा और उनके कार्य का उल्लेख है।"},
+  {q:"जिस राज्य की जनसंख्या 20 लाख से कम है उसमें कौनसी व्यवस्था लागू नहीं होती?",opts:["ग्राम पंचायत","पंचायत समिति","जिला परिषद","ग्राम सभा"],ans:1,exp:"Art 243B: 20 लाख से कम जनसंख्या वाले राज्यों में पंचायत समिति का प्रावधान नहीं।"},
+  {q:"पंचायत सदस्यों की न्यूनतम आयु कितनी है (Art. 243F)?",opts:["18 वर्ष","21 वर्ष","25 वर्ष","30 वर्ष"],ans:1,exp:"Art 243F: पंचायत सदस्यता के लिए न्यूनतम आयु 21 वर्ष है।"},
+  {q:"74वां संविधान संशोधन कब लागू हुआ?",opts:["24 April 1993","1 June 1993","20 April 1993","23 December 1992"],ans:1,exp:"74वां संशोधन 1 June 1993 को लागू हुआ।"},
+  {q:"पंचायतों में SC/ST आरक्षण किस आधार पर दिया जाता है?",opts:["समान रूप से","जनसंख्या अनुपात में","30% निश्चित","राज्य तय करेगा"],ans:1,exp:"Art 243D: SC/ST आरक्षण जनसंख्या के अनुपात में दिया जाता है।"},
+  {q:"राज्य वित्त आयोग का उल्लेख किस अनुच्छेद में है?",opts:["243G","243H","243I","243J"],ans:2,exp:"Art 243I — पंचायतीराज के लिए राज्य वित्त आयोग। Art 243Y — नगरपालिका के लिए।"},
+  {q:"PESA Act भारत के कितने राज्यों में लागू है?",opts:["5","8","10","15"],ans:2,exp:"PESA Act भारत के 10 राज्यों में लागू है।"},
+  {q:"नगरीय स्वशासन के जनक किसे माना जाता है?",opts:["लॉर्ड कर्जन","लॉर्ड रिपन","लॉर्ड माउंटबेटन","लॉर्ड डलहौजी"],ans:1,exp:"लॉर्ड रिपन को नगरीय स्वशासन का जनक कहा जाता है।"},
+  {q:"भारत में पहला नगर निगम कब और कहाँ स्थापित हुआ?",opts:["1688 मद्रास","1690 कलकत्ता","1688 बॉम्बे","1688 दिल्ली"],ans:0,exp:"1688 में मद्रास में भारत का पहला नगर निगम स्थापित हुआ।"},
+  {q:"64वां संविधान संशोधन बिल किसके संबंध में था?",opts:["पंचायतीराज","नगरपालिका","मौलिक अधिकार","DPSP"],ans:0,exp:"64वां (1989) पंचायतीराज के लिए था — Lok Sabha में पास पर RS में नहीं।"},
+  {q:"Art. 243M के तहत पंचायतीराज प्रावधान किन राज्यों पर लागू नहीं होते?",opts:["J&K, HP, उत्तराखंड","नागालैंड, मेघालय, मिजोरम","MP, UP, Bihar","सभी पर लागू"],ans:1,exp:"Art 243M: नागालैंड, मेघालय, मिजोरम, मणिपुर के पर्वतीय क्षेत्र, WB का दार्जिलिंग।"},
+  {q:"पंचायत की कार्यकाल समाप्ति से पहले भंग होने पर चुनाव कितने माह में होते हैं?",opts:["3 माह","6 माह","9 माह","1 वर्ष"],ans:1,exp:"Art 243E: पद रिक्त, त्यागपत्र या भंग होने पर 6 माह के भीतर चुनाव।"},
+  {q:"'आधुनिक पंचायतीराज का जनक' किसे कहा जाता है?",opts:["नेहरू","इंदिरा गांधी","राजीव गांधी","मनमोहन सिंह"],ans:2,exp:"राजीव गांधी को आधुनिक पंचायतीराज का जनक कहा जाता है।"},
+  {q:"राज्य निर्वाचन आयुक्त की नियुक्ति कौन करता है?",opts:["राष्ट्रपति","मुख्यमंत्री","राज्यपाल","विधानसभा अध्यक्ष"],ans:2,exp:"Art 243K: राज्य निर्वाचन आयुक्त की नियुक्ति राज्यपाल करता है।"},
+  {q:"73वें संशोधन के पारित होने के समय भारत के प्रधानमंत्री कौन थे?",opts:["राजीव गांधी","वी.पी. सिंह","नरसिम्हा राव","मनमोहन सिंह"],ans:2,exp:"P.V. नरसिम्हा राव PM थे जब 73वां संशोधन पास और लागू हुआ।"},
+  {q:"OBC आरक्षण पंचायतों में कौन तय करता है?",opts:["राष्ट्रपति","राज्यपाल","विधानमंडल","केंद्र सरकार"],ans:2,exp:"Art 243D: OBC आरक्षण विधानमंडल तय करेगा।"},
+  {q:"पंचायतीराज संस्थाओं का लेखापरीक्षण किस अनुच्छेद में है?",opts:["243G","243H","243I","243J"],ans:3,exp:"Art 243J — पंचायती राज संस्थाओं का लेखापरीक्षण (Audit)।"},
+  {q:"73वां संशोधन लोकसभा में कब पास हुआ?",opts:["20 December 1992","22 December 1992","23 December 1992","1 January 1993"],ans:1,exp:"73वां संशोधन लोकसभा में 22 दिसंबर 1992 को पास हुआ।"},
+  {q:"पंचायतीराज के संदर्भ में 1960 के दशक को क्या कहा जाता है?",opts:["स्वर्णकाल","रजतकाल","संकटकाल","नवजागरण काल"],ans:2,exp:"1960 के दशक को पंचायतीराज का संकटकाल कहा जाता है।"},
+  {q:"राज्य निर्वाचन आयुक्त को हटाने की प्रक्रिया किसके समान है?",opts:["CBI Director","IAS Officer","HC Judge","AG of India"],ans:2,exp:"राज्य निर्वाचन आयुक्त को हटाना उच्च न्यायालय के जज के समान प्रक्रिया से।"},
+];
+
+const searchData = [
+  {term:"बलवंत राय मेहता",tab:"revision",el:"balwant",color:"#1A5FA8"},
+  {term:"अशोक मेहता समिति",tab:"revision",el:"ashok",color:"#1A7A4A"},
+  {term:"GVK राव समिति",tab:"revision",el:"gvk",color:"#C67C0A"},
+  {term:"LM सिंघवी समिति",tab:"revision",el:"lm",color:"#6B3FA0"},
+  {term:"थुगन समिति",tab:"revision",el:"thugan",color:"#0F7A7A"},
+  {term:"गाडगिल समिति",tab:"revision",el:"gadgil",color:"#C0392B"},
+  {term:"73वां संशोधन",tab:"revision",el:"amend73",color:"#FF6B2B"},
+  {term:"अनुच्छेद 243 series",tab:"revision",el:"art243",color:"#1A5FA8"},
+  {term:"आरक्षण 243D",tab:"revision",el:"reservation",color:"#1A7A4A"},
+  {term:"राज्य निर्वाचन आयोग SEC",tab:"revision",el:"sec",color:"#6B3FA0"},
+  {term:"राज्य वित्त आयोग SFC",tab:"revision",el:"sfc",color:"#0F7A7A"},
+  {term:"राजस्थान निर्वाचन आयुक्त",tab:"revision",el:"rajsec",color:"#C0392B"},
+  {term:"राजस्थान पंचायत इतिहास 1959",tab:"revision",el:"rjhistory",color:"#FF6B2B"},
+  {term:"राजस्थान पंचायतीराज अधिनियम",tab:"revision",el:"rjact",color:"#1A7A4A"},
+  {term:"राजस्थान वर्तमान संख्या",tab:"revision",el:"rjcurrent",color:"#C67C0A"},
+  {term:"ग्राम सभा बैठक",tab:"revision",el:"gramsabha",color:"#0F7A7A"},
+  {term:"PESA Act 1996",tab:"revision",el:"rjpesa",color:"#A0296B"},
+  {term:"74वां संशोधन नगरीय",tab:"revision",el:"amend74",color:"#1A5FA8"},
+  {term:"नगरीय निकाय नगरपालिका",tab:"revision",el:"nagarstruc",color:"#1A7A4A"},
+  {term:"समितियां तुलना table",tab:"summary",el:null,color:"#FF6B2B"},
+  {term:"जिला आयोजन समिति",tab:"revision",el:"jilaaayojan",color:"#0F7A7A"},
+  {term:"राजस्थान वित्त आयोग अध्यक्ष",tab:"revision",el:"rjvfa",color:"#6B3FA0"},
+  {term:"राजस्थान स्थानीय समितियां",tab:"revision",el:"rjsamitilocal",color:"#C0392B"},
+];
+
+let state = {
+  rj: {answered:{}, score:0, correct:0, wrong:0},
+  st: {answered:{}, score:0, correct:0, wrong:0}
+};
+
+function buildMCQ(questions, containerId, prefix) {
+  const c = document.getElementById(containerId);
+  c.innerHTML = questions.map((q, i) => `
+    <div class="mcq-item" id="${prefix}-q${i}">
+      <div class="mcq-q"><span class="qnum">${i+1}.</span> ${q.q}</div>
+      <div class="opts-grid">
+        ${q.opts.map((o,j) => `<button class="opt-btn" id="${prefix}-o${i}-${j}" onclick="answer('${prefix}',${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}
+      </div>
+      <div class="explanation" id="${prefix}-exp${i}">${q.exp}</div>
+    </div>
+  `).join('');
+}
+
+function answer(prefix, qi, oi) {
+  const s = state[prefix];
+  const qs = prefix === 'rj' ? rjQuestions : stQuestions;
+  if (s.answered[qi] !== undefined) return;
+  s.answered[qi] = oi;
+  const correct = qs[qi].ans;
+  document.getElementById(`${prefix}-o${qi}-${oi}`).classList.add(oi === correct ? 'correct' : 'wrong');
+  document.querySelectorAll(`#${prefix}-q${qi} .opt-btn`).forEach(b => b.disabled = true);
+  if (oi !== correct) document.getElementById(`${prefix}-o${qi}-${correct}`).classList.add('show-correct');
+  if (oi === correct) { s.score += 1; s.correct++; }
+  else { s.score -= 1/3; s.wrong++; }
+  document.getElementById(`${prefix}-score`).textContent = s.score.toFixed(2);
+  document.getElementById(`${prefix}-correct`).textContent = s.correct;
+  document.getElementById(`${prefix}-wrong`).textContent = s.wrong;
+  document.getElementById(`${prefix}-exp${qi}`).classList.add('show');
+}
+
+function submitMCQ(prefix) {
+  const s = state[prefix];
+  const qs = prefix === 'rj' ? rjQuestions : stQuestions;
+  const total = qs.length;
+  const attempted = Object.keys(s.answered).length;
+  const pct = Math.round((s.correct / total) * 100);
+  const grades = [[80,'🏆','शानदार! आप तैयार हैं!'],[60,'👍','अच्छा प्रयास! थोड़ा और करें'],[40,'📚','और revision करें'],[0,'⚠️','पूरी revision जरूरी']];
+  const [,icon,msg] = grades.find(([p]) => pct >= p);
+  document.getElementById('modal-grade').textContent = icon;
+  document.getElementById('modal-title').textContent = msg;
+  document.getElementById('modal-stats').innerHTML = [
+    ['कुल प्रश्न', total],
+    ['प्रयास किए', attempted],
+    ['सही उत्तर ✅', s.correct],
+    ['गलत उत्तर ❌', s.wrong],
+    ['स्कोर', s.score.toFixed(2)],
+    ['प्रतिशत', pct + '%']
+  ].map(([k,v]) => `<div class="modal-stat"><span>${k}</span><b>${v}</b></div>`).join('');
+  document.getElementById('overlay').classList.add('show');
+}
+
+function closeModal() { document.getElementById('overlay').classList.remove('show'); }
+
+function showTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Search
+const inp = document.getElementById('searchInput');
+const drop = document.getElementById('searchDrop');
+
+inp.addEventListener('input', function() {
+  const val = this.value.trim();
+  if (!val) { drop.classList.remove('show'); return; }
+  const matches = searchData.filter(d => d.term.toLowerCase().includes(val.toLowerCase()) || val.includes(d.term.substring(0,3)));
+  if (!matches.length) {
+    drop.innerHTML = '<div class="sd-item" style="color:#888">कोई परिणाम नहीं मिला</div>';
+  } else {
+    drop.innerHTML = matches.slice(0,8).map(m =>
+      `<div class="sd-item" onclick="goTo('${m.tab}','${m.el}')">
+        <span class="sd-dot" style="background:${m.color}"></span>${m.term}
+      </div>`
+    ).join('');
+  }
+  drop.classList.add('show');
+});
+
+function goTo(tab, elId) {
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabMap = {revision:0, summary:1, rjpyq:2, stpyq:3, lastmin:4};
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  tabBtns.forEach(b => b.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+  if (tabBtns[tabMap[tab]]) tabBtns[tabMap[tab]].classList.add('active');
+  drop.classList.remove('show');
+  inp.value = '';
+  if (elId) {
+    setTimeout(() => {
+      const el = document.getElementById(elId);
+      if (el) { el.scrollIntoView({behavior:'smooth', block:'center'}); el.style.outline = '2px solid #FF6B2B'; setTimeout(() => el.style.outline = '', 2000); }
+    }, 150);
+  }
+}
+
+document.addEventListener('click', e => { if (!e.target.closest('.search-wrap')) drop.classList.remove('show'); });
+
+buildMCQ(rjQuestions, 'rjq-container', 'rj');
+buildMCQ(stQuestions, 'stq-container', 'st');
+</script>
+</body>
+</html>

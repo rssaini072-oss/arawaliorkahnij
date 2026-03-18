@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>मुख्यमंत्री एवं मंत्रिपरिषद | RPSC RAS/PSI Revision</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Hind:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --saffron:#FF6B1A;--deep-saffron:#E55A00;--green:#138808;--deep-green:#0d6b06;
+  --navy:#1a1a4e;--gold:#F5A623;--light-gold:#FFF3DC;
+  --white:#FFFFFF;--gray:#6c757d;--light-gray:#f8f9fa;
+  --card-shadow:0 4px 20px rgba(0,0,0,0.1);--hover-shadow:0 8px 30px rgba(0,0,0,0.18);
+  --radius:14px;--radius-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Hind',sans-serif;background:linear-gradient(135deg,#fff9f0 0%,#f0f7ff 100%);color:var(--navy);min-height:100vh;}
+.header{background:linear-gradient(135deg,var(--navy) 0%,#2a2a7e 50%,#1a4a8e 100%);padding:16px 20px 10px;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,0.3);}
+.header-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.header h1{font-family:'Baloo 2',cursive;font-size:clamp(15px,3.5vw,22px);color:var(--gold);font-weight:800;line-height:1.2;}
+.header p{color:#aad4ff;font-size:12px;margin-top:2px;}
+.badge{background:var(--saffron);color:white;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap;}
+.tabs-wrapper{display:flex;overflow-x:auto;background:var(--navy);padding:0 8px 8px;gap:4px;scrollbar-width:none;margin-top:10px;}
+.tabs-wrapper::-webkit-scrollbar{display:none;}
+.tab{padding:8px 14px;border-radius:20px;background:rgba(255,255,255,0.1);color:#ccd;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;border:none;transition:all 0.25s;font-family:'Hind',sans-serif;}
+.tab.active{background:var(--saffron);color:white;box-shadow:0 3px 12px rgba(255,107,26,0.5);}
+.tab:hover:not(.active){background:rgba(255,255,255,0.2);color:white;}
+.content{padding:16px;max-width:960px;margin:0 auto;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.card{background:white;border-radius:var(--radius);padding:16px;margin-bottom:14px;box-shadow:var(--card-shadow);border-left:5px solid var(--saffron);transition:box-shadow 0.2s;}
+.card:hover{box-shadow:var(--hover-shadow);}
+.card.green{border-left-color:var(--green);}
+.card.navy{border-left-color:var(--navy);}
+.card.gold{border-left-color:var(--gold);}
+.card.purple{border-left-color:#9c27b0;}
+.card.teal{border-left-color:#00897b;}
+.card.red{border-left-color:#e53935;}
+.card-title{font-family:'Baloo 2',cursive;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:600px){.grid-2{grid-template-columns:1fr;}}
+.art-badge{display:inline-block;background:var(--navy);color:var(--gold);padding:4px 14px;border-radius:12px;font-size:13px;font-weight:700;margin-bottom:10px;letter-spacing:0.5px;}
+.rev-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;}
+.rev-table th{background:var(--navy);color:var(--gold);padding:8px 10px;text-align:left;font-weight:700;}
+.rev-table td{padding:7px 10px;border-bottom:1px solid #eee;vertical-align:top;}
+.rev-table tr:nth-child(even) td{background:var(--light-gray);}
+.rev-table tr:hover td{background:var(--light-gold);}
+.mnemonic{background:linear-gradient(135deg,#fff8e1,#fff3dc);border:2px dashed var(--gold);border-radius:var(--radius-sm);padding:10px 14px;margin-top:10px;font-size:13px;}
+.mnemonic strong{color:var(--saffron);font-size:14px;display:block;margin-bottom:4px;}
+.highlight{padding:8px 12px;border-radius:var(--radius-sm);font-size:13px;margin:6px 0;font-weight:600;}
+.h-orange{background:#fff0e6;color:#c45000;border-left:3px solid var(--saffron);}
+.h-green{background:#e8f5e9;color:#1b5e20;border-left:3px solid var(--green);}
+.h-blue{background:#e3f2fd;color:#0d47a1;border-left:3px solid #2196f3;}
+.h-red{background:#fce4ec;color:#880e4f;border-left:3px solid #e91e63;}
+.h-purple{background:#f3e5f5;color:#4a148c;border-left:3px solid #9c27b0;}
+.h-teal{background:#e0f2f1;color:#004d40;border-left:3px solid #009688;}
+ul.point-list{padding-left:16px;}
+ul.point-list li{font-size:13px;padding:3px 0;line-height:1.6;}
+.divider{height:2px;background:linear-gradient(90deg,var(--saffron),transparent);margin:16px 0;border-radius:2px;}
+.sec-head{font-family:'Baloo 2',cursive;font-size:18px;font-weight:800;color:var(--navy);padding:8px 0 12px;border-bottom:3px solid var(--saffron);margin-bottom:14px;}
+.note-box{background:linear-gradient(135deg,#fff3e0,#fff8e1);border:2px solid var(--gold);border-radius:var(--radius-sm);padding:10px 14px;margin:8px 0;font-size:13px;font-weight:600;}
+.note-box .note-title{color:var(--saffron);font-weight:700;font-size:14px;margin-bottom:4px;}
+/* MCQ */
+.score-strip{background:var(--navy);color:white;padding:10px 16px;border-radius:var(--radius);display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:13px;flex-wrap:wrap;gap:8px;}
+.score-val{font-family:'Baloo 2',cursive;font-size:20px;color:var(--gold);font-weight:800;}
+.mcq-card{background:white;border-radius:var(--radius);padding:16px;margin-bottom:16px;box-shadow:var(--card-shadow);}
+.q-num{font-size:11px;color:var(--saffron);font-weight:700;margin-bottom:6px;}
+.question{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:12px;line-height:1.6;}
+.options{display:flex;flex-direction:column;gap:8px;}
+.option-btn{padding:9px 14px;border-radius:var(--radius-sm);border:2px solid #e0e0e0;background:var(--light-gray);color:var(--navy);font-family:'Hind',sans-serif;font-size:13px;cursor:pointer;text-align:left;transition:all 0.2s;font-weight:500;}
+.option-btn:hover:not(:disabled){border-color:var(--saffron);background:#fff5ee;}
+.option-btn.correct{background:#e8f5e9;border-color:var(--green);color:#1b5e20;font-weight:700;}
+.option-btn.wrong{background:#fce4ec;border-color:#e91e63;color:#880e4f;font-weight:700;}
+.option-btn:disabled{cursor:default;}
+.explanation{margin-top:10px;padding:10px;background:#f0f7ff;border-radius:var(--radius-sm);font-size:12px;color:#1a3a6e;border-left:3px solid #2196f3;display:none;}
+.explanation.show{display:block;}
+.submit-btn{background:linear-gradient(135deg,var(--saffron),var(--deep-saffron));color:white;border:none;padding:12px 30px;border-radius:25px;font-family:'Baloo 2',cursive;font-size:15px;font-weight:700;cursor:pointer;display:block;margin:20px auto;box-shadow:0 4px 15px rgba(255,107,26,0.4);transition:all 0.2s;}
+.submit-btn:hover{transform:translateY(-2px);}
+.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:999;justify-content:center;align-items:center;}
+.popup-overlay.show{display:flex;}
+.popup{background:white;border-radius:20px;padding:30px 24px;max-width:340px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:popIn 0.3s ease;}
+@keyframes popIn{from{transform:scale(0.7);opacity:0;}to{transform:scale(1);opacity:1;}}
+.popup .emoji{font-size:48px;display:block;margin-bottom:10px;}
+.popup h2{font-family:'Baloo 2',cursive;font-size:22px;color:var(--navy);margin-bottom:6px;}
+.popup .score-big{font-family:'Baloo 2',cursive;font-size:42px;font-weight:800;color:var(--saffron);}
+.popup p{font-size:13px;color:var(--gray);margin:6px 0;}
+.popup-close{background:var(--navy);color:white;border:none;padding:10px 24px;border-radius:20px;font-family:'Baloo 2',cursive;font-size:14px;cursor:pointer;margin-top:14px;}
+/* LAST MIN */
+.lm-card{background:linear-gradient(135deg,var(--navy) 0%,#2a2a7e 100%);color:white;border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;}
+.lm-title{font-family:'Baloo 2',cursive;font-size:15px;color:var(--gold);margin-bottom:8px;}
+.lm-point{font-size:13px;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.1);}
+.lm-point:last-child{border:none;}
+.lm-point span.tag{background:var(--saffron);color:white;font-size:10px;padding:1px 6px;border-radius:8px;margin-right:5px;font-weight:700;}
+.super-mnemonic{background:linear-gradient(135deg,#FF6B1A,#ff9a4a);color:white;border-radius:var(--radius);padding:14px 16px;margin-bottom:10px;}
+.sm-title{font-family:'Baloo 2',cursive;font-size:14px;font-weight:800;margin-bottom:8px;}
+.sm-text{font-size:16px;font-weight:700;line-height:1.8;}
+.sm-explain{font-size:12px;opacity:0.9;margin-top:6px;}
+.state-tag{display:inline-block;background:#e3f2fd;color:#1565c0;padding:2px 10px;border-radius:10px;font-size:12px;font-weight:700;margin:2px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <h1>👑 मुख्यमंत्री एवं मंत्रिपरिषद</h1>
+      <p>RPSC RAS Pre & PSI | भाग-6 | अनुच्छेद 163, 164</p>
+    </div>
+    <span class="badge">🎯 Exam Ready</span>
+  </div>
+  <div class="tabs-wrapper">
+    <button class="tab active" onclick="switchTab('revision',this)">📖 Revision</button>
+    <button class="tab" onclick="switchTab('summary',this)">📊 Summary Table</button>
+    <button class="tab" onclick="switchTab('rj-pyq',this)">🏆 RJ PYQ (25)</button>
+    <button class="tab" onclick="switchTab('state-pyq',this)">🗺️ States PYQ (25)</button>
+    <button class="tab" onclick="switchTab('lastmin',this)">⚡ Last Minute</button>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- ========== REVISION TAB ========== -->
+<div id="tab-revision" class="tab-panel active">
+
+  <div class="sec-head">📖 भाग-6 | अनुच्छेद 163 — मंत्रिपरिषद का गठन</div>
+
+  <div class="card navy">
+    <div class="art-badge">अनुच्छेद 163 — मंत्रिपरिषद</div>
+    <div class="card-title">🏛️ मुख्यमंत्री की अध्यक्षता में मंत्रिपरिषद</div>
+    <ul class="point-list">
+      <li>राज्यपाल को <strong>सलाह देने</strong> के लिए एक <strong>मंत्रिपरिषद</strong> होगी</li>
+      <li>मंत्रिपरिषद का प्रधान = <strong>मुख्यमंत्री</strong> होगा</li>
+      <li>राज्यपाल को दी गई सलाह पर <strong>सर्वोच्च न्यायालय में प्रश्नगत नहीं</strong> किया जाएगा</li>
+    </ul>
+    <div class="mnemonic">
+      <strong>🧠 Trick: "163 = सलाह | 1+6+3=10 → दस मंत्री नहीं, सलाह देते हैं"</strong>
+      <em>Art.163 = मंत्रिपरिषद राज्यपाल को सलाह देती है, SC में challenge नहीं</em>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sec-head">📖 अनुच्छेद 164 — नियुक्ति एवं शर्तें</div>
+
+  <div class="grid-2">
+    <div class="card green">
+      <div class="art-badge">Art. 164(1) — नियुक्ति</div>
+      <div class="card-title">👑 मुख्यमंत्री की नियुक्ति</div>
+      <ul class="point-list">
+        <li><strong>मुख्यमंत्री की नियुक्ति → राज्यपाल</strong> करता है</li>
+        <li>अन्य मंत्रियों की नियुक्ति → <strong>राज्यपाल, CM की सलाह पर</strong></li>
+      </ul>
+      <div class="highlight h-orange">विशेष प्रावधान — 4 राज्यों में</div>
+      <div class="state-tag">झारखण्ड</div>
+      <div class="state-tag">छत्तीसगढ़</div>
+      <div class="state-tag">मध्यप्रदेश</div>
+      <div class="state-tag">ओडिशा</div>
+      <div style="font-size:13px;margin-top:6px;">→ इन 4 राज्यों में राज्यपाल <strong>एक जनजातीय मंत्री</strong> की नियुक्ति करेगा</div>
+      <div class="mnemonic">
+        <strong>🧠 Trick: "झ-छ-म-ओ = JCMO" → "जनजातीय CM के साथ मंत्री"</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="art-badge">Art. 164(1-A) — 91वां संशोधन 2003</div>
+      <div class="card-title">📊 मंत्रियों की संख्या सीमा</div>
+      <ul class="point-list">
+        <li>विधानसभा की कुल सीटों के <strong>CM सहित 15%</strong> से अधिक मंत्री नहीं होंगे</li>
+      </ul>
+      <div class="note-box">
+        <div class="note-title">📌 राजस्थान उदाहरण</div>
+        राजस्थान में विधानसभा सीट = <strong>200</strong><br>
+        200 × 15/100 = <strong>30 मंत्री</strong> (अधिकतम)<br>
+        न्यूनतम = <strong>12 मंत्री</strong>
+      </div>
+      <div class="note-box">
+        <div class="note-title">⭐ दिल्ली विशेष</div>
+        दिल्ली में विधानसभा सीटों के <strong>10%</strong> मंत्री
+      </div>
+      <div class="mnemonic">
+        <strong>🧠 "15% = 91वां | 91÷6≈15" → राज. = 200×15% = 30</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card purple">
+      <div class="art-badge">Art. 164(1-B) — 91वां संशोधन 2003</div>
+      <div class="card-title">🚫 दलबदल और मंत्री पद</div>
+      <ul class="point-list">
+        <li>दलबदल <strong>अयोग्य व्यासी को मंत्री नहीं</strong> बनाया जाएगा</li>
+        <li>यदि मंत्री है और दलबदल से अयोग्य होता है तो <strong>मंत्री पद भी जाएगा</strong></li>
+      </ul>
+      <div class="mnemonic">
+        <strong>🧠 "दलबदल = मंत्री पद भी गया | 1-B = Banned"</strong>
+      </div>
+    </div>
+
+    <div class="card gold">
+      <div class="art-badge">Art. 164(2) — उत्तरदायित्व</div>
+      <div class="card-title">⚖️ सामूहिक उत्तरदायित्व</div>
+      <ul class="point-list">
+        <li>मंत्रिपरिषद <strong>सामूहिक रूप से विधानसभा के प्रति उत्तरदायी</strong> होती है</li>
+        <li>व्यक्तिगत रूप से → <strong>राज्यपाल के प्रति उत्तरदायी</strong></li>
+      </ul>
+      <div class="mnemonic">
+        <strong>🧠 "164(2) = सामूहिक→विधानसभा | व्यक्तिगत→राज्यपाल"</strong>
+        <em>दो (2) = दोनों तरह का उत्तरदायित्व</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card teal">
+      <div class="art-badge">Art. 164(3) — शपथ</div>
+      <div class="card-title">🙏 शपथ</div>
+      <ul class="point-list">
+        <li>अनुसूची-3 के तहत <strong>मुख्यमंत्री व मंत्रिपरिषद की शपथ राज्यपाल दिलाता है</strong></li>
+        <li>शपथ — पद की गोपनीयता की भी</li>
+      </ul>
+      <div class="mnemonic">
+        <strong>🧠 "164(3) = तीसरी अनुसूची | 3=3"</strong>
+      </div>
+    </div>
+
+    <div class="card red">
+      <div class="art-badge">Art. 164(4) — योग्यता</div>
+      <div class="card-title">📋 विधानमण्डल सदस्यता</div>
+      <ul class="point-list">
+        <li>मंत्री को <strong>विधानमण्डल का सदस्य होना चाहिए</strong></li>
+        <li>यदि नहीं है → <strong>6 माह के अंदर सदस्यता लेनी अनिवार्य</strong></li>
+        <li>अन्यथा पद रिक्त हो जाएगा</li>
+      </ul>
+      <div class="mnemonic">
+        <strong>🧠 "164(4) = 6 माह | चार (4) के बाद 6 महीने"</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="card green" style="margin-top:4px;">
+    <div class="art-badge">Art. 164(5) — वेतन</div>
+    <div class="card-title">💰 वेतन</div>
+    <ul class="point-list">
+      <li>मंत्रियों के <strong>वेतन व भत्ते → विधानमण्डल निर्धारित</strong> करेगा</li>
+    </ul>
+    <div class="mnemonic">
+      <strong>🧠 "164(5) = वेतन | पाँच(5) = पैसा = विधानमण्डल तय करेगा"</strong>
+    </div>
+  </div>
+
+</div><!-- end revision -->
+
+<!-- ========== SUMMARY TAB ========== -->
+<div id="tab-summary" class="tab-panel">
+
+  <div class="sec-head">📊 Master Table — Art. 163 व 164 के सभी उपखण्ड</div>
+  <div class="card" style="overflow-x:auto;padding:10px;">
+    <table class="rev-table">
+      <tr><th>अनुच्छेद</th><th>विषय</th><th>मुख्य बात</th></tr>
+      <tr><td><strong>163</strong></td><td>मंत्रिपरिषद</td><td>राज्यपाल को सलाह | SC में प्रश्नगत नहीं</td></tr>
+      <tr><td><strong>164(1)</strong></td><td>नियुक्ति</td><td>CM→राज्यपाल | मंत्री→राज्यपाल CM की सलाह पर</td></tr>
+      <tr style="background:#fff0e6"><td><strong>164(1) विशेष</strong></td><td>4 राज्य</td><td>झारखण्ड, छत्तीसगढ़, MP, ओडिशा → जनजातीय मंत्री</td></tr>
+      <tr><td><strong>164(1-A)</strong></td><td>91वां संशोधन</td><td>मंत्री अधिकतम 15% (CM सहित) | RJ = 30 max, 12 min</td></tr>
+      <tr><td><strong>164(1-B)</strong></td><td>91वां संशोधन</td><td>दलबदल अयोग्य = मंत्री नहीं बन सकता</td></tr>
+      <tr style="background:#e8f5e9"><td><strong>164(2)</strong></td><td>उत्तरदायित्व</td><td>सामूहिक→विधानसभा | व्यक्तिगत→राज्यपाल</td></tr>
+      <tr><td><strong>164(3)</strong></td><td>शपथ</td><td>अनुसूची-3 | राज्यपाल दिलाता है</td></tr>
+      <tr><td><strong>164(4)</strong></td><td>योग्यता</td><td>6 माह में विधानमण्डल सदस्यता लेनी होगी</td></tr>
+      <tr><td><strong>164(5)</strong></td><td>वेतन</td><td>विधानमण्डल निर्धारित करेगा</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-head" style="margin-top:18px;">⚡ Quick Reference Tables</div>
+  <div class="grid-2">
+    <div class="card navy">
+      <div class="card-title">📌 नियुक्ति किसके द्वारा?</div>
+      <table class="rev-table">
+        <tr><th>पद</th><th>नियुक्ति</th><th>सलाह</th></tr>
+        <tr><td>मुख्यमंत्री</td><td>राज्यपाल</td><td>—</td></tr>
+        <tr><td>अन्य मंत्री</td><td>राज्यपाल</td><td>CM की सलाह पर</td></tr>
+        <tr><td>जनजातीय मंत्री</td><td>राज्यपाल</td><td>4 राज्यों में</td></tr>
+      </table>
+    </div>
+    <div class="card green">
+      <div class="card-title">🔢 मंत्रियों की संख्या</div>
+      <table class="rev-table">
+        <tr><th>राज्य / स्थिति</th><th>नियम</th></tr>
+        <tr><td>सामान्य राज्य</td><td>15% (CM सहित)</td></tr>
+        <tr><td>दिल्ली</td><td>10%</td></tr>
+        <tr><td>राजस्थान (200 सीट)</td><td>अधिकतम 30 | न्यूनतम 12</td></tr>
+        <tr><td>लागू</td><td>91वां संशोधन 2003</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card gold">
+      <div class="card-title">⚖️ उत्तरदायित्व — 164(2)</div>
+      <table class="rev-table">
+        <tr><th>प्रकार</th><th>किसके प्रति</th></tr>
+        <tr><td>सामूहिक</td><td>विधानसभा</td></tr>
+        <tr><td>व्यक्तिगत</td><td>राज्यपाल</td></tr>
+      </table>
+      <div class="highlight h-blue" style="margin-top:8px;">केन्द्र में PM सहित मंत्रिपरिषद — लोकसभा के 15% से अधिक नहीं (Art. 75(1A))</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🗺️ 4 विशेष राज्य (जनजातीय मंत्री)</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;">
+        <div class="state-tag" style="font-size:14px;padding:5px 14px;">झारखण्ड</div>
+        <div class="state-tag" style="font-size:14px;padding:5px 14px;">छत्तीसगढ़</div>
+        <div class="state-tag" style="font-size:14px;padding:5px 14px;">मध्यप्रदेश</div>
+        <div class="state-tag" style="font-size:14px;padding:5px 14px;">ओडिशा</div>
+      </div>
+      <div class="highlight h-orange">→ इन राज्यों में राज्यपाल एक जनजातीय मंत्री अवश्य नियुक्त करेगा</div>
+      <div class="mnemonic"><strong>🧠 Trick: "झ-छ-म-ओ = JCMO"</strong></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ========== RJ PYQ TAB ========== -->
+<div id="tab-rj-pyq" class="tab-panel">
+  <div class="sec-head">🏆 राजस्थान PYQ — 25 प्रश्न</div>
+  <div class="score-strip">
+    <span>स्कोर: <span class="score-val" id="rj-score">0</span></span>
+    <span>सही: <span id="rj-correct" style="color:#4CAF50;font-weight:700">0</span> | गलत: <span id="rj-wrong" style="color:#f44336;font-weight:700">0</span></span>
+    <span>📌 +1 / -⅓</span>
+  </div>
+  <div id="rj-questions"></div>
+  <button class="submit-btn" onclick="submitQuiz('rj')">📊 Result देखें</button>
+</div>
+
+<!-- ========== STATE PYQ TAB ========== -->
+<div id="tab-state-pyq" class="tab-panel">
+  <div class="sec-head">🗺️ अन्य राज्य PYQ — 25 प्रश्न</div>
+  <div class="score-strip">
+    <span>स्कोर: <span class="score-val" id="state-score">0</span></span>
+    <span>सही: <span id="state-correct" style="color:#4CAF50;font-weight:700">0</span> | गलत: <span id="state-wrong" style="color:#f44336;font-weight:700">0</span></span>
+    <span>📌 +1 / -⅓</span>
+  </div>
+  <div id="state-questions"></div>
+  <button class="submit-btn" onclick="submitQuiz('state')">📊 Result देखें</button>
+</div>
+
+<!-- ========== LAST MINUTE TAB ========== -->
+<div id="tab-lastmin" class="tab-panel">
+
+  <div class="sec-head">⚡ Last Minute Revision</div>
+
+  <div class="super-mnemonic">
+    <div class="sm-title">🧠 Super Mnemonic #1 — Art. 164 के 5 उपखण्ड "नि-सं-सं-शप-यो-वे"</div>
+    <div class="sm-text">नि → सं → सं → शप → यो → वे</div>
+    <div class="sm-explain">
+      <strong>नि</strong>=नियुक्ति(1) | <strong>सं</strong>=संख्या 15%(1A) | <strong>सं</strong>=संबंध दलबदल(1B) |
+      <strong>शप</strong>=शपथ-3(3) | <strong>यो</strong>=योग्यता 6माह(4) | <strong>वे</strong>=वेतन विधानमण्डल(5)
+    </div>
+  </div>
+
+  <div class="super-mnemonic">
+    <div class="sm-title">🧠 Super Mnemonic #2 — 4 जनजातीय मंत्री वाले राज्य "झ-छ-म-ओ"</div>
+    <div class="sm-text">झारखण्ड — छत्तीसगढ़ — मध्यप्रदेश — ओडिशा</div>
+    <div class="sm-explain">
+      याद करें: "<strong>झ</strong>ाड़ी में <strong>छ</strong>ुपा <strong>म</strong>ोर <strong>ओ</strong>ढनी पहने" = JCMO
+    </div>
+  </div>
+
+  <div class="super-mnemonic">
+    <div class="sm-title">🧠 Super Mnemonic #3 — उत्तरदायित्व "सा-वि | व्य-रा"</div>
+    <div class="sm-text">सामूहिक → विधानसभा | व्यक्तिगत → राज्यपाल</div>
+    <div class="sm-explain">
+      <strong>सा</strong>मूहिक = <strong>वि</strong>धानसभा | <strong>व्य</strong>क्तिगत = <strong>रा</strong>ज्यपाल
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="lm-card">
+      <div class="lm-title">⚡ Art. 163 — 3 Key Points</div>
+      <div class="lm-point"><span class="tag">1</span>मंत्रिपरिषद राज्यपाल को सलाह देती है</div>
+      <div class="lm-point"><span class="tag">2</span>प्रधान = मुख्यमंत्री</div>
+      <div class="lm-point"><span class="tag">3</span>सलाह SC में प्रश्नगत नहीं</div>
+    </div>
+    <div class="lm-card">
+      <div class="lm-title">⚡ Art. 164 — 8 Key Points</div>
+      <div class="lm-point"><span class="tag">164(1)</span>CM नियुक्ति = राज्यपाल</div>
+      <div class="lm-point"><span class="tag">4 राज्य</span>झ-छ-म-ओ = जनजातीय मंत्री</div>
+      <div class="lm-point"><span class="tag">1-A</span>15% मंत्री (91वां 2003)</div>
+      <div class="lm-point"><span class="tag">RJ</span>200 × 15% = 30 max | 12 min</div>
+      <div class="lm-point"><span class="tag">दिल्ली</span>10% मंत्री</div>
+      <div class="lm-point"><span class="tag">1-B</span>दलबदल = मंत्री नहीं</div>
+      <div class="lm-point"><span class="tag">2</span>सामूहिक→विधानसभा | व्यक्तिगत→राज्यपाल</div>
+      <div class="lm-point"><span class="tag">4</span>6 माह में विधानमण्डल सदस्यता</div>
+    </div>
+  </div>
+
+  <div class="card gold" style="margin-top:14px;">
+    <div class="card-title">🎯 Exam में सबसे ज्यादा पूछे जाने वाले</div>
+    <div class="highlight h-orange">Q: राजस्थान में अधिकतम कितने मंत्री हो सकते हैं?</div>
+    <div style="font-size:13px;padding:4px 0;">→ 30 (200 सीट × 15%) | न्यूनतम 12</div>
+    <div class="highlight h-green">Q: मंत्री को विधानमण्डल सदस्य नहीं है तो कितने समय में लेनी होगी?</div>
+    <div style="font-size:13px;padding:4px 0;">→ 6 माह (Art.164(4))</div>
+    <div class="highlight h-blue">Q: किन 4 राज्यों में जनजातीय मंत्री अनिवार्य?</div>
+    <div style="font-size:13px;padding:4px 0;">→ झारखण्ड, छत्तीसगढ़, MP, ओडिशा (Art.164(1))</div>
+    <div class="highlight h-purple">Q: मंत्रिपरिषद सामूहिक रूप से किसके प्रति उत्तरदायी?</div>
+    <div style="font-size:13px;padding:4px 0;">→ विधानसभा के प्रति (Art.164(2))</div>
+  </div>
+
+</div>
+</div><!-- end content -->
+
+<!-- POPUP -->
+<div class="popup-overlay" id="result-popup">
+  <div class="popup">
+    <span class="emoji" id="popup-emoji">🎉</span>
+    <h2 id="popup-title">परिणाम</h2>
+    <div class="score-big" id="popup-score">0</div>
+    <p id="popup-detail"></p>
+    <p id="popup-grade"></p>
+    <button class="popup-close" onclick="closePopup()">बन्द करें</button>
+  </div>
+</div>
+
+<script>
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+const rjQ=[
+  {q:"मुख्यमंत्री एवं मंत्रिपरिषद का उल्लेख संविधान के किस भाग में है?",opts:["भाग-4","भाग-5","भाग-6","भाग-7"],ans:2,exp:"मुख्यमंत्री व मंत्रिपरिषद का उल्लेख भाग-6 (राज्य) के अनुच्छेद 163 और 164 में है।"},
+  {q:"अनुच्छेद 163 के अनुसार राज्यपाल को सलाह देने वाली मंत्रिपरिषद का प्रधान कौन होता है?",opts:["राज्यपाल","मुख्यमंत्री","विधानसभा अध्यक्ष","महाधिवक्ता"],ans:1,exp:"Art.163 के अनुसार राज्यपाल को सलाह देने के लिए एक मंत्रिपरिषद होगी जिसका प्रधान मुख्यमंत्री होगा।"},
+  {q:"राज्यपाल को दी गई मंत्रिपरिषद की सलाह को कहाँ चुनौती नहीं दी जा सकती?",opts:["उच्च न्यायालय में","सर्वोच्च न्यायालय में","राष्ट्रपति के पास","संसद में"],ans:1,exp:"Art.163 — राज्यपाल को दी गई सलाह पर सर्वोच्च न्यायालय में प्रश्नगत नहीं किया जाएगा।"},
+  {q:"मुख्यमंत्री की नियुक्ति कौन करता है?",opts:["राष्ट्रपति","विधानसभा","राज्यपाल","मुख्य न्यायाधीश"],ans:2,exp:"Art.164(1) — मुख्यमंत्री की नियुक्ति राज्यपाल करता है।"},
+  {q:"अन्य मंत्रियों की नियुक्ति राज्यपाल किसकी सलाह पर करता है?",opts:["राष्ट्रपति की","विधानसभा की","मुख्यमंत्री की","PM की"],ans:2,exp:"Art.164(1) — अन्य मंत्रियों की नियुक्ति राज्यपाल, मुख्यमंत्री की सलाह पर करता है।"},
+  {q:"राजस्थान विधानसभा में 200 सीटें हैं। अधिकतम कितने मंत्री हो सकते हैं? (91वें संशोधन के अनुसार)",opts:["20","25","30","35"],ans:2,exp:"Art.164(1-A) — 91वें संशोधन 2003 के अनुसार मंत्री (CM सहित) 15% से अधिक नहीं। 200×15% = 30 मंत्री।"},
+  {q:"राजस्थान में मंत्रिपरिषद में न्यूनतम कितने मंत्री होने चाहिए?",opts:["6","9","12","15"],ans:2,exp:"राजस्थान में मंत्रिपरिषद में न्यूनतम 12 मंत्री होते हैं।"},
+  {q:"दिल्ली में मंत्रिपरिषद की संख्या विधानसभा सीटों के कितने प्रतिशत तक होती है?",opts:["10%","12%","15%","20%"],ans:0,exp:"दिल्ली में विधानसभा सीटों के 10% मंत्री होते हैं (विशेष प्रावधान)।"},
+  {q:"91वें संविधान संशोधन (2003) का सम्बन्ध किससे है?",opts:["मतदान आयु","मंत्रिपरिषद की संख्या सीमा","GST","महिला आरक्षण"],ans:1,exp:"91वें संशोधन 2003 ने Art.164(1-A) जोड़ा — मंत्रिपरिषद CM सहित 15% से अधिक नहीं और दलबदल अयोग्य मंत्री नहीं।"},
+  {q:"Art.164(1-B) के अनुसार दलबदल से अयोग्य व्यक्ति को क्या नहीं बनाया जा सकता?",opts:["विधायक","मंत्री","सांसद","राज्यपाल"],ans:1,exp:"Art.164(1-B) — दलबदल से अयोग्य घोषित व्यक्ति को मंत्री नहीं बनाया जा सकता।"},
+  {q:"मंत्रिपरिषद सामूहिक रूप से किसके प्रति उत्तरदायी होती है?",opts:["राज्यपाल","राष्ट्रपति","विधानसभा","विधानपरिषद"],ans:2,exp:"Art.164(2) — मंत्रिपरिषद सामूहिक रूप से विधानसभा के प्रति उत्तरदायी होती है।"},
+  {q:"मंत्री व्यक्तिगत रूप से किसके प्रति उत्तरदायी होते हैं?",opts:["विधानसभा","विधानपरिषद","राज्यपाल","मुख्यमंत्री"],ans:2,exp:"Art.164(2) — मंत्री व्यक्तिगत रूप से राज्यपाल के प्रति उत्तरदायी होते हैं।"},
+  {q:"मुख्यमंत्री व मंत्रिपरिषद को शपथ कौन दिलाता है?",opts:["राष्ट्रपति","विधानसभा अध्यक्ष","उच्च न्यायालय के मुख्य न्यायाधीश","राज्यपाल"],ans:3,exp:"Art.164(3) — अनुसूची-3 के तहत मुख्यमंत्री व मंत्रिपरिषद को शपथ राज्यपाल दिलाता है।"},
+  {q:"यदि मंत्री बनने के समय कोई विधानमण्डल का सदस्य नहीं है तो उसे कितने समय में सदस्यता लेनी होगी?",opts:["3 माह","6 माह","1 वर्ष","2 वर्ष"],ans:1,exp:"Art.164(4) — मंत्री को विधानमण्डल का सदस्य होना चाहिए, यदि नहीं है तो 6 माह के अंदर सदस्यता लेनी होगी अन्यथा पद रिक्त।"},
+  {q:"मंत्रियों के वेतन व भत्ते कौन निर्धारित करता है?",opts:["राज्यपाल","राष्ट्रपति","विधानमण्डल","मुख्यमंत्री"],ans:2,exp:"Art.164(5) — मंत्रियों के वेतन व भत्ते विधानमण्डल निर्धारित करता है।"},
+  {q:"किन राज्यों में राज्यपाल को एक जनजातीय मंत्री की नियुक्ति अनिवार्य है?",opts:["UP, Bihar, MP, Rajasthan","Jharkhand, Chhattisgarh, MP, Odisha","Gujarat, Maharashtra, Rajasthan, MP","Northeast के 4 राज्य"],ans:1,exp:"Art.164(1) — झारखण्ड, छत्तीसगढ़, मध्यप्रदेश और ओडिशा में राज्यपाल एक जनजातीय मंत्री अवश्य नियुक्त करेगा।"},
+  {q:"मुख्यमंत्री व मंत्रिपरिषद की शपथ संविधान की किस अनुसूची के तहत होती है?",opts:["अनुसूची-1","अनुसूची-2","अनुसूची-3","अनुसूची-4"],ans:2,exp:"Art.164(3) — शपथ अनुसूची-3 के तहत होती है और राज्यपाल दिलाता है।"},
+  {q:"राजस्थान में CM सहित मंत्रिपरिषद की अधिकतम सीमा किस अनुच्छेद से आती है?",opts:["Art. 163","Art. 164(1)","Art. 164(1-A)","Art. 164(2)"],ans:2,exp:"Art.164(1-A) — 91वें संशोधन 2003 से। CM सहित मंत्री विधानसभा सीटों के 15% से अधिक नहीं।"},
+  {q:"यदि कोई मंत्री 6 माह में विधानमण्डल का सदस्य नहीं बन पाता तो क्या होगा?",opts:["जुर्माना लगेगा","उसका पद रिक्त हो जाएगा","राज्यपाल तय करेगा","कोई प्रभाव नहीं"],ans:1,exp:"Art.164(4) — 6 माह में सदस्यता नहीं लेने पर मंत्री पद रिक्त हो जाएगा।"},
+  {q:"अनुच्छेद 164(2) के अनुसार निम्न में से कौन-सा सही है?",opts:["मंत्रिपरिषद केवल राज्यपाल को उत्तरदायी","मंत्रिपरिषद सामूहिक रूप से विधानसभा को उत्तरदायी","मंत्री केवल PM को उत्तरदायी","कोई उत्तरदायित्व नहीं"],ans:1,exp:"Art.164(2) — मंत्रिपरिषद सामूहिक रूप से विधानसभा के प्रति और व्यक्तिगत रूप से राज्यपाल के प्रति उत्तरदायी।"},
+  {q:"मुख्यमंत्री एवं मंत्रिपरिषद का उल्लेख किन अनुच्छेदों में है?",opts:["Art. 161-162","Art. 163-164","Art. 165-166","Art. 167-168"],ans:1,exp:"मुख्यमंत्री एवं मंत्रिपरिषद का उल्लेख भाग-6 के अनुच्छेद 163 और 164 में है।"},
+  {q:"Art. 164(1-A) किस संशोधन द्वारा जोड़ा गया?",opts:["86वें 2002","88वें 2003","91वें 2003","93वें 2005"],ans:2,exp:"Art.164(1-A) — 91वें संशोधन 2003 द्वारा जोड़ा गया जो मंत्रियों की 15% सीमा तय करता है।"},
+  {q:"केन्द्र में मंत्रिपरिषद की 15% सीमा का प्रावधान किस अनुच्छेद में है?",opts:["Art. 74","Art. 75(1-A)","Art. 76","Art. 77"],ans:1,exp:"केन्द्र में मंत्रिपरिषद (PM सहित) की 15% सीमा Art.75(1-A) में है जो 91वें संशोधन से जोड़ी गई।"},
+  {q:"राजस्थान के किस जिले का संबंध NCR और मुख्यमंत्री दोनों topics से है?",opts:["जयपुर","अलवर","कोटा","उदयपुर"],ans:1,exp:"अलवर NCR में आता है (69वां संशोधन)। और मुख्यमंत्री-मंत्रिपरिषद topic में राजस्थान = 30 मंत्री — यह अलग topic है।"},
+  {q:"Art. 163 में मंत्रिपरिषद की सलाह का विवाद सर्वोच्च न्यायालय में क्यों नहीं जाता?",opts:["राज्यपाल सर्वशक्तिमान है","संविधान में स्पष्ट रोक है","यह प्रशासनिक विषय है","सलाह गोपनीय है"],ans:1,exp:"Art.163 में स्पष्ट उल्लेख है कि राज्यपाल को दी गई मंत्रिपरिषद की सलाह सर्वोच्च न्यायालय में प्रश्नगत नहीं की जाएगी।"}
+];
+
+const stQ=[
+  {q:"किस अनुच्छेद में राज्य की मंत्रिपरिषद का उल्लेख है? (UPSC)",opts:["Art. 74","Art. 75","Art. 163","Art. 164"],ans:2,exp:"Art.163 में राज्य की मंत्रिपरिषद का उल्लेख है जो राज्यपाल को सलाह देती है।"},
+  {q:"राज्य में मुख्यमंत्री की नियुक्ति कौन करता है? (UPPSC)",opts:["राष्ट्रपति","PM","राज्यपाल","विधानसभा अध्यक्ष"],ans:2,exp:"Art.164(1) — मुख्यमंत्री की नियुक्ति राज्यपाल करता है।"},
+  {q:"91वें संविधान संशोधन 2003 ने किस अनुच्छेद को जोड़ा? (MPPSC)",opts:["Art.163-A","Art.164(1-A)","Art.165(A)","Art.166(A)"],ans:1,exp:"91वें संशोधन 2003 ने Art.164(1-A) जोड़ा — मंत्रियों की संख्या 15% से अधिक नहीं।"},
+  {q:"राज्य की मंत्रिपरिषद सामूहिक रूप से किसके प्रति उत्तरदायी है? (BPSC)",opts:["राज्यपाल","विधान परिषद","विधानसभा","राष्ट्रपति"],ans:2,exp:"Art.164(2) — मंत्रिपरिषद सामूहिक रूप से विधानसभा के प्रति उत्तरदायी है।"},
+  {q:"मंत्रिपरिषद की संख्या पर 15% की सीमा किस संशोधन से आई? (CGPSC)",opts:["86वें","88वें","91वें","97वें"],ans:2,exp:"91वें संशोधन 2003 से मंत्रिपरिषद की संख्या CM सहित विधानसभा सीटों के 15% तक।"},
+  {q:"झारखण्ड, छत्तीसगढ़, MP और ओडिशा में कौन-सा विशेष प्रावधान है? (JPSC)",opts:["महिला मंत्री अनिवार्य","OBC मंत्री अनिवार्य","जनजातीय मंत्री अनिवार्य","SC मंत्री अनिवार्य"],ans:2,exp:"Art.164(1) — इन चार राज्यों में राज्यपाल को एक जनजातीय (Tribal) मंत्री की नियुक्ति अनिवार्य है।"},
+  {q:"मुख्यमंत्री व मंत्रिपरिषद को शपथ किसके तहत दिलाई जाती है? (UPPSC)",opts:["अनुसूची-1","अनुसूची-2","अनुसूची-3","अनुसूची-4"],ans:2,exp:"Art.164(3) — शपथ अनुसूची-3 के तहत राज्यपाल दिलाता है।"},
+  {q:"यदि कोई मंत्री नियुक्ति के समय विधानमण्डल का सदस्य नहीं है तो उसे कब तक सदस्यता लेनी होगी? (MPPSC)",opts:["3 माह","4 माह","6 माह","1 वर्ष"],ans:2,exp:"Art.164(4) — 6 माह के भीतर विधानमण्डल की सदस्यता लेनी होगी अन्यथा पद जाएगा।"},
+  {q:"मंत्रियों के वेतन कौन तय करता है? (UPSC)",opts:["राज्यपाल","CM","विधानमण्डल","वित्त आयोग"],ans:2,exp:"Art.164(5) — मंत्रियों के वेतन व भत्ते विधानमण्डल निर्धारित करता है।"},
+  {q:"दिल्ली में मंत्रिपरिषद की संख्या विधानसभा सीटों का कितना प्रतिशत है? (UPSC)",opts:["10%","12%","15%","20%"],ans:0,exp:"दिल्ली में विधानसभा सीटों के 10% मंत्री — यह सामान्य 15% से अलग विशेष प्रावधान है।"},
+  {q:"Art.164(2) के तहत मंत्री व्यक्तिगत रूप से किसके प्रति उत्तरदायी है? (BPSC)",opts:["विधानसभा","विधानपरिषद","राज्यपाल","मुख्यमंत्री"],ans:2,exp:"Art.164(2) — व्यक्तिगत रूप से राज्यपाल के प्रति उत्तरदायी। सामूहिक रूप से विधानसभा के प्रति।"},
+  {q:"दलबदल से अयोग्य व्यक्ति को किस Art. से मंत्री नहीं बनाया जा सकता? (CGPSC)",opts:["164(1)","164(1-A)","164(1-B)","164(2)"],ans:2,exp:"Art.164(1-B) — 91वें संशोधन 2003 से — दलबदल से अयोग्य व्यक्ति को मंत्री नहीं बनाया जा सकता।"},
+  {q:"केन्द्र में PM सहित मंत्रिपरिषद की संख्या लोकसभा सीटों के कितने % तक? (UPSC Pre)",opts:["10%","12%","15%","20%"],ans:2,exp:"Art.75(1-A) — केन्द्र में PM सहित मंत्रिपरिषद लोकसभा सीटों के 15% से अधिक नहीं।"},
+  {q:"'मुख्यमंत्री एवं मंत्रिपरिषद' भारतीय संविधान के किस भाग में है? (UPPSC)",opts:["भाग-4","भाग-5","भाग-6","भाग-8"],ans:2,exp:"भाग-6 (राज्य) में अनुच्छेद 163-164 मुख्यमंत्री एवं मंत्रिपरिषद से सम्बन्धित हैं।"},
+  {q:"किस अनुच्छेद में मंत्रियों के वेतन का उल्लेख है? (JPSC)",opts:["164(2)","164(3)","164(4)","164(5)"],ans:3,exp:"Art.164(5) — मंत्रियों के वेतन व भत्ते विधानमण्डल निर्धारित करेगा।"},
+  {q:"'Art.164(1-A)' किससे सम्बन्धित है? (MPPSC)",opts:["नियुक्ति","मंत्रियों की 15% संख्या सीमा","शपथ","वेतन"],ans:1,exp:"Art.164(1-A) — 91वें संशोधन 2003 द्वारा जोड़ा — CM सहित मंत्री 15% से अधिक नहीं।"},
+  {q:"मुख्यमंत्री की नियुक्ति का उल्लेख किस अनुच्छेद में है? (UPSC)",opts:["Art. 163","Art. 164(1)","Art. 164(2)","Art. 165"],ans:1,exp:"Art.164(1) — मुख्यमंत्री की नियुक्ति राज्यपाल करता है।"},
+  {q:"जनजातीय मंत्री की अनिवार्यता से सम्बन्धित प्रावधान किस अनुच्छेद में है? (CGPSC)",opts:["Art. 163","Art. 164(1)","Art. 164(1-A)","Art. 164(2)"],ans:1,exp:"Art.164(1) — झारखण्ड, छत्तीसगढ़, MP और ओडिशा में जनजातीय मंत्री की नियुक्ति अनिवार्य।"},
+  {q:"मंत्रिपरिषद की सामूहिक उत्तरदायित्व की अवधारणा कहाँ से ली गई? (UPSC)",opts:["USA","UK (ब्रिटेन)","France","Australia"],ans:1,exp:"सामूहिक उत्तरदायित्व की अवधारणा ब्रिटेन की Westminster प्रणाली से ली गई है।"},
+  {q:"यदि कोई मंत्री विधानमण्डल सदस्य नहीं है और 6 माह में नहीं बनता तो? (BPSC)",opts:["कोई प्रभाव नहीं","राज्यपाल माफ कर सकता है","पद रिक्त होगा","सजा होगी"],ans:2,exp:"Art.164(4) — 6 माह में सदस्यता नहीं लेने पर मंत्री का पद स्वतः रिक्त हो जाएगा।"},
+  {q:"मुख्यमंत्री व मंत्रियों की शपथ की भाषा कहाँ निर्धारित है? (UPPSC)",opts:["अनुच्छेद 163","अनुच्छेद 164(3)","तीसरी अनुसूची","पाँचवी अनुसूची"],ans:2,exp:"शपथ की प्रारूप अनुसूची-3 में दी गई है और Art.164(3) के तहत राज्यपाल दिलाता है।"},
+  {q:"Art. 163 व 164 का सम्बन्ध किससे है? (MPPSC)",opts:["राज्यपाल","मुख्यमंत्री व मंत्रिपरिषद","विधानसभा","उच्च न्यायालय"],ans:1,exp:"Art.163 मंत्रिपरिषद की भूमिका और Art.164 मुख्यमंत्री व मंत्रियों की नियुक्ति, योग्यता, वेतन से है।"},
+  {q:"राज्य में मंत्रिपरिषद पर 15% की सीमा का उद्देश्य क्या था? (UPSC)",opts:["भ्रष्टाचार रोकना","मंत्रियों की अत्यधिक संख्या रोकना","दलबदल रोकना","राज्यपाल की शक्ति बढ़ाना"],ans:1,exp:"91वें संशोधन 2003 का उद्देश्य था कि मंत्रिपरिषद में अत्यधिक सदस्य न हों — इससे सरकारी खर्च भी कम होगा।"},
+  {q:"झारखण्ड में जनजातीय मंत्री की नियुक्ति का आधार क्या है? (JPSC)",opts:["परम्परा","राजनीतिक समझौता","Art.164(1) का संवैधानिक प्रावधान","राज्यपाल का विवेक"],ans:2,exp:"Art.164(1) — झारखण्ड, छत्तीसगढ़, MP और ओडिशा में जनजातीय मंत्री की नियुक्ति संवैधानिक प्रावधान है।"},
+  {q:"मंत्रिपरिषद की सलाह पर राज्यपाल के निर्णय को किस आधार पर challenge किया जा सकता है? (UPSC)",opts:["Art.163 के तहत SC में","Art.226 के तहत HC में","Art.32 के तहत SC में","challenge नहीं किया जा सकता"],ans:3,exp:"Art.163 के अनुसार राज्यपाल को दी गई मंत्रिपरिषद की सलाह सर्वोच्च न्यायालय में प्रश्नगत नहीं की जा सकती।"}
+];
+
+function renderQuiz(qs,cid){
+  const c=document.getElementById(cid);c.innerHTML='';
+  qs.forEach((q,i)=>{
+    const d=document.createElement('div');d.className='mcq-card';
+    d.innerHTML=`<div class="q-num">प्रश्न ${i+1}/${qs.length}</div>
+      <div class="question">${q.q}</div>
+      <div class="options">${q.opts.map((o,j)=>`<button class="option-btn" onclick="selectAns(this,${i},${j},'${cid}')">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}</div>
+      <div class="explanation" id="exp-${cid}-${i}">💡 ${q.exp}</div>`;
+    c.appendChild(d);
+  });
+}
+renderQuiz(rjQ,'rj-questions');
+renderQuiz(stQ,'state-questions');
+
+const scores={rj:0,state:0},answered={rj:new Set(),state:new Set()},results={rj:{correct:0,wrong:0},state:{correct:0,wrong:0}};
+function getPfx(cid){return cid==='rj-questions'?'rj':'state';}
+function getQs(cid){return cid==='rj-questions'?rjQ:stQ;}
+function selectAns(btn,qi,oi,cid){
+  const pfx=getPfx(cid);
+  if(answered[pfx].has(qi))return;
+  answered[pfx].add(qi);
+  const ca=getQs(cid)[qi].ans;
+  const allB=btn.closest('.options').querySelectorAll('.option-btn');
+  allB.forEach(b=>b.disabled=true);
+  if(oi===ca){btn.classList.add('correct');scores[pfx]=parseFloat((scores[pfx]+1).toFixed(2));results[pfx].correct++;}
+  else{btn.classList.add('wrong');allB[ca].classList.add('correct');scores[pfx]=parseFloat((scores[pfx]-1/3).toFixed(2));results[pfx].wrong++;}
+  document.getElementById(`exp-${cid}-${qi}`).classList.add('show');
+  document.getElementById(pfx+'-score').textContent=scores[pfx].toFixed(2);
+  document.getElementById(pfx+'-correct').textContent=results[pfx].correct;
+  document.getElementById(pfx+'-wrong').textContent=results[pfx].wrong;
+}
+function submitQuiz(pfx){
+  const s=scores[pfx],c=results[pfx].correct,w=results[pfx].wrong,t=25;
+  const pct=(c/t)*100;
+  let emoji,grade,title;
+  if(pct>=80){emoji='🏆';grade='शानदार! RAS Topper!';title='उत्कृष्ट';}
+  else if(pct>=60){emoji='🎯';grade='बहुत अच्छा!';title='अच्छा';}
+  else if(pct>=40){emoji='📚';grade='और Revision करो';title='ठीक';}
+  else{emoji='💪';grade='फिर से पढ़ो';title='और मेहनत करो';}
+  document.getElementById('popup-emoji').textContent=emoji;
+  document.getElementById('popup-title').textContent=title;
+  document.getElementById('popup-score').textContent=s.toFixed(2)+' / '+t;
+  document.getElementById('popup-detail').textContent=`✅ सही: ${c} | ❌ गलत: ${w} | ⬜ छोड़े: ${t-c-w}`;
+  document.getElementById('popup-grade').textContent=grade;
+  document.getElementById('result-popup').classList.add('show');
+}
+function closePopup(){document.getElementById('result-popup').classList.remove('show');}
+</script>
+</body>
+</html>

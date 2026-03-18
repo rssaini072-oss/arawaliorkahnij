@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polity Revision | RPSC RAS & PSI 2025</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+  :root {
+    --saffron: #FF6B1A;
+    --saffron-light: #FF8C42;
+    --green: #138808;
+    --green-light: #1DB510;
+    --navy: #003580;
+    --navy-light: #0056CC;
+    --gold: #FFB800;
+    --gold-light: #FFD54F;
+    --bg: #0D1B2A;
+    --surface: #152238;
+    --surface2: #1E2F47;
+    --surface3: #253A56;
+    --text: #E8EDF5;
+    --text-muted: #8899BB;
+    --border: #2A3F5F;
+    --correct: #00C853;
+    --wrong: #FF1744;
+    --card-r: #1A0A00;
+    --card-g: #001A0A;
+    --card-b: #00081A;
+    --card-y: #1A1300;
+    --card-p: #10001A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    background-image: radial-gradient(ellipse at 10% 0%, rgba(255,107,26,0.08) 0%, transparent 50%),
+                      radial-gradient(ellipse at 90% 100%, rgba(19,136,8,0.08) 0%, transparent 50%);
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--navy) 0%, #001F4D 100%);
+    border-bottom: 3px solid var(--saffron);
+    padding: 12px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  .header-inner { max-width: 1200px; margin: 0 auto; }
+  .header h1 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .header h1 span.s { color: var(--saffron); }
+  .header h1 span.g { color: var(--green-light); }
+  .header-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+
+  /* TABS */
+  .tabs-bar {
+    display: flex;
+    gap: 4px;
+    padding: 10px 16px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.2s;
+    background: var(--surface2);
+    color: var(--text-muted);
+    border-bottom: 3px solid transparent;
+  }
+  .tab-btn.active {
+    background: var(--surface3);
+    color: var(--text);
+    border-bottom-color: var(--saffron);
+  }
+  .tab-btn:hover:not(.active) { background: var(--surface3); color: var(--text); }
+
+  /* CONTENT */
+  .content-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* SECTION HEADINGS */
+  .sec-head {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--gold);
+    border-left: 4px solid var(--saffron);
+    padding-left: 10px;
+    margin: 20px 0 12px;
+  }
+
+  /* TWO-COL GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media(max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  /* TOPIC CARD */
+  .card {
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .card-orange { background: var(--card-r); }
+  .card-orange::before { background: linear-gradient(90deg, var(--saffron), var(--gold)); }
+  .card-green { background: var(--card-g); }
+  .card-green::before { background: linear-gradient(90deg, var(--green), var(--green-light)); }
+  .card-blue { background: var(--card-b); }
+  .card-blue::before { background: linear-gradient(90deg, var(--navy-light), #00CFFF); }
+  .card-yellow { background: var(--card-y); }
+  .card-yellow::before { background: linear-gradient(90deg, var(--gold), #FFE57F); }
+  .card-purple { background: var(--card-p); }
+  .card-purple::before { background: linear-gradient(90deg, #7B00FF, #D054FF); }
+
+  .card h3 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .card-orange h3 { color: var(--saffron-light); }
+  .card-green h3 { color: var(--green-light); }
+  .card-blue h3 { color: #4FC3F7; }
+  .card-yellow h3 { color: var(--gold); }
+  .card-purple h3 { color: #D054FF; }
+
+  .card p, .card li { font-size: 0.82rem; line-height: 1.6; color: var(--text); }
+  .card ul { padding-left: 16px; }
+  .card li { margin-bottom: 3px; }
+
+  /* MNEMONIC BOX */
+  .mnemonic {
+    margin-top: 10px;
+    background: rgba(255,184,0,0.12);
+    border: 1px dashed var(--gold);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+    color: var(--gold-light);
+  }
+  .mnemonic::before { content: '🧠 Trick: '; font-weight: 700; }
+
+  /* TABLE */
+  .rev-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin: 8px 0; }
+  .rev-table th {
+    background: var(--surface3);
+    color: var(--gold);
+    padding: 7px 8px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--saffron);
+  }
+  .rev-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+  }
+  .rev-table tr:hover td { background: rgba(255,255,255,0.04); }
+  .rev-table .hi { color: var(--saffron); font-weight: 600; }
+  .rev-table .gr { color: var(--green-light); font-weight: 600; }
+  .rev-table .bl { color: #4FC3F7; font-weight: 600; }
+
+  /* BADGE */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin: 2px 2px;
+  }
+  .badge-r { background: rgba(255,107,26,0.2); color: var(--saffron); border: 1px solid var(--saffron); }
+  .badge-g { background: rgba(19,136,8,0.2); color: var(--green-light); border: 1px solid var(--green-light); }
+  .badge-b { background: rgba(0,86,204,0.2); color: #4FC3F7; border: 1px solid #4FC3F7; }
+  .badge-y { background: rgba(255,184,0,0.2); color: var(--gold); border: 1px solid var(--gold); }
+
+  /* MCQ SECTION */
+  .mcq-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+  .score-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+  .score-box span { color: var(--gold); font-weight: 700; font-size: 1rem; }
+
+  .mcq-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+    transition: border-color 0.2s;
+  }
+  .mcq-card.answered-correct { border-color: var(--correct); background: rgba(0,200,83,0.05); }
+  .mcq-card.answered-wrong { border-color: var(--wrong); background: rgba(255,23,68,0.05); }
+
+  .q-num {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .q-text {
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media(max-width: 600px) { .options { grid-template-columns: 1fr; } }
+
+  .opt-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text);
+    text-align: left;
+    transition: all 0.15s;
+    line-height: 1.4;
+  }
+  .opt-btn:hover:not(:disabled) { background: var(--surface3); border-color: var(--navy-light); }
+  .opt-btn.correct { background: rgba(0,200,83,0.15); border-color: var(--correct); color: #69FF95; font-weight: 600; }
+  .opt-btn.wrong { background: rgba(255,23,68,0.15); border-color: var(--wrong); color: #FF6E80; }
+  .opt-btn:disabled { cursor: default; }
+
+  .explanation {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: rgba(255,184,0,0.08);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.78rem;
+    color: var(--gold-light);
+    display: none;
+  }
+  .explanation.show { display: block; }
+
+  /* RESULT POPUP */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+  }
+  .overlay.show { display: flex; }
+  .result-box {
+    background: var(--surface2);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    max-width: 380px;
+    width: 90%;
+    animation: popIn 0.3s ease;
+  }
+  @keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .result-box h2 { font-family: 'Baloo 2', sans-serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 12px; }
+  .result-score { font-size: 2.5rem; font-weight: 800; color: var(--saffron); line-height: 1; }
+  .result-detail { font-size: 0.85rem; color: var(--text-muted); margin: 12px 0; line-height: 1.8; }
+  .result-grade { font-size: 1.1rem; font-weight: 700; margin: 8px 0; }
+  .close-result {
+    margin-top: 16px;
+    padding: 10px 24px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #000;
+  }
+
+  /* LAST MINUTE CARDS */
+  .lm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .lm-card {
+    border-radius: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+  }
+  .lm-card h4 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .lm-item { font-size: 0.76rem; line-height: 1.7; display: flex; gap: 6px; align-items: flex-start; }
+  .lm-item::before { content: '→'; color: var(--saffron); flex-shrink: 0; margin-top: 1px; }
+
+  .super-mnemonic {
+    background: linear-gradient(135deg, rgba(255,184,0,0.12), rgba(255,107,26,0.12));
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .super-mnemonic h3 { color: var(--gold); font-family: 'Baloo 2', sans-serif; margin-bottom: 8px; }
+  .super-mnemonic .big { font-size: 1.5rem; font-weight: 800; color: var(--saffron); letter-spacing: 2px; margin: 6px 0; }
+  .super-mnemonic p { font-size: 0.82rem; color: var(--text); line-height: 1.7; }
+
+  /* Submit btn */
+  .submit-mcq {
+    display: block;
+    margin: 16px auto;
+    padding: 12px 40px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #000;
+    transition: transform 0.1s;
+  }
+  .submit-mcq:hover { transform: scale(1.02); }
+  .submit-mcq:disabled { opacity: 0.5; cursor: default; transform: none; }
+
+  .highlight-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    font-size: 0.82rem;
+  }
+  .highlight-box strong { color: var(--saffron); }
+
+  .full-card { grid-column: 1 / -1; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  .tag { font-size: 0.68rem; background: rgba(255,107,26,0.2); color: var(--saffron); padding: 1px 6px; border-radius: 4px; margin-left: 4px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <h1>🇮🇳 <span class="s">Polity Revision</span> — <span class="g">RPSC RAS & Rajasthan PSI 2025</span></h1>
+    <div class="header-sub">नागरिकता · लोकपाल/लोकायुक्त · नागरिक अधिकार पत्र · न्यायिक पुनरावलोकन · न्यायिक सक्रियता | By Ranjeet Sir</div>
+  </div>
+</div>
+
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('revision')">📖 Revision</button>
+  <button class="tab-btn" onclick="switchTab('summary')">📊 Summary Table</button>
+  <button class="tab-btn" onclick="switchTab('rjpyq')">🏆 RJ PYQ (25)</button>
+  <button class="tab-btn" onclick="switchTab('statepyq')">🗺️ States PYQ (25)</button>
+  <button class="tab-btn" onclick="switchTab('lastmin')">⚡ Last Minute</button>
+</div>
+
+<div class="content-wrap">
+
+<!-- ============== TAB 1: REVISION ============== -->
+<div id="tab-revision" class="tab-content active">
+
+  <div class="sec-head">🏛️ नागरिकता (Citizenship) — अनुच्छेद 5-11</div>
+  <div class="grid-2">
+    <div class="card card-orange">
+      <h3>📋 मूल तथ्य</h3>
+      <ul>
+        <li>संविधान में <strong>भाग-2</strong>, अनुच्छेद <strong>5-11</strong></li>
+        <li>भारत: <strong>एकल नागरिकता</strong> (ब्रिटेन से ली)</li>
+        <li>USA में दोहरी नागरिकता</li>
+        <li>Art. 11 → संसद को नागरिकता से सम्बंधित विधि बनाने की शक्ति</li>
+        <li><strong>नागरिकता अधिनियम 1955</strong> → संशोधन: 1986, 1992, 2003, 2005, 2015, 2019</li>
+      </ul>
+      <div class="mnemonic">भारत = "एकल" → ब्रि-टेन की तरह। USA = दोहरी = दो देश एक साथ</div>
+    </div>
+    <div class="card card-green">
+      <h3>🎯 नागरिकता प्राप्ति के 5 तरीके</h3>
+      <table class="rev-table">
+        <tr><th>तरीका</th><th>विवरण</th></tr>
+        <tr><td class="hi">① जन्म</td><td>26 Jan 1950 के बाद माता का जन्म भारत में हो। 1986 संशोधन → माता-पिता दोनों भारत में</td></tr>
+        <tr><td class="hi">② वंश परम्परा</td><td>26 Jan 1950 के बाद भारत से बाहर जन्म + पिता भारतीय</td></tr>
+        <tr><td class="hi">③ पंजीकरण</td><td>7 वर्ष निवास / भारतीय से विवाह / विदेश में जन्मे भारतीय मूल</td></tr>
+        <tr><td class="hi">④ देशीयकरण</td><td>11+2 = <strong>12 वर्ष</strong> निवास + 8वीं अनुसूची भाषा + राजनीतिक दल से नहीं</td></tr>
+        <tr><td class="hi">⑤ भूमि अर्जन</td><td>जब भारत किसी क्षेत्र पर अधिकार करे</td></tr>
+      </table>
+      <div class="mnemonic">जन्म-वंश-पंजी-देशी-भूमि = "जव पदे भू" 🌍</div>
+    </div>
+    <div class="card card-blue">
+      <h3>❌ नागरिकता समाप्ति के 3 कारण</h3>
+      <ul>
+        <li>① दूसरे देश की नागरिकता ग्रहण करना</li>
+        <li>② स्वेच्छा से नागरिकता परित्याग</li>
+        <li>③ सरकार द्वारा नागरिकता से वंचित करना:
+          <ul>
+            <li>संविधान का उल्लंघन</li>
+            <li>युद्ध में शत्रु देश की सहायता</li>
+            <li>गलत तरीके से नागरिकता प्राप्त</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="mnemonic">ग्र-प-वंचित = "ग्रहण, परित्याग, वंचित" = GPV = "Government Proves Wrong"</div>
+    </div>
+    <div class="card card-yellow">
+      <h3>📜 CAA 2019 (नागरिकता संशोधन)</h3>
+      <ul>
+        <li>9 Dec 2019 → लोकसभा में पास</li>
+        <li>11 Dec 2019 → राज्यसभा में पास</li>
+        <li>12 Dec 2019 → राष्ट्रपति ने हस्ताक्षर (रामनाथ कोविंद)</li>
+        <li><strong>लागू: 10 जनवरी 2020</strong></li>
+        <li>पाकिस्तान, अफगानिस्तान, बांग्लादेश से <strong>31 Dec 2014</strong> तक</li>
+        <li>6 धर्म: हिंदू, सिख, ईसाई, जैन, बौद्ध, पारसी</li>
+        <li>इन्हें अवैध प्रवासी नहीं माना जाएगा</li>
+      </ul>
+      <div class="mnemonic">6 धर्म याद करें: "हिसिईजैबौपा" = ह(िंदू)सि(ख)ई(साई)जै(न)बौ(द्ध)पा(रसी)</div>
+    </div>
+    <div class="card card-orange full-card">
+      <h3>📚 संविधान के नागरिकता अनुच्छेद (5-11)</h3>
+      <table class="rev-table">
+        <tr><th>अनुच्छेद</th><th>विषय</th></tr>
+        <tr><td class="hi">5</td><td>संविधान के प्रारम्भ पर नागरिकता</td></tr>
+        <tr><td class="hi">6</td><td>पाकिस्तान से भारत आने वालों के नागरिकता अधिकार</td></tr>
+        <tr><td class="hi">7</td><td>पाकिस्तान को प्रवजन करने वालों के नागरिकता अधिकार</td></tr>
+        <tr><td class="hi">8</td><td>भारत के बाहर रहने वाले भारतीय उद्भव के कुछ व्यक्तियों के नागरिकता अधिकार</td></tr>
+        <tr><td class="hi">9</td><td>विदेशी नागरिकता स्वेच्छा से ग्रहण करने पर नागरिकता समाप्ति का अधिकार</td></tr>
+        <tr><td class="hi">10</td><td>नागरिकता बनाए रखने का अधिकार — केवल संसद के पास</td></tr>
+        <tr><td class="hi">11</td><td>संसद को नागरिकता से सम्बंधित विधि बनाने की शक्ति</td></tr>
+      </table>
+      <div class="mnemonic">5678910-11 = "पाकिस्तान(6-7) → बाहर(8) → स्वेच्छा(9) → बनाए रखना(10) → Parliament(11)"</div>
+    </div>
+  </div>
+
+  <div class="sec-head">🏛️ लोकपाल एवं लोकायुक्त</div>
+  <div class="grid-2">
+    <div class="card card-purple">
+      <h3>🌍 लोकपाल की उत्पत्ति</h3>
+      <ul>
+        <li>लोकपाल = <strong>जन शिकायत सुनने वाला</strong></li>
+        <li><strong>1809</strong> → स्वीडन → <strong>Ombudsman</strong> (ओम्बुड्समैन)</li>
+        <li><strong>1963</strong> → लक्ष्मी मल सिंघवी ने "लोकपाल" शब्द गढ़ा</li>
+        <li>लोकपाल एवं लोकायुक्त अधिनियम <strong>2013</strong></li>
+        <li>राष्ट्रपति द्वारा मंजूरी: <strong>1 Jan 2014</strong></li>
+        <li>लागू: <strong>16 Jan 2014</strong></li>
+        <li>15 अध्याय, 62 धाराएं</li>
+      </ul>
+      <div class="mnemonic">1809-Sweden-Ombudsman → 1963-Singhvi-Lokpal → 2013-Act → "SOS-1963" (Sweden→Ombudsman→Singhvi)</div>
+    </div>
+    <div class="card card-orange">
+      <h3>🏗️ लोकपाल की संरचना (धारा-3)</h3>
+      <ul>
+        <li><strong>1 अध्यक्ष + 4 न्यायिक + 4 गैर-न्यायिक = 9 सदस्य</strong></li>
+        <li>अध्यक्ष → SC का मुख्य जज या अन्य जज</li>
+        <li>4 न्यायिक सदस्य → HC व SC के जज</li>
+        <li>4 गैर-न्यायिक → SC/ST/OBC/अल्पसंख्यक/महिला के अध्यक्ष</li>
+        <li>सदस्य संसद/विधानमण्डल के सदस्य नहीं होंगे</li>
+        <li>न्यूनतम आयु: <strong>45 वर्ष</strong></li>
+        <li>किसी राजनीतिक दल से सम्बंध नहीं</li>
+        <li>लाभ के पद पर नहीं</li>
+      </ul>
+      <div class="mnemonic">4+4+1 = "चार-चार-एक" = एक बड़ा संगठन। 45 वर्ष आयु = "चार-पांच" = 45</div>
+    </div>
+    <div class="card card-green">
+      <h3>👥 नियुक्ति (धारा-4)</h3>
+      <ul>
+        <li>नियुक्ति → राष्ट्रपति, <strong>निम्न समिति</strong> की सिफारिश पर:</li>
+        <li class="bl">→ प्रधानमंत्री</li>
+        <li class="bl">→ लोकसभा स्पीकर</li>
+        <li class="bl">→ लोकसभा में विपक्ष का नेता</li>
+        <li class="bl">→ SC का मुख्य जज या अन्य जज</li>
+      </ul>
+      <div class="mnemonic">PM-Speaker-Opposition-CJI = "PSOC" = "PSI Officer Can" 🚔</div>
+    </div>
+    <div class="card card-blue">
+      <h3>⏱️ कार्यकाल, वेतन, अन्य</h3>
+      <table class="rev-table">
+        <tr><th>विषय</th><th>विवरण</th></tr>
+        <tr><td class="hi">कार्यकाल (धारा-6)</td><td><strong>5 वर्ष</strong> या 70 वर्ष आयु तक</td></tr>
+        <tr><td class="hi">वेतन-अध्यक्ष (धारा-7)</td><td><strong>₹2.80 लाख/माह</strong></td></tr>
+        <tr><td class="hi">वेतन-सदस्य</td><td><strong>₹2.50 लाख/माह</strong></td></tr>
+        <tr><td class="hi">पुनर्नियुक्ति (धारा-8)</td><td><strong>नहीं होगी</strong></td></tr>
+        <tr><td class="hi">हटाना (धारा-37)</td><td>SC के जज के समान</td></tr>
+        <tr><td class="hi">पुरानी जांच</td><td>7 वर्ष से पुराने मामले में जांच नहीं</td></tr>
+        <tr><td class="hi">झूठी शिकायत (धारा-16)</td><td>₹1 लाख जुर्माना + 1 वर्ष सज़ा</td></tr>
+      </table>
+      <div class="mnemonic">5 साल / 70 उम्र = "पांच सत्तर" | 2.80 अध्यक्ष, 2.50 सदस्य = "अध्यक्ष ज़्यादा कमाता"</div>
+    </div>
+    <div class="card card-yellow">
+      <h3>🏆 भारत के लोकपाल</h3>
+      <ul>
+        <li>प्रथम लोकपाल → <strong>डॉ. पिनाकी चन्द्र घोष (PC Ghosh)</strong></li>
+        <li>वर्तमान लोकपाल → <strong>सजय माणिकराव घानविलकर</strong></li>
+      </ul>
+      <div class="mnemonic">प्रथम = PC Ghosh = "पिन" से शुरू, "पहले वाले" याद</div>
+    </div>
+    <div class="card card-purple">
+      <h3>🗺️ लोकायुक्त (राज्य स्तर)</h3>
+      <ul>
+        <li>लोकायुक्त Act → <strong>ओडिशा 1970</strong> (सर्वप्रथम)</li>
+        <li>लोकायुक्त की सर्वप्रथम स्थापना → <strong>महाराष्ट्र 1971</strong></li>
+        <li><strong>राजस्थान व बिहार में लोकायुक्त अधिनियम 1973</strong></li>
+        <li>राजस्थान में लागू → <strong>3 Feb 1973</strong></li>
+        <li>राजस्थान के प्रथम लोकायुक्त → <strong>I.D. Dua</strong></li>
+        <li>वर्तमान लोकायुक्त → <strong>प्रताप कृष्ण लोहरा</strong></li>
+        <li>राज. के प्रथम एवं एकमात्र उप लोकायुक्त → <strong>K.P.U. Menon</strong></li>
+      </ul>
+      <div class="mnemonic">ओडिशा(1970)→ महाराष्ट्र(1971)→ राजस्थान(1973) = "ओ-मा-रा" = "Om Ma Ra"</div>
+    </div>
+    <div class="card card-orange">
+      <h3>🏛️ राजस्थान लोकायुक्त — नियुक्ति</h3>
+      <ul>
+        <li>नियुक्ति → राज्यपाल, निम्न समिति की सिफारिश पर:</li>
+        <li>→ HC का मुख्य जज</li>
+        <li>→ मुख्यमंत्री</li>
+        <li>→ विपक्ष का नेता</li>
+        <li>योग्यता → HC व SC के जज</li>
+        <li>कार्यकाल → <strong>5 वर्ष या 65 वर्ष आयु तक</strong></li>
+        <li>हटाया → HC के जज के समान</li>
+      </ul>
+      <div class="mnemonic">लोकपाल में PM-Speaker, लोकायुक्त में CM = "बड़े को PM, छोटे को CM"</div>
+    </div>
+    <div class="card card-blue full-card">
+      <h3>🚫 लोकायुक्त किसके विरुद्ध जांच नहीं कर सकता</h3>
+      <div class="grid-2" style="margin-top:8px">
+        <ul>
+          <li>मुख्यमंत्री</li>
+          <li>पंच, सरपंच</li>
+          <li>विधायक</li>
+          <li>HC के जज</li>
+          <li>RPSC के अध्यक्ष व सदस्य</li>
+        </ul>
+        <ul>
+          <li>विधानसभा सचिवालय के कर्मचारी</li>
+          <li>मुख्य निर्वाचन आयुक्त</li>
+          <li>महालेखाकार (राजस्थान)</li>
+        </ul>
+      </div>
+      <div class="mnemonic">CM-पंच-MLA-HC-RPSC-CAG = "CM पंच MLAsे HC RPSC CAG नहीं पकड़ता"</div>
+    </div>
+  </div>
+
+  <div class="sec-head">📄 नागरिक अधिकार पत्र (Citizen's Charter)</div>
+  <div class="grid-2">
+    <div class="card card-green">
+      <h3>📋 परिचय एवं उद्देश्य</h3>
+      <ul>
+        <li>उद्देश्य: किसी संगठन को <strong>जवाबदेही, पारदर्शी</strong> व नागरिकों के अनुकूल बनाना</li>
+        <li>सर्वप्रथम → Tony Blair → <strong>चार्टर मार्क स्कीम</strong> → <strong>ब्रिटेन</strong></li>
+        <li>ब्रिटेन में इसे नागरिक अधिकार पत्र माना जाता है</li>
+      </ul>
+      <div class="mnemonic">Tony Blair → Britain = "टोनी ब्लेयर = ब्रिटेन का Blair" 🇬🇧</div>
+    </div>
+    <div class="card card-yellow">
+      <h3>🇮🇳 भारत में नागरिक अधिकार पत्र</h3>
+      <ul>
+        <li><strong>1996</strong> → मुख्य सचिवों के सम्मेलन में चर्चा (नई दिल्ली)</li>
+        <li><strong>1997</strong> → मुख्यमंत्रियों के सम्मेलन में व्यापक चर्चा</li>
+        <li>1997 → आधग्रप (आधुनिकता एवं नागरिक अधिकारी) मंत्रालय द्वारा प्रथम बार लागू</li>
+        <li><strong>राजस्थान में 1998 में लागू</strong></li>
+      </ul>
+      <div class="mnemonic">1996 सचिव → 1997 CM → 1998 राजस्थान = "96-97-98 तीन साल" = "नौ छ-सात-आठ"</div>
+    </div>
+    <div class="card card-orange">
+      <h3>🏛️ राज्य सूचना आयोग</h3>
+      <ul>
+        <li>राजस्थान सूचना का अधिकार अधिनियम <strong>2005</strong></li>
+        <li>स्थापना → <strong>18 April 2006</strong></li>
+        <li>गठन → राज्य सरकार</li>
+        <li>संरचना → 1+10 (राजस्थान में <strong>1+5 सदस्य</strong>)</li>
+        <li>नियुक्ति → राज्यपाल</li>
+        <li>समिति → मुख्यमंत्री + विपक्ष का नेता + कैबिनेट मंत्री</li>
+        <li>कार्यकाल → <strong>3 वर्ष या 65 वर्ष आयु</strong></li>
+        <li>शपथ, त्यागपत्र → राज्यपाल को</li>
+        <li>हटाना → HC के जज के समान</li>
+      </ul>
+      <div class="mnemonic">RTI 2005 → स्थापना 2006 = "अगले साल" | CM+Opposition+Cabinet = COC</div>
+    </div>
+    <div class="card card-blue">
+      <h3>📊 राज. मुख्य सूचना आयुक्त (क्रम)</h3>
+      <table class="rev-table">
+        <tr><th>क्रम</th><th>नाम</th><th>कार्यकाल</th></tr>
+        <tr><td class="hi">1st</td><td>M.D. Koranni</td><td>2006-2011 (सर्वाधिक)</td></tr>
+        <tr><td>2nd</td><td>T. Sri Nivasan</td><td>2011-15</td></tr>
+        <tr><td>3rd</td><td>Suresh Kumar Chaudhary</td><td>2015-18 (न्यूनतम)</td></tr>
+        <tr><td>4th</td><td>D.B. Gupta</td><td>2020-2024</td></tr>
+        <tr><td class="gr">Current</td><td>Mohan Lal Lathar</td><td>वर्तमान</td></tr>
+      </table>
+      <div class="mnemonic">Koranni-Srinivasan-Chaudhary-Gupta-Lathar = "KSCGL" = "Keep Scoring Clear Goals Laterally"</div>
+    </div>
+  </div>
+
+  <div class="sec-head">⚖️ न्यायिक पुनरावलोकन (Judicial Review)</div>
+  <div class="grid-2">
+    <div class="card card-purple">
+      <h3>📖 परिभाषा</h3>
+      <ul>
+        <li>विधायिका व कार्यपालिका के कार्यों का न्यायपालिका द्वारा <strong>संवैधानिकता का परीक्षण या जाँच करना</strong></li>
+        <li>भारतीय संविधान में <strong>उल्लेख नहीं</strong> किया गया</li>
+        <li>लेकिन Art. 13(2) से स्पष्ट → यदि कानून मूल अधिकारों का हनन करे → SC असंवैधानिक घोषित करेगा</li>
+        <li>Art. 32 व Art. 226 → न्यायिक पुनरावलोकन का आधार</li>
+        <li>Art. 131 में भी न्यायिक पुनरावलोकन का उपाय</li>
+      </ul>
+      <div class="mnemonic">Art. 13(2) → Fundamental Rights याद = "तेरह दो = FRs की रक्षा"</div>
+    </div>
+    <div class="card card-orange">
+      <h3>🔍 न्यायिक पुनरावलोकन का दायरा</h3>
+      <ul>
+        <li>① न्यायपालिका → संसद/विधानमण्डल के साधारण विधि पर JR</li>
+        <li>② राष्ट्रपति/राज्यपाल के अध्यादेश पर JR</li>
+        <li>③ राष्ट्रपति शासन (Art.356) पर JR → <strong>S.R. Bommai Case 1994</strong></li>
+        <li>④ संसदीय विशेषाधिकार व दलबदल कानून पर भी JR</li>
+      </ul>
+      <div class="mnemonic">Ordinary-Ordinance-Art.356-Privilege = "OOAP" = "Our OA Protects"</div>
+    </div>
+    <div class="card card-green">
+      <h3>📚 महत्वपूर्ण केस</h3>
+      <table class="rev-table">
+        <tr><th>केस</th><th>वर्ष</th><th>महत्व</th></tr>
+        <tr><td class="hi">केशवानन्द भारती</td><td>1973</td><td>संविधान की मूलभूत ढाँचे की अवधारणा</td></tr>
+        <tr><td class="hi">मेनका गाँधी</td><td>1978</td><td>प्राकृतिक न्याय + गरिमा के साथ जीने का Right</td></tr>
+        <tr><td class="hi">S.R. Bommai</td><td>1994</td><td>Art.356 पर JR संभव</td></tr>
+        <tr><td class="hi">I.R. Coelho</td><td>2007</td><td>9वीं अनुसूची पर JR → 24 Apr 1973 के बाद</td></tr>
+      </table>
+      <div class="mnemonic">केश-मेन-बॉम-कोएलो = "KMBK" = "Keep Making Better Kendals" ⚖️</div>
+    </div>
+    <div class="card card-blue">
+      <h3>📋 9वीं अनुसूची और JR</h3>
+      <ul>
+        <li>पहले: 9वीं अनुसूची में डालने पर JR नहीं</li>
+        <li><strong>I.R. Coelho Case 2007</strong>: 9वीं अनुसूची में भी JR हो सकता है</li>
+        <li><strong>लेकिन केवल 24 April 1973 के बाद</strong> शामिल विषयों पर</li>
+        <li>1973 = केशवानन्द भारती केस = मूलभूत ढाँचे का सिद्धांत</li>
+      </ul>
+      <div class="mnemonic">24 April 1973 = कटऑफ डेट = "24 अप्रैल = सीमा रेखा" | Coelho 2007</div>
+    </div>
+  </div>
+
+  <div class="sec-head">🔥 न्यायिक सक्रियता (Judicial Activism)</div>
+  <div class="grid-2">
+    <div class="card card-yellow">
+      <h3>📖 परिभाषा एवं PIL</h3>
+      <ul>
+        <li>जब न्यायपालिका विधायिका व कार्यपालिका को आदेश दे या हस्तक्षेप करे → <strong>न्यायिक सक्रियता</strong></li>
+        <li>उदाहरण: National Highway पर <strong>200 मीटर</strong> तक शराब बेचना प्रतिबंध</li>
+        <li><strong>PIL = Public Interest Litigation</strong> = जनहित याचिका</li>
+        <li>जनता को निःशुल्क न्याय मिले + मौलिक अधिकारों की सुरक्षा</li>
+      </ul>
+      <div class="mnemonic">PIL = "Public Interest = जनता का हित" | 200m Highway = "दो सौ मीटर दूर जाओ"</div>
+    </div>
+    <div class="card card-purple">
+      <h3>⚡ PIL के बारे में</h3>
+      <ul>
+        <li>Standing की अवधारणा → PIL से पहले वही SC/HC में जा सकता था जिसका सम्बन्ध हो</li>
+        <li>भारत में PIL → <strong>Justice P.N. Bhagwati</strong> और <strong>Justice Krishna Iyer</strong> द्वारा लाई गई</li>
+        <li>न्यायिक पुनरावलोकन + PIL का प्रावधान USA से लिया गया</li>
+        <li>PIL की शुरुआत: हुसैन आरा खानम बनाम बिहार राज्य</li>
+        <li>याचिका → कविता हिंगोरानी</li>
+        <li>SC ने कहा → त्वरित सुनवाई = जीवन जीने के अधिकार से जुड़ा</li>
+      </ul>
+      <div class="mnemonic">Bhagwati + Krishna Iyer = "BK" = "Bhakti in Justice" | Husain Ara = पहली PIL</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============== TAB 2: SUMMARY TABLE ============== -->
+<div id="tab-summary" class="tab-content">
+  <div class="sec-head">📊 Master Summary Table</div>
+  <div style="overflow-x:auto">
+  <table class="rev-table" style="min-width:700px">
+    <tr><th>विषय</th><th>महत्वपूर्ण तथ्य</th><th>वर्ष/धारा</th><th>Trick</th></tr>
+    <tr>
+      <td class="hi">लोकपाल उत्पत्ति</td>
+      <td>Sweden → Ombudsman</td><td>1809</td><td>1-8-0-9 = SBOS</td>
+    </tr>
+    <tr>
+      <td class="hi">लोकपाल शब्द</td>
+      <td>लक्ष्मी मल सिंघवी</td><td>1963</td><td>SinghVi = S+V = 1963</td>
+    </tr>
+    <tr>
+      <td class="hi">लोकपाल एवं लोकायुक्त अधिनियम</td>
+      <td>15 अध्याय, 62 धाराएं</td><td>2013</td><td>लागू 16 Jan 2014</td>
+    </tr>
+    <tr>
+      <td class="hi">लोकपाल संरचना</td>
+      <td>1 अध्यक्ष + 8 सदस्य (4+4)</td><td>धारा-3</td><td>4+4+1=9</td>
+    </tr>
+    <tr>
+      <td class="hi">लोकपाल कार्यकाल</td>
+      <td>5 वर्ष / 70 वर्ष आयु</td><td>धारा-6</td><td>5/70</td>
+    </tr>
+    <tr>
+      <td class="hi">लोकपाल वेतन</td>
+      <td>अध्यक्ष ₹2.80L, सदस्य ₹2.50L</td><td>धारा-7</td><td>280-250</td>
+    </tr>
+    <tr>
+      <td class="hi">झूठी शिकायत</td>
+      <td>₹1 लाख + 1 वर्ष</td><td>धारा-16</td><td>1+1</td>
+    </tr>
+    <tr>
+      <td class="hi">7 वर्ष पुरानी जांच</td>
+      <td>नहीं होगी</td><td>Note</td><td>7 साल सीमा</td>
+    </tr>
+    <tr>
+      <td class="hi">प्रथम लोकपाल</td>
+      <td>PC Ghosh (डॉ. पिनाकी चन्द्र घोष)</td><td>2019</td><td>PC = पहला</td>
+    </tr>
+    <tr>
+      <td class="hi">प्रथम लोकायुक्त Act</td>
+      <td>ओडिशा</td><td>1970</td><td>ओडिशा = पहला</td>
+    </tr>
+    <tr>
+      <td class="hi">प्रथम लोकायुक्त स्थापना</td>
+      <td>महाराष्ट्र</td><td>1971</td><td>मह.=1971</td>
+    </tr>
+    <tr>
+      <td class="hi">राजस्थान लोकायुक्त</td>
+      <td>अधिनियम 1973, लागू 3 Feb 1973</td><td>1973</td><td>RJ=73</td>
+    </tr>
+    <tr>
+      <td class="hi">राज. प्रथम लोकायुक्त</td>
+      <td>I.D. Dua</td><td>1973</td><td>IDD=IDD</td>
+    </tr>
+    <tr>
+      <td class="hi">नागरिकता अधिनियम</td>
+      <td>5 प्रकार से नागरिकता</td><td>1955</td><td>जव पदे भू</td>
+    </tr>
+    <tr>
+      <td class="hi">CAA 2019</td>
+      <td>6 धर्म, 3 देश, 31 Dec 2014</td><td>2019</td><td>हिसिईजैबौपा</td>
+    </tr>
+    <tr>
+      <td class="hi">देशीयकरण</td>
+      <td>11+1 = 12 वर्ष निवास</td><td>1955</td><td>12=11+1</td>
+    </tr>
+    <tr>
+      <td class="hi">नागरिक अधिकार पत्र उत्पत्ति</td>
+      <td>ब्रिटेन → Tony Blair → Charter Mark</td><td>1991</td><td>टोनी=ब्रिटेन</td>
+    </tr>
+    <tr>
+      <td class="hi">भारत में NAP लागू</td>
+      <td>राजस्थान</td><td>1998</td><td>RJ=98</td>
+    </tr>
+    <tr>
+      <td class="hi">RTI 2005</td>
+      <td>Raj. State Info Commission स्थापना</td><td>18 Apr 2006</td><td>2005 Act→2006 काम</td>
+    </tr>
+    <tr>
+      <td class="hi">केशवानन्द भारती केस</td>
+      <td>मूलभूत ढाँचे की अवधारणा</td><td>1973</td><td>KBC=1973</td>
+    </tr>
+    <tr>
+      <td class="hi">I.R. Coelho</td>
+      <td>9वीं अनुसूची पर JR (24 Apr 1973 बाद)</td><td>2007</td><td>Coelho=2007</td>
+    </tr>
+    <tr>
+      <td class="hi">PIL शुरुआत</td>
+      <td>हुसैन आरा खानम vs बिहार</td><td>1979</td><td>Husain=First PIL</td>
+    </tr>
+    <tr>
+      <td class="hi">PIL प्रवर्तक</td>
+      <td>Justice Bhagwati + Justice Krishna Iyer</td><td>1980s</td><td>BK = Bhakti</td>
+    </tr>
+  </table>
+  </div>
+
+  <div class="sec-head">🔷 Quick Reference Table</div>
+  <div class="grid-2">
+    <div>
+      <div class="sec-head" style="margin-top:8px;font-size:0.9rem">लोकपाल vs लोकायुक्त</div>
+      <table class="rev-table">
+        <tr><th>बिंदु</th><th>लोकपाल</th><th>लोकायुक्त (RJ)</th></tr>
+        <tr><td>स्तर</td><td class="hi">केंद्र</td><td class="gr">राज्य</td></tr>
+        <tr><td>नियुक्तिकर्ता</td><td class="hi">राष्ट्रपति</td><td class="gr">राज्यपाल</td></tr>
+        <tr><td>कार्यकाल</td><td class="hi">5 वर्ष/70 आयु</td><td class="gr">5 वर्ष/65 आयु</td></tr>
+        <tr><td>हटाना</td><td class="hi">SC जज समान</td><td class="gr">HC जज समान</td></tr>
+        <tr><td>समिति में</td><td class="hi">PM, Speaker</td><td class="gr">CM, विपक्ष</td></tr>
+        <tr><td>पुनर्नियुक्ति</td><td class="hi">नहीं</td><td class="gr">नहीं</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-top:8px;font-size:0.9rem">JR vs Judicial Activism</div>
+      <table class="rev-table">
+        <tr><th>बिंदु</th><th>JR</th><th>Judicial Activism</th></tr>
+        <tr><td>प्रकृति</td><td class="hi">Passive (जांच करना)</td><td class="gr">Active (हस्तक्षेप)</td></tr>
+        <tr><td>आधार</td><td class="hi">Art.13, 32, 226</td><td class="gr">PIL</td></tr>
+        <tr><td>संविधान में</td><td class="hi">उल्लेख नहीं</td><td class="gr">उल्लेख नहीं</td></tr>
+        <tr><td>उत्पत्ति</td><td class="hi">USA से</td><td class="gr">USA से</td></tr>
+        <tr><td>9वीं अनुसूची</td><td class="hi">Coelho 2007</td><td class="gr">—</td></tr>
+      </table>
+    </div>
+    <div class="full-card">
+      <div class="sec-head" style="margin-top:8px;font-size:0.9rem">नागरिकता: 5 प्रकार विस्तृत</div>
+      <table class="rev-table">
+        <tr><th>#</th><th>प्रकार</th><th>शर्तें</th><th>विशेष</th></tr>
+        <tr><td class="hi">1</td><td>जन्म से</td><td>माता-पिता भारत में जन्मे (1986 संशोधन)</td><td>26 Jan 1950 के बाद</td></tr>
+        <tr><td class="hi">2</td><td>वंश परम्परा</td><td>26 Jan 1950 के बाद विदेश में जन्म, पिता भारतीय</td><td>1 वर्ष में पंजीकरण</td></tr>
+        <tr><td class="hi">3</td><td>पंजीकरण</td><td>7 वर्ष भारत में निवास / भारतीय से विवाह / विदेशी मूल</td><td>तीन श्रेणियां</td></tr>
+        <tr><td class="hi">4</td><td>देशीयकरण</td><td><strong>11+1=12 वर्ष</strong> निवास, 8वीं अनुसूची भाषा, राजनैतिक दल नहीं</td><td>वयस्क व्यक्ति</td></tr>
+        <tr><td class="hi">5</td><td>भूमि अर्जन</td><td>भारत द्वारा किसी क्षेत्र पर अधिकार</td><td>वहाँ के लोग भारतीय</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============== TAB 3: RJ PYQ ============== -->
+<div id="tab-rjpyq" class="tab-content">
+  <div class="mcq-meta">
+    <div class="score-box">स्कोर: <span id="rj-score">0</span> | सही: <span id="rj-correct" style="color:var(--correct)">0</span> | गलत: <span id="rj-wrong" style="color:var(--wrong)">0</span></div>
+    <div class="score-box" style="font-size:0.75rem">+1 सही / −⅓ गलत</div>
+  </div>
+  <div id="rj-questions"></div>
+  <button class="submit-mcq" id="rj-submit" onclick="submitMCQ('rj')">परिणाम देखें 📊</button>
+</div>
+
+<!-- ============== TAB 4: STATES PYQ ============== -->
+<div id="tab-statepyq" class="tab-content">
+  <div class="mcq-meta">
+    <div class="score-box">स्कोर: <span id="st-score">0</span> | सही: <span id="st-correct" style="color:var(--correct)">0</span> | गलत: <span id="st-wrong" style="color:var(--wrong)">0</span></div>
+    <div class="score-box" style="font-size:0.75rem">+1 सही / −⅓ गलत</div>
+  </div>
+  <div id="st-questions"></div>
+  <button class="submit-mcq" id="st-submit" onclick="submitMCQ('st')">परिणाम देखें 📊</button>
+</div>
+
+<!-- ============== TAB 5: LAST MINUTE ============== -->
+<div id="tab-lastmin" class="tab-content">
+
+  <div class="super-mnemonic">
+    <h3>🚀 SUPER MNEMONIC — लोकपाल</h3>
+    <div class="big">SOS → 1963 → 2013</div>
+    <p><strong>S</strong>weden (1809) → <strong>O</strong>mbudsman → <strong>S</strong>inghvi (1963) → Act (2013) → 1 Jan 2014 मंजूरी → 16 Jan 2014 लागू</p>
+  </div>
+
+  <div class="super-mnemonic">
+    <h3>🏆 SUPER MNEMONIC — नागरिकता के 5 तरीके</h3>
+    <div class="big">जव-पदे-भू</div>
+    <p><strong>ज</strong>न्म · <strong>व</strong>ंश परम्परा · <strong>प</strong>ंजीकरण · <strong>दे</strong>शीयकरण · <strong>भू</strong>मि अर्जन</p>
+  </div>
+
+  <div class="super-mnemonic">
+    <h3>⚖️ SUPER MNEMONIC — केस लॉ</h3>
+    <div class="big">KMBK → 73-78-94-07</div>
+    <p><strong>K</strong>eshavananda (1973) · <strong>M</strong>enaka Gandhi (1978) · <strong>B</strong>ommai (1994) · <strong>K</strong>oelho (2007)</p>
+  </div>
+
+  <div class="sec-head">⚡ Last Minute Cards</div>
+  <div class="lm-grid">
+    <div class="lm-card card-orange">
+      <h4 style="color:var(--saffron)">लोकपाल — Key Numbers</h4>
+      <div class="lm-item">1809 → Sweden Ombudsman</div>
+      <div class="lm-item">1963 → Singhvi ने Lokpal शब्द गढ़ा</div>
+      <div class="lm-item">2013 → Lokpal Act</div>
+      <div class="lm-item">1+4+4 = 9 सदस्य</div>
+      <div class="lm-item">5 वर्ष / 70 आयु कार्यकाल</div>
+      <div class="lm-item">₹2.80L अध्यक्ष वेतन</div>
+      <div class="lm-item">7 वर्ष पुरानी जांच नहीं</div>
+      <div class="lm-item">PC Ghosh = प्रथम लोकपाल</div>
+    </div>
+    <div class="lm-card card-green">
+      <h4 style="color:var(--green-light)">लोकायुक्त — Key Facts</h4>
+      <div class="lm-item">ओडिशा 1970 → प्रथम Act</div>
+      <div class="lm-item">महाराष्ट्र 1971 → प्रथम स्थापना</div>
+      <div class="lm-item">राजस्थान 1973 → Act + 3 Feb लागू</div>
+      <div class="lm-item">I.D. Dua → RJ प्रथम लोकायुक्त</div>
+      <div class="lm-item">5 वर्ष / 65 आयु कार्यकाल</div>
+      <div class="lm-item">HC जज समान हटाना</div>
+      <div class="lm-item">K.P.U. Menon → एकमात्र उप लोकायुक्त</div>
+    </div>
+    <div class="lm-card card-blue">
+      <h4 style="color:#4FC3F7">नागरिकता — Numbers</h4>
+      <div class="lm-item">अनुच्छेद 5-11 → Part-2</div>
+      <div class="lm-item">नागरिकता अधिनियम 1955</div>
+      <div class="lm-item">संशोधन: 1986, 1992, 2003, 2005, 2015, 2019</div>
+      <div class="lm-item">देशीयकरण → 12 वर्ष (11+1)</div>
+      <div class="lm-item">CAA 2019 → लागू 10 Jan 2020</div>
+      <div class="lm-item">3 देश, 6 धर्म, 31 Dec 2014 कटऑफ</div>
+      <div class="lm-item">Art.10 → केवल संसद</div>
+    </div>
+    <div class="lm-card card-yellow">
+      <h4 style="color:var(--gold)">NAP / नागरिक अधिकार पत्र</h4>
+      <div class="lm-item">Tony Blair → ब्रिटेन → Charter Mark</div>
+      <div class="lm-item">भारत में 1996 → सचिव सम्मेलन</div>
+      <div class="lm-item">1997 → CM सम्मेलन</div>
+      <div class="lm-item">राजस्थान में 1998 लागू</div>
+      <div class="lm-item">RTI Act 2005 → Raj. Info Commission</div>
+      <div class="lm-item">RTI Commission स्थापना: 18 Apr 2006</div>
+      <div class="lm-item">RTI में 3 वर्ष / 65 आयु कार्यकाल</div>
+    </div>
+    <div class="lm-card card-purple">
+      <h4 style="color:#D054FF">JR + Judicial Activism</h4>
+      <div class="lm-item">Art.13(2) + Art.32 + Art.226 → JR आधार</div>
+      <div class="lm-item">SC = संविधान का संरक्षक</div>
+      <div class="lm-item">Keshavananda 1973 → Basic Structure</div>
+      <div class="lm-item">Menaka Gandhi 1978 → Natural Justice</div>
+      <div class="lm-item">Bommai 1994 → Art.356 पर JR</div>
+      <div class="lm-item">Coelho 2007 → 9वीं अनुसूची पर JR</div>
+      <div class="lm-item">PIL = Bhagwati + Krishna Iyer</div>
+      <div class="lm-item">USA से JR + PIL दोनों</div>
+    </div>
+    <div class="lm-card card-orange">
+      <h4 style="color:var(--saffron)">लोकायुक्त जांच नहीं कर सकता</h4>
+      <div class="lm-item">मुख्यमंत्री</div>
+      <div class="lm-item">पंच, सरपंच</div>
+      <div class="lm-item">विधायक</div>
+      <div class="lm-item">HC के जज</div>
+      <div class="lm-item">RPSC अध्यक्ष/सदस्य</div>
+      <div class="lm-item">विधानसभा सचिवालय कर्मचारी</div>
+      <div class="lm-item">मुख्य निर्वाचन आयुक्त</div>
+      <div class="lm-item">महालेखाकार (राजस्थान)</div>
+    </div>
+  </div>
+
+  <div class="super-mnemonic">
+    <h3>🎯 EXAM CAPSULE — RAS/PSI के लिए TOP 10 Facts</h3>
+    <p style="text-align:left; line-height:2">
+      1. लोकपाल Act 2013 → 1 Jan 2014 मंजूरी, 16 Jan 2014 लागू<br>
+      2. लोकपाल: 1+4+4=9 | कार्यकाल 5/70 | PC Ghosh प्रथम<br>
+      3. ओडिशा 1970 Act | महाराष्ट्र 1971 स्थापना | RJ 1973<br>
+      4. लोकायुक्त: 5/65 | HC जज समान | I.D. Dua प्रथम<br>
+      5. CAA 2019: 6 धर्म, 3 देश, 31Dec2014, 10Jan2020 लागू<br>
+      6. देशीयकरण = 12 वर्ष (11+1) निवास<br>
+      7. Tony Blair → Charter Mark → Britain = नागरिक अधिकार पत्र<br>
+      8. RTI 2005 → Raj. Commission 18Apr2006 | Mohan Lal Lathar<br>
+      9. Keshavananda 1973 = Basic Structure | Coelho 2007 = 9th Schedule<br>
+      10. PIL = Bhagwati + Krishna Iyer | First PIL = Husain Ara Khanam
+    </p>
+  </div>
+</div>
+
+</div><!-- end content-wrap -->
+
+<!-- Result Popup -->
+<div class="overlay" id="result-overlay">
+  <div class="result-box">
+    <h2>📊 परिणाम</h2>
+    <div class="result-score" id="res-score">0</div>
+    <div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px">अंक (out of 25)</div>
+    <div class="result-detail" id="res-detail"></div>
+    <div class="result-grade" id="res-grade"></div>
+    <button class="close-result" onclick="document.getElementById('result-overlay').classList.remove('show')">बंद करें ✓</button>
+  </div>
+</div>
+
+<script>
+// Tab switching
+function switchTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// MCQ DATA
+const rjQuestions = [
+  {q:"लोकपाल एवं लोकायुक्त अधिनियम 2013 कब लागू हुआ?",opts:["1 जनवरी 2014","16 जनवरी 2014","1 जनवरी 2013","26 जनवरी 2014"],ans:1,exp:"अधिनियम को राष्ट्रपति की मंजूरी 1 Jan 2014 को मिली, परन्तु यह लागू 16 Jan 2014 से हुआ।"},
+  {q:"राजस्थान लोकायुक्त अधिनियम कब लागू हुआ?",opts:["3 फरवरी 1971","3 फरवरी 1973","1 अप्रैल 1973","15 अगस्त 1973"],ans:1,exp:"राजस्थान और बिहार में लोकायुक्त अधिनियम 1973, जो 3 फरवरी 1973 से लागू हुआ।"},
+  {q:"राजस्थान के प्रथम लोकायुक्त कौन थे?",opts:["K.P.U. Menon","Pratap Krishan Lohra","I.D. Dua","Narpat Mal Lohra"],ans:2,exp:"राजस्थान के प्रथम लोकायुक्त I.D. Dua थे। Narpat Mal Lohra पहले लोकायुक्त के रूप में शपथ लेने वाले अगले थे।"},
+  {q:"लोकपाल की संरचना में कुल कितने सदस्य होते हैं?",opts:["7","9","11","5"],ans:1,exp:"1 अध्यक्ष + 4 न्यायिक + 4 गैर-न्यायिक = 9 सदस्य (धारा-3)"},
+  {q:"राजस्थान के वर्तमान मुख्य सूचना आयुक्त कौन हैं (2025)?",opts:["D.B. Gupta","Mohan Lal Lathar","Suresh Chaudhary","M.D. Koranni"],ans:1,exp:"मोहन लाल लाठर राजस्थान के वर्तमान मुख्य सूचना आयुक्त हैं।"},
+  {q:"लोकपाल के अध्यक्ष का मासिक वेतन कितना है?",opts:["₹2.50 लाख","₹3.00 लाख","₹2.80 लाख","₹2.00 लाख"],ans:2,exp:"धारा-7 के अनुसार अध्यक्ष का वेतन ₹2.80 लाख/माह और सदस्यों का ₹2.50 लाख/माह है।"},
+  {q:"राजस्थान में नागरिक अधिकार पत्र कब लागू हुआ?",opts:["1996","1997","1998","2000"],ans:2,exp:"भारत में 1997 में CM सम्मेलन के बाद राजस्थान ने 1998 में नागरिक अधिकार पत्र लागू किया।"},
+  {q:"राजस्थान राज्य सूचना आयोग की स्थापना कब हुई?",opts:["18 अक्टूबर 2005","18 अप्रैल 2006","1 जुलाई 2006","15 अगस्त 2005"],ans:1,exp:"राजस्थान सूचना का अधिकार अधिनियम 2005 के तहत राज्य सूचना आयोग की स्थापना 18 April 2006 को हुई।"},
+  {q:"लोकायुक्त के कार्यकाल के बारे में सही क्या है?",opts:["3 वर्ष या 60 आयु","5 वर्ष या 65 आयु","5 वर्ष या 70 आयु","6 वर्ष या 65 आयु"],ans:1,exp:"राजस्थान लोकायुक्त का कार्यकाल 5 वर्ष या 65 वर्ष की आयु तक (जो पहले हो) होता है।"},
+  {q:"राजस्थान के प्रथम एवं एकमात्र उप-लोकायुक्त कौन थे?",opts:["I.D. Dua","K.P.U. Menon","P.K. Lohra","N.M. Lohra"],ans:1,exp:"K.P.U. Menon राजस्थान के प्रथम एवं एकमात्र उप-लोकायुक्त रहे।"},
+  {q:"लोकपाल अधिनियम में झूठी शिकायत पर क्या दण्ड है?",opts:["₹50,000 + 6 माह","₹1 लाख + 1 वर्ष","₹2 लाख + 2 वर्ष","केवल जुर्माना"],ans:1,exp:"धारा-16 के अनुसार झूठी शिकायत पर ₹1 लाख जुर्माना और 1 वर्ष की सज़ा का प्रावधान है।"},
+  {q:"राजस्थान में सर्वप्रथम मुख्य सूचना आयुक्त (सर्वाधिक समय) कौन रहे?",opts:["M.D. Koranni","T. Sri Nivasan","Suresh Chaudhary","D.B. Gupta"],ans:0,exp:"M.D. Koranni 2006-2011 तक (सर्वाधिक समय) राजस्थान के मुख्य सूचना आयुक्त रहे।"},
+  {q:"लोकपाल में न्यायिक सदस्यों की संख्या होती है:",opts:["3","4","5","6"],ans:1,exp:"लोकपाल में 4 न्यायिक सदस्य (HC व SC के जज) होते हैं।"},
+  {q:"लोकायुक्त निम्न में से किसके विरुद्ध जांच नहीं कर सकता?",opts:["कैबिनेट मंत्री","मुख्यमंत्री","मुख्य सचिव","अतिरिक्त सचिव"],ans:1,exp:"मुख्यमंत्री लोकायुक्त की जांच से बाहर हैं। RPSC, HC जज, विधायक, सरपंच, CAG भी जांच से बाहर।"},
+  {q:"RTI अधिनियम के तहत राजस्थान सूचना आयोग में सदस्यों की संख्या है:",opts:["1+10","1+5","1+8","1+3"],ans:1,exp:"राजस्थान में राज्य सूचना आयोग में 1+5 = 6 सदस्य होते हैं (सामान्यतः 1+10 का प्रावधान है)।"},
+  {q:"भारत के प्रथम लोकपाल कौन थे?",opts:["Justice Pinaki Chandra Ghosh","Justice Sanjay Manikrao","Justice K.G. Balakrishnan","Justice A.S. Anand"],ans:0,exp:"डॉ. पिनाकी चन्द्र घोष (PC Ghosh) भारत के प्रथम लोकपाल थे, जिनकी नियुक्ति 2019 में हुई।"},
+  {q:"लोकपाल की नियुक्ति समिति में कौन शामिल नहीं है?",opts:["प्रधानमंत्री","लोकसभा अध्यक्ष","राज्यसभा सभापति","SC का मुख्य जज"],ans:2,exp:"लोकपाल नियुक्ति समिति में PM, Lok Sabha Speaker, नेता विपक्ष (LS), और CJI होते हैं। राज्यसभा सभापति नहीं।"},
+  {q:"राजस्थान में लोकायुक्त को हटाया जाता है:",opts:["SC के जज के समान","HC के जज के समान","राज्यपाल द्वारा सीधे","विधानसभा प्रस्ताव से"],ans:1,exp:"लोकायुक्त को HC के जज के समान प्रक्रिया से हटाया जाता है (लोकपाल को SC के जज समान)।"},
+  {q:"'लोकपाल' शब्द किसने गढ़ा?",opts:["Jawaharlal Nehru","Laxmi Mal Singhvi","M.C. Setalvad","B.R. Ambedkar"],ans:1,exp:"1963 में लक्ष्मी मल सिंघवी ने 'लोकपाल' शब्द गढ़ा।"},
+  {q:"राजस्थान के वर्तमान लोकायुक्त (2025) कौन हैं?",opts:["I.D. Dua","Narpat Mal Lohra","Pratap Krishan Lohra","K.P.U. Menon"],ans:2,exp:"प्रताप कृष्ण लोहरा राजस्थान के वर्तमान लोकायुक्त हैं।"},
+  {q:"लोकपाल में गैर-न्यायिक सदस्यों की संख्या:",opts:["3","4","5","2"],ans:1,exp:"लोकपाल में 4 गैर-न्यायिक सदस्य होते हैं जो SC/ST/OBC/अल्पसंख्यक/महिला समुदायों का प्रतिनिधित्व करते हैं।"},
+  {q:"RTI आयोग के सदस्यों का कार्यकाल है:",opts:["5 वर्ष या 65 आयु","3 वर्ष या 65 आयु","5 वर्ष या 60 आयु","6 वर्ष या 65 आयु"],ans:1,exp:"RTI अधिनियम 2005 के तहत सूचना आयुक्त का कार्यकाल 3 वर्ष या 65 वर्ष की आयु तक है।"},
+  {q:"लोकपाल का कार्यकाल है:",opts:["3 वर्ष या 65 आयु","5 वर्ष या 70 आयु","5 वर्ष या 65 आयु","6 वर्ष या 70 आयु"],ans:1,exp:"लोकपाल का कार्यकाल धारा-6 के अनुसार 5 वर्ष या 70 वर्ष की आयु तक है।"},
+  {q:"लोकपाल में कितने सदस्यों का पद SC/ST/OBC/अल्पसंख्यक/महिला से होना आवश्यक है?",opts:["2","3","4","5"],ans:2,exp:"कम से कम 4 गैर-न्यायिक सदस्य SC/ST/OBC/अल्पसंख्यक/महिला समुदाय से होने चाहिए।"},
+  {q:"लोकायुक्त की न्यूनतम आयु सीमा (लोकपाल के लिए) क्या है?",opts:["40 वर्ष","45 वर्ष","50 वर्ष","35 वर्ष"],ans:1,exp:"लोकपाल के सदस्यों की न्यूनतम आयु 45 वर्ष होनी चाहिए।"},
+];
+
+const stQuestions = [
+  {q:"न्यायिक पुनरावलोकन की अवधारणा किस देश से ली गई है?",opts:["ब्रिटेन","USA","ऑस्ट्रेलिया","कनाडा"],ans:1,exp:"भारत में न्यायिक पुनरावलोकन और PIL दोनों की अवधारणा USA से ली गई है।"},
+  {q:"केशवानन्द भारती केस किस वर्ष था?",opts:["1971","1973","1975","1978"],ans:1,exp:"केशवानन्द भारती केस 1973 में था, जिसमें संविधान की मूलभूत ढाँचे की अवधारणा का प्रतिपादन हुआ।"},
+  {q:"भारतीय संविधान में न्यायिक पुनरावलोकन का उल्लेख है:",opts:["अनुच्छेद 32 में स्पष्ट रूप से","अनुच्छेद 13 में स्पष्ट रूप से","संविधान में उल्लेख नहीं, निहित है","अनुच्छेद 226 में स्पष्ट"],ans:2,exp:"भारतीय संविधान में 'Judicial Review' शब्द का स्पष्ट उल्लेख नहीं है, लेकिन अनुच्छेद 13(2), 32, 226 में यह निहित है।"},
+  {q:"I.R. Coelho केस 2007 का सम्बन्ध किससे है?",opts:["संसदीय विशेषाधिकार","9वीं अनुसूची और न्यायिक पुनरावलोकन","मौलिक अधिकार और Art.21","अनुच्छेद 356"],ans:1,exp:"I.R. Coelho Case 2007 में SC ने कहा कि 24 April 1973 के बाद 9वीं अनुसूची में शामिल कानूनों पर JR हो सकता है।"},
+  {q:"PIL (जनहित याचिका) भारत में किसके द्वारा शुरू की गई?",opts:["Justice Y.V. Chandrachud","Justice P.N. Bhagwati और Justice Krishna Iyer","Justice H.R. Khanna","Justice M. Hidayatullah"],ans:1,exp:"भारत में PIL Justice P.N. Bhagwati और Justice Krishna Iyer द्वारा लाई गई।"},
+  {q:"एकल नागरिकता किस देश के संविधान से ली गई?",opts:["USA","Australia","Britain","Canada"],ans:2,exp:"भारत की एकल नागरिकता की अवधारणा ब्रिटेन के संविधान से ली गई है।"},
+  {q:"मेनका गाँधी बनाम भारत संघ केस किस वर्ष था?",opts:["1973","1975","1978","1980"],ans:2,exp:"मेनका गाँधी केस 1978 में था, जिसमें प्राकृतिक न्याय और गरिमा के साथ जीने के अधिकार की व्याख्या की गई।"},
+  {q:"S.R. Bommai केस का सम्बन्ध किससे है?",opts:["मूलभूत ढाँचा","Art.356 पर JR","9वीं अनुसूची","PIL"],ans:1,exp:"S.R. Bommai Case 1994 में SC ने कहा कि अनुच्छेद 356 (राष्ट्रपति शासन) पर न्यायिक पुनरावलोकन किया जा सकता है।"},
+  {q:"नागरिकता का प्रावधान भारतीय संविधान के किस भाग में है?",opts:["भाग-1","भाग-2","भाग-3","भाग-4"],ans:1,exp:"नागरिकता का प्रावधान भारतीय संविधान के भाग-2 (अनुच्छेद 5-11) में है।"},
+  {q:"CAA 2019 में किन तीन देशों से आए अल्पसंख्यकों को नागरिकता दी जाएगी?",opts:["Pakistan, Nepal, Bangladesh","Pakistan, Afghanistan, Bangladesh","Pakistan, Myanmar, Bangladesh","Afghanistan, Myanmar, Nepal"],ans:1,exp:"CAA 2019 के अनुसार पाकिस्तान, अफगानिस्तान और बांग्लादेश से आए 6 धर्मों के अल्पसंख्यकों को नागरिकता मिलेगी।"},
+  {q:"भारत में नागरिकता समाप्त होती है — निम्न में से कौन सा कारण सही नहीं है?",opts:["दूसरे देश की नागरिकता लेने पर","विदेश में 7 वर्ष रहने पर","सरकार द्वारा वंचित करने पर","स्वेच्छा से परित्याग करने पर"],ans:1,exp:"नागरिकता समाप्ति के तीन कारण हैं: ग्रहण, परित्याग और वंचित। केवल विदेश में रहने से नागरिकता नहीं जाती।"},
+  {q:"Art. 13(2) के अनुसार:",opts:["संसद किसी भी कानून को असंवैधानिक कर सकती है","राज्य ऐसा कोई Act नहीं बनाएगा जो FRs का हनन करे","SC संसद के कानून रद्द नहीं कर सकता","केवल मूलभूत ढाँचे का उल्लंघन वर्जित है"],ans:1,exp:"Art.13(2) कहता है कि राज्य ऐसा कोई कानून नहीं बनाएगा जो मूल अधिकारों का हनन करे।"},
+  {q:"PIL का उद्देश्य क्या है?",opts:["जनता को निःशुल्क न्याय + मौलिक अधिकार सुरक्षा","केवल निःशुल्क न्याय","केवल मौलिक अधिकार सुरक्षा","सरकारी फैसलों को चुनौती देना"],ans:0,exp:"PIL का उद्देश्य जनता को निःशुल्क न्याय दिलाना और नागरिकों के मौलिक अधिकारों की सुरक्षा करना है।"},
+  {q:"देशीयकरण (Naturalization) के लिए आवश्यक निवास अवधि है:",opts:["7 वर्ष","10 वर्ष","12 वर्ष","5 वर्ष"],ans:2,exp:"देशीयकरण के लिए 11 वर्ष + 1 वर्ष (आवेदन से पूर्व) = 12 वर्ष भारत में निवास आवश्यक है।"},
+  {q:"भारत में पहली PIL कौन सी थी?",opts:["मेनका गाँधी बनाम भारत","हुसैन आरा खानम बनाम बिहार","केशवानन्द बनाम केरल","कविता हिंगोरानी बनाम बिहार"],ans:1,exp:"भारत में पहली PIL हुसैन आरा खानम बनाम बिहार राज्य थी, जिसमें याचिका कविता हिंगोरानी ने दाखिल की।"},
+  {q:"न्यायिक सक्रियता (Judicial Activism) से क्या तात्पर्य है?",opts:["न्यायपालिका का विधायिका व कार्यपालिका पर हस्तक्षेप","केवल PIL दायर करना","संसद के कानूनों की जांच","केवल Art.32 का उपयोग"],ans:0,exp:"जब न्यायपालिका विधायिका व कार्यपालिका को आदेश दे या उनके कार्यों में हस्तक्षेप करे तो उसे न्यायिक सक्रियता कहते हैं।"},
+  {q:"ओम्बुड्समैन (Ombudsman) की अवधारणा किस देश से ली गई?",opts:["Britain","Germany","Sweden","Denmark"],ans:2,exp:"ओम्बुड्समैन की अवधारणा 1809 में स्वीडन से शुरू हुई।"},
+  {q:"CAA 2019 के तहत कौन सा धर्म शामिल नहीं है?",opts:["बौद्ध","जैन","मुस्लिम","पारसी"],ans:2,exp:"CAA 2019 में 6 धर्म हैं: हिंदू, सिख, ईसाई, जैन, बौद्ध, पारसी। मुस्लिम इसमें शामिल नहीं हैं।"},
+  {q:"Art.10 के अनुसार नागरिकता बनाए रखने का अधिकार किसके पास है?",opts:["न्यायपालिका के","राष्ट्रपति के","केवल संसद के","राज्य सरकार के"],ans:2,exp:"अनुच्छेद 10 के अनुसार नागरिकता समाप्त करने का अधिकार केवल संसद के पास है।"},
+  {q:"'Charter Mark Scheme' किस देश से सम्बंधित है?",opts:["USA","France","Britain","Australia"],ans:2,exp:"Tony Blair ने ब्रिटेन में Charter Mark Scheme शुरू की, जिसे वहाँ नागरिक अधिकार पत्र माना जाता है।"},
+  {q:"भारत में 1997 में नागरिक अधिकार पत्र पर व्यापक चर्चा किस सम्मेलन में हुई?",opts:["मुख्य सचिव सम्मेलन","मुख्यमंत्री सम्मेलन","राज्यपाल सम्मेलन","वित्त मंत्री सम्मेलन"],ans:1,exp:"1997 में मुख्यमंत्रियों के सम्मेलन में नागरिक अधिकार पत्र पर व्यापक चर्चा हुई।"},
+  {q:"9वीं अनुसूची में किस तिथि से पहले शामिल कानूनों पर JR नहीं होगा?",opts:["26 January 1950","24 April 1973","1 April 1975","15 August 1947"],ans:1,exp:"I.R. Coelho Case 2007 के अनुसार 24 April 1973 (Keshavananda Bharati Case की तिथि) से पहले 9वीं अनुसूची में शामिल कानूनों पर JR नहीं होगा।"},
+  {q:"CAA 2019 लोकसभा में किस तारीख को पास हुआ?",opts:["9 दिसम्बर 2019","11 दिसम्बर 2019","12 दिसम्बर 2019","10 जनवरी 2020"],ans:0,exp:"CAA 2019 लोकसभा में 9 December 2019, राज्यसभा में 11 December 2019 को पास हुआ।"},
+  {q:"भारत में नागरिकता अधिनियम 1955 में कितने प्रकार से नागरिकता प्राप्त की जा सकती है?",opts:["3","4","5","6"],ans:2,exp:"नागरिकता अधिनियम 1955 में 5 प्रकार से नागरिकता: जन्म, वंश परम्परा, पंजीकरण, देशीयकरण, भूमि अर्जन।"},
+  {q:"मेनका गाँधी केस में किस अधिकार की व्याख्या की गई?",opts:["सूचना का अधिकार","गरिमा के साथ जीने का अधिकार","शिक्षा का अधिकार","संपत्ति का अधिकार"],ans:1,exp:"मेनका गाँधी केस 1978 में प्राकृतिक न्याय का उल्लेख हुआ और 'गरिमा के साथ जीने के अधिकार' की व्याख्या की गई।"},
+];
+
+// State variables
+const state = {
+  rj: { answered: {}, score: 0, correct: 0, wrong: 0 },
+  st: { answered: {}, score: 0, correct: 0, wrong: 0 },
+};
+
+function renderQuestions(qs, containerId, prefix) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = qs.map((q, i) => `
+    <div class="mcq-card" id="${prefix}-card-${i}">
+      <div class="q-num"><span class="badge badge-b">Q${i+1}/25</span> <span class="tag">${prefix === 'rj' ? 'Rajasthan PYQ' : 'States PYQ'}</span></div>
+      <div class="q-text">${q.q}</div>
+      <div class="options">
+        ${q.opts.map((o, j) => `<button class="opt-btn" id="${prefix}-opt-${i}-${j}" onclick="selectAnswer('${prefix}', ${i}, ${j})">${String.fromCharCode(65+j)}) ${o}</button>`).join('')}
+      </div>
+      <div class="explanation" id="${prefix}-exp-${i}">💡 ${q.exp}</div>
+    </div>
+  `).join('');
+}
+
+renderQuestions(rjQuestions, 'rj-questions', 'rj');
+renderQuestions(stQuestions, 'st-questions', 'st');
+
+function selectAnswer(prefix, qIdx, optIdx) {
+  const qs = prefix === 'rj' ? rjQuestions : stQuestions;
+  const s = state[prefix];
+  if (s.answered[qIdx] !== undefined) return;
+
+  s.answered[qIdx] = optIdx;
+  const correct = qs[qIdx].ans;
+  const isCorrect = optIdx === correct;
+
+  // Highlight
+  for (let j = 0; j < 4; j++) {
+    const btn = document.getElementById(`${prefix}-opt-${qIdx}-${j}`);
+    btn.disabled = true;
+    if (j === correct) btn.classList.add('correct');
+    else if (j === optIdx && !isCorrect) btn.classList.add('wrong');
+  }
+
+  // Show explanation
+  document.getElementById(`${prefix}-exp-${qIdx}`).classList.add('show');
+
+  // Score
+  if (isCorrect) {
+    s.score = parseFloat((s.score + 1).toFixed(2));
+    s.correct++;
+    document.getElementById(`${prefix}-card-${qIdx}`).classList.add('answered-correct');
+  } else {
+    s.score = parseFloat((s.score - 1/3).toFixed(2));
+    s.wrong++;
+    document.getElementById(`${prefix}-card-${qIdx}`).classList.add('answered-wrong');
+  }
+
+  document.getElementById(`${prefix}-score`).textContent = s.score;
+  document.getElementById(`${prefix}-correct`).textContent = s.correct;
+  document.getElementById(`${prefix}-wrong`).textContent = s.wrong;
+
+  // Auto-submit if all answered
+  if (Object.keys(s.answered).length === 25) {
+    document.getElementById(`${prefix}-submit`).click();
+  }
+}
+
+function submitMCQ(prefix) {
+  const s = state[prefix];
+  const attempted = Object.keys(s.answered).length;
+  if (attempted === 0) { alert('पहले कुछ प्रश्न attempt करें!'); return; }
+  
+  const pct = (s.correct / attempted * 100).toFixed(1);
+  let grade = '';
+  if (s.score >= 20) grade = '🏆 शानदार! IPS बनोगे!';
+  else if (s.score >= 15) grade = '✅ बहुत अच्छा! Selection पक्का!';
+  else if (s.score >= 10) grade = '📚 ठीक है! और मेहनत करो!';
+  else grade = '💪 हार मत मानो! फिर से करो!';
+
+  document.getElementById('res-score').textContent = s.score.toFixed(2);
+  document.getElementById('res-detail').innerHTML = `
+    कुल Attempted: <strong>${attempted}/25</strong><br>
+    सही उत्तर: <strong style="color:var(--correct)">${s.correct}</strong><br>
+    गलत उत्तर: <strong style="color:var(--wrong)">${s.wrong}</strong><br>
+    सटीकता: <strong>${pct}%</strong>
+  `;
+  document.getElementById('res-grade').textContent = grade;
+  document.getElementById('result-overlay').classList.add('show');
+}
+</script>
+</body>
+</html>
