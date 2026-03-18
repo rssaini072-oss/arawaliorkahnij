@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>लेखांकन – RPSC PSI/RAS Revision 2025</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Tiro+Devanagari+Hindi&display=swap');
+
+  :root {
+    --saffron: #FF6B1A;
+    --deep-navy: #0D1B3E;
+    --royal-blue: #1A3A7C;
+    --gold: #F5A623;
+    --jade: #0F7B6C;
+    --crimson: #C0392B;
+    --mint: #E8F8F5;
+    --cream: #FFF9F0;
+    --lavender: #F0F0FF;
+    --card-shadow: 0 4px 20px rgba(13,27,62,0.13);
+    --border-radius: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    background: linear-gradient(135deg, #0D1B3E 0%, #1A3A7C 100%);
+    min-height: 100vh;
+    color: #1a1a2e;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(90deg, #FF6B1A, #F5A623, #FF6B1A);
+    padding: 16px 24px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .header h1 {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 800;
+    color: #0D1B3E;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+  }
+  .header p { font-size: 0.82rem; color: #0D1B3E; font-weight: 600; margin-top: 2px; }
+
+  /* TABS */
+  .tab-bar {
+    display: flex;
+    background: #0D1B3E;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 3px solid #FF6B1A;
+    gap: 0;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex: 1;
+    min-width: 110px;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+  }
+  .tab-btn:hover { color: #F5A623; }
+  .tab-btn.active {
+    color: #FF6B1A;
+    border-bottom: 3px solid #FF6B1A;
+    background: rgba(255,107,26,0.08);
+  }
+
+  .tab-content { display: none; padding: 20px 16px 40px; max-width: 1200px; margin: 0 auto; }
+  .tab-content.active { display: block; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #FF6B1A;
+    margin: 20px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid #FF6B1A;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* CARD GRID */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-bottom: 20px; }
+
+  .card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 18px;
+    box-shadow: var(--card-shadow);
+    border-top: 5px solid var(--saffron);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: rgba(255,107,26,0.05);
+    border-radius: 0 0 0 80px;
+  }
+  .card.blue { border-top-color: var(--royal-blue); }
+  .card.blue::before { background: rgba(26,58,124,0.05); }
+  .card.green { border-top-color: var(--jade); }
+  .card.green::before { background: rgba(15,123,108,0.05); }
+  .card.red { border-top-color: var(--crimson); }
+  .card.purple { border-top-color: #7B2FBE; }
+  .card.gold { border-top-color: var(--gold); }
+
+  .card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--deep-navy);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card p { font-size: 0.83rem; color: #444; line-height: 1.7; }
+
+  .badge {
+    display: inline-block;
+    background: var(--saffron);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 700;
+  }
+  .badge.blue { background: var(--royal-blue); }
+  .badge.green { background: var(--jade); }
+  .badge.red { background: var(--crimson); }
+
+  /* MNEMONIC BOX */
+  .mnemonic {
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+    border: 2px dashed #F5A623;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 0.82rem;
+    color: #5D4037;
+  }
+  .mnemonic strong { color: #E65100; font-size: 0.95rem; }
+
+  /* TABLE */
+  .fancy-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 20px;
+    font-size: 0.82rem;
+  }
+  .fancy-table th {
+    background: var(--deep-navy);
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 700;
+  }
+  .fancy-table td { padding: 9px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .fancy-table tr:nth-child(even) td { background: #f9f9ff; }
+  .fancy-table tr:last-child td { border-bottom: none; }
+  .fancy-table tr:hover td { background: #fff3e0; }
+
+  .th-orange { background: #FF6B1A !important; }
+  .th-green { background: #0F7B6C !important; }
+  .th-blue { background: #1A3A7C !important; }
+
+  /* HIGHLIGHT BOXES */
+  .highlight-box {
+    border-radius: var(--border-radius);
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-size: 0.83rem;
+    line-height: 1.8;
+  }
+  .hb-saffron { background: #FFF3E0; border-left: 5px solid #FF6B1A; }
+  .hb-blue { background: #E8EAF6; border-left: 5px solid #1A3A7C; }
+  .hb-green { background: #E8F8F5; border-left: 5px solid #0F7B6C; }
+  .hb-red { background: #FFEBEE; border-left: 5px solid #C0392B; }
+  .hb-gold { background: #FFFDE7; border-left: 5px solid #F5A623; }
+
+  .highlight-box h4 { font-weight: 700; margin-bottom: 6px; }
+
+  /* POINT LIST */
+  .point-list { list-style: none; padding: 0; }
+  .point-list li { padding: 5px 0; padding-left: 22px; position: relative; font-size: 0.83rem; color: #333; line-height: 1.6; }
+  .point-list li::before { content: '✦'; color: var(--saffron); position: absolute; left: 0; font-size: 0.75rem; top: 7px; }
+
+  /* MCQ SECTION */
+  .mcq-container { background: white; border-radius: var(--border-radius); padding: 20px; box-shadow: var(--card-shadow); margin-bottom: 20px; }
+  .mcq-header {
+    background: linear-gradient(90deg, var(--deep-navy), var(--royal-blue));
+    color: white;
+    padding: 14px 18px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .mcq-header h2 { font-size: 1rem; font-weight: 700; }
+  .score-display { background: #FF6B1A; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; }
+
+  .question-card {
+    border: 2px solid #eee;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 14px 0;
+    transition: all 0.25s;
+  }
+  .question-card.answered-correct { border-color: #0F7B6C; background: #E8F8F5; }
+  .question-card.answered-wrong { border-color: #C0392B; background: #FFEBEE; }
+
+  .question-num { font-size: 0.75rem; color: #888; font-weight: 600; margin-bottom: 6px; }
+  .question-text { font-size: 0.9rem; font-weight: 600; color: var(--deep-navy); margin-bottom: 12px; line-height: 1.6; }
+  .question-meta { font-size: 0.72rem; color: #777; margin-bottom: 10px; font-style: italic; }
+
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media (max-width: 500px) { .options-grid { grid-template-columns: 1fr; } }
+
+  .option-btn {
+    padding: 9px 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 0.82rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+    color: #333;
+    font-weight: 500;
+  }
+  .option-btn:hover:not(:disabled) { border-color: #FF6B1A; background: #FFF3E0; }
+  .option-btn.correct { border-color: #0F7B6C; background: #E8F8F5; color: #0F7B6C; font-weight: 700; }
+  .option-btn.wrong { border-color: #C0392B; background: #FFEBEE; color: #C0392B; }
+  .option-btn.reveal-correct { border-color: #0F7B6C; background: #d4edda; font-weight: 700; }
+  .option-btn:disabled { cursor: not-allowed; }
+
+  .explanation-box {
+    margin-top: 12px;
+    background: #F3F4F6;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    color: #444;
+    display: none;
+    line-height: 1.7;
+  }
+  .explanation-box.show { display: block; }
+  .explanation-box strong { color: var(--deep-navy); }
+
+  .mcq-controls { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, #FF6B1A, #F5A623);
+    color: white;
+    border: none;
+    padding: 11px 24px;
+    border-radius: 25px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 3px 12px rgba(255,107,26,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 18px rgba(255,107,26,0.4); }
+  .btn-secondary {
+    background: white;
+    color: var(--deep-navy);
+    border: 2px solid var(--deep-navy);
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--deep-navy); color: white; }
+
+  /* RESULT POPUP */
+  .popup-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 20px;
+  }
+  .popup-overlay.show { display: flex; }
+  .popup-card {
+    background: white;
+    border-radius: 20px;
+    padding: 36px 32px;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .popup-score { font-size: 3.5rem; font-weight: 800; color: var(--deep-navy); margin: 10px 0; }
+  .popup-grade { font-size: 1.6rem; margin-bottom: 16px; }
+  .popup-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+  .popup-stat { padding: 12px; border-radius: 10px; }
+  .popup-stat.correct { background: #E8F8F5; color: #0F7B6C; }
+  .popup-stat.wrong { background: #FFEBEE; color: #C0392B; }
+  .popup-stat.skip { background: #F3F4F6; color: #555; }
+  .popup-stat strong { display: block; font-size: 1.4rem; font-weight: 800; }
+  .popup-stat span { font-size: 0.78rem; font-weight: 600; }
+
+  /* LAST MINUTE */
+  .lm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 20px; }
+  .lm-card {
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.1);
+  }
+  .lm-card h4 { font-size: 0.9rem; font-weight: 800; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .lm-orange { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); border-left: 5px solid #FF6B1A; }
+  .lm-blue { background: linear-gradient(135deg, #E8EAF6, #C5CAE9); border-left: 5px solid #1A3A7C; }
+  .lm-green { background: linear-gradient(135deg, #E8F8F5, #B2DFDB); border-left: 5px solid #0F7B6C; }
+  .lm-red { background: linear-gradient(135deg, #FFEBEE, #FFCDD2); border-left: 5px solid #C0392B; }
+  .lm-purple { background: linear-gradient(135deg, #F3E5F5, #E1BEE7); border-left: 5px solid #7B2FBE; }
+  .lm-gold { background: linear-gradient(135deg, #FFFDE7, #FFF9C4); border-left: 5px solid #F5A623; }
+
+  .super-mnemonic {
+    background: linear-gradient(135deg, #0D1B3E, #1A3A7C);
+    color: white;
+    border-radius: var(--border-radius);
+    padding: 20px 24px;
+    margin: 10px 0 20px;
+  }
+  .super-mnemonic h3 { color: #F5A623; font-size: 1rem; margin-bottom: 14px; }
+  .mnem-item { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+  .mnem-letter {
+    background: #FF6B1A;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .mnem-text { font-size: 0.83rem; color: rgba(255,255,255,0.9); line-height: 1.6; padding-top: 4px; }
+  .mnem-text strong { color: #F5A623; }
+
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.72rem; font-weight: 700; margin: 2px; }
+  .tag-orange { background: #FF6B1A; color: white; }
+  .tag-blue { background: #1A3A7C; color: white; }
+  .tag-green { background: #0F7B6C; color: white; }
+  .tag-gold { background: #F5A623; color: #1a1a2e; }
+  .tag-red { background: #C0392B; color: white; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* PROGRESS BAR */
+  .progress-wrap { background: #eee; border-radius: 20px; height: 8px; margin-bottom: 16px; }
+  .progress-bar { height: 8px; border-radius: 20px; background: linear-gradient(90deg, #FF6B1A, #F5A623); transition: width 0.4s; }
+
+  .icon { font-size: 1.2rem; }
+
+  /* scrollable mobile tabs */
+  @media (max-width: 640px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .tab-btn { min-width: 90px; font-size: 0.75rem; padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📚 लेखांकन – प्रशासनिक क्षेत्र में उपकरण, अवधारणा और उपयोग</h1>
+  <p>🎯 RPSC PSI 2025 | RAS Pre | Economics Revision | Vinay Sir Notes</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('revision')">📖 Revision</button>
+  <button class="tab-btn" onclick="showTab('summary')">📊 Summary Table</button>
+  <button class="tab-btn" onclick="showTab('mcq')">❓ MCQ (PYQ)</button>
+  <button class="tab-btn" onclick="showTab('lastminute')">⚡ Last Minute</button>
+</div>
+
+<!-- ==================== TAB 1: REVISION ==================== -->
+<div id="tab-revision" class="tab-content active">
+
+  <div class="section-title">🏛️ 1. प्रस्तावना – वित्तीय प्रशासन का महत्व</div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>🔑 मूल अवधारणा</h3>
+      <ul class="point-list">
+        <li>पुलिस/प्रशासनिक अधिकारी = कानून का संरक्षक + सार्वजनिक संसाधनों का <strong>ट्रस्टी</strong></li>
+        <li>वित्तीय प्रशासन = संसाधनों (धन) के प्रवाह को नियंत्रित करने का तंत्र</li>
+        <li>जैसे शरीर में रक्त = प्रशासन में वित्त का प्रवाह</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "TRUSTED"</strong><br>T=Trustee, R=Resources, U=Upayog (उपयोग), S=Safeguard, T=Tax money, E=Every paisa, D=Democratically accountable</div>
+    </div>
+    <div class="card blue">
+      <h3>📊 सरकारी vs निजी लेखांकन</h3>
+      <ul class="point-list">
+        <li><strong>सरकारी:</strong> उद्देश्य = जवाबदेही (Accountability) + नियंत्रण (Control)</li>
+        <li><strong>निजी:</strong> उद्देश्य = लाभ (Profit) + शेयरधारकों की संपत्ति</li>
+        <li>सरकारी राजस्व = Tax + Fees + Fines (विनिमय आधारित नहीं)</li>
+        <li>निजी राजस्व = वस्तु/सेवा की बिक्री (विनिमय आधारित)</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "JAB vs PROFIT"</strong><br>J=Jawabdehi, A=Accountability, B=Budget control → Government<br>P=Profit, R=Return, O=Owner wealth → Private</div>
+    </div>
+  </div>
+
+  <div class="section-title">📋 2. सरकारी vs वाणिज्यिक लेखांकन – तुलना</div>
+  <table class="fancy-table">
+    <thead>
+      <tr><th>विशेषता</th><th class="th-orange">सरकारी लेखांकन</th><th class="th-green">वाणिज्यिक लेखांकन</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>उद्देश्य</strong></td><td>जवाबदेही + वित्तीय नियंत्रण</td><td>लाभ + शेयरधारक संपत्ति</td></tr>
+      <tr><td><strong>राजस्व स्रोत</strong></td><td>Tax, Fees, Fines (गैर-विनिमय)</td><td>वस्तु/सेवा बिक्री (विनिमय)</td></tr>
+      <tr><td><strong>लेखांकन का आधार</strong></td><td>नकद आधार (Cash Basis)</td><td>उपार्जन आधार (Accrual Basis)</td></tr>
+      <tr><td><strong>बजटीय नियंत्रण</strong></td><td>Appropriation से अधिक नहीं</td><td>बाजार के अनुसार लचीला</td></tr>
+      <tr><td><strong>कोष (Fund)</strong></td><td>Consolidated + Contingency Fund</td><td>Capital Account + P&L Account</td></tr>
+    </tbody>
+  </table>
+  <div class="mnemonic" style="background:linear-gradient(135deg,#E8EAF6,#C5CAE9);border-color:#1A3A7C;margin-bottom:20px;">
+    💡 <strong>Trick "CNBFC":</strong> Cash basis, Non-exchange revenue, Budget strict, Fund (Consolidated), Control primary → ये 5 सरकारी लेखांकन की पहचान हैं
+  </div>
+
+  <div class="section-title">🧮 3. लेखांकन की मूलभूत अवधारणाएँ (Basic Accounting Concepts)</div>
+  <div class="card-grid">
+    <div class="card">
+      <h3><span class="badge">1</span> पृथक अस्तित्व (Entity Concept)</h3>
+      <p>सरकार का प्रत्येक विभाग/निधि एक अलग इकाई है।<br>
+      उदाहरण: पुलिस विभाग के लेखे गृह विभाग से अलग।<br>
+      अधिकारी बदलते हैं, <strong>इकाई चलती रहती है (Going Concern)</strong></p>
+      <div class="mnemonic">💡 <strong>Trick:</strong> "हर विभाग = अपना बैंक खाता" – जैसे घर में सबका अलग piggy bank</div>
+    </div>
+    <div class="card blue">
+      <h3><span class="badge blue">2</span> मुद्रा मापन (Money Measurement)</h3>
+      <p>केवल वही घटनाएँ दर्ज होती हैं जिन्हें <strong>रुपये में व्यक्त</strong> किया जा सके।<br>
+      बहादुरी ≠ Accounting entry<br>
+      5000 रु. पुरस्कार = Accounting entry ✓</p>
+      <div class="mnemonic">💡 <strong>Trick:</strong> "No Rupee = No Entry" – बिना पैसे के कोई लेखा नहीं!</div>
+    </div>
+    <div class="card green">
+      <h3><span class="badge green">3</span> लेखांकन अवधि (Periodicity)</h3>
+      <p>भारत/राजस्थान में वित्तीय वर्ष = <strong>1 अप्रैल से 31 मार्च</strong><br>
+      <strong>लैप्स का नियम:</strong> 31 मार्च तक बजट उपयोग न हो → व्यपगत (Lapse)<br>
+      अगले वर्ष के लिए नया बजट आवश्यक</p>
+      <div class="mnemonic">💡 <strong>Trick: "APRIL FOOL"</strong> – April 1 से शुरू, March 31 पर खत्म। भूल गए = Lapse!</div>
+    </div>
+    <div class="card gold">
+      <h3><span class="badge" style="background:#F5A623;color:#1a1a2e;">4</span> वित्तीय स्वामित्व (Propriety Concept)</h3>
+      <p>सबसे महत्वपूर्ण नैतिक सिद्धांत।<br>
+      सार्वजनिक धन = <strong>Person of Ordinary Prudence</strong> की तरह खर्च करें।<br>
+      नियमों का पालन + मितव्ययिता दोनों जरूरी।</p>
+      <div class="mnemonic">💡 <strong>Trick: "PPP"</strong> – Public money, Prudent person, Proper use. सरकारी पैसा = अपने घर का पैसा!</div>
+    </div>
+  </div>
+
+  <div class="section-title">⚖️ 4. प्रशासनिक लेखांकन समीकरण</div>
+  <div class="two-col">
+    <div class="highlight-box hb-blue">
+      <h4>🏢 वाणिज्यिक समीकरण</h4>
+      <div style="text-align:center;font-size:1.1rem;font-weight:800;padding:10px 0;color:#1A3A7C;">
+        Assets = Liabilities + Equity
+      </div>
+    </div>
+    <div class="highlight-box hb-saffron">
+      <h4>🏛️ सरकारी समीकरण (Equity नहीं, Fund Balance)</h4>
+      <div style="text-align:center;font-size:1.1rem;font-weight:800;padding:10px 0;color:#E65100;">
+        Fund Balance = Assets − Liabilities
+      </div>
+    </div>
+  </div>
+  <div class="highlight-box hb-green">
+    <h4>📌 मुख्य परिभाषाएँ</h4>
+    <ul class="point-list">
+      <li><strong>Assets (परिसंपत्ति):</strong> पुलिस थाने का भवन, वाहन, कंप्यूटर</li>
+      <li><strong>Liabilities (दायित्व):</strong> GPF बैलेंस, विश्व बैंक ऋण</li>
+      <li><strong>Revenue (राजस्व):</strong> चालान से आय (निवल संपत्ति में वृद्धि)</li>
+      <li><strong>Expenditure (व्यय):</strong> वेतन भुगतान (निवल संपत्ति में कमी)</li>
+    </ul>
+    <div class="mnemonic" style="margin-top:10px;">💡 <strong>Trick: "FARE"</strong> – F=Fund Balance, A=Assets, R=Revenue, E=Expenditure → ये 4 सरकारी लेखे के स्तम्भ</div>
+  </div>
+
+  <div class="section-title">💰 5. बजट – वित्तीय नियंत्रण का प्राथमिक उपकरण</div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>📜 बजट का संवैधानिक आधार</h3>
+      <ul class="point-list">
+        <li>अनुच्छेद 202 → "वार्षिक वित्तीय विवरण" (Annual Financial Statement)</li>
+        <li>अनुच्छेद 204 → विनियोग विधेयक (Appropriation Bill)</li>
+        <li>बिना Appropriation Bill के संचित निधि से एक भी पैसा नहीं निकल सकता</li>
+        <li>बजट = कानूनी दस्तावेज + राजनीतिक प्रतिबद्धता</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "202 बताता है, 204 निकालता है"</strong> – 202 = Statement, 204 = Permission to spend</div>
+    </div>
+    <div class="card blue">
+      <h3>🔄 बजट चक्र (Budget Cycle) – 4 चरण</h3>
+      <ul class="point-list">
+        <li><strong>1. अनुमान (Preparation):</strong> DGP → SP/SHO से अनुमान</li>
+        <li><strong>2. वैधानिकीकरण (Legislation):</strong> Demands for Grants, मतदान</li>
+        <li><strong>3. निष्पादन (Execution):</strong> DDO बिल बनाकर Treasury भेजता है</li>
+        <li><strong>4. लेखापरीक्षा (Audit):</strong> CAG जाँच करता है</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "PLEA"</strong> – P=Preparation, L=Legislation, E=Execution, A=Audit</div>
+    </div>
+  </div>
+
+  <div class="section-title">🎯 6. आधुनिक बजटिंग तकनीकें</div>
+  <div class="card-grid">
+    <div class="card green">
+      <h3>🔢 ZBB – शून्य-आधारित बजटिंग</h3>
+      <ul class="point-list">
+        <li>जनक: <strong>Peter Pyhrr</strong></li>
+        <li>हर साल बजट 'शून्य' से शुरू</li>
+        <li>हर गतिविधि का Justification आवश्यक</li>
+        <li>Incrementalism से बचाव (10% बढ़ाने की आदत नहीं)</li>
+        <li>राजस्थान सरकार ने अपनाया है</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "ZERO = Justify Every Resource & Operation"</strong> – हर साल नए सिरे से सोचो!</div>
+    </div>
+    <div class="card purple">
+      <h3>📈 Performance Budget (निष्पादन बजट)</h3>
+      <ul class="point-list">
+        <li>बजट = कार्यों + परिणामों के आधार पर</li>
+        <li>Input → Output संबंध</li>
+        <li>उदाहरण: "10,000 घंटे गश्त के लिए 1 करोड़"</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "Performance = Purpose"</strong> – पैसा किस काम के लिए?</div>
+    </div>
+    <div class="card gold">
+      <h3>🎯 Outcome Budget (आउटकम बजट)</h3>
+      <ul class="point-list">
+        <li>Output (उत्पादन) नहीं, Outcome (प्रभाव) पर ध्यान</li>
+        <li>Output: 500 नए पुलिसकर्मी भर्ती</li>
+        <li>Outcome: अपराध दर में 5% कमी</li>
+        <li>राजस्थान सरकार Output-Outcome Framework प्रकाशित करती है</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "O² = Output से बड़ा Outcome"</strong></div>
+    </div>
+    <div class="card red">
+      <h3>👩 Gender Budgeting (जेंडर बजटिंग)</h3>
+      <ul class="point-list">
+        <li>महिलाओं के लिए अलग बजट नहीं, मुख्य बजट में विश्लेषण</li>
+        <li><strong>राजस्थान GBS मॉडल:</strong></li>
+        <li>भाग A: 100% राशि महिलाओं के लिए (जैसे विधवा पेंशन)</li>
+        <li>भाग B: ≥30% राशि महिलाओं के लाभ के लिए</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "A=100%, B=30%"</strong> – A for All women, B for Below 100 but ≥30</div>
+    </div>
+  </div>
+
+  <div class="section-title">📜 7. GF&AR – राजस्थान सामान्य वित्तीय एवं लेखा नियम</div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>📚 GF&AR के 3 भाग</h3>
+      <ul class="point-list">
+        <li><strong>भाग I:</strong> मूलभूत नियम (Basic Rules & Cash Management)</li>
+        <li><strong>भाग II:</strong> सामान क्रय नियम (Store Purchase Rules)</li>
+        <li><strong>भाग III:</strong> वित्तीय शक्तियों का प्रत्यायोजन (Delegation)</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "BCD"</strong> – B=Basic Rules, C=Commercial Purchase, D=Delegation of Powers</div>
+    </div>
+    <div class="card blue">
+      <h3>🏛️ GF&AR भाग I – महत्वपूर्ण नियम</h3>
+      <ul class="point-list">
+        <li><strong>नियम 8:</strong> Treasury से पैसा तभी निकालो जब तुरंत जरूरत हो</li>
+        <li><strong>नियम 10:</strong> Standards of Financial Propriety (4 सिद्धांत)</li>
+        <li><strong>नियम 26:</strong> DDO के कर्तव्य</li>
+        <li><strong>नियम 48:</strong> Cash Book = GA 48 Form</li>
+        <li><strong>नियम 49:</strong> सरकारी + निजी धन कभी न मिलाएँ</li>
+        <li><strong>नियम 52:</strong> नकद = Double Lock Safe में</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "8,10,26,48,49,52 याद करो"</strong> → "8 बजे Rule, 10 बजे Standards, 26 DDO, 48 Cash Book, 49 Mix मत करो, 52 Double Lock"</div>
+    </div>
+    <div class="card green">
+      <h3>⚖️ नियम 10 – Financial Propriety के 4 सिद्धांत</h3>
+      <ul class="point-list">
+        <li>1. खर्च = केवल उतना जितना आवश्यक</li>
+        <li>2. कोई भी अधिकारी स्वयं के लाभ के लिए धन नहीं ले सकता</li>
+        <li>3. सार्वजनिक धन = Ordinary Prudence से खर्च करें</li>
+        <li>4. भत्ते (Allowances) = खर्च भरपाई के लिए, लाभ के लिए नहीं</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "NAPO"</strong> – N=Necessity, A=Avoid personal gain, P=Prudence, O=Only reimbursement</div>
+    </div>
+    <div class="card red">
+      <h3>🛒 GF&AR भाग II – निविदा प्रक्रिया</h3>
+      <ul class="point-list">
+        <li><strong>Open Tender:</strong> >2 लाख रु. (RTPP Act)</li>
+        <li><strong>Limited Tender:</strong> कम राशि या तत्काल आवश्यकता</li>
+        <li><strong>Single Tender:</strong> Patent वस्तु या आपातकाल</li>
+        <li><strong>EMD (बयाना राशि):</strong> ~2% अनुमानित लागत</li>
+        <li><strong>Security Deposit:</strong> ~5% (L1 bidder से)</li>
+        <li><strong>नियम 18:</strong> मितव्ययिता + दक्षता का ध्यान रखें</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "OLS-25"</strong> – O=Open (>2L), L=Limited, S=Single → 2% EMD, 5% Security</div>
+    </div>
+  </div>
+
+  <div class="section-title">💻 8. IFMS – एकीकृत वित्तीय प्रबंधन प्रणाली</div>
+  <div class="card-grid">
+    <div class="card blue">
+      <h3>🖥️ IFMS 3.0 के मॉड्यूल</h3>
+      <ul class="point-list">
+        <li><strong>1. PayManager:</strong> DDO स्तर पर वेतन बिल बनाना (GA 48)</li>
+        <li><strong>2. RajKosh:</strong> ट्रेजरी अकाउंटिंग + Budget Control (Pre-Check)</li>
+        <li><strong>3. e-GRAS:</strong> Online Revenue Collection (Police Challan, Court Fees)</li>
+        <li><strong>4. Jan Aadhaar + DBT:</strong> Direct Benefit Transfer</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "PREP"</strong> – P=PayManager, R=RajKosh, E=e-GRAS, P=PayDBT (Jan Aadhaar)</div>
+    </div>
+    <div class="card green">
+      <h3>✅ Digitalization के फायदे</h3>
+      <ul class="point-list">
+        <li>Automated Reconciliation (मैन्युअल नहीं)</li>
+        <li>Ghost Employees से बचाव (ECS भुगतान)</li>
+        <li>Transparency (DDO + कर्मचारी दोनों देख सकते हैं)</li>
+        <li>Paperless कार्यप्रणाली</li>
+        <li>Audit Trail (हर user की गतिविधि रिकॉर्ड)</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "AGTP"</strong> – A=Automated, G=Ghost-free, T=Transparent, P=Paperless</div>
+    </div>
+  </div>
+
+  <div class="section-title">🔍 9. लेखापरीक्षा तंत्र (Audit Mechanism)</div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>⚖️ CAG (नियंत्रक एवं महालेखापरीक्षक)</h3>
+      <ul class="point-list">
+        <li>संवि. अनुच्छेद <strong>148</strong> के तहत गठित</li>
+        <li>राज्यपाल को 3 रिपोर्ट देता है:</li>
+        <li>1. Finance Accounts (कुल आय-व्यय)</li>
+        <li>2. Appropriation Accounts (बजट vs वास्तविक खर्च)</li>
+        <li>3. Audit Report (अनियमितताएँ, गबन)</li>
+        <li>PAC (Public Accounts Committee) CAG रिपोर्ट की जाँच करती है</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "CAG = 148, 3 Reports = FAA"</strong> – Finance, Appropriation, Audit</div>
+    </div>
+    <div class="card blue">
+      <h3>🏘️ LFAD + Social Audit</h3>
+      <ul class="point-list">
+        <li><strong>LFAD:</strong> Local Fund Audit Department</li>
+        <li>राजस्थान स्थानीय निधि अंकेक्षण अधिनियम, <strong>1954</strong></li>
+        <li>पंचायत + नगर निकाय के लेखे की जाँच</li>
+        <li><strong>Social Audit:</strong> गाँव के लोग (लाभार्थी) MGNREGA जैसे कार्यों की जाँच करते हैं</li>
+        <li><strong>SSAAT:</strong> राजस्थान में सामाजिक अंकेक्षण की स्वतंत्र संस्था</li>
+        <li><strong>जन सूचना पोर्टल:</strong> Social Audit का डिजिटल उपकरण</li>
+      </ul>
+      <div class="mnemonic">💡 <strong>Trick: "LS-JS"</strong> – L=LFAD (Local), S=SSAAT (Social Audit), J=Jan Soochna Portal</div>
+    </div>
+  </div>
+
+  <div class="section-title">📖 10. महत्वपूर्ण शब्दावली (Glossary)</div>
+  <table class="fancy-table">
+    <thead>
+      <tr><th>हिन्दी</th><th>English</th><th>संक्षेप में अर्थ</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>विनियोग</td><td>Appropriation</td><td>संचित निधि से किसी उद्देश्य के लिए धन अलग करना</td></tr>
+      <tr><td>पुनर्विनियोग</td><td>Re-appropriation</td><td>एक Grant के भीतर एक Unit से दूसरी Unit में बचत transfer (वित्त विभाग की अनुमति से)</td></tr>
+      <tr><td>मतदेय व्यय</td><td>Voted Expenditure</td><td>विधानसभा में मतदान होता है, अस्वीकार हो सकता है</td></tr>
+      <tr><td>भारित व्यय</td><td>Charged Expenditure</td><td>संचित निधि पर भारित (राज्यपाल वेतन, ऋण ब्याज) – मतदान नहीं</td></tr>
+      <tr><td>इम्प्रेस्ट</td><td>Imprest</td><td>कार्यालय के छोटे खर्चों के लिए स्थायी अग्रिम राशि (Permanent Advance)</td></tr>
+      <tr><td>गबन</td><td>Defalcation</td><td>सरकारी धन/संपत्ति का कपटपूर्ण विनियोग/चोरी</td></tr>
+      <tr><td>लेखा शीर्ष</td><td>Head of Account</td><td>बजट का वर्गीकरण (Major Head 2055 = पुलिस)</td></tr>
+      <tr><td>संचित निधि</td><td>Consolidated Fund</td><td>अनुच्छेद 266(1) – राज्य का मुख्य खजाना</td></tr>
+      <tr><td>आकस्मिकता निधि</td><td>Contingency Fund</td><td>अनुच्छेद 267(2) – राज्यपाल के अधीन, आपातकालीन खर्च</td></tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- ==================== TAB 2: SUMMARY TABLE ==================== -->
+<div id="tab-summary" class="tab-content">
+
+  <div class="section-title">📊 Master Summary Table</div>
+  <table class="fancy-table">
+    <thead>
+      <tr><th>Topic</th><th>Key Points</th><th>Exam Important</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>GF&AR Rules</strong></td>
+        <td>3 Parts: Basic/Store/Delegation<br>Rule 8=Treasury withdrawal, Rule 10=Propriety, Rule 48=Cash Book (GA48), Rule 49=No mixing, Rule 52=Double Lock</td>
+        <td><span class="tag tag-orange">Rule No.</span> <span class="tag tag-red">High Frequency</span></td>
+      </tr>
+      <tr>
+        <td><strong>Budget Cycle</strong></td>
+        <td>PLEA: Preparation → Legislation → Execution → Audit<br>Art.202 = Statement, Art.204 = Appropriation Bill</td>
+        <td><span class="tag tag-blue">Constitution</span> <span class="tag tag-orange">4 Steps</span></td>
+      </tr>
+      <tr>
+        <td><strong>Budgeting Types</strong></td>
+        <td>ZBB (Peter Pyhrr) = Zero base, justify all<br>Performance = Input-Output<br>Outcome = Impact/Result<br>Gender = GBS (A=100%, B=30%)</td>
+        <td><span class="tag tag-green">ZBB Founder</span> <span class="tag tag-orange">Distinguish</span></td>
+      </tr>
+      <tr>
+        <td><strong>Accounting Concepts</strong></td>
+        <td>Entity, Money Measurement, Periodicity (Apr-Mar), Propriety<br>Fund Balance = Assets − Liabilities (Not Equity!)</td>
+        <td><span class="tag tag-red">Equation</span></td>
+      </tr>
+      <tr>
+        <td><strong>CAG</strong></td>
+        <td>Art.148, 3 Reports: Finance/Appropriation/Audit<br>PAC reviews CAG reports</td>
+        <td><span class="tag tag-blue">Art.148</span> <span class="tag tag-orange">3 Reports</span></td>
+      </tr>
+      <tr>
+        <td><strong>IFMS Modules</strong></td>
+        <td>PayManager=Salary Bills, RajKosh=Treasury, e-GRAS=Revenue Collection, Jan Aadhaar=DBT</td>
+        <td><span class="tag tag-green">Digital Tools</span></td>
+      </tr>
+      <tr>
+        <td><strong>Audit Types</strong></td>
+        <td>LFAD (Act 1954) = Local bodies<br>SSAAT = Social Audit (independent)<br>Jan Soochna Portal = Digital social audit</td>
+        <td><span class="tag tag-orange">SSAAT</span> <span class="tag tag-blue">LFAD 1954</span></td>
+      </tr>
+      <tr>
+        <td><strong>Tender</strong></td>
+        <td>Open>2L, Limited=small, Single=emergency/patent<br>EMD=2%, Security=5%</td>
+        <td><span class="tag tag-red">%ages</span></td>
+      </tr>
+      <tr>
+        <td><strong>Funds</strong></td>
+        <td>Consolidated Fund = Art.266(1) main treasury<br>Contingency Fund = Art.267(2) Governor's emergency fund</td>
+        <td><span class="tag tag-blue">Articles</span></td>
+      </tr>
+      <tr>
+        <td><strong>Govt. Accounting Basis</strong></td>
+        <td>Cash Basis (record when cash received/paid)<br>Rajasthan also on Cash Basis<br>Accrual = Private sector</td>
+        <td><span class="tag tag-orange">Cash vs Accrual</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">⚡ Quick Reference Card</div>
+  <div class="two-col">
+    <div>
+      <div class="highlight-box hb-saffron">
+        <h4>🔢 संवैधानिक अनुच्छेद</h4>
+        <ul class="point-list">
+          <li><strong>Art. 148</strong> → CAG</li>
+          <li><strong>Art. 202</strong> → Annual Financial Statement</li>
+          <li><strong>Art. 204</strong> → Appropriation Bill</li>
+          <li><strong>Art. 266(1)</strong> → Consolidated Fund</li>
+          <li><strong>Art. 267(2)</strong> → Contingency Fund</li>
+        </ul>
+      </div>
+      <div class="highlight-box hb-blue">
+        <h4>📋 GF&AR नियम नंबर याद करें</h4>
+        <ul class="point-list">
+          <li><strong>Rule 8</strong> → तुरंत जरूरत पर ही निकालो</li>
+          <li><strong>Rule 10</strong> → Financial Propriety के 4 सिद्धांत</li>
+          <li><strong>Rule 12</strong> → Physical Verification (वार्षिक)</li>
+          <li><strong>Rule 18</strong> → Economy & Efficiency in purchase</li>
+          <li><strong>Rule 26</strong> → DDO के कर्तव्य</li>
+          <li><strong>Rule 48</strong> → Cash Book (GA 48)</li>
+          <li><strong>Rule 49</strong> → सरकारी+निजी धन मिलाना prohibited</li>
+          <li><strong>Rule 52</strong> → Double Lock Safe</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="highlight-box hb-green">
+        <h4>🔑 Key Persons/Institutions</h4>
+        <ul class="point-list">
+          <li><strong>Peter Pyhrr</strong> → ZBB के जनक</li>
+          <li><strong>CAG</strong> → Art. 148, 3 रिपोर्ट</li>
+          <li><strong>PAC</strong> → CAG रिपोर्ट की जाँच</li>
+          <li><strong>DDO</strong> → Drawing & Disbursing Officer (SHO/Head of Office)</li>
+          <li><strong>SSAAT</strong> → Rajasthan Social Audit body</li>
+          <li><strong>LFAD</strong> → Local Fund Audit Dept. (Act 1954)</li>
+        </ul>
+      </div>
+      <div class="highlight-box hb-gold">
+        <h4>💡 %ages & Numbers याद करें</h4>
+        <ul class="point-list">
+          <li><strong>EMD</strong> → ~2% of estimated cost</li>
+          <li><strong>Security Deposit</strong> → ~5%</li>
+          <li><strong>Open Tender</strong> → >₹2 लाख</li>
+          <li><strong>Gender Budget Part A</strong> → 100% for women</li>
+          <li><strong>Gender Budget Part B</strong> → ≥30% for women</li>
+          <li><strong>Physical Verification</strong> → वर्ष में न्यूनतम 1 बार</li>
+          <li><strong>Cash Basis</strong> → Rajasthan/India Government</li>
+          <li><strong>Financial Year</strong> → 1 April – 31 March</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">🔄 Comparison Quick Table</div>
+  <table class="fancy-table">
+    <thead>
+      <tr><th>Budget Type</th><th>Focus</th><th>Key Feature</th><th>Founder/Origin</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Traditional Budget</td><td>Items (वस्तुएँ)</td><td>Line item expenditure</td><td>-</td></tr>
+      <tr><td>Performance Budget</td><td>Output (आउटपुट)</td><td>Input-Output relationship</td><td>USA model</td></tr>
+      <tr><td>Outcome Budget</td><td>Impact (परिणाम)</td><td>Qualitative impact measurement</td><td>India (2005)</td></tr>
+      <tr><td>ZBB</td><td>Justification</td><td>Every activity justified from zero</td><td>Peter Pyhrr</td></tr>
+      <tr><td>Gender Budget</td><td>Women's share</td><td>GBS: Part A(100%) + Part B(30%+)</td><td>Rajasthan model</td></tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- ==================== TAB 3: MCQ ==================== -->
+<div id="tab-mcq" class="tab-content">
+  <div class="mcq-header">
+    <div>
+      <h2>❓ PYQ Based MCQ – लेखांकन</h2>
+      <div style="font-size:0.78rem;color:rgba(255,255,255,0.7);margin-top:4px;">Marking: +1 सही | −⅓ गलत | Total: 20 Questions</div>
+    </div>
+    <div class="score-display">Score: <span id="current-score">0</span> | <span id="attempted">0</span>/20</div>
+  </div>
+
+  <div style="padding: 16px; background: white; border-radius: 0 0 var(--border-radius) var(--border-radius); box-shadow: var(--card-shadow); margin-bottom: 20px;">
+    <div class="progress-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+
+    <div id="questions-container"></div>
+
+    <div class="mcq-controls">
+      <button class="btn-primary" onclick="showResult()">📊 परिणाम देखें</button>
+      <button class="btn-secondary" onclick="resetMCQ()">🔄 Reset</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TAB 4: LAST MINUTE ==================== -->
+<div id="tab-lastminute" class="tab-content">
+
+  <div class="section-title">🚀 Super Mnemonics – याद रखने की तरकीबें</div>
+
+  <div class="super-mnemonic">
+    <h3>🧠 SUPER MNEMONIC 1 – "GF&AR नियम याद करो: 8-10-12-18-26-48-49-52"</h3>
+    <div class="mnem-item">
+      <div class="mnem-letter">8</div>
+      <div class="mnem-text"><strong>8 = "जब लगे तभी निकालो"</strong> – Treasury से money तभी निकालो जब तुरंत भुगतान की जरूरत हो।</div>
+    </div>
+    <div class="mnem-item">
+      <div class="mnem-letter">10</div>
+      <div class="mnem-text"><strong>10 = "NAPO Propriety"</strong> – N=Need only, A=No personal gain, P=Prudent spending, O=Allowance = only reimbursement</div>
+    </div>
+    <div class="mnem-item">
+      <div class="mnem-letter">12</div>
+      <div class="mnem-text"><strong>12 = "साल में एक बार तिजोरी गिनो"</strong> – Physical Verification of Stores annually</div>
+    </div>
+    <div class="mnem-item">
+      <div class="mnem-letter">26</div>
+      <div class="mnem-text"><strong>26 = "DDO = SHO"</strong> – थाने का SHO DDO होता है। Cash Book रोज check करो। सही Payee को पैसा दो।</div>
+    </div>
+    <div class="mnem-item">
+      <div class="mnem-letter">48</div>
+      <div class="mnem-text"><strong>48 = "Cash Book = GA 48"</strong> – नकद लेन-देन का रजिस्टर GA 48 में। (GA 55 = Salary Bill Register)</div>
+    </div>
+    <div class="mnem-item">
+      <div class="mnem-letter">52</div>
+      <div class="mnem-text"><strong>52 = "दो ताले, दो चाबी"</strong> – Double Lock Safe। एक चाबी HO के पास, एक Cashier के पास।</div>
+    </div>
+  </div>
+
+  <div class="super-mnemonic" style="background:linear-gradient(135deg,#0F7B6C,#064E3B);">
+    <h3>🧠 SUPER MNEMONIC 2 – "Budget Cycle = PLEA"</h3>
+    <div class="mnem-item">
+      <div class="mnem-letter" style="background:#F5A623;">P</div>
+      <div class="mnem-text"><strong>P = Preparation (अनुमान)</strong> – DGP → SP → SHO से estimates। Committed + New Schemes।</div>
+    </div>
+    <div class="mnem-item">
+      <div class="mnem-letter" style="background:#F5A623;">L</div>
+      <div class="mnem-text"><strong>L = Legislation (वैधानिकीकरण)</strong> – Finance Minister विधानसभा में पेश करता है। Art.204 = Appropriation Bill।</div>
+    </div>
+    <div class="mnem-item">
+      <div class="mnem-letter" style="background:#F5A623;">E</div>
+      <div class="mnem-text"><strong>E = Execution (निष्पादन)</strong> – DDO बिल बनाता है → Treasury (RajKosh) को → पैसा मिलता है।</div>
+    </div>
+    <div class="mnem-item">
+      <div class="mnem-letter" style="background:#F5A623;">A</div>
+      <div class="mnem-text"><strong>A = Audit (लेखापरीक्षा)</strong> – CAG (Art.148) तीन रिपोर्ट देता है → PAC जाँच करती है।</div>
+    </div>
+  </div>
+
+  <div class="section-title">⚡ Last Minute Compact Cards</div>
+  <div class="lm-grid">
+    <div class="lm-card lm-orange">
+      <h4>🔑 संवैधानिक Articles</h4>
+      148→CAG | 202→AFS | 204→Appropriation Bill<br>266(1)→Consolidated Fund | 267(2)→Contingency Fund<br>
+      <span class="tag tag-orange">5 Articles</span>
+    </div>
+    <div class="lm-card lm-blue">
+      <h4>📊 बजट प्रकार</h4>
+      <strong>ZBB</strong>=Peter Pyhrr (Zero base, Justification)<br>
+      <strong>Performance</strong>=Input→Output<br>
+      <strong>Outcome</strong>=Output→Impact<br>
+      <strong>Gender</strong>=GBS: A(100%), B(≥30%)
+    </div>
+    <div class="lm-card lm-green">
+      <h4>💻 IFMS Tools</h4>
+      <strong>PayManager</strong>=वेतन बिल (DDO)<br>
+      <strong>RajKosh</strong>=Treasury, Budget Control<br>
+      <strong>e-GRAS</strong>=Online Revenue Collection<br>
+      <strong>DBT+Jan Aadhaar</strong>=Direct Transfer
+    </div>
+    <div class="lm-card lm-red">
+      <h4>🔍 Audit Types</h4>
+      <strong>CAG</strong>=Art.148, 3 Reports (FAA)<br>
+      <strong>PAC</strong>=Reviews CAG reports<br>
+      <strong>LFAD</strong>=Local bodies (Act 1954)<br>
+      <strong>SSAAT</strong>=Social Audit (Independent)<br>
+      <strong>Jan Soochna</strong>=Digital Social Audit
+    </div>
+    <div class="lm-card lm-purple">
+      <h4>🛒 Tender Rules</h4>
+      Open Tender = >₹2 lakh<br>
+      Limited Tender = Small/Urgent<br>
+      Single Tender = Patent/Emergency<br>
+      <strong>EMD = ~2%</strong> | <strong>Security = ~5%</strong><br>
+      Rule 18 = Economy + Efficiency
+    </div>
+    <div class="lm-card lm-gold">
+      <h4>⚡ Cash Book Facts</h4>
+      Form = <strong>GA 48</strong><br>
+      GA 55 = Salary Bill Register<br>
+      Closing Balance = Physical Cash से मिलान<br>
+      Rule 49 = Govt+Private = Never mix<br>
+      Rule 52 = Double Lock Safe
+    </div>
+    <div class="lm-card lm-orange">
+      <h4>📐 Accounting Equations</h4>
+      <strong>Commercial:</strong> Assets = Liabilities + Equity<br>
+      <strong>Government:</strong> Fund Balance = Assets − Liabilities<br>
+      <strong>Why?</strong> Govt has no 'owners/equity'!
+    </div>
+    <div class="lm-card lm-blue">
+      <h4>📅 Important Dates/Numbers</h4>
+      Financial Year = 1 April – 31 March<br>
+      Lapse = अप्रयुक्त बजट 31 March को<br>
+      Physical Verification = साल में 1 बार (Rule 12)<br>
+      Gender Part A=100%, Part B=≥30%<br>
+      EMD=2%, Security=5%
+    </div>
+    <div class="lm-card lm-green">
+      <h4>🧮 Accounting Concepts (4)</h4>
+      1. <strong>Entity</strong>=हर विभाग अलग<br>
+      2. <strong>Money Measurement</strong>=₹ में ही record<br>
+      3. <strong>Periodicity</strong>=April-March + Lapse Rule<br>
+      4. <strong>Propriety</strong>=Prudent spending (सबसे महत्वपूर्ण)
+    </div>
+    <div class="lm-card lm-red">
+      <h4>💎 Charged vs Voted Expenditure</h4>
+      <strong>Charged (भारित):</strong> Consolidated Fund पर, No voting, only discussion<br>
+      (Governor salary, loan interest, CAG)<br>
+      <strong>Voted (मतदेय):</strong> विधानसभा में vote होता है, reject भी हो सकता है
+    </div>
+    <div class="lm-card lm-purple">
+      <h4>💰 Govt Revenue Sources</h4>
+      Tax + Fees + Fines = Non-exchange (गैर-विनिमय)<br>
+      Govt accounting = <strong>Cash Basis</strong><br>
+      Rajasthan = Cash Basis पर कार्य करती है<br>
+      (Private = Accrual Basis)
+    </div>
+    <div class="lm-card lm-gold">
+      <h4>🏦 3 Government Funds</h4>
+      <strong>Consolidated:</strong> Art.266(1) – Main treasury<br>
+      <strong>Contingency:</strong> Art.267(2) – Emergency (Governor)<br>
+      <strong>Public Account:</strong> Art.266(2) – PPF, Small savings, etc.
+    </div>
+  </div>
+
+  <div class="section-title">🎯 Exam Day Checklist</div>
+  <div class="highlight-box hb-saffron">
+    <h4>✅ Must Remember Before Exam</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.82rem;line-height:1.8;">
+      <div>
+        ☐ ZBB = Peter Pyhrr (founder)<br>
+        ☐ CAG = Article 148<br>
+        ☐ Consolidated Fund = Art. 266(1)<br>
+        ☐ Annual Financial Statement = Art. 202<br>
+        ☐ Cash Book Form = GA 48<br>
+        ☐ LFAD Act = 1954<br>
+        ☐ Financial Year = 1 Apr – 31 Mar
+      </div>
+      <div>
+        ☐ EMD = ~2%, Security = ~5%<br>
+        ☐ Physical Verification = 1 बार/वर्ष<br>
+        ☐ Fund Balance = Assets − Liabilities<br>
+        ☐ Budget Cycle = PLEA (4 steps)<br>
+        ☐ Gender Budget Part A=100%, B=30%<br>
+        ☐ SSAAT = Social Audit (Rajasthan)<br>
+        ☐ Jan Soochna Portal = RTI + Social Audit
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- RESULT POPUP -->
+<div class="popup-overlay" id="result-popup">
+  <div class="popup-card">
+    <div id="popup-emoji" style="font-size:4rem;margin-bottom:8px;">🎯</div>
+    <div style="font-size:1rem;color:#666;font-weight:600;">आपका कुल स्कोर</div>
+    <div class="popup-score" id="popup-score-val">0</div>
+    <div class="popup-grade" id="popup-grade"></div>
+    <div class="popup-stats">
+      <div class="popup-stat correct"><strong id="popup-correct">0</strong><span>✅ सही</span></div>
+      <div class="popup-stat wrong"><strong id="popup-wrong">0</strong><span>❌ गलत</span></div>
+      <div class="popup-stat skip"><strong id="popup-skip">0</strong><span>⏭️ छोड़े</span></div>
+    </div>
+    <button class="btn-primary" onclick="closePopup()" style="width:100%">✅ ठीक है, आगे बढ़ें!</button>
+  </div>
+</div>
+
+<script>
+// ==================== TAB SWITCHING ====================
+function showTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tabId).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ==================== MCQ DATA ====================
+const questions = [
+  {
+    q: "सरकारी लेखांकन (Government Accounting) में 'लेखांकन समीकरण' (Accounting Equation) मुख्य रूप से किस पर केंद्रित होता है?",
+    opts: ["लाभ = राजस्व - व्यय", "संपत्ति = दायित्व + इक्विटी", "निधि संतुलन (Fund Balance) = संपत्ति - दायित्व", "उपरोक्त में से कोई नहीं"],
+    ans: 2,
+    exp: "सरकार में 'इक्विटी' (शेयरधारकों की पूंजी) नहीं होती। सरकारी समीकरण Fund Balance = Assets - Liabilities है। इसका उद्देश्य भविष्य की सेवाओं के लिए उपलब्ध संसाधन देखना है।",
+    source: "Vinay Sir Notes - Page 15"
+  },
+  {
+    q: "'शून्य-आधारित बजटिंग' (Zero-Based Budgeting - ZBB) के संदर्भ में कौन सा कथन सत्य है?",
+    opts: ["यह पिछले वर्ष के बजट में कुछ प्रतिशत वृद्धि करता है", "यह हर गतिविधि के लिए नए सिरे से औचित्य (Justification) मांगता है, चाहे वह पुरानी हो या नई", "यह केवल नए करों पर लागू होता है", "इसे भारत में कभी लागू नहीं किया गया"],
+    ans: 1,
+    exp: "ZBB में 'आधार' (Base) शून्य होता है। यह 'इन्क्रीमेंटल बजटिंग' का विलोम है। इसके जनक Peter Pyhrr थे। राजस्थान सरकार ने भी ZBB अपनाया है।",
+    source: "Vinay Sir Notes - Page 22"
+  },
+  {
+    q: "राजस्थान में बजट दस्तावेजों के साथ प्रस्तुत 'आउटकम बजट' (Outcome Budget) का मुख्य उद्देश्य क्या है?",
+    opts: ["केवल खर्च की गई राशि का विवरण देना", "योजनाओं के भौतिक लक्ष्यों (Physical Targets) को मापना", "योजनाओं के गुणात्मक प्रभाव (Qualitative Impact) और परिणाम को मापना", "जेंडर बजट को अलग करना"],
+    ans: 2,
+    exp: "Outcome Budget यह देखता है कि खर्च से जनता के जीवन में क्या वास्तविक सुधार आया। Output=500 पुलिसकर्मी; Outcome=अपराध दर में 5% कमी।",
+    source: "Vinay Sir Notes - Page 24"
+  },
+  {
+    q: "राजस्थान सामान्य वित्तीय एवं लेखा नियम (GF&AR) के नियम 8 के अनुसार, कोषागार से धन कब निकाला जा सकता है?",
+    opts: ["जब बजट लैप्स होने वाला हो", "जब उसे बैंक में जमा करके ब्याज कमाना हो", "जब तत्काल भुगतान की आवश्यकता हो", "जब उच्च अधिकारी मौखिक आदेश दे"],
+    ans: 2,
+    exp: "नियम 8 स्पष्ट करता है कि बजट को व्यपगत (Lapse) होने से बचाने के लिए पैसा निकालकर रखना एक गंभीर वित्तीय अनियमितता है। Treasury से पैसा तभी निकालो जब तुरंत भुगतान की जरूरत हो।",
+    source: "GF&AR Part I - Rule 8"
+  },
+  {
+    q: "प्रत्येक कार्यालय अध्यक्ष (Head of Office) को अपने कार्यालय के सामान (Stores) का भौतिक सत्यापन (Physical Verification) कम से कम कितनी बार करना चाहिए?",
+    opts: ["3 वर्ष में एक बार", "6 महीने में एक बार", "प्रति वित्तीय वर्ष में एक बार", "केवल जब ऑडिट टीम आए"],
+    ans: 2,
+    exp: "GF&AR भाग II के नियम 12 के अनुसार, वार्षिक भौतिक सत्यापन अनिवार्य है। इसका उद्देश्य Stock Register और वास्तविक Stock में अंतर का पता लगाना है। कमी पाई जाने पर चोरी या गबन माना जा सकता है।",
+    source: "GF&AR Part II - Rule 12"
+  },
+  {
+    q: "एक पुलिस थाने में 'रोकड़ बही' (Cash Book) के संधारण के लिए कौन सा प्रपत्र (Form) निर्धारित है?",
+    opts: ["GA 100", "GA 55", "GA 48", "GA 19"],
+    ans: 2,
+    exp: "GF&AR के तहत नकद लेन-देन को रिकॉर्ड करने के लिए GA 48 मानक प्रपत्र है। (GA 55 वेतन बिल का रजिस्टर है।) Rule 48 के अनुसार यह अनिवार्य है।",
+    source: "GF&AR Part I - Rule 48"
+  },
+  {
+    q: "निविदा (Tender) प्रक्रिया में 'बयाना राशि' (Earnest Money Deposit - EMD) लेने का मुख्य उद्देश्य क्या है?",
+    opts: ["सरकार की आय बढ़ाना", "बोलीदाता (Bidder) की गंभीरता सुनिश्चित करना ताकि वह बोली से पीछे न हटे", "ठेकेदार को अग्रिम भुगतान करना", "सामान की गुणवत्ता जाँचना"],
+    ans: 1,
+    exp: "यदि कोई बोलीदाता टेंडर भरने के बाद मना करता है, तो EMD जब्त (Forfeit) कर ली जाती है। EMD आमतौर पर अनुमानित लागत का ~2% होती है।",
+    source: "GF&AR Part II - Tender Rules"
+  },
+  {
+    q: "राजस्थान सरकार की एकीकृत वित्तीय प्रबंधन प्रणाली (IFMS) का कौन सा मॉड्यूल 'वेतन बिल' (Pay Bills) बनाने के लिए उपयोग किया जाता है?",
+    opts: ["राजकोष (RajKosh)", "पे-मैनेजर (PayManager)", "ई-ग्रास (e-GRAS)", "एसएसओ (SSO)"],
+    ans: 1,
+    exp: "पे-मैनेजर DDO स्तर पर बिल बनाने का टूल है, जबकि राजकोष ट्रेजरी स्तर का टूल है। PayManager → Bill Generate → DSC → RajKosh (Treasury) → Payment",
+    source: "Vinay Sir Notes - Page 38"
+  },
+  {
+    q: "'सामाजिक अंकेक्षण' (Social Audit) को सुविधाजनक बनाने के लिए राजस्थान सरकार ने आरटीआई अधिनियम की धारा 4(2) के तहत कौन सा पोर्टल लॉन्च किया है?",
+    opts: ["जन आधार पोर्टल", "जन सूचना पोर्टल", "संपर्क पोर्टल", "ई-मित्र"],
+    ans: 1,
+    exp: "जन सूचना पोर्टल स्वतः (Suo Motu) जानकारी सार्वजनिक करता है, जिससे जनता को आरटीआई लगाने की जरूरत नहीं पड़ती और वे Social Audit कर सकते हैं।",
+    source: "Vinay Sir Notes - Page 50"
+  },
+  {
+    q: "स्थानीय निकायों (जैसे पंचायत, नगर पालिका) के खातों की लेखापरीक्षा (Audit) राजस्थान में मुख्य रूप से किसके द्वारा की जाती है?",
+    opts: ["केवल चार्टर्ड अकाउंटेंट (CA) द्वारा", "स्थानीय निधि अंकेक्षण विभाग (LFAD) द्वारा", "पुलिस विभाग द्वारा", "जिला कलेक्टर द्वारा"],
+    ans: 1,
+    exp: "राजस्थान स्थानीय निधि अंकेक्षण अधिनियम, 1954 के तहत LFAD (Local Fund Audit Department) पंचायतों और नगर निकायों के लेखे की जाँच करता है।",
+    source: "Vinay Sir Notes - Page 48"
+  },
+  {
+    q: "भारतीय संविधान के किस अनुच्छेद के तहत नियंत्रक एवं महालेखापरीक्षक (CAG) का गठन किया गया है?",
+    opts: ["अनुच्छेद 124", "अनुच्छेद 148", "अनुच्छेद 266", "अनुच्छेद 302"],
+    ans: 1,
+    exp: "CAG (Comptroller and Auditor General) का गठन संविधान के अनुच्छेद 148 के तहत किया गया है। CAG राज्य सरकार के खातों की जाँच करता है और तीन रिपोर्ट राज्यपाल को देता है।",
+    source: "Constitution of India, Art. 148"
+  },
+  {
+    q: "GF&AR के नियम 49 के अनुसार निम्नलिखित में से क्या प्रतिबंधित है?",
+    opts: ["Cash Book का संधारण", "सरकारी धन और निजी धन (Non-Govt Money) को एक साथ मिलाना", "वेतन बिल बनाना", "भौतिक सत्यापन करना"],
+    ans: 1,
+    exp: "नियम 49 के अनुसार सरकारी धन और निजी धन को कभी एक साथ नहीं मिलाना चाहिए। यह गबन (Embezzlement) का संदेह पैदा करता है।",
+    source: "GF&AR Part I - Rule 49"
+  },
+  {
+    q: "'लैप्स का नियम' (Rule of Lapse) किस अवधारणा का प्रत्यक्ष परिणाम है?",
+    opts: ["पृथक अस्तित्व की अवधारणा", "मुद्रा मापन की अवधारणा", "लेखांकन अवधि की अवधारणा (Periodicity)", "वित्तीय स्वामित्व की अवधारणा"],
+    ans: 2,
+    exp: "लेखांकन अवधि की अवधारणा (Periodicity) के अनुसार वित्तीय वर्ष 1 अप्रैल से 31 मार्च तक है। 31 मार्च तक उपयोग न किया गया बजट व्यपगत (Lapse) हो जाता है।",
+    source: "Vinay Sir Notes - Page 13"
+  },
+  {
+    q: "राजस्थान में 'जेंडर बजटिंग' के GBS स्टेटमेंट में 'भाग B' में कौन सी योजनाएँ शामिल होती हैं?",
+    opts: ["जिनमें 100% राशि महिलाओं के लिए है", "जिनमें कम से कम 30% राशि महिलाओं के लाभ के लिए है", "जिनमें 50% राशि महिलाओं के लिए है", "जिनमें 10% राशि महिलाओं के लिए है"],
+    ans: 1,
+    exp: "राजस्थान GBS मॉडल: Part A = 100% राशि महिलाओं के लिए (जैसे विधवा पेंशन); Part B = कम से कम 30% राशि महिलाओं के लाभ के लिए।",
+    source: "Vinay Sir Notes - Page 26"
+  },
+  {
+    q: "सरकारी लेखांकन में 'नकद आधार' (Cash Basis) के अनुसार कौन सा कथन सही है?",
+    opts: ["लेन-देन तब रिकॉर्ड होता है जब वह घटित होता है, चाहे भुगतान हो या न हो", "लेन-देन तभी रिकॉर्ड होता है जब नकद प्राप्त हो या भुगतान किया जाए", "लेन-देन अनुमोदन के समय रिकॉर्ड होता है", "इनमें से कोई नहीं"],
+    ans: 1,
+    exp: "Cash Basis में लेन-देन तभी रिकॉर्ड होता है जब वास्तव में नकद प्राप्त हो या भुगतान किया जाए। Accrual Basis (Private sector) में घटना के समय रिकॉर्ड होता है।",
+    source: "Vinay Sir Notes - Page 7"
+  },
+  {
+    q: "GF&AR Part I के 'नियम 10' को किस नाम से जाना जाता है?",
+    opts: ["DDO के कर्तव्य", "धन निकासी के सामान्य सिद्धांत", "वित्तीय औचित्य के मानक (Standards of Financial Propriety)", "निविदा के नियम"],
+    ans: 2,
+    exp: "नियम 10 को 'Standards of Financial Propriety' कहा जाता है। यह हर लोक सेवक के लिए 'गीता' के समान है। इसमें 4 मुख्य सिद्धांत हैं: Need-based spending, No personal gain, Prudent spending, Allowances = only reimbursement।",
+    source: "GF&AR Part I - Rule 10"
+  },
+  {
+    q: "CAG राज्य सरकार को कितनी प्रमुख रिपोर्टें राज्यपाल को देता है?",
+    opts: ["1", "2", "3", "4"],
+    ans: 2,
+    exp: "CAG राज्यपाल को 3 रिपोर्टें देता है: 1) Finance Accounts (कुल आय-व्यय और देनदारियाँ), 2) Appropriation Accounts (बजट vs वास्तविक खर्च की तुलना), 3) Audit Report (अनियमितताएँ, गबन, नुकसान)।",
+    source: "Vinay Sir Notes - Page 46-47"
+  },
+  {
+    q: "वित्तीय स्वामित्व की अवधारणा (Propriety Concept) के अनुसार सार्वजनिक धन को किस प्रकार खर्च किया जाना चाहिए?",
+    opts: ["जितना चाहो उतना", "जैसे एक Person of Ordinary Prudence अपना धन खर्च करे", "केवल सरकारी आदेश के अनुसार", "जितना बजट में है उससे अधिक"],
+    ans: 1,
+    exp: "Propriety Concept सरकारी लेखांकन का सबसे नैतिक और महत्वपूर्ण स्तम्भ है। यह मांग करता है कि सार्वजनिक धन को उसी सतर्कता और मितव्ययिता के साथ खर्च किया जाए, जैसे एक सामान्य बुद्धि वाला व्यक्ति अपना धन खर्च करता है।",
+    source: "Vinay Sir Notes - Page 14"
+  },
+  {
+    q: "e-GRAS (Online Government Receipt Accounting System) का मुख्य उपयोग क्या है?",
+    opts: ["वेतन बिल बनाना", "ऑनलाइन राजस्व संग्रह (Police Challan, Court Fees)", "सामान खरीदना", "Audit करना"],
+    ans: 1,
+    exp: "e-GRAS राजस्व संग्रह का पोर्टल है। पुलिस चालान, कोर्ट फीस, या अन्य सरकारी शुल्क अब नकद में जमा करने के बजाय e-GRAS के माध्यम से सीधे बैंक से जमा किए जाते हैं। पैसा सीधे राज्य की संचित निधि में जाता है।",
+    source: "Vinay Sir Notes - Page 40"
+  },
+  {
+    q: "RajKosh का प्राथमिक कार्य क्या है?",
+    opts: ["वेतन बिल बनाना", "ट्रेजरी अकाउंटिंग और बजट नियंत्रण (Pre-Check)", "सामाजिक अंकेक्षण", "निविदा प्रक्रिया"],
+    ans: 1,
+    exp: "RajKosh ऑनलाइन ट्रेजरी अकाउंटिंग सिस्टम है। यह DDO द्वारा भेजे गए बिलों को प्राप्त करता है और बजट की उपलब्धता की जाँच करता है। यदि बजट Head में पैसा नहीं है, तो RajKosh बिल को पास नहीं करेगा। यह 'Pre-Check' का उत्कृष्ट उदाहरण है।",
+    source: "Vinay Sir Notes - Page 39"
+  }
+];
+
+// ==================== MCQ RENDER ====================
+let userAnswers = new Array(questions.length).fill(-1);
+let score = 0;
+
+function renderQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  questions.forEach((q, idx) => {
+    const div = document.createElement('div');
+    div.className = 'question-card';
+    div.id = 'qcard-' + idx;
+    div.innerHTML = `
+      <div class="question-num">प्रश्न ${idx+1} / ${questions.length}</div>
+      ${q.source ? `<div class="question-meta">📚 Source: ${q.source}</div>` : ''}
+      <div class="question-text">${q.q}</div>
+      <div class="options-grid">
+        ${q.opts.map((opt, oi) => `
+          <button class="option-btn" id="opt-${idx}-${oi}" onclick="selectOption(${idx}, ${oi})">${String.fromCharCode(65+oi)}) ${opt}</button>
+        `).join('')}
+      </div>
+      <div class="explanation-box" id="exp-${idx}">
+        <strong>📖 व्याख्या:</strong> ${q.exp}
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function selectOption(qIdx, optIdx) {
+  if (userAnswers[qIdx] !== -1) return; // Already answered
+  userAnswers[qIdx] = optIdx;
+  const card = document.getElementById('qcard-' + qIdx);
+  const q = questions[qIdx];
+
+  // Disable all options
+  q.opts.forEach((_, oi) => {
+    document.getElementById(`opt-${qIdx}-${oi}`).disabled = true;
+  });
+
+  if (optIdx === q.ans) {
+    document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add('correct');
+    card.classList.add('answered-correct');
+    score += 1;
+  } else {
+    document.getElementById(`opt-${qIdx}-${optIdx}`).classList.add('wrong');
+    document.getElementById(`opt-${qIdx}-${q.ans}`).classList.add('reveal-correct');
+    card.classList.add('answered-wrong');
+    score -= (1/3);
+  }
+  document.getElementById(`exp-${qIdx}`).classList.add('show');
+  updateScoreDisplay();
+  updateProgress();
+}
+
+function updateScoreDisplay() {
+  const attempted = userAnswers.filter(a => a !== -1).length;
+  document.getElementById('current-score').textContent = Math.round(score * 3) / 3;
+  document.getElementById('attempted').textContent = attempted;
+}
+
+function updateProgress() {
+  const attempted = userAnswers.filter(a => a !== -1).length;
+  document.getElementById('progress-bar').style.width = (attempted / questions.length * 100) + '%';
+  if (attempted === questions.length) {
+    setTimeout(showResult, 600);
+  }
+}
+
+function showResult() {
+  const correct = userAnswers.filter((a, i) => a === questions[i].ans).length;
+  const wrong = userAnswers.filter((a, i) => a !== -1 && a !== questions[i].ans).length;
+  const skip = userAnswers.filter(a => a === -1).length;
+  const finalScore = correct - wrong/3;
+
+  document.getElementById('popup-correct').textContent = correct;
+  document.getElementById('popup-wrong').textContent = wrong;
+  document.getElementById('popup-skip').textContent = skip;
+  document.getElementById('popup-score-val').textContent = Math.round(finalScore * 10) / 10;
+
+  let emoji = '😔', grade = 'अभ्यास जरूरी है!';
+  if (finalScore >= 17) { emoji = '🏆'; grade = 'उत्कृष्ट! Topper Material!'; }
+  else if (finalScore >= 14) { emoji = '🎯'; grade = 'बहुत अच्छा! Selection तय है!'; }
+  else if (finalScore >= 10) { emoji = '👍'; grade = 'अच्छा प्रयास! और मेहनत करो।'; }
+  else if (finalScore >= 6) { emoji = '📚'; grade = 'फिर से पढ़ो – सुधार होगा!'; }
+  document.getElementById('popup-emoji').textContent = emoji;
+  document.getElementById('popup-grade').textContent = grade;
+  document.getElementById('result-popup').classList.add('show');
+}
+
+function closePopup() {
+  document.getElementById('result-popup').classList.remove('show');
+}
+
+function resetMCQ() {
+  userAnswers = new Array(questions.length).fill(-1);
+  score = 0;
+  updateScoreDisplay();
+  document.getElementById('progress-bar').style.width = '0%';
+  renderQuestions();
+}
+
+// Init
+renderQuestions();
+</script>
+</body>
+</html>

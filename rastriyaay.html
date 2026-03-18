@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>राष्ट्रीय आय — Revision File | RPSC RAS/PSI 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0f1a;
+  --bg2: #141627;
+  --bg3: #1a1d2e;
+  --card: #1e2235;
+  --card2: #232740;
+  --border: rgba(255,255,255,0.08);
+  --text: #e8eaf6;
+  --text2: #9fa8c7;
+  --text3: #6b77a0;
+  --purple: #7c6af7;
+  --purple2: #a594ff;
+  --teal: #2dd4bf;
+  --coral: #f87171;
+  --amber: #fbbf24;
+  --blue: #60a5fa;
+  --green: #4ade80;
+  --pink: #f472b6;
+  --gold: #ffd700;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans Devanagari', 'Baloo 2', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #1a1040 0%, #0d1829 50%, #1a1040 100%);
+  padding: 1.5rem 1rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 60% 40%, rgba(124,106,247,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 20% 80%, rgba(45,212,191,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.header-badge {
+  display: inline-block;
+  background: rgba(124,106,247,0.2);
+  border: 1px solid rgba(124,106,247,0.4);
+  color: var(--purple2);
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.header h1 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #a594ff, #2dd4bf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.25rem;
+}
+.header p { font-size: 13px; color: var(--text3); }
+
+/* TAB BAR */
+.tab-bar {
+  display: flex;
+  gap: 6px;
+  padding: 0.75rem 1rem;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  white-space: nowrap;
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--text2);
+  font-size: 13px;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.tab-btn:hover { background: var(--bg3); color: var(--text); }
+.tab-btn.active {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* CONTENT */
+.content { max-width: 960px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* SECTION TITLE */
+.sec-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--purple2);
+  margin: 1.5rem 0 0.75rem;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(124,106,247,0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sec-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  background: var(--purple);
+  border-radius: 2px;
+}
+
+/* CARDS GRID */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* TOPIC CARD */
+.tcard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  border-top: 3px solid var(--purple);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.tcard:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.tcard.c-teal { border-top-color: var(--teal); }
+.tcard.c-coral { border-top-color: var(--coral); }
+.tcard.c-amber { border-top-color: var(--amber); }
+.tcard.c-blue { border-top-color: var(--blue); }
+.tcard.c-green { border-top-color: var(--green); }
+.tcard.c-pink { border-top-color: var(--pink); }
+.tcard h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--purple2);
+  margin-bottom: 0.6rem;
+}
+.tcard.c-teal h3 { color: var(--teal); }
+.tcard.c-coral h3 { color: var(--coral); }
+.tcard.c-amber h3 { color: var(--amber); }
+.tcard.c-blue h3 { color: var(--blue); }
+.tcard.c-green h3 { color: var(--green); }
+.tcard.c-pink h3 { color: var(--pink); }
+.tcard ul { padding-left: 1.1rem; }
+.tcard ul li { font-size: 13px; color: var(--text2); margin-bottom: 3px; }
+.tcard ul li strong { color: var(--text); }
+
+/* TRICK BOX */
+.trick {
+  margin-top: 0.75rem;
+  background: rgba(124,106,247,0.1);
+  border-left: 3px solid var(--purple);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 7px 10px;
+  font-size: 12px;
+  color: var(--purple2);
+  line-height: 1.5;
+}
+.tcard.c-teal .trick { background: rgba(45,212,191,0.08); border-color: var(--teal); color: var(--teal); }
+.tcard.c-coral .trick { background: rgba(248,113,113,0.08); border-color: var(--coral); color: var(--coral); }
+.tcard.c-amber .trick { background: rgba(251,191,36,0.08); border-color: var(--amber); color: var(--amber); }
+.tcard.c-blue .trick { background: rgba(96,165,250,0.08); border-color: var(--blue); color: var(--blue); }
+.tcard.c-green .trick { background: rgba(74,222,128,0.08); border-color: var(--green); color: var(--green); }
+.tcard.c-pink .trick { background: rgba(244,114,182,0.08); border-color: var(--pink); color: var(--pink); }
+
+/* FORMULA BOX */
+.formula {
+  background: rgba(45,212,191,0.08);
+  border: 1px solid rgba(45,212,191,0.25);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--teal);
+  text-align: center;
+  margin: 0.5rem 0;
+  font-family: 'Baloo 2', monospace;
+}
+
+/* MASTER TABLE */
+.table-wrap { overflow-x: auto; margin-bottom: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th {
+  background: rgba(124,106,247,0.2);
+  color: var(--purple2);
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 700;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(124,106,247,0.3);
+}
+tbody td { padding: 9px 12px; color: var(--text2); border-bottom: 1px solid var(--border); }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: rgba(255,255,255,0.03); }
+
+/* BADGES */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.b-purple { background: rgba(124,106,247,0.2); color: var(--purple2); }
+.b-teal { background: rgba(45,212,191,0.15); color: var(--teal); }
+.b-coral { background: rgba(248,113,113,0.15); color: var(--coral); }
+.b-amber { background: rgba(251,191,36,0.15); color: var(--amber); }
+.b-blue { background: rgba(96,165,250,0.15); color: var(--blue); }
+.b-green { background: rgba(74,222,128,0.15); color: var(--green); }
+
+/* MCQ */
+.score-bar {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin-bottom: 1.25rem;
+  font-size: 13px;
+  position: sticky;
+  top: 53px;
+  z-index: 90;
+}
+.score-bar .snum { font-size: 20px; font-weight: 800; color: var(--purple2); }
+.score-bar .label { font-size: 11px; color: var(--text3); }
+.q-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.q-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text3);
+  margin-bottom: 0.5rem;
+}
+.q-text { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 1rem; line-height: 1.7; }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media(max-width:480px) { .opts { grid-template-columns: 1fr; } }
+.opt {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg3);
+  color: var(--text2);
+  font-size: 13px;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+  line-height: 1.5;
+}
+.opt:hover:not(:disabled) { border-color: var(--purple); color: var(--text); }
+.opt.correct { background: rgba(74,222,128,0.12); border-color: var(--green); color: var(--green); }
+.opt.wrong { background: rgba(248,113,113,0.12); border-color: var(--coral); color: var(--coral); }
+.feedback {
+  margin-top: 0.75rem;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  line-height: 1.6;
+  animation: fadeIn 0.2s ease;
+}
+.feedback.ok { background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.25); color: #86efac; }
+.feedback.no { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.25); color: #fca5a5; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+.submit-wrap { text-align: center; margin: 1.5rem 0; }
+.submit-btn {
+  padding: 12px 36px;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.submit-btn:hover { background: var(--purple2); transform: scale(1.02); }
+
+/* RESULT POPUP */
+.result-box {
+  background: var(--card2);
+  border: 1px solid rgba(124,106,247,0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  margin: 1rem 0;
+  animation: fadeIn 0.3s ease;
+}
+.result-box h2 { font-size: 22px; font-weight: 800; margin-bottom: 0.25rem; }
+.result-score { font-size: 52px; font-weight: 800; color: var(--purple2); line-height: 1; margin: 0.5rem 0; }
+.result-grid { display: flex; gap: 1.5rem; justify-content: center; margin: 1rem 0; flex-wrap: wrap; }
+.result-stat { text-align: center; }
+.result-stat .val { font-size: 24px; font-weight: 800; }
+.result-stat .lbl { font-size: 12px; color: var(--text3); }
+
+/* LAST MINUTE */
+.lm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+.lm-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--purple);
+}
+.lm-card.g { border-left-color: var(--green); }
+.lm-card.r { border-left-color: var(--coral); }
+.lm-card.b { border-left-color: var(--blue); }
+.lm-card.y { border-left-color: var(--amber); }
+.lm-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; color: var(--text); }
+.lm-card p { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+.mnem-box {
+  background: linear-gradient(135deg, rgba(124,106,247,0.1), rgba(45,212,191,0.05));
+  border: 1px solid rgba(124,106,247,0.25);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.mnem-box h3 { font-size: 14px; font-weight: 700; color: var(--purple2); margin-bottom: 0.5rem; }
+.mnem-box p { font-size: 13px; color: var(--text2); line-height: 1.8; }
+.mnem-box strong { color: var(--teal); }
+
+.dont-miss {
+  background: rgba(251,191,36,0.08);
+  border: 1px solid rgba(251,191,36,0.25);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+.dont-miss h3 { font-size: 14px; font-weight: 700; color: var(--amber); margin-bottom: 0.5rem; }
+.dont-miss li { font-size: 13px; color: var(--text2); margin-bottom: 4px; padding-left: 1rem; list-style: none; position: relative; }
+.dont-miss li::before { content: '⚡'; position: absolute; left: 0; font-size: 11px; }
+
+.close-btn {
+  margin-top: 1rem;
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text2);
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+}
+.close-btn:hover { background: var(--bg3); }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(124,106,247,0.4); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">RPSC RAS Pre · PSI 2025</div>
+  <h1>राष्ट्रीय आय</h1>
+  <p>National Income — Complete Revision | Economics by Vinay Sir</p>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('revision',this)">📖 Revision</button>
+  <button class="tab-btn" onclick="showTab('summary',this)">📊 Summary Table</button>
+  <button class="tab-btn" onclick="showTab('mcq',this)">✏️ PYQ MCQ (50)</button>
+  <button class="tab-btn" onclick="showTab('lastmin',this)">⚡ Last Minute</button>
+</div>
+
+<div class="content">
+
+<!-- ===== REVISION TAB ===== -->
+<div id="tab-revision" class="tab-pane active">
+
+  <div class="sec-title">राष्ट्रीय आय — ऐतिहासिक पृष्ठभूमि</div>
+  <div class="cards-grid">
+    <div class="tcard">
+      <h3>दादाभाई नौरोजी (1867-68)</h3>
+      <ul>
+        <li>सर्वप्रथम राष्ट्रीय आय का <strong>अनुमान</strong> लगाया</li>
+        <li>PCI (प्रति व्यक्ति आय) = <strong>₹20 वार्षिक</strong></li>
+        <li>गरीबी का सर्वप्रथम मापन किया</li>
+        <li>पुस्तक: <strong>"The Poverty & Un-British Rule In India"</strong></li>
+        <li>धन निकासी सिद्धांत <strong>(Drainage Theory)</strong></li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "दादा बीस रुपये लेकर किताब लिखी, नाली से पैसा गया" → ₹20, Poverty Book, Drainage</div>
+    </div>
+    <div class="tcard c-teal">
+      <h3>डॉ. V.K.R.V. राव (1931)</h3>
+      <ul>
+        <li>राष्ट्रीय आय का सर्वप्रथम <strong>वैज्ञानिक अनुमान</strong></li>
+        <li>PCI = <strong>₹62 वार्षिक</strong></li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "राव साहब ने साइंस LAB (62) में पढ़ा" → वैज्ञानिक, ₹62</div>
+    </div>
+    <div class="tcard c-coral">
+      <h3>Hindu Growth Rate (HGR)</h3>
+      <ul>
+        <li>Term coined by: <strong>Prof. Raj Krishna</strong></li>
+        <li>अवधि: <strong>1950-1980 (30 वर्ष = 3 दशक)</strong></li>
+        <li>दर: <strong>3.5%</strong></li>
+        <li>संबंध: NI / GDP / PCI तीनों से</li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "राज ने 30 साल में 3.5% हिंदू दर दी" → Raj Krishna, 1950-80, 3.5%</div>
+    </div>
+    <div class="tcard c-amber">
+      <h3>राष्ट्रीय आय — परिभाषा</h3>
+      <ul>
+        <li>किसी देश के नागरिकों द्वारा एक वित्तीय वर्ष में किया गया <strong>कुल अंतिम उत्पादन</strong></li>
+        <li>वित्तीय वर्ष: <strong>1 April → 31 March</strong></li>
+        <li>मापन <strong>मुद्रा (Money)</strong> में</li>
+        <li>एक वर्ष का डेटा लिया जाता है</li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "अप्रैल से मार्च, पैसे में काम, अंतिम माल गिनो"</div>
+    </div>
+  </div>
+
+  <div class="sec-title">राष्ट्रीय आय मापन की 3 विधियां</div>
+  <div class="cards-grid">
+    <div class="tcard c-blue">
+      <h3>1. उत्पाद विधि (Product Method)</h3>
+      <ul>
+        <li>अन्य नाम: <strong>मूल्य वर्द्धन विधि</strong> (Value Added Method)</li>
+        <li>अर्थव्यवस्था के 3 क्षेत्रों में कुल अंतिम उत्पादन</li>
+        <li>① Primary (प्राथमिक) — कृषि, खनन</li>
+        <li>② Secondary (द्वितीयक) — उद्योग</li>
+        <li>③ Tertiary (तृतीयक) — सेवाएं</li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "PST: पेड़ से सेब तोड़ो" → Primary, Secondary, Tertiary</div>
+    </div>
+    <div class="tcard">
+      <h3>2. आय विधि (Income Method)</h3>
+      <ul>
+        <li>कुल <strong>कारक आय</strong> (Factor Income) का योग</li>
+        <li>① भूमि (Land) → <strong>किराया/लगान (Rent)</strong></li>
+        <li>② श्रम (Labour) → <strong>वेतन (Wages)</strong></li>
+        <li>③ पूंजी (Capital) → <strong>ब्याज (Interest)</strong></li>
+        <li>④ उद्यमी (Entrepreneur) → <strong>लाभ (Profit)</strong></li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "BPUI = Bhumi-Parashram-Udhyam-Innovation → RWIP"</div>
+    </div>
+    <div class="tcard c-pink">
+      <h3>3. व्यय विधि (Expenditure Method)</h3>
+      <div class="formula">NI = C + G + I + X - M</div>
+      <div class="formula" style="border-color:rgba(244,114,182,0.3);color:var(--pink)">NI = C + G + I + Nx</div>
+      <ul>
+        <li>C = Consumption (उपभोग)</li>
+        <li>G = Govt. Expenditure (सरकारी व्यय)</li>
+        <li>I = Investment (निवेश)</li>
+        <li>X = Export | M = Import | Nx = Net Export (X-M)</li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "सरकार ने CGIM किया: C-G-I eXport-iMport"</div>
+    </div>
+  </div>
+
+  <div class="sec-title">प्रमुख अवधारणाएं (Major Concepts)</div>
+  <div class="cards-grid">
+    <div class="tcard c-teal">
+      <h3>GDP — सकल घरेलू उत्पाद</h3>
+      <ul>
+        <li>Gross Domestic Product</li>
+        <li><strong>घरेलू सीमा</strong> (Domestic Boundary) में अंतिम उत्पादन</li>
+        <li>नागरिक <strong>+ विदेशी दोनों</strong> शामिल</li>
+        <li>देश की Economy का <strong>आकार (Size)</strong> बताती है</li>
+        <li>Real GDP Base Year: <strong>2011-12</strong> (पहले 2004-05, 2015 में बदला)</li>
+        <li>Nominal GDP: चालू/वर्तमान कीमत पर</li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "GDP घर में बनी, सब लोगों की — नागरिक+विदेशी"</div>
+    </div>
+    <div class="tcard c-amber">
+      <h3>NDP — निवल घरेलू उत्पाद</h3>
+      <div class="formula" style="border-color:rgba(251,191,36,0.3);color:var(--amber)">NDP = GDP − Depreciation</div>
+      <ul>
+        <li>Net Domestic Product (शुद्ध/निवल घरेलू उत्पाद)</li>
+        <li>मूल्यह्रास = <strong>पूंजीगत वस्तुओं</strong> की टूट-फूट</li>
+        <li>गणना: <strong>वाणिज्य एवं उद्योग मंत्रालय</strong></li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "GDP में से घिसाई निकालो = NDP"</div>
+    </div>
+    <div class="tcard c-coral">
+      <h3>GDP Deflator</h3>
+      <div class="formula" style="border-color:rgba(248,113,113,0.3);color:var(--coral)">Deflator = (Nominal GDP / Real GDP) × 100</div>
+      <ul>
+        <li>मुद्रास्फीति मापने का सूचकांक</li>
+        <li>Nominal > Real → मुद्रास्फीति</li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "नॉमिनल को रियल से भाग × 100 = Deflator"</div>
+    </div>
+    <div class="tcard c-blue">
+      <h3>Market Price — बाजार कीमत</h3>
+      <div class="formula" style="border-color:rgba(96,165,250,0.3);color:var(--blue)">MP = FC + Indirect Tax − Subsidy</div>
+      <ul>
+        <li>उपभोक्ता जिस कीमत पर वस्तु खरीदता है</li>
+        <li>उदाहरण: 25 + 6 − 1 = <strong>₹30</strong></li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "FC पर Tax लगाओ, Subsidy घटाओ = Market Price"</div>
+    </div>
+    <div class="tcard c-green">
+      <h3>PDI — व्यक्तिगत प्रयोज्य आय</h3>
+      <div class="formula" style="border-color:rgba(74,222,128,0.3);color:var(--green)">PDI = PI − Personal Tax − Non-Tax</div>
+      <ul>
+        <li>Personal Disposable Income</li>
+        <li>अपनी पसंद से <strong>खर्च करने योग्य</strong> आय</li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "कमाई में से Tax और Dues घटाओ = PDI (पॉकेट में)"</div>
+    </div>
+    <div class="tcard c-pink">
+      <h3>NSO / CSO / NSSO</h3>
+      <ul>
+        <li>CSO: <strong>2 मई 1951</strong>, New Delhi — राष्ट्रीय आय मापन</li>
+        <li>NSSO: <strong>1950, कोलकाता</strong> — आर्थिक सर्वेक्षण</li>
+        <li><strong>NSO = NSSO + CSO</strong> → 23 मई 2019</li>
+        <li>वर्तमान NI मापन: <strong>NSO</strong></li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "N+C = NSO (New Statistical Office) 2019"</div>
+    </div>
+  </div>
+
+  <div class="sec-title">GDP में क्या शामिल नहीं</div>
+  <div class="tcard" style="max-width:600px">
+    <h3>GDP से बाहर की मदें (Items NOT in GDP)</h3>
+    <ul>
+      <li>① <strong>मध्यवर्ती वस्तुएं</strong> (Double Counting से बचाव)</li>
+      <li>② <strong>जुआ / सट्टा / लॉटरी</strong></li>
+      <li>③ <strong>Transfer Payment</strong>: पेंशन, बेरोजगारी भत्ता, Subsidy</li>
+      <li>④ <strong>घरेलू कार्य</strong>: खाना पकाना, बर्तन, घर सफाई</li>
+      <li>⑤ <strong>Share का क्रय-विक्रय</strong> (Transfer Activity)</li>
+    </ul>
+    <div class="trick">🧠 ट्रिक: "MJTHG OUT: Madhyavarti, Jua, Transfer, Housework, Gain-Share"</div>
+  </div>
+
+  <div class="sec-title">GDP में क्षेत्रवार योगदान</div>
+  <div class="cards-grid">
+    <div class="tcard c-teal">
+      <h3>GDP योगदान क्रम (वर्तमान)</h3>
+      <ul>
+        <li>🥇 <strong>सेवा क्षेत्र</strong> (Tertiary) — सर्वाधिक</li>
+        <li>🥈 <strong>उद्योग क्षेत्र</strong> (Secondary)</li>
+        <li>🥉 <strong>कृषि</strong> (Primary) — न्यूनतम</li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "SIA: Service पहले, Industry दूसरे, Agri तीसरे"</div>
+    </div>
+    <div class="tcard c-blue">
+      <h3>GSDP — Top 5 राज्य (FY 2024-25)</h3>
+      <ul>
+        <li>① <strong>महाराष्ट्र</strong> — 42.67 लाख करोड़</li>
+        <li>② <strong>तमिलनाडु</strong> — 31.55 लाख करोड़</li>
+        <li>③ <strong>कर्नाटक</strong> — 28.09 लाख करोड़</li>
+        <li>④ <strong>गुजरात</strong> — 27.9 लाख करोड़</li>
+        <li>⑤ <strong>UP</strong> — 25 लाख करोड़</li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "MTKG-UP: महा-तमिल-कर्ण-गुज-UP"</div>
+    </div>
+  </div>
+
+  <div class="sec-title">वित्तीय बाजार (Financial Market)</div>
+  <div class="cards-grid">
+    <div class="tcard c-amber">
+      <h3>मुद्रा बाजार (Money Market)</h3>
+      <ul>
+        <li>अवधि: <strong>≤ 1 वर्ष (365 दिन)</strong> से कम</li>
+        <li>नियामक: <strong>RBI</strong></li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "RBI का छोटा बाजार = 1 साल से कम"</div>
+    </div>
+    <div class="tcard c-coral">
+      <h3>पूंजी बाजार (Capital Market)</h3>
+      <ul>
+        <li>अवधि: <strong>&gt; 1 वर्ष (365 दिन) से अधिक</strong></li>
+        <li>नियामक: <strong>SEBI</strong></li>
+      </ul>
+      <div class="trick">🧠 ट्रिक: "SEBI का बड़ा बाजार = 1 साल से ज्यादा"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SUMMARY TAB ===== -->
+<div id="tab-summary" class="tab-pane">
+
+  <div class="sec-title">Master Table 1 — मुख्य व्यक्ति एवं संस्थाएं</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>व्यक्ति/संस्था</th><th>वर्ष</th><th>मुख्य योगदान</th><th>PCI/दर</th></tr></thead>
+      <tbody>
+        <tr><td>दादाभाई नौरोजी</td><td>1867-68</td><td>सर्वप्रथम अनुमान | Poverty Book | Drainage Theory</td><td>₹20</td></tr>
+        <tr><td>Dr. V.K.R.V. Rao</td><td>1931</td><td>सर्वप्रथम वैज्ञानिक अनुमान</td><td>₹62</td></tr>
+        <tr><td>Prof. Raj Krishna</td><td>—</td><td>Hindu Growth Rate (HGR) शब्द दिया</td><td>3.5%</td></tr>
+        <tr><td>CSO</td><td>2 मई 1951</td><td>राष्ट्रीय आय मापन — New Delhi</td><td>—</td></tr>
+        <tr><td>NSSO</td><td>1950</td><td>आर्थिक सर्वेक्षण — Kolkata</td><td>—</td></tr>
+        <tr><td>NSO</td><td>23 मई 2019</td><td>NSSO + CSO विलय → वर्तमान NI मापन</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title">Master Table 2 — GDP प्रकार</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>प्रकार</th><th>हिंदी नाम</th><th>आधार वर्ष</th><th>कीमत</th><th>विशेषता</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge b-purple">Real GDP</span></td><td>वास्तविक GDP</td><td>2011-12 (पहले 2004-05)</td><td>स्थिर</td><td>2015 में base year बदला</td></tr>
+        <tr><td><span class="badge b-amber">Nominal GDP</span></td><td>मौद्रिक GDP</td><td>नहीं</td><td>चालू/वर्तमान</td><td>Current Price पर</td></tr>
+        <tr><td><span class="badge b-teal">NDP</span></td><td>निवल घरेलू उत्पाद</td><td>—</td><td>—</td><td>GDP − Depreciation</td></tr>
+        <tr><td><span class="badge b-coral">GSDP</span></td><td>राज्य घरेलू उत्पाद</td><td>—</td><td>—</td><td>राज्य का NI में योगदान</td></tr>
+        <tr><td><span class="badge b-blue">GNP</span></td><td>सकल राष्ट्रीय उत्पाद</td><td>—</td><td>—</td><td>GDP + विदेश से आय − विदेशियों की आय</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title">Master Table 3 — 3 विधियां Quick Reference</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>विधि</th><th>अन्य नाम</th><th>सूत्र/आधार</th><th>4 कारक/क्षेत्र</th></tr></thead>
+      <tbody>
+        <tr><td>उत्पाद विधि</td><td>Value Added Method</td><td>कुल अंतिम उत्पादन</td><td>Primary, Secondary, Tertiary</td></tr>
+        <tr><td>आय विधि</td><td>Factor Income Method</td><td>Rent+Wages+Interest+Profit</td><td>Land, Labour, Capital, Entrepreneur</td></tr>
+        <tr><td>व्यय विधि</td><td>Expenditure Method</td><td>C+G+I+X-M</td><td>Consumption, Govt, Investment, Net Export</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title">Master Table 4 — GDP में शामिल / नहीं</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>शामिल (✓)</th><th>शामिल नहीं (✗)</th></tr></thead>
+      <tbody>
+        <tr><td>अंतिम वस्तुएं (Final Goods)</td><td>मध्यवर्ती वस्तुएं (Intermediate)</td></tr>
+        <tr><td>सेवा क्षेत्र उत्पादन</td><td>जुआ/सट्टा/लॉटरी</td></tr>
+        <tr><td>Export की वस्तुएं</td><td>Transfer Payment (पेंशन, Subsidy)</td></tr>
+        <tr><td>नई Capital Goods</td><td>घरेलू कार्य (खाना, सफाई)</td></tr>
+        <tr><td>सरकारी व्यय</td><td>Share का क्रय-विक्रय</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title">Master Table 5 — वित्तीय बाजार एवं सूत्र</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>विषय</th><th>सूत्र/तथ्य</th></tr></thead>
+      <tbody>
+        <tr><td>GDP Deflator</td><td>= (Nominal GDP / Real GDP) × 100</td></tr>
+        <tr><td>Market Price</td><td>= Factor Cost + Indirect Tax − Subsidy</td></tr>
+        <tr><td>NDP</td><td>= GDP − Depreciation</td></tr>
+        <tr><td>PDI</td><td>= Personal Income − Personal Tax − Non-Tax</td></tr>
+        <tr><td>Net Export (Nx)</td><td>= X − M (Export − Import)</td></tr>
+        <tr><td>मुद्रा बाजार</td><td>≤ 1 वर्ष | नियामक: RBI</td></tr>
+        <tr><td>पूंजी बाजार</td><td>&gt; 1 वर्ष | नियामक: SEBI</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-title">Quick Reference — GSDP Top 5 (FY 2024-25)</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>रैंक</th><th>राज्य</th><th>GSDP (लाख करोड़)</th></tr></thead>
+      <tbody>
+        <tr><td>🥇 1</td><td>महाराष्ट्र</td><td>42.67</td></tr>
+        <tr><td>🥈 2</td><td>तमिलनाडु</td><td>31.55</td></tr>
+        <tr><td>🥉 3</td><td>कर्नाटक</td><td>28.09</td></tr>
+        <tr><td>4</td><td>गुजरात</td><td>27.9</td></tr>
+        <tr><td>5</td><td>उत्तर प्रदेश</td><td>25</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== MCQ TAB ===== -->
+<div id="tab-mcq" class="tab-pane">
+  <div class="score-bar">
+    <div><div class="snum" id="s-score">0.00</div><div class="label">स्कोर</div></div>
+    <div><div class="snum" style="color:var(--green)" id="s-correct">0</div><div class="label">सही</div></div>
+    <div><div class="snum" style="color:var(--coral)" id="s-wrong">0</div><div class="label">गलत</div></div>
+    <div><div class="snum" style="color:var(--text2)" id="s-att">0/50</div><div class="label">प्रश्न</div></div>
+    <div style="margin-left:auto;font-size:11px;color:var(--text3)">+1 सही / −⅓ गलत</div>
+  </div>
+  <div id="mcq-box"></div>
+  <div class="submit-wrap">
+    <button class="submit-btn" onclick="submitAll()">📊 परिणाम देखें</button>
+  </div>
+  <div id="result-area"></div>
+</div>
+
+<!-- ===== LAST MINUTE TAB ===== -->
+<div id="tab-lastmin" class="tab-pane">
+
+  <div class="sec-title">Super Mnemonics — एक बार में याद करो</div>
+
+  <div class="mnem-box">
+    <h3>🔑 Master Mnemonic: "दो वीर गए राज की बारात में"</h3>
+    <p>
+      <strong>द</strong>ादाभाई → ₹20 PCI → Drainage Theory → Poverty Book<br>
+      <strong>वी</strong>.के.आर.वी. राव → ₹62 → वैज्ञानिक (1931)<br>
+      <strong>ग</strong>DP → घरेलू → घर में सब (नागरिक + विदेशी)<br>
+      <strong>रा</strong>ज कृष्ण → HGR 3.5% → 1950-1980<br>
+      <strong>बा</strong>जार → MP = FC + Tax − Subsidy<br>
+      <strong>रा</strong>ष्ट्रीय आय → C + G + I + X − M<br>
+      <strong>त</strong>ीन विधि → उत्पाद, आय, व्यय
+    </p>
+  </div>
+
+  <div class="mnem-box" style="background:linear-gradient(135deg,rgba(45,212,191,0.08),rgba(74,222,128,0.05));border-color:rgba(45,212,191,0.25)">
+    <h3 style="color:var(--teal)">🔑 4 कारक याद करो: "BPUI Rule"</h3>
+    <p style="color:var(--text2)">
+      <strong style="color:var(--teal)">B</strong>humi (भूमि) → Rent (किराया/लगान)<br>
+      <strong style="color:var(--teal)">P</strong>arashram (श्रम) → Wages (वेतन/पारिश्रमिक)<br>
+      <strong style="color:var(--teal)">U</strong>dham (पूंजी) → Interest (ब्याज)<br>
+      <strong style="color:var(--teal)">I</strong>nnovation (उद्यमी) → Profit (लाभ)
+    </p>
+  </div>
+
+  <div class="mnem-box" style="background:linear-gradient(135deg,rgba(251,191,36,0.08),rgba(248,113,113,0.05));border-color:rgba(251,191,36,0.25)">
+    <h3 style="color:var(--amber)">🔑 GDP में नहीं: "MJTHG OUT"</h3>
+    <p style="color:var(--text2)">
+      <strong style="color:var(--amber)">M</strong>adhyavarti (मध्यवर्ती वस्तुएं)<br>
+      <strong style="color:var(--amber)">J</strong>ua/Satta (जुआ/सट्टा/लॉटरी)<br>
+      <strong style="color:var(--amber)">T</strong>ransfer Payment (पेंशन, भत्ता, Subsidy)<br>
+      <strong style="color:var(--amber)">H</strong>ousework (घरेलू कार्य)<br>
+      <strong style="color:var(--amber)">G</strong>ain from Share (शेयर लाभ)
+    </p>
+  </div>
+
+  <div class="dont-miss">
+    <h3>⚡ Don't Miss — ये 100% आते हैं परीक्षा में</h3>
+    <ul>
+      <li>आधार वर्ष: <strong>2011-12</strong> (पहले 2004-05, 2015 में बदला)</li>
+      <li>HGR: <strong>3.5%</strong> | Term: <strong>Prof. Raj Krishna</strong> | 1950-1980</li>
+      <li>दादाभाई: <strong>₹20</strong> | VKRV Rao: <strong>₹62</strong></li>
+      <li>NSO = NSSO + CSO → <strong>23 मई 2019</strong></li>
+      <li>GDP formula: <strong>C+G+I+X-M</strong></li>
+      <li>NDP = GDP − <strong>Depreciation</strong></li>
+      <li>GDP Deflator = Nominal/Real × <strong>100</strong></li>
+      <li>MP = FC + Indirect Tax − <strong>Subsidy</strong></li>
+      <li>GDP में सर्वाधिक: <strong>सेवा क्षेत्र</strong></li>
+      <li>GSDP 1st: <strong>महाराष्ट्र</strong> (42.67 लाख करोड़)</li>
+      <li>Money Market: RBI | Capital Market: <strong>SEBI</strong></li>
+    </ul>
+  </div>
+
+  <div class="sec-title">Compact Quick Cards</div>
+  <div class="lm-grid">
+    <div class="lm-card"><h4>दादाभाई नौरोजी</h4><p>1867-68 | PCI ₹20 | Drainage Theory | Poverty Book</p></div>
+    <div class="lm-card g"><h4>VKRV Rao</h4><p>1931 | PCI ₹62 | वैज्ञानिक अनुमान</p></div>
+    <div class="lm-card r"><h4>HGR</h4><p>Prof. Raj Krishna | 1950-1980 | 3.5% | 30 वर्ष</p></div>
+    <div class="lm-card b"><h4>Financial Year</h4><p>1 April → 31 March | मुद्रा में मापन</p></div>
+    <div class="lm-card y"><h4>GDP Formula</h4><p>C+G+I+X-M | NI = C+G+I+Nx</p></div>
+    <div class="lm-card g"><h4>NDP</h4><p>GDP − Depreciation | पूंजीगत घिसाई</p></div>
+    <div class="lm-card r"><h4>Real vs Nominal</h4><p>Real: 2011-12 | Nominal: Current Price</p></div>
+    <div class="lm-card b"><h4>NSO 2019</h4><p>NSSO + CSO = NSO | 23 मई 2019</p></div>
+    <div class="lm-card"><h4>Market Price</h4><p>MP = FC + IT − Sub</p></div>
+    <div class="lm-card g"><h4>GDP Deflator</h4><p>Nominal / Real × 100</p></div>
+    <div class="lm-card r"><h4>SIA क्रम</h4><p>Service &gt; Industry &gt; Agriculture</p></div>
+    <div class="lm-card b"><h4>GSDP Top</h4><p>MH → TN → KA → GJ → UP</p></div>
+    <div class="lm-card y"><h4>PDI</h4><p>= PI − Personal Tax − Non-Tax</p></div>
+    <div class="lm-card"><h4>Money Market</h4><p>≤365 days | RBI regulate</p></div>
+    <div class="lm-card g"><h4>Capital Market</h4><p>&gt;1 year | SEBI regulate</p></div>
+    <div class="lm-card r"><h4>Transfer Payment</h4><p>GDP में नहीं: पेंशन, भत्ता, Subsidy</p></div>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<script>
+const questions=[
+{q:"दादाभाई नौरोजी ने राष्ट्रीय आय का सर्वप्रथम अनुमान किस वर्ष लगाया?",o:["1931","1867-68","1950","1921"],a:1,e:"दादाभाई नौरोजी ने 1867-68 में सर्वप्रथम राष्ट्रीय आय का अनुमान लगाया, PCI = ₹20।",s:"RPSC ACF 2018"},
+{q:"भारत में राष्ट्रीय आय का अनुमान सर्वप्रथम किसने लगाया था?",o:["विलियम डिगबाय","फिन्डले शिरास","वी.के.आर.वी. राव","दादाभाई नौरोजी"],a:3,e:"दादाभाई नौरोजी — 1867-68 में, PCI ₹20 वार्षिक।",s:"RPSC ACF 2018"},
+{q:"डॉ. V.K.R.V. राव ने राष्ट्रीय आय का वैज्ञानिक अनुमान किस वर्ष लगाया?",o:["1867","1900","1931","1950"],a:2,e:"Dr. V.K.R.V. Rao ने 1931 में राष्ट्रीय आय का सर्वप्रथम वैज्ञानिक अनुमान लगाया, PCI ₹62।",s:"General"},
+{q:"'Hindu Growth Rate' शब्द किसने दिया?",o:["दादाभाई नौरोजी","डॉ. मनमोहन सिंह","प्रो. राज कृष्ण","अमर्त्य सेन"],a:2,e:"Hindu Growth Rate (3.5%) शब्द प्रोफेसर राज कृष्ण ने दिया। 1950-1980 की अवधि।",s:"General"},
+{q:"Hindu Growth Rate की दर क्या थी?",o:["2.5%","3.5%","4.5%","5.5%"],a:1,e:"Hindu Growth Rate = 3.5%, 1950-1980 (30 वर्ष) की अवधि में।",s:"General"},
+{q:"स्थिर कीमतों पर राष्ट्रीय आय मापने का वर्तमान आधार वर्ष कौन सा है?",o:["2004-05","2011-12","2000-01","1999-2000"],a:1,e:"वर्तमान आधार वर्ष 2011-12 है। पहले 2004-05 था, 2015 में बदला गया।",s:"RPSC ASO TSP 2018"},
+{q:"राष्ट्रीय आय लेखांकन में 'आधार वर्ष' का अर्थ है—",o:["जिस वर्ष की आय से मौद्रिक GDP गणना","जिस वर्ष की कीमतों से मौद्रिक GDP","जिस वर्ष की कीमतों से वास्तविक GDP","जिस वर्ष की आय से वास्तविक GDP"],a:2,e:"आधार वर्ष = जिसकी कीमतों से वास्तविक (Real) GDP की गणना होती है।",s:"RPSC RAS Pre 2021"},
+{q:"बाजार मूल्य पर GDP = C+I+G+(X–M), यह किस विधि का सूत्र है?",o:["उत्पाद विधि","व्यय विधि","आय विधि","कोई नहीं"],a:1,e:"NI = C+G+I+X-M यह Expenditure Method (व्यय विधि) का सूत्र है।",s:"RPSC ACF 2018"},
+{q:"सकल घरेलू उत्पाद (GDP) है—",o:["एक वर्ष में घरेलू सीमा में मध्यवर्ती वस्तुओं का मूल्य","एक वर्ष में घरेलू सीमा में अंतिम वस्तुओं और सेवाओं का मूल्य","एक देश की घरेलू सीमा में उपभोग वस्तुओं का मूल्य","एक देश की घरेलू सीमा में विनियोग वस्तुओं का मूल्य"],a:1,e:"GDP = घरेलू सीमा में एक वित्तीय वर्ष में उत्पादित अंतिम (Final) वस्तुओं और सेवाओं का मूल्य।",s:"RPSC SO 2023"},
+{q:"भारत में GDP में क्षेत्रों का सही अवरोही योगदान क्रम है—",o:["कृषि, विनिर्माण, सेवा","सेवा, विनिर्माण, कृषि","विनिर्माण, कृषि, सेवा","सेवा, कृषि, विनिर्माण"],a:1,e:"GDP में योगदान: सेवा > उद्योग > कृषि (SIA क्रम)।",s:"RPSC Head Master 2018"},
+{q:"NDP (Net Domestic Product) का सूत्र है—",o:["GDP + Depreciation","GDP − Depreciation","GDP × Depreciation","GDP / Depreciation"],a:1,e:"NDP = GDP − Depreciation (मूल्यह्रास)।",s:"General"},
+{q:"मूल्यह्रास किसकी टूट-फूट के लिए एक वार्षिक भत्ता है?",o:["जारी कार्य","भूमि","तैयार माल","पूंजीगत वस्तुओं"],a:3,e:"Depreciation = पूंजीगत वस्तुओं (Capital Goods) की टूट-फूट/दक्षता में कमी के लिए।",s:"SSC CGL 2019"},
+{q:"NSO (राष्ट्रीय सांख्यिकी कार्यालय) का गठन कब हुआ?",o:["2 मई 1951","23 मई 2019","1950","1 जनवरी 2000"],a:1,e:"NSO = NSSO + CSO, 23 मई 2019 को गठित। वर्तमान NI मापन NSO करता है।",s:"General"},
+{q:"केंद्रीय सांख्यिकी कार्यालय (CSO) की स्थापना कब हुई?",o:["1950","2 मई 1951","23 मई 2019","1971"],a:1,e:"CSO की स्थापना 2 मई 1951 को नई दिल्ली में हुई।",s:"General"},
+{q:"NSSO की स्थापना कहाँ हुई थी?",o:["नई दिल्ली","मुंबई","कोलकाता","चेन्नई"],a:2,e:"NSSO (National Sample Survey Office) की स्थापना 1950 में कोलकाता में हुई।",s:"General"},
+{q:"बाजार कीमत (Market Price) का सूत्र है—",o:["FC − Indirect Tax + Subsidy","FC + Indirect Tax − Subsidy","FC + Indirect Tax + Subsidy","FC − Indirect Tax − Subsidy"],a:1,e:"Market Price = Factor Cost + Indirect Tax − Subsidy।",s:"General"},
+{q:"व्यक्तिगत प्रयोज्य आय (PDI) का सूत्र है—",o:["PI + Personal Tax","PI − Personal Tax − Non-Tax","NI − कर","GDP − Depreciation"],a:1,e:"PDI = Personal Income − Personal Tax − Non-tax payments।",s:"General"},
+{q:"GDP में निम्न में से क्या शामिल नहीं?",o:["अंतिम वस्तुओं का उत्पादन","मध्यवर्ती वस्तुएं","सेवा क्षेत्र का उत्पादन","निर्यात वस्तुएं"],a:1,e:"GDP में मध्यवर्ती वस्तुएं शामिल नहीं (Double Counting से बचाव)।",s:"General"},
+{q:"GDP Deflator का सूत्र है—",o:["Real GDP / Nominal GDP × 100","Nominal GDP / Real GDP × 100","(Nominal − Real) × 100","Real GDP × 100"],a:1,e:"GDP Deflator = (Nominal GDP / Real GDP) × 100।",s:"General"},
+{q:"आय विधि में कितने उत्पादन के साधन (Factors) होते हैं?",o:["2","3","4","5"],a:2,e:"4 कारक: भूमि (Rent), श्रम (Wages), पूंजी (Interest), उद्यमी (Profit)।",s:"General"},
+{q:"GDP में किस क्षेत्र का योगदान सर्वाधिक है?",o:["कृषि","उद्योग","सेवा क्षेत्र","निर्माण"],a:2,e:"वर्तमान में सेवा क्षेत्र (Tertiary/Service Sector) का सर्वाधिक योगदान।",s:"General"},
+{q:"भारत का वित्तीय वर्ष कब से कब तक होता है?",o:["1 Jan − 31 Dec","1 April − 31 March","1 July − 30 June","1 Oct − 30 Sep"],a:1,e:"भारत का वित्तीय वर्ष 1 April से 31 March तक।",s:"General"},
+{q:"राष्ट्रीय आय मापन की कितनी विधियाँ हैं?",o:["2","3","4","5"],a:1,e:"3 विधियाँ: उत्पाद, आय, व्यय।",s:"General"},
+{q:"उत्पाद विधि का दूसरा नाम क्या है?",o:["आय विधि","व्यय विधि","मूल्य वर्द्धन विधि","Factor Cost Method"],a:2,e:"उत्पाद विधि का दूसरा नाम 'मूल्य वर्द्धन विधि' (Value Added Method) है।",s:"General"},
+{q:"Real GDP का आधार वर्ष 2004-05 से 2011-12 कब बदला गया?",o:["2010","2012","2015","2018"],a:2,e:"2015 में आधार वर्ष 2004-05 से बदलकर 2011-12 किया गया।",s:"General"},
+{q:"मुद्रा बाजार (Money Market) का नियामक कौन है?",o:["SEBI","IRDAI","RBI","NABARD"],a:2,e:"मुद्रा बाजार नियामक = RBI। पूंजी बाजार = SEBI।",s:"General"},
+{q:"पूंजी बाजार (Capital Market) की न्यूनतम अवधि होती है—",o:["6 माह से अधिक","1 वर्ष से अधिक","2 वर्ष से अधिक","90 दिन से अधिक"],a:1,e:"Capital Market = 1 वर्ष (365 दिन) से अधिक की अवधि।",s:"General"},
+{q:"दादाभाई नौरोजी की पुस्तक का नाम था—",o:["Wealth of Nations","The Poverty & Un-British Rule In India","India's Economy","Drain Theory Book"],a:1,e:"'The Poverty & Un-British Rule In India' — दादाभाई नौरोजी।",s:"General"},
+{q:"Transfer Payments में क्या शामिल है?",o:["वेतन और मजदूरी","पेंशन, बेरोजगारी भत्ता और Subsidy","GDP और NDP","Export और Import"],a:1,e:"Transfer Payments: पेंशन, बेरोजगारी भत्ता, Subsidy — GDP में शामिल नहीं।",s:"General"},
+{q:"GDP में घरेलू कार्य (खाना पकाना) शामिल नहीं क्योंकि—",o:["ये अवैध हैं","इनका बाजार मूल्य नहीं होता","ये import हैं","ये मध्यवर्ती हैं"],a:1,e:"घरेलू कार्यों का बाजार में कोई Market Value नहीं।",s:"General"},
+{q:"Nominal GDP और Real GDP में अंतर किसके कारण होता है?",o:["Investment में अंतर","मूल्यह्रास","मूल्य स्तर/मुद्रास्फीति","Export-Import अंतर"],a:2,e:"अंतर = मूल्य स्तर (Inflation) — Nominal Current Price पर, Real Base Year पर।",s:"General"},
+{q:"FY 2024-25 में सर्वाधिक GSDP किस राज्य का है?",o:["उत्तर प्रदेश","तमिलनाडु","महाराष्ट्र","कर्नाटक"],a:2,e:"FY 2024-25: महाराष्ट्र = 42.67 लाख करोड़ — सर्वाधिक GSDP।",s:"General"},
+{q:"GSDP का पूर्ण रूप क्या है?",o:["Gross Social Domestic Product","Gross State Domestic Product","Gross Sectoral Domestic Product","General State Domestic Product"],a:1,e:"GSDP = Gross State Domestic Product (सकल राज्य घरेलू उत्पाद)।",s:"General"},
+{q:"NSO का पूर्ण नाम है—",o:["National Statistical Organization","National Sample Survey Office","National Statistics Office","New Statistical Office"],a:2,e:"NSO = National Statistics Office (राष्ट्रीय सांख्यिकी कार्यालय)।",s:"General"},
+{q:"व्यय विधि में 'Nx' का अर्थ है—",o:["Net Exchange","Net Export (X−M)","National Export","None"],a:1,e:"Nx = Net Export = X − M (Export − Import)।",s:"General"},
+{q:"श्रम (Labour) कारक से कौन सी आय प्राप्त होती है?",o:["किराया (Rent)","ब्याज (Interest)","वेतन (Wages)","लाभ (Profit)"],a:2,e:"श्रम → Wages (वेतन/पारिश्रमिक)।",s:"General"},
+{q:"भूमि (Land) कारक से कौन सी आय प्राप्त होती है?",o:["वेतन","लाभ","ब्याज","किराया/लगान"],a:3,e:"भूमि → किराया/लगान (Rent)।",s:"General"},
+{q:"पूंजी (Capital) कारक से कौन सी आय मिलती है?",o:["लाभ","ब्याज","किराया","वेतन"],a:1,e:"पूंजी (Capital) → ब्याज (Interest)।",s:"General"},
+{q:"उद्यमी (Entrepreneur) से कौन सी आय प्राप्त होती है?",o:["ब्याज","किराया","वेतन","लाभ (Profit)"],a:3,e:"उद्यमी → लाभ (Benefit/Profit)।",s:"General"},
+{q:"NSSO की स्थापना किस वर्ष हुई?",o:["1947","1950","1951","1956"],a:1,e:"NSSO की स्थापना 1950 में कोलकाता में।",s:"General"},
+{q:"CSO का मुख्यालय कहाँ है?",o:["मुंबई","कोलकाता","नई दिल्ली","चेन्नई"],a:2,e:"CSO मुख्यालय = नई दिल्ली। स्थापना 2 मई 1951।",s:"General"},
+{q:"HGR किस अवधि से संबंधित है?",o:["1947-1980","1950-1980","1950-1990","1960-1990"],a:1,e:"Hindu Growth Rate = 1950-1980 (30 वर्ष, 3 दशक)।",s:"General"},
+{q:"GDP का पूर्ण रूप है—",o:["Gross Domestic Productivity","Gross Domestic Product","General Domestic Product","Gross Development Product"],a:1,e:"GDP = Gross Domestic Product (सकल घरेलू उत्पाद)।",s:"General"},
+{q:"GDP में कौन सम्मिलित होते हैं?",o:["केवल नागरिक","केवल विदेशी","नागरिक और विदेशी दोनों","केवल सरकारी"],a:2,e:"GDP में नागरिक + विदेशी दोनों (घरेलू सीमा में)।",s:"General"},
+{q:"जुए/सट्टे से होने वाली आय GDP में—",o:["शामिल है","शामिल नहीं है","आधी शामिल","रजिस्टर्ड जुआ शामिल"],a:1,e:"जुआ/सट्टा/लॉटरी GDP में शामिल नहीं — उत्पादक गतिविधि नहीं।",s:"General"},
+{q:"Share के क्रय-विक्रय से GDP में क्यों नहीं?",o:["अवैध है","Transfer है, नया उत्पादन नहीं","Tax लगता है","SEBI regulate करती है"],a:1,e:"Share खरीदना-बेचना Transfer Activity है, नया उत्पादन नहीं।",s:"General"},
+{q:"Nominal GDP किस कीमत पर मापी जाती है?",o:["आधार वर्ष कीमत","स्थिर कीमत","चालू/वर्तमान कीमत","अंतर्राष्ट्रीय कीमत"],a:2,e:"Nominal (मौद्रिक) GDP = चालू/वर्तमान कीमत पर।",s:"General"},
+{q:"FY 2024-25 GSDP में तमिलनाडु का स्थान है—",o:["पहला","दूसरा","तीसरा","चौथा"],a:1,e:"GSDP रैंक: महाराष्ट्र(1), तमिलनाडु(2), कर्नाटक(3), गुजरात(4), UP(5)।",s:"General"},
+{q:"'Drainage Theory' (धन निकासी सिद्धांत) किसने दिया?",o:["Dr. VKRV Rao","Prof. Raj Krishna","दादाभाई नौरोजी","Amartya Sen"],a:2,e:"धन निकासी सिद्धांत = दादाभाई नौरोजी।",s:"General"},
+{q:"HGR का Hindu Growth Rate शब्द किस क्षेत्र से संबंधित है?",o:["केवल GDP से","केवल PCI से","NI / GDP / PCI तीनों से","केवल NI से"],a:2,e:"HGR का संबंध राष्ट्रीय आय / GDP / PCI तीनों से है।",s:"General"}
+];
+
+let ans=new Array(50).fill(null), score=0, corr=0, wrng=0;
+
+function showTab(name,btn){
+  document.querySelectorAll('.tab-pane').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+  if(name==='mcq' && !document.getElementById('mcq-box').innerHTML) buildMCQ();
+}
+
+function buildMCQ(){
+  document.getElementById('mcq-box').innerHTML = questions.map((q,i)=>`
+    <div class="q-card" id="qc${i}">
+      <div class="q-meta"><span>प्रश्न ${i+1} / 50</span><span>${q.s}</span></div>
+      <div class="q-text">${q.q}</div>
+      <div class="opts">
+        ${q.o.map((o,j)=>`<button class="opt" id="o${i}_${j}" onclick="pick(${i},${j})">${'ABCD'[j]}) ${o}</button>`).join('')}
+      </div>
+      <div id="fb${i}" style="display:none"></div>
+    </div>`).join('');
+}
+
+function pick(qi,oi){
+  if(ans[qi]!==null) return;
+  ans[qi]=oi;
+  const q=questions[qi], ok=(oi===q.a);
+  for(let j=0;j<4;j++){
+    const b=document.getElementById(`o${qi}_${j}`);
+    b.disabled=true;
+    if(j===q.a) b.classList.add('correct');
+    else if(j===oi && !ok) b.classList.add('wrong');
+  }
+  if(ok){score=+(score+1).toFixed(2);corr++;}
+  else{score=+(score-1/3).toFixed(2);wrng++;}
+  const fb=document.getElementById('fb'+qi);
+  fb.style.display='block';
+  fb.className='feedback '+(ok?'ok':'no');
+  fb.innerHTML=(ok?'✓ सही! ':'✗ गलत। सही: '+q.o[q.a]+' — ')+q.e;
+  const att=ans.filter(x=>x!==null).length;
+  document.getElementById('s-score').textContent=score.toFixed(2);
+  document.getElementById('s-correct').textContent=corr;
+  document.getElementById('s-wrong').textContent=wrng;
+  document.getElementById('s-att').textContent=att+'/50';
+}
+
+function submitAll(){
+  const att=ans.filter(x=>x!==null).length;
+  const pct=Math.round(corr/50*100);
+  const grade=pct>=80?'🏆 उत्कृष्ट प्रदर्शन!':pct>=60?'👍 अच्छा प्रयास!':pct>=40?'📚 और मेहनत करें':'❗ फिर से पढ़ें';
+  const ra=document.getElementById('result-area');
+  ra.style.display='block';
+  ra.innerHTML=`<div class="result-box">
+    <h2>${grade}</h2>
+    <div class="result-score">${score.toFixed(2)}</div>
+    <div style="font-size:13px;color:var(--text3);margin-bottom:1rem">कुल अंक | 50 प्रश्न | +1 / −⅓</div>
+    <div class="result-grid">
+      <div class="result-stat"><div class="val" style="color:var(--green)">${corr}</div><div class="lbl">सही</div></div>
+      <div class="result-stat"><div class="val" style="color:var(--coral)">${wrng}</div><div class="lbl">गलत</div></div>
+      <div class="result-stat"><div class="val">${50-att}</div><div class="lbl">छोड़े</div></div>
+      <div class="result-stat"><div class="val" style="color:var(--purple2)">${pct}%</div><div class="lbl">सटीकता</div></div>
+    </div>
+    <button class="close-btn" onclick="document.getElementById('result-area').style.display='none'">बंद करें</button>
+  </div>`;
+  ra.scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HDI | PDS | Financial Institutions | Fiscal Policy — RPSC/PSI Revision</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;900&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#060a14;--bg2:#0d1120;--card:#111827;--card2:#161e30;
+  --border:#1e2d4a;--accent:#00e5ff;--accent2:#ff6b6b;
+  --accent3:#69ff47;--accent4:#c084fc;--accent5:#fbbf24;
+  --green:#22c55e;--red:#ef4444;--blue:#60a5fa;--pink:#f472b6;
+  --text:#e2e8f0;--text2:#7c8fad;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans Devanagari','Baloo 2',sans-serif;min-height:100vh;
+  background-image:radial-gradient(ellipse at 10% 0%,rgba(0,229,255,0.06) 0%,transparent 50%),
+  radial-gradient(ellipse at 90% 100%,rgba(192,132,252,0.05) 0%,transparent 50%);}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,#0d1120,#060a14);
+  border-bottom:2px solid var(--accent);padding:14px 20px;
+  text-align:center;position:sticky;top:0;z-index:100;
+  box-shadow:0 4px 40px rgba(0,229,255,0.15);}
+.header h1{font-size:clamp(1rem,2.8vw,1.5rem);font-weight:900;
+  background:linear-gradient(90deg,var(--accent),var(--accent4),var(--accent3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.header p{font-size:0.72rem;color:var(--text2);margin-top:3px}
+
+/* TABS */
+.tabs{display:flex;gap:4px;padding:10px 14px;overflow-x:auto;
+  background:var(--bg2);border-bottom:1px solid var(--border);scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{padding:7px 16px;border-radius:30px;border:1.5px solid var(--border);
+  background:var(--card);color:var(--text2);cursor:pointer;
+  font-family:inherit;font-size:0.8rem;font-weight:600;white-space:nowrap;transition:all 0.2s;}
+.tab-btn:hover{border-color:var(--accent);color:var(--accent)}
+.tab-btn.active{background:linear-gradient(135deg,rgba(0,229,255,0.2),rgba(192,132,252,0.15));
+  color:var(--accent);border-color:var(--accent);box-shadow:0 0 14px rgba(0,229,255,0.25);}
+
+/* CONTENT */
+.tab-content{display:none;padding:18px 14px;max-width:1200px;margin:0 auto}
+.tab-content.active{display:block}
+.imp{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.sec-head{font-size:1.05rem;font-weight:800;color:var(--accent);
+  border-left:4px solid var(--accent);padding-left:12px;margin:22px 0 12px;
+  display:flex;align-items:center;gap:8px;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+.full{grid-column:1/-1}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:14px;transition:transform 0.2s,box-shadow 0.2s;}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.4)}
+.ct{font-size:0.92rem;font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:6px}
+.cb{font-size:0.8rem;color:var(--text2);line-height:1.85}
+.cb strong{color:var(--text)}
+.c-cyan{border-color:var(--accent);border-left:4px solid var(--accent)}
+.c-red{border-color:var(--accent2);border-left:4px solid var(--accent2)}
+.c-green{border-color:var(--accent3);border-left:4px solid var(--accent3)}
+.c-purple{border-color:var(--accent4);border-left:4px solid var(--accent4)}
+.c-yellow{border-color:var(--accent5);border-left:4px solid var(--accent5)}
+.c-pink{border-color:var(--pink);border-left:4px solid var(--pink)}
+.c-blue{border-color:var(--blue);border-left:4px solid var(--blue)}
+
+/* MNEMONIC */
+.mnem{background:linear-gradient(135deg,rgba(0,229,255,0.08),rgba(192,132,252,0.06));
+  border:1px solid rgba(0,229,255,0.25);border-radius:9px;
+  padding:9px 12px;margin-top:9px;font-size:0.78rem}
+.mnem span{color:var(--accent);font-weight:700}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto;margin-top:8px}
+table{width:100%;border-collapse:collapse;font-size:0.78rem}
+th{background:linear-gradient(90deg,rgba(0,229,255,0.15),rgba(192,132,252,0.08));
+  color:var(--accent);font-weight:700;padding:8px 9px;text-align:left;
+  border-bottom:2px solid var(--accent);}
+td{padding:7px 9px;border-bottom:1px solid var(--border);color:var(--text2)}
+tr:hover td{background:rgba(255,255,255,0.02);color:var(--text)}
+.ty{color:var(--accent5);font-weight:600}
+.tg{color:var(--green);font-weight:600}
+.tr{color:var(--accent2);font-weight:600}
+.tb{color:var(--blue);font-weight:600}
+.tp{color:var(--accent4);font-weight:600}
+.tc{color:var(--accent);font-weight:600}
+
+/* BADGES */
+.badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:0.68rem;font-weight:700}
+.by{background:rgba(251,191,36,0.15);color:var(--accent5)}
+.bg{background:rgba(34,197,94,0.15);color:var(--green)}
+.br{background:rgba(239,68,68,0.15);color:var(--red)}
+.bb{background:rgba(96,165,250,0.15);color:var(--blue)}
+.bp{background:rgba(192,132,252,0.15);color:var(--accent4)}
+.bc{background:rgba(0,229,255,0.12);color:var(--accent)}
+
+/* PILLS */
+.pills{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.pill{padding:2px 10px;border-radius:20px;font-size:0.72rem}
+.pc{background:rgba(0,229,255,0.1);border:1px solid var(--accent);color:var(--accent)}
+.pg{background:rgba(105,255,71,0.1);border:1px solid var(--accent3);color:var(--accent3)}
+.pp{background:rgba(192,132,252,0.1);border:1px solid var(--accent4);color:var(--accent4)}
+.py{background:rgba(251,191,36,0.1);border:1px solid var(--accent5);color:var(--accent5)}
+.pr{background:rgba(239,68,68,0.1);border:1px solid var(--accent2);color:var(--accent2)}
+.pb{background:rgba(96,165,250,0.1);border:1px solid var(--blue);color:var(--blue)}
+
+/* MCQ */
+#score-bar{position:sticky;top:54px;z-index:50;background:var(--bg2);
+  border-bottom:1px solid var(--border);padding:7px 14px;
+  display:none;gap:14px;align-items:center;font-size:0.8rem;flex-wrap:wrap;}
+#score-bar.vis{display:flex}
+.sv-g{color:var(--green);font-weight:700}
+.sv-r{color:var(--red);font-weight:700}
+.sv-y{color:var(--accent5);font-weight:700}
+#submit-mcq{margin-left:auto;padding:5px 16px;border-radius:20px;
+  background:linear-gradient(90deg,var(--accent),var(--accent4));
+  border:none;color:#000;font-weight:700;cursor:pointer;font-family:inherit;font-size:0.78rem}
+#reset-mcq{padding:5px 14px;border-radius:20px;
+  background:rgba(96,165,250,0.12);border:1px solid var(--blue);
+  color:var(--blue);font-family:inherit;font-size:0.78rem;cursor:pointer}
+.mcq-wrap{display:flex;flex-direction:column;gap:16px}
+.mcq-c{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px}
+.mcq-q{font-size:0.85rem;font-weight:600;margin-bottom:10px;line-height:1.65}
+.qn{color:var(--accent);font-weight:800;margin-right:5px}
+.src{font-size:0.68rem;color:var(--text2);margin-left:5px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+@media(max-width:480px){.opts{grid-template-columns:1fr}}
+.ob{padding:8px 11px;border-radius:8px;border:1.5px solid var(--border);
+  background:var(--card);color:var(--text2);cursor:pointer;
+  font-family:inherit;font-size:0.78rem;text-align:left;transition:all 0.2s;}
+.ob:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.ob.correct{background:rgba(34,197,94,0.13);border-color:var(--green);color:var(--green)}
+.ob.wrong{background:rgba(239,68,68,0.13);border-color:var(--red);color:var(--red)}
+.ob.reveal{background:rgba(105,255,71,0.08);border-color:var(--accent3);color:var(--accent3);opacity:0.7}
+.exp{font-size:0.76rem;color:var(--accent);margin-top:8px;padding:7px 11px;
+  background:rgba(0,229,255,0.05);border-radius:7px;display:none;border-left:3px solid var(--accent);}
+.sl{font-size:0.72rem;color:var(--text2);margin-top:5px}
+
+/* RESULT */
+#res-pop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);
+  z-index:999;align-items:center;justify-content:center}
+#res-pop.show{display:flex}
+.res-box{background:var(--card2);border:2px solid var(--accent);border-radius:18px;
+  padding:32px 36px;text-align:center;max-width:360px;width:90%;
+  animation:pop 0.4s cubic-bezier(0.34,1.56,0.64,1)}
+@keyframes pop{from{transform:scale(0.4);opacity:0}to{transform:scale(1);opacity:1}}
+.res-box h2{font-size:1.5rem;color:var(--accent);margin-bottom:6px}
+.res-sc{font-size:2.6rem;font-weight:900;margin:10px 0}
+.res-d{color:var(--text2);font-size:0.82rem;line-height:2}
+.close-res{margin-top:18px;padding:9px 28px;border-radius:30px;
+  background:linear-gradient(90deg,var(--accent),var(--accent4));
+  border:none;color:#000;font-weight:700;cursor:pointer;font-family:inherit;font-size:0.87rem}
+
+/* LAST MINUTE */
+.lm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:9px}
+.lm-c{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:13px;font-size:0.78rem}
+.lm-h{font-weight:700;font-size:0.85rem;margin-bottom:7px}
+.lm-i{padding:2.5px 0;color:var(--text2);display:flex;gap:5px;line-height:1.6}
+.lm-i::before{content:"▸";color:var(--accent);flex-shrink:0}
+.super{background:linear-gradient(135deg,rgba(0,229,255,0.1),rgba(192,132,252,0.08));
+  border:2px solid var(--accent4);border-radius:14px;padding:18px;margin:16px 0;text-align:center}
+.super h3{color:var(--accent4);font-size:0.95rem;margin-bottom:9px}
+.st{font-size:1rem;font-weight:700;color:var(--accent);letter-spacing:0.5px;line-height:2.1}
+.ss{font-size:0.75rem;color:var(--text2);margin-top:7px}
+hr{border:none;border-top:1px solid var(--border);margin:18px 0}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 HDI | Subsidy | PDS | Financial Institutions | Fiscal Policy</h1>
+  <p>RPSC RAS Pre • PSI/SI 2025 | Vinay Sir Notes Based | All Rajasthan Exams</p>
+</div>
+
+<div id="score-bar">
+  <span>✅ <span class="sv-g" id="sb-c">0</span></span>
+  <span>❌ <span class="sv-r" id="sb-w">0</span></span>
+  <span>⏳ बाकी: <span class="sv-y" id="sb-l">50</span></span>
+  <button id="reset-mcq" onclick="resetMCQ()">🔄 Reset</button>
+  <button id="submit-mcq" onclick="submitMCQ()">📊 Result</button>
+</div>
+
+<div id="res-pop">
+  <div class="res-box">
+    <h2>🏆 Result</h2>
+    <div class="res-sc" id="rs">0</div>
+    <div class="res-d" id="rd"></div>
+    <button class="close-res" onclick="document.getElementById('res-pop').classList.remove('show')">बंद करें</button>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('revision',this)">📖 Revision</button>
+  <button class="tab-btn" onclick="showTab('summary',this)">📊 Summary</button>
+  <button class="tab-btn" onclick="showTab('rjpyq',this)">🏜️ RJ PYQ (25)</button>
+  <button class="tab-btn" onclick="showTab('statepyq',this)">🗺️ States PYQ (25)</button>
+  <button class="tab-btn" onclick="showTab('lastmin',this)">⚡ Last Minute</button>
+</div>
+
+<!-- ===== REVISION ===== -->
+<div class="tab-content active" id="tab-revision">
+
+  <!-- HDI -->
+  <div class="sec-head">🌍 HDI — मानव विकास सूचकांक</div>
+  <div class="grid2">
+    <div class="card c-cyan">
+      <div class="ct">📌 HDI परिचय</div>
+      <div class="cb">
+        • <span class="imp">Human Development Index (मानव विकास सूचकांक)</span><br>
+        • जारीकर्ता: <strong>UNDP</strong> (United Nations Development Programme)<br>
+        • <strong>वार्षिक (Annually)</strong> जारी होती है<br>
+        • <strong>1990 से</strong> जारी हो रही है<br>
+        • मान (Value): <span class="imp">0 से 1 के मध्य</span><br>
+        • यह किसी देश की <strong>सामाजिक एवं आर्थिक उपलब्धियों</strong> का मापन करती है<br>
+        • यह <strong>साकार्यकी सूचकांक</strong> है
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "HDI = Human Development Index, UNDP हर साल बताता है — 0 से 1 तक"</div>
+    </div>
+    <div class="card c-purple">
+      <div class="ct">🧩 HDI के घटक (Components)</div>
+      <div class="cb">
+        <div class="pills" style="margin-bottom:8px">
+          <span class="pill pc">① जीवन प्रत्याशा</span>
+          <span class="pill pp">② शिक्षा (Education)</span>
+          <span class="pill pg">③ प्रति-व्यक्ति आय (PCI)</span>
+        </div>
+        <strong>① जीवन प्रत्याशा</strong> — लंबा व स्वस्थ जीवन<br>
+        <strong>② शिक्षा</strong> — साक्षरता दर<br>
+        <strong>③ PCI</strong> — Per Capita Income (जीवन स्तर)
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "JSP = जीवन, शिक्षा, पैसा — HDI के 3 घटक"</div>
+    </div>
+    <div class="card c-yellow full">
+      <div class="ct">🏆 देशों का वर्गीकरण (4 भाग)</div>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>श्रेणी</th><th>HDI Value</th><th>उदाहरण</th></tr>
+          <tr><td>① <strong>अति उच्च मानव विकास</strong></td><td class="tg">0.800 से ज़्यादा</td><td>Iceland, Norway, Switzerland</td></tr>
+          <tr><td>② <strong>उच्च मानव विकास</strong></td><td class="ty">0.700 – 0.799</td><td>—</td></tr>
+          <tr><td>③ <strong>मध्यम मानव विकास</strong></td><td class="tb">0.550 – 0.699</td><td class="tc">भारत (0.685) ✓</td></tr>
+          <tr><td>④ <strong>निम्न मानव विकास</strong></td><td class="tr">0.550 से नीचे</td><td>South Sudan, Somalia</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card c-green">
+      <div class="ct">📊 नवीनतम HDI Report (2024)</div>
+      <div class="cb">
+        • कुल देश: <span class="imp">193</span><br>
+        • शीर्षक: <em>"A Matter of Choice: People & Possibilities in the Age of AI"</em><br><br>
+        <strong>शीर्ष देश:</strong><br>
+        ① आइसलेंड (0.972) 🥇<br>
+        ② नार्वे (0.970)<br>
+        ② स्विट्जरलेंड (0.970)<br>
+        ③ डेनमार्क | ④ जर्मनी<br><br>
+        <strong>निम्न रैंक:</strong> 193 — दक्षिण सूडान | 192 — सोमालिया
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "Iceland is I(1)ce = Number One! आइसलेंड = नंबर 1"</div>
+    </div>
+    <div class="card c-red">
+      <div class="ct">🇮🇳 भारत की HDI स्थिति</div>
+      <div class="cb">
+        • रैंक: <span class="imp">130वां</span> (193 देशों में)<br>
+        • HDI Value: <span class="imp">0.685</span><br>
+        • श्रेणी: <strong>मध्यम मानव विकास</strong><br><br>
+        <strong>भारत के आंकड़े:</strong><br>
+        • जीवन प्रत्याशा: <span class="imp">71.70 से 72 वर्ष</span><br>
+        • स्कूली शिक्षा: <span class="imp">13 वर्ष तक</span><br>
+        • PCI: <span class="imp">$9046.7</span><br><br>
+        <strong>पड़ोसी देशों की रैंक:</strong><br>
+        <div class="pills">
+          <span class="pill pg">भूटान-125</span>
+          <span class="pill pc">चीन-78</span>
+          <span class="pill py">श्रीलंका-89</span>
+          <span class="pill pp">नेपाल-145</span>
+          <span class="pill pr">पाक-168</span>
+          <span class="pill pb">बांग्लादेश-130</span>
+        </div>
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "भारत 130 = One-Three-Zero → मध्यम श्रेणी"</div>
+    </div>
+    <div class="card c-blue">
+      <div class="ct">👥 HDI के योगदानकर्ता</div>
+      <div class="cb">
+        <strong>अर्थशास्त्री जिन्होंने HDI बनाई:</strong><br><br>
+        • <span class="imp">महबूब-उल-हक (पाकिस्तान)</span> — मुख्य निर्माता<br>
+        • <span class="imp">अमर्त्य सेन (भारत)</span> — सहयोग<br><br>
+        <strong>याद करें:</strong> Pakistan + India ने मिलकर HDI बनाई! 🤝
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "Mahbub + Amartya = MA = Master Architects of HDI"</div>
+    </div>
+  </div>
+
+  <!-- SUBSIDY -->
+  <div class="sec-head">💰 सब्सिडी (Subsidy)</div>
+  <div class="grid2">
+    <div class="card c-yellow">
+      <div class="ct">📌 सब्सिडी — परिभाषा</div>
+      <div class="cb">
+        सरकार द्वारा किसी वस्तु/सेवा पर <span class="imp">बाज़ार मूल्य से कम दर पर</span> उपलब्ध कराना।<br><br>
+        <strong>उद्देश्य:</strong> गरीबों को राहत, उद्योगों को प्रोत्साहन<br><br>
+        <strong>प्रकार:</strong>
+        <div class="pills">
+          <span class="pill py">खाद्य सब्सिडी</span>
+          <span class="pill pg">उर्वरक सब्सिडी</span>
+          <span class="pill pc">ईंधन सब्सिडी</span>
+          <span class="pill pp">ब्याज सब्सिडी</span>
+        </div>
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "Subsidy = Sub se Kum Daam" — बाज़ार से कम दाम पर मिलना</div>
+    </div>
+    <div class="card c-green">
+      <div class="ct">🌾 खाद्य सब्सिडी चक्र</div>
+      <div class="cb">
+        <strong>कृषि (गेहूं, चावल, दाल)</strong><br>
+        ↓ MSP (Minimum Support Price)<br>
+        ↓ <span class="imp">FCI (Food Corporation of India)</span> खरीदती है<br>
+        ↓ PDS के ज़रिए राज्य को<br>
+        ↓ <span class="imp">FPS (Fair Price Shop)</span> — उचित मूल्य की दुकान<br>
+        ↓ गरीब उपभोक्ता सस्ते में खरीदते हैं<br><br>
+        <strong>FCI स्थापना:</strong> <span class="imp">1965</span>
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "MSP → FCI → PDS → FPS → गरीब" — Food Chain याद करो!</div>
+    </div>
+    <div class="card c-cyan">
+      <div class="ct">🏭 निजीकरण (Privatization)</div>
+      <div class="cb">
+        • सरकारी हस्तक्षेप को कम करना<br>
+        • निजी क्षेत्र को अनुमति देना<br>
+        • <span class="imp">विनिवेश (Disinvestment)</span> ↑<br>
+        • सरकारी कंपनियों (PSU) की बिक्री<br>
+        • सार्वजनिक क्षेत्रों में सरकार की भूमिका <span class="imp">51% से कम</span> करना
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "Privatization = Pri = Private को Priority" — सरकार पीछे हटती है</div>
+    </div>
+    <div class="card c-purple">
+      <div class="ct">🌐 वैश्वीकरण (Globalisation)</div>
+      <div class="cb">
+        • भारतीय अर्थव्यवस्था को विश्व के बाज़ार से जोड़ना<br>
+        • विदेशी व्यापार ↑↑ (<span class="imp">Export > Import</span>)<br>
+        • व्यापार घाटा ↓↓<br>
+        • विदेशी निर्भरता ↓↓ → घरेलू उत्पादन ↑↑
+      </div>
+    </div>
+  </div>
+
+  <!-- PDS -->
+  <div class="sec-head">🏪 PDS — सार्वजनिक वितरण प्रणाली</div>
+  <div class="grid2">
+    <div class="card c-cyan full">
+      <div class="ct">📌 PDS — परिचय व इतिहास</div>
+      <div class="cb">
+        • <span class="imp">Public Distribution System (सार्वजनिक वितरण प्रणाली)</span><br>
+        • केंद्र + राज्य सरकारों की <strong>संयुक्त जिम्मेदारी</strong><br>
+        • <span class="imp">NFSA 2013 (National Food Security Act)</span> के तहत <strong>TPDS</strong> के रूप में लागू<br>
+        • भारत का PDS = <span class="imp">विश्व का सबसे बड़ा वितरण नेटवर्क</span><br>
+        • <strong>द्वितीय विश्व युद्ध</strong> के दौरान Rationing के रूप में शुरू<br>
+        • 1960s में: APC + FCI की स्थापना → PDS मज़बूत हुआ<br>
+        • <span class="imp">TPDS: June 1997</span> में गरीबों पर ध्यान केंद्रित करके शुरू<br>
+        • राजस्थान में PDS: <strong>खाद्य एवं नागरिक आपूर्ति विभाग</strong> द्वारा
+      </div>
+    </div>
+    <div class="card c-green">
+      <div class="ct">🎯 PDS के उद्देश्य</div>
+      <div class="cb">
+        ① <strong>रियायती दर</strong> पर खाद्यान्न (गेहूं, चावल, चीनी, केरोसिन)<br>
+        ② <strong>खाद्य सुरक्षा</strong> — संकट/आपदा में भुखमरी से बचाना<br>
+        ③ <strong>मूल्य स्थिरता</strong> — जमाखोरी रोकना<br>
+        ④ <strong>पोषण सुरक्षा</strong> — दाल, तेल, आयोडीन नमक वितरण
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "RSMP = Riyayat, Suraksha, Mulya-sthirta, Poshan" — 4 उद्देश्य</div>
+    </div>
+    <div class="card c-yellow">
+      <div class="ct">✅ राजस्थान PDS की विशेषताएं</div>
+      <div class="cb">
+        ① <strong>NFSA 2013</strong> — रियायती दरों पर अनाज<br>
+        ② <strong>e-PoS मशीन</strong> — Biometric (Aadhaar) सत्यापन के बाद खाद्यान्न<br>
+        &nbsp;&nbsp;→ Leakage और चोरी नियंत्रित<br>
+        ③ <strong>राशन कार्ड Digitalization + Aadhaar Seeding</strong><br>
+        &nbsp;&nbsp;→ Duplication खत्म<br>
+        ④ <span class="imp">ONORC — One Nation One Ration Card</span><br>
+        &nbsp;&nbsp;→ प्रवासी श्रमिक किसी भी FPS से राशन ले सकते हैं (Portability)<br>
+        ⑤ <strong>Social Audit</strong> — ग्राम सभाओं के माध्यम से
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "EDOAS = e-PoS, Digital, ONORC, Aadhaar, Social Audit" — 5 reforms</div>
+    </div>
+    <div class="card c-red">
+      <div class="ct">⚠️ PDS की चुनौतियां</div>
+      <div class="cb">
+        ① <strong>Inclusion & Exclusion Errors</strong> — पात्र छूटे, अपात्र को लाभ<br>
+        ② <strong>Leakage/Diversion</strong> — खाद्यान्न की चोरी/कालाबाज़ारी<br>
+        ③ <strong>सीमित वस्तुएं</strong> — मुख्यतः गेहूं-चावल, दाल/तेल कम<br>
+        ④ <strong>FPS Dealer Viability</strong> — कम कमीशन की समस्या
+      </div>
+    </div>
+  </div>
+
+  <!-- FINANCIAL INSTITUTIONS -->
+  <div class="sec-head">🏦 वित्तीय संस्थाएं (Financial Institutions)</div>
+  <div class="grid2">
+    <div class="card c-green full">
+      <div class="ct">🗂️ वित्तीय संस्थाओं का वर्गीकरण</div>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>क्षेत्र</th><th>संस्था</th><th>Full Form</th><th>स्थापना</th><th>HQ</th></tr>
+          <tr><td class="tg">कृषि</td><td class="tc"><strong>NABARD</strong></td><td>National Bank for Agriculture & Rural Development</td><td class="ty">12 July 1982</td><td>Mumbai</td></tr>
+          <tr><td class="tp">उद्योग (लघु)</td><td class="tc"><strong>SIDBI</strong></td><td>Small Industries Development Bank of India</td><td class="ty">2 April 1990</td><td>Lucknow</td></tr>
+          <tr><td class="tr">उद्योग (बड़ा)</td><td class="tc"><strong>IDBI</strong></td><td>Industrial Development Bank of India</td><td class="ty">1964 (3rd FYP)</td><td>Mumbai</td></tr>
+          <tr><td class="tb">व्यापार</td><td class="tc"><strong>EXIM Bank</strong></td><td>Export & Import Bank of India</td><td class="ty">1 Jan 1982</td><td>Mumbai</td></tr>
+          <tr><td style="color:var(--pink)">आवास</td><td class="tc"><strong>NHB</strong></td><td>National Housing Bank</td><td class="ty">9 July 1988</td><td>New Delhi</td></tr>
+          <tr><td class="ty">पूंजी बाज़ार</td><td class="tc"><strong>SEBI</strong></td><td>Securities and Exchange Board of India</td><td class="ty">12 April 1988</td><td>Mumbai</td></tr>
+          <tr><td>बीमा</td><td class="tc"><strong>IRDA</strong></td><td>Insurance Regulatory & Development Authority</td><td>—</td><td>Hyderabad</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card c-cyan">
+      <div class="ct">🌾 NABARD — विस्तृत</div>
+      <div class="cb">
+        • <span class="imp">National Bank for Agriculture & Rural Development</span><br>
+        • स्थापना: <span class="imp">12 July 1982</span><br>
+        • <strong>शिवरामन समिति की सिफारिश</strong> पर<br>
+        • Act: <span class="imp">NABARD Act 1981</span><br>
+        • मुख्यालय: <span class="imp">Mumbai</span><br>
+        • प्रकृति: <strong>सांविधिक (Statutory)</strong><br>
+        • 6वीं पंचवर्षीय योजना (1980-85) में बना<br>
+        • <strong>कार्य:</strong> कृषि एवं ग्रामीण क्षेत्रों का विकास<br>
+        • प्राथमिक/ग्रामीण/कृषि के लिए <strong>शीर्षस्थ संस्था</strong><br>
+        • <span class="imp">RRB (क्षेत्रीय ग्रामीण बैंक) का निरीक्षण</span><br>
+        • स्वामित्व: <strong>GOI</strong>
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "NABARD = N for Nature = 1982 में जन्मा, किसानों का 'नाभि' केंद्र"</div>
+    </div>
+    <div class="card c-purple">
+      <div class="ct">🏭 SIDBI — विस्तृत</div>
+      <div class="cb">
+        • <span class="imp">Small Industries Development Bank of India</span><br>
+        • स्थापना: <span class="imp">2 April 1990</span><br>
+        • मुख्यालय: <span class="imp">Lucknow</span><br>
+        • कार्य: <strong>लघु उद्योगों को वित्तीय सहायता</strong><br><br>
+        <strong>IDBI:</strong><br>
+        • <span class="imp">Industrial Development Bank of India</span><br>
+        • स्थापना: <span class="imp">1964 (3rd FYP)</span><br>
+        • मुख्यालय: <span class="imp">Mumbai</span><br>
+        • कार्य: औद्योगिक विकास को बढ़ावा
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "SIDBI = Small = Lucknow (छोटा शहर), IDBI = Industrial = Mumbai (बड़ा शहर)"</div>
+    </div>
+    <div class="card c-yellow">
+      <div class="ct">🚢 EXIM Bank + NHB</div>
+      <div class="cb">
+        <strong>EXIM Bank:</strong><br>
+        • Export & Import Bank of India<br>
+        • स्थापना: <span class="imp">1 January 1982</span><br>
+        • HQ: <span class="imp">Mumbai</span><br>
+        • कार्य: <strong>विदेशी व्यापार ↑↑</strong><br><br>
+        <strong>NHB (National Housing Bank):</strong><br>
+        • स्थापना: <span class="imp">9 July 1988</span><br>
+        • HQ: <span class="imp">New Delhi</span><br>
+        • कार्य: <strong>आवासीय सुविधा ↑↑</strong>
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "EXIM = Export-Import = Mumbai Port, NHB = New House = New Delhi"</div>
+    </div>
+    <div class="card c-red">
+      <div class="ct">📈 SEBI — विस्तृत</div>
+      <div class="cb">
+        • <span class="imp">Securities and Exchange Board of India</span><br>
+        • स्थापना: <span class="imp">12 April 1988</span><br>
+        • कानूनी दर्जा: <span class="imp">30 January 1992</span> (SEBI Act 1992)<br>
+        • प्रकृति: <strong>सांविधिक (Statutory)</strong><br>
+        • मुख्यालय: <span class="imp">Mumbai</span><br><br>
+        <strong>कार्य:</strong><br>
+        • पूंजी बाज़ार (Capital Market) का विनियमन<br>
+        • Mutual Fund का विनियमन<br>
+        • <span class="imp">Insider Trading पर रोक</span><br>
+        • निवेशकों के हितों का ध्यान रखना
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "SEBI = Stock Exchange Board of India = Share Market का Police"</div>
+    </div>
+  </div>
+
+  <!-- FISCAL POLICY -->
+  <div class="sec-head">📋 राजकोषीय नीति (Fiscal Policy)</div>
+  <div class="grid2">
+    <div class="card c-cyan">
+      <div class="ct">📌 परिचय</div>
+      <div class="cb">
+        • <span class="imp">Fiscal Policy = राजकोषीय नीति</span><br>
+        • अन्य नाम: <strong>बजट नीति / कर नीति</strong><br>
+        • निर्माण: <strong>सरकार द्वारा</strong> (केंद्र + राज्य)<br><br>
+        <strong>उपकरण (Tools):</strong>
+        <div class="pills" style="margin-top:6px">
+          <span class="pill pc">राजस्व आय</span>
+          <span class="pill pg">पूंजीगत आय</span>
+          <span class="pill pp">राजस्व व्यय</span>
+          <span class="pill py">पूंजीगत व्यय</span>
+          <span class="pill pr">सार्वजनिक ऋण</span>
+          <span class="pill pb">कर नीति</span>
+        </div>
+      </div>
+      <div class="mnem"><span>🧠 Trick:</span> "Fiscal = फिस्कल = Finance + Scale — सरकार की आय-व्यय की तराजू"</div>
+    </div>
+    <div class="card c-purple">
+      <div class="ct">⚖️ Monetary Policy vs Fiscal Policy</div>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>पहलू</th><th>Fiscal Policy</th><th>Monetary Policy</th></tr>
+          <tr><td>निर्माता</td><td class="tg">सरकार</td><td class="tb">RBI</td></tr>
+          <tr><td>अन्य नाम</td><td class="tg">बजट/कर नीति</td><td class="tb">साख नीति</td></tr>
+          <tr><td>उपकरण</td><td class="tg">Tax, Expenditure</td><td class="tb">Repo Rate, CRR</td></tr>
+          <tr><td>लक्ष्य</td><td class="tg">आर्थिक विकास</td><td class="tb">मुद्रा नियंत्रण</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- PRIVATE BANKS -->
+    <div class="card c-blue full">
+      <div class="ct">🏦 भारत के प्रमुख Private Banks</div>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>Bank</th><th>स्थापना</th><th>HQ</th></tr>
+          <tr><td class="tc"><strong>Axis Bank</strong></td><td class="ty">1993</td><td>Mumbai</td></tr>
+          <tr><td class="tc"><strong>Federal Bank</strong></td><td class="ty">1931</td><td>Aluva, Kerala</td></tr>
+          <tr><td class="tc"><strong>HDFC Bank</strong></td><td class="ty">1994</td><td>Mumbai</td></tr>
+          <tr><td class="tc"><strong>ICICI Bank</strong></td><td class="ty">1955</td><td>Mumbai</td></tr>
+          <tr><td class="tc"><strong>Yes Bank</strong></td><td class="ty">2003</td><td>Mumbai</td></tr>
+          <tr><td class="tc"><strong>Karnataka Bank</strong></td><td class="ty">1924</td><td>Mangaluru</td></tr>
+          <tr><td class="tc"><strong>Bandhan Bank</strong></td><td class="ty">2015</td><td>Kolkata</td></tr>
+          <tr><td class="tc"><strong>IDFC First Bank</strong></td><td class="ty">2015</td><td>Mumbai</td></tr>
+          <tr><td class="tc"><strong>IDBI Bank</strong></td><td class="ty">1964</td><td>Mumbai</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== SUMMARY ===== -->
+<div class="tab-content" id="tab-summary">
+
+  <div class="sec-head">📊 Master Summary — Financial Institutions</div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>संस्था</th><th>Full Form</th><th>स्थापना</th><th>HQ</th><th>कार्य</th><th>विशेष</th></tr>
+      <tr><td class="tc">NABARD</td><td>National Bank Agriculture Rural Dev.</td><td class="ty">12 July 1982</td><td class="tg">Mumbai</td><td>कृषि + ग्रामीण विकास</td><td class="tp">Shivaraman Committee, RRB पर्यवेक्षण</td></tr>
+      <tr><td class="tc">SIDBI</td><td>Small Industries Dev Bank of India</td><td class="ty">2 April 1990</td><td class="tg">Lucknow</td><td>लघु उद्योग</td><td>—</td></tr>
+      <tr><td class="tc">IDBI</td><td>Industrial Dev Bank of India</td><td class="ty">1964 (3rd FYP)</td><td class="tg">Mumbai</td><td>औद्योगिक विकास</td><td>—</td></tr>
+      <tr><td class="tc">EXIM Bank</td><td>Export-Import Bank of India</td><td class="ty">1 Jan 1982</td><td class="tg">Mumbai</td><td>विदेशी व्यापार</td><td>—</td></tr>
+      <tr><td class="tc">NHB</td><td>National Housing Bank</td><td class="ty">9 July 1988</td><td class="tg">New Delhi</td><td>आवास वित्त</td><td>—</td></tr>
+      <tr><td class="tc">SEBI</td><td>Securities Exchange Board India</td><td class="ty">12 April 1988</td><td class="tg">Mumbai</td><td>Capital Market नियमन</td><td class="tp">Statutory 30 Jan 1992, Insider Trading रोक</td></tr>
+      <tr><td class="tc">IRDA</td><td>Insurance Reg Dev Authority</td><td>—</td><td class="tg">Hyderabad</td><td>बीमा नियमन</td><td>—</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-head" style="margin-top:24px">🌍 HDI Quick Reference</div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Topic</th><th>Key Fact</th></tr>
+      <tr><td>जारीकर्ता</td><td class="tc">UNDP (वार्षिक, 1990 से)</td></tr>
+      <tr><td>निर्माता</td><td class="tc">Mahbub-ul-Haq (Pak) + Amartya Sen (India)</td></tr>
+      <tr><td>घटक</td><td class="tg">जीवन प्रत्याशा + शिक्षा + PCI</td></tr>
+      <tr><td>भारत रैंक</td><td class="ty">130 (0.685) — मध्यम विकास</td></tr>
+      <tr><td>1st रैंक</td><td class="tg">आइसलेंड (0.972)</td></tr>
+      <tr><td>कुल देश</td><td>193</td></tr>
+      <tr><td>Latest Report Title</td><td class="tp">"A Matter of Choice: People & Possibilities in the Age of AI"</td></tr>
+      <tr><td>भारत जीवन प्रत्याशा</td><td class="tc">72 वर्ष</td></tr>
+      <tr><td>भारत PCI</td><td class="tc">$9046.7</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-head" style="margin-top:24px">🏪 PDS Quick Reference</div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Topic</th><th>Key Fact</th></tr>
+      <tr><td>Full Form</td><td class="tc">Public Distribution System</td></tr>
+      <tr><td>विश्व में</td><td class="tg">सबसे बड़ा Distribution Network</td></tr>
+      <tr><td>TPDS शुरू</td><td class="ty">June 1997</td></tr>
+      <tr><td>NFSA</td><td class="ty">National Food Security Act 2013</td></tr>
+      <tr><td>FCI स्थापना</td><td class="ty">1965</td></tr>
+      <tr><td>FPS</td><td>Fair Price Shop (उचित मूल्य की दुकान)</td></tr>
+      <tr><td>ONORC</td><td class="tp">One Nation One Ration Card — Portability</td></tr>
+      <tr><td>राजस्थान में PDS</td><td class="tc">खाद्य एवं नागरिक आपूर्ति विभाग</td></tr>
+      <tr><td>e-PoS</td><td>Biometric Aadhaar सत्यापन</td></tr>
+      <tr><td>पृष्ठभूमि</td><td>WWII में Rationing के रूप में शुरू</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-head" style="margin-top:24px">🏦 Private Banks — Founding Year (Important)</div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Bank</th><th>Year</th><th>HQ</th></tr>
+      <tr><td>Karnataka Bank</td><td class="ty">1924</td><td>Mangaluru</td></tr>
+      <tr><td>Federal Bank</td><td class="ty">1931</td><td>Aluva, Kerala</td></tr>
+      <tr><td>ICICI</td><td class="ty">1955</td><td>Mumbai</td></tr>
+      <tr><td>IDBI</td><td class="ty">1964</td><td>Mumbai</td></tr>
+      <tr><td>Axis Bank</td><td class="ty">1993</td><td>Mumbai</td></tr>
+      <tr><td>HDFC</td><td class="ty">1994</td><td>Mumbai</td></tr>
+      <tr><td>Yes Bank</td><td class="ty">2003</td><td>Mumbai</td></tr>
+      <tr><td>Bandhan Bank</td><td class="ty">2015</td><td>Kolkata</td></tr>
+      <tr><td>IDFC First Bank</td><td class="ty">2015</td><td>Mumbai</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<!-- ===== RJ PYQ ===== -->
+<div class="tab-content" id="tab-rjpyq">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+    <div class="sec-head" style="margin:0">🏜️ Rajasthan PYQ — 25 Questions</div>
+    <span class="badge by">+1 सही | −⅓ गलत</span>
+  </div>
+  <div class="mcq-wrap" id="rj-mcq"></div>
+</div>
+
+<!-- ===== STATES PYQ ===== -->
+<div class="tab-content" id="tab-statepyq">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+    <div class="sec-head" style="margin:0">🗺️ Other States PYQ — 25 Questions</div>
+    <span class="badge bb">+1 सही | −⅓ गलत</span>
+  </div>
+  <div class="mcq-wrap" id="st-mcq"></div>
+</div>
+
+<!-- ===== LAST MINUTE ===== -->
+<div class="tab-content" id="tab-lastmin">
+
+  <div class="super">
+    <h3>⚡ SUPER MNEMONIC — HDI याद करो</h3>
+    <div class="st">"MA बना HDI — Mahbub + Amartya"<br>
+    "JSP = जीवन + शिक्षा + पैसा (PCI)"<br>
+    "UNDP हर साल, 0 से 1 तक — 1990 से"</div>
+    <div class="ss">Iceland=1st(0.972) | भारत=130(0.685) | S.Sudan=Last(193)</div>
+  </div>
+
+  <div class="super" style="border-color:var(--accent3)">
+    <h3 style="color:var(--accent3)">⚡ SUPER MNEMONIC — Financial Institutions</h3>
+    <div class="st" style="font-size:0.9rem">
+      <span style="color:var(--accent3)">N</span>ABARD(1982,Mumbai,कृषि) →
+      <span style="color:var(--accent2)">S</span>IDBI(1990,Lucknow,लघु) →
+      <span style="color:var(--blue)">I</span>DBI(1964,Mumbai,उद्योग)<br>
+      <span style="color:var(--pink)">E</span>XIM(1Jan1982,Mumbai,Trade) →
+      <span style="color:var(--accent5)">N</span>HB(1988,Delhi,Housing) →
+      <span style="color:var(--accent4)">S</span>EBI(1988→1992,Mumbai,Market)
+    </div>
+    <div class="ss">"NSIEMS" = सभी Development Banks का क्रम याद करो</div>
+  </div>
+
+  <div class="super" style="border-color:var(--accent2)">
+    <h3 style="color:var(--accent2)">⚡ PDS की Chain याद करो</h3>
+    <div class="st" style="font-size:0.95rem">MSP → FCI(1965) → PDS/TPDS(1997) → FPS → गरीब<br>
+    NFSA 2013 → ONORC → e-PoS → Social Audit</div>
+    <div class="ss">World's Largest Distribution Network | केंद्र+राज्य संयुक्त जिम्मेदारी</div>
+  </div>
+
+  <div class="sec-head">⚡ Compact Key Points</div>
+  <div class="lm-grid">
+    <div class="lm-c c-cyan">
+      <div class="lm-h" style="color:var(--accent)">🌍 HDI</div>
+      <div class="lm-i">UNDP द्वारा, 1990 से, Annually</div>
+      <div class="lm-i">Value 0–1, 193 देश</div>
+      <div class="lm-i">Mahbub(Pak) + Amartya(India)</div>
+      <div class="lm-i">3 घटक: JSP (जीवन,शिक्षा,PCI)</div>
+      <div class="lm-i">भारत: 130 (0.685) मध्यम</div>
+      <div class="lm-i">1st: Iceland (0.972)</div>
+      <div class="lm-i">Last: S.Sudan (193)</div>
+    </div>
+    <div class="lm-c c-yellow">
+      <div class="lm-h" style="color:var(--accent5)">🏪 PDS</div>
+      <div class="lm-i">विश्व का सबसे बड़ा Network</div>
+      <div class="lm-i">TPDS: June 1997</div>
+      <div class="lm-i">NFSA: 2013</div>
+      <div class="lm-i">FCI स्थापना: 1965</div>
+      <div class="lm-i">FPS = उचित मूल्य की दुकान</div>
+      <div class="lm-i">ONORC = Portability</div>
+      <div class="lm-i">RJ में: खाद्य एवं नागरिक आपूर्ति विभाग</div>
+      <div class="lm-i">e-PoS = Aadhaar Biometric</div>
+    </div>
+    <div class="lm-c c-green">
+      <div class="lm-h" style="color:var(--accent3)">🌾 NABARD</div>
+      <div class="lm-i">12 July 1982 | Mumbai</div>
+      <div class="lm-i">NABARD Act 1981</div>
+      <div class="lm-i">Shivaraman Committee</div>
+      <div class="lm-i">6वीं FYP (1980-85)</div>
+      <div class="lm-i">RRB का पर्यवेक्षण</div>
+      <div class="lm-i">कृषि+ग्रामीण शीर्षस्थ</div>
+      <div class="lm-i">Statutory Nature</div>
+    </div>
+    <div class="lm-c c-purple">
+      <div class="lm-h" style="color:var(--accent4)">🏭 SIDBI & IDBI</div>
+      <div class="lm-i">SIDBI: 2 April 1990, Lucknow</div>
+      <div class="lm-i">SIDBI: लघु उद्योग वित्त</div>
+      <div class="lm-i">IDBI: 1964, 3rd FYP</div>
+      <div class="lm-i">IDBI HQ: Mumbai</div>
+      <div class="lm-i">IDBI: औद्योगिक विकास</div>
+    </div>
+    <div class="lm-c c-red">
+      <div class="lm-h" style="color:var(--accent2)">📈 SEBI</div>
+      <div class="lm-i">12 April 1988 (स्थापना)</div>
+      <div class="lm-i">30 Jan 1992 (Statutory)</div>
+      <div class="lm-i">SEBI Act 1992</div>
+      <div class="lm-i">HQ: Mumbai</div>
+      <div class="lm-i">Capital Market नियमन</div>
+      <div class="lm-i">Insider Trading रोक</div>
+      <div class="lm-i">Mutual Fund नियमन</div>
+    </div>
+    <div class="lm-c c-blue">
+      <div class="lm-h" style="color:var(--blue)">🚢 EXIM & NHB</div>
+      <div class="lm-i">EXIM: 1 Jan 1982, Mumbai</div>
+      <div class="lm-i">EXIM: विदेशी व्यापार</div>
+      <div class="lm-i">NHB: 9 July 1988</div>
+      <div class="lm-i">NHB HQ: New Delhi</div>
+      <div class="lm-i">NHB: आवासीय सुविधा</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const rjQ=[
+  {q:"HDI (मानव विकास सूचकांक) किस संस्था द्वारा जारी किया जाता है?",opts:["World Bank","IMF","UNDP","WTO"],ans:2,exp:"HDI — UNDP (United Nations Development Programme) द्वारा 1990 से वार्षिक जारी किया जाता है।",src:"RPSC RAS Pre 2016"},
+  {q:"HDI के कितने घटक हैं?",opts:["2","3","4","5"],ans:1,exp:"HDI के 3 घटक: ① जीवन प्रत्याशा ② शिक्षा (Education) ③ प्रति-व्यक्ति आय (PCI)।",src:"RPSC SI 2021"},
+  {q:"HDI की अवधारणा किसने विकसित की?",opts:["Amartya Sen","Mahbub-ul-Haq","Dr. Manmohan Singh","Jagdish Bhagwati"],ans:1,exp:"Mahbub-ul-Haq (पाकिस्तान) ने HDI बनाई, Amartya Sen (भारत) ने सहयोग किया।",src:"RPSC RAS Pre 2019"},
+  {q:"नवीनतम HDI Report 2024 में भारत का रैंक क्या है?",opts:["125","130","135","140"],ans:1,exp:"HDI 2024 में भारत 130वें स्थान पर है, HDI Value = 0.685, मध्यम मानव विकास श्रेणी।",src:"Current Affairs 2024"},
+  {q:"NABARD की स्थापना कब हुई?",opts:["12 July 1980","12 July 1982","2 April 1990","1 January 1982"],ans:1,exp:"NABARD की स्थापना 12 July 1982 को हुई, Shivaraman Committee की सिफारिश पर, 6वीं FYP में।",src:"RPSC RAS Pre 2018"},
+  {q:"NABARD का मुख्यालय कहाँ है?",opts:["New Delhi","Lucknow","Mumbai","Chennai"],ans:2,exp:"NABARD का मुख्यालय Mumbai में है।",src:"RSMSSB 2020"},
+  {q:"SIDBI का मुख्यालय कहाँ है?",opts:["Mumbai","New Delhi","Lucknow","Jaipur"],ans:2,exp:"SIDBI (Small Industries Development Bank of India) का मुख्यालय Lucknow में है। स्थापना 2 April 1990।",src:"RPSC 2022"},
+  {q:"SEBI को वैधानिक (Statutory) दर्जा कब मिला?",opts:["12 April 1988","30 January 1992","2 April 1990","1 January 1982"],ans:1,exp:"SEBI 12 April 1988 को बना, लेकिन 30 January 1992 को SEBI Act के तहत Statutory (सांविधिक) बना।",src:"RPSC SI 2022"},
+  {q:"PDS का पूरा नाम क्या है?",opts:["Private Distribution System","Public Distribution System","Planned Distribution Scheme","People Distribution System"],ans:1,exp:"PDS = Public Distribution System (सार्वजनिक वितरण प्रणाली)।",src:"RPSC RAS Pre 2021"},
+  {q:"TPDS (लक्षित सार्वजनिक वितरण प्रणाली) कब शुरू की गई?",opts:["1991","1994","1997","2001"],ans:2,exp:"TPDS — June 1997 में गरीबों पर ध्यान केंद्रित करके भारत सरकार ने शुरू की।",src:"RPSC PSI 2021"},
+  {q:"FCI (Food Corporation of India) की स्थापना कब हुई?",opts:["1951","1960","1965","1970"],ans:2,exp:"FCI की स्थापना 1965 में हुई, साथ ही APC (Agricultural Prices Commission) भी बनाई गई।",src:"RPSC RAS Pre 2020"},
+  {q:"राजस्थान में PDS का क्रियान्वयन कौन करता है?",opts:["NABARD","खाद्य एवं नागरिक आपूर्ति विभाग","FCI","SIDBI"],ans:1,exp:"राजस्थान में PDS का क्रियान्वयन खाद्य एवं नागरिक आपूर्ति विभाग द्वारा किया जाता है।",src:"RPSC SI 2023"},
+  {q:"ONORC का पूरा नाम क्या है?",opts:["One Nation One Rural Card","One Nation One Ration Card","One Nation One Relief Card","One Nation One Revenue Card"],ans:1,exp:"ONORC = One Nation One Ration Card — प्रवासी श्रमिक देश के किसी भी FPS से राशन ले सकते हैं।",src:"RSMSSB 2022"},
+  {q:"NHB (National Housing Bank) का मुख्यालय कहाँ है?",opts:["Mumbai","Lucknow","Chennai","New Delhi"],ans:3,exp:"NHB का मुख्यालय New Delhi में है। स्थापना 9 July 1988।",src:"RPSC 2nd Grade 2022"},
+  {q:"EXIM Bank की स्थापना कब हुई?",opts:["12 July 1982","1 January 1982","9 July 1988","2 April 1990"],ans:1,exp:"EXIM Bank की स्थापना 1 January 1982 को हुई, HQ Mumbai।",src:"RPSC RAS Pre 2019"},
+  {q:"IDBI की स्थापना किस पंचवर्षीय योजना में हुई?",opts:["1st FYP","2nd FYP","3rd FYP","4th FYP"],ans:2,exp:"IDBI (Industrial Development Bank of India) की स्थापना 1964 में 3rd Five Year Plan में हुई।",src:"RPSC 2022"},
+  {q:"HDI में 0.800 से ज़्यादा मान वाले देश किस श्रेणी में हैं?",opts:["उच्च","मध्यम","अति उच्च","निम्न"],ans:2,exp:"0.800 से ज़्यादा = अति उच्च मानव विकास | 0.700-0.799 = उच्च | 0.550-0.699 = मध्यम | 0.550 से कम = निम्न।",src:"RPSC RAS Pre 2021"},
+  {q:"NABARD किस समिति की सिफारिश पर बना?",opts:["Narasimham Committee","Shivaraman Committee","Kelkar Committee","Raghuram Committee"],ans:1,exp:"NABARD — Shivaraman Committee की सिफारिश पर 12 July 1982 को बना।",src:"RPSC RAS 2023"},
+  {q:"FPS का पूरा नाम क्या है?",opts:["Fixed Price Shop","Fair Price Shop","Food Price Shop","Federal Price Shop"],ans:1,exp:"FPS = Fair Price Shop (उचित मूल्य की दुकान) — PDS के तहत सस्ते दामों पर अनाज मिलता है।",src:"RPSC SI 2021"},
+  {q:"HDI 2024 में कौन सा देश पहले स्थान पर है?",opts:["Norway","Iceland","Switzerland","Denmark"],ans:1,exp:"HDI 2024 में Iceland (0.972) पहले स्थान पर है। Norway और Switzerland 0.970 के साथ दूसरे।",src:"Current Affairs 2024"},
+  {q:"SEBI का मुख्यालय कहाँ है?",opts:["New Delhi","Kolkata","Chennai","Mumbai"],ans:3,exp:"SEBI (Securities and Exchange Board of India) का मुख्यालय Mumbai में है।",src:"RPSC PSI 2022"},
+  {q:"Fiscal Policy का अन्य नाम क्या है?",opts:["मौद्रिक नीति","साख नीति","बजट नीति / कर नीति","आयात नीति"],ans:2,exp:"Fiscal Policy = राजकोषीय नीति = बजट नीति / कर नीति। इसका निर्माण सरकार करती है।",src:"RPSC RAS Pre 2020"},
+  {q:"भारत में HDI की श्रेणी क्या है?",opts:["अति उच्च मानव विकास","उच्च मानव विकास","मध्यम मानव विकास","निम्न मानव विकास"],ans:2,exp:"भारत HDI 0.685 के साथ मध्यम मानव विकास (0.550–0.699) श्रेणी में है।",src:"RPSC RAS Pre 2022"},
+  {q:"PDS के तहत e-PoS मशीन का उद्देश्य क्या है?",opts:["Online shopping","Aadhaar Biometric सत्यापन के बाद खाद्यान्न वितरण","Tax Collection","Online Banking"],ans:1,exp:"e-PoS = Electronic Point of Sale — Aadhaar-based Biometric सत्यापन के बाद FPS पर खाद्यान्न वितरण।",src:"RPSC SI 2023"},
+  {q:"NABARD क्षेत्रीय ग्रामीण बैंकों (RRB) का क्या करता है?",opts:["केवल ऋण देता है","निरीक्षण एवं पर्यवेक्षण करता है","बंद करवाता है","स्थापना करता है"],ans:1,exp:"NABARD क्षेत्रीय ग्रामीण बैंकों (RRBs) का निरीक्षण एवं पर्यवेक्षण करती है।",src:"RPSC RAS 2022"}
+];
+
+const stQ=[
+  {q:"UNDP की स्थापना कब हुई?",opts:["1945","1965","1990","1966"],ans:1,exp:"UNDP (United Nations Development Programme) की स्थापना 22 November 1965 को हुई। Headquarters: New York।",src:"UPSC Prelims 2018"},
+  {q:"HDI में शिक्षा घटक का मापन किससे होता है?",opts:["केवल साक्षरता दर","Mean Years + Expected Years of Schooling","Enrollment Rate","Teacher-Student Ratio"],ans:1,exp:"HDI में शिक्षा = Mean Years of Schooling + Expected Years of Schooling से मापी जाती है।",src:"UPPSC 2020"},
+  {q:"SEBI की स्थापना कब हुई?",opts:["1980","1985","1988","1992"],ans:2,exp:"SEBI की स्थापना 12 April 1988 (non-statutory) और 30 January 1992 को SEBI Act से Statutory बना।",src:"SSC CGL 2019"},
+  {q:"किस संस्था को 'Capital Market का नियामक' कहते हैं?",opts:["RBI","NABARD","SEBI","IRDA"],ans:2,exp:"SEBI = Securities and Exchange Board of India — Capital Market (पूंजी बाज़ार) का नियामक है।",src:"UPSC Prelims 2017"},
+  {q:"NABARD Act किस वर्ष पारित हुआ?",opts:["1980","1981","1982","1983"],ans:1,exp:"NABARD Act 1981 में पारित हुआ, लेकिन NABARD की स्थापना 12 July 1982 को हुई।",src:"BPSC 2020"},
+  {q:"PDS किस विभाग के अंतर्गत आता है?",opts:["Finance Ministry","Agriculture Ministry","Food and Consumer Affairs Ministry","Rural Development"],ans:2,exp:"PDS — Ministry of Consumer Affairs, Food and Public Distribution के अंतर्गत आता है।",src:"UPSC 2019"},
+  {q:"NFSA 2013 के तहत BPL परिवारों को कितने kg अनाज मिलता है?",opts:["3 kg","5 kg","7 kg","10 kg"],ans:1,exp:"NFSA 2013 — Priority Households को 5 kg/person/month और Antyodaya को 35 kg/family/month।",src:"UPSC Prelims 2016"},
+  {q:"Insider Trading का नियमन कौन करता है?",opts:["RBI","SEBI","NABARD","Finance Ministry"],ans:1,exp:"SEBI — Insider Trading (अंदरूनी व्यापार) पर रोक लगाती है और पूंजी बाज़ार का नियमन करती है।",src:"UPSC 2020"},
+  {q:"HDI में भारत की जीवन प्रत्याशा (2024) लगभग कितनी है?",opts:["68 वर्ष","70 वर्ष","72 वर्ष","75 वर्ष"],ans:2,exp:"HDI 2024 के अनुसार भारत की जीवन प्रत्याशा 71.70 से बढ़कर 72 वर्ष हो गई है।",src:"Current Affairs 2024"},
+  {q:"EXIM Bank का मुख्य उद्देश्य क्या है?",opts:["कृषि विकास","आवास वित्त","विदेशी व्यापार को बढ़ावा","लघु उद्योग"],ans:2,exp:"EXIM Bank — Export & Import Bank — विदेशी व्यापार को बढ़ावा देना इसका मुख्य कार्य है।",src:"MPPSC 2021"},
+  {q:"किस देश का HDI रैंक सबसे कम (193) है?",opts:["Somalia","Yemen","South Sudan","Chad"],ans:2,exp:"HDI 2024 में South Sudan का रैंक 193 (सबसे कम) और Somalia 192वें स्थान पर है।",src:"Current Affairs 2024"},
+  {q:"TPDS के तहत गरीबों की पहचान किस समिति की methodology से हुई?",opts:["Radhakrishna Committee","Lakdawala Committee","Tendulkar Committee","Rangarajan Committee"],ans:1,exp:"TPDS (1997) में गरीबों की पहचान Prof. Lakdawala की अध्यक्षता में Expert Group की Methodology से।",src:"UPSC Prelims 2018"},
+  {q:"'One Nation One Ration Card' (ONORC) किस वर्ष शुरू हुई?",opts:["2017","2018","2019","2020"],ans:2,exp:"ONORC की शुरुआत 2019 में हुई। यह Portability देती है — किसी भी FPS से राशन लेने की सुविधा।",src:"SSC 2021"},
+  {q:"Monetary Policy किसके द्वारा बनाई जाती है?",opts:["सरकार","SEBI","RBI","NABARD"],ans:2,exp:"Monetary Policy (मौद्रिक/साख नीति) = RBI द्वारा। Fiscal Policy = सरकार द्वारा।",src:"UPSC 2017"},
+  {q:"IDBI Bank किस श्रेणी में आता है अब?",opts:["Public Bank","Private Bank","Cooperative Bank","RRB"],ans:1,exp:"IDBI Bank अब Private Bank श्रेणी में आता है। इसे LIC और सरकार ने Privatize किया।",src:"Current Affairs 2023"},
+  {q:"HDI पहली बार कब प्रकाशित हुआ?",opts:["1985","1988","1990","1992"],ans:2,exp:"HDI पहली बार 1990 में UNDP द्वारा प्रकाशित हुआ।",src:"UPPSC 2019"},
+  {q:"PDS की Social Audit कैसे की जाती है?",opts:["CAG द्वारा","Gram Sabha द्वारा","District Collector द्वारा","SEBI द्वारा"],ans:1,exp:"PDS की Social Audit — ग्राम सभाओं के माध्यम से पारदर्शिता और जवाबदेही सुनिश्चित करने के लिए।",src:"RPSC 2023"},
+  {q:"NABARD किस FYP में बना था?",opts:["5th FYP","6th FYP","7th FYP","4th FYP"],ans:1,exp:"NABARD 6वीं पंचवर्षीय योजना (1980-1985) में बना। Act 1981 में, स्थापना July 1982 में।",src:"MPPSC 2022"},
+  {q:"PDS में 'Inclusion Error' का क्या अर्थ है?",opts:["पात्र को लाभ नहीं","अपात्र को लाभ मिलना","खाद्यान्न चोरी","कम वितरण"],ans:1,exp:"Inclusion Error = अपात्र (ineligible) लोगों को PDS का लाभ मिलना। Exclusion Error = पात्र लोग छूट जाना।",src:"UPSC 2021"},
+  {q:"SEBI की Insider Trading से क्या तात्पर्य है?",opts:["विदेशी व्यापार","कंपनी की गुप्त सूचना का उपयोग Share Market में","कालाबाज़ारी","सोने की तस्करी"],ans:1,exp:"Insider Trading = कंपनी की अंदरूनी गुप्त जानकारी का उपयोग करके शेयर बाज़ार में व्यापार करना — SEBI इसे रोकती है।",src:"UPSC 2019"},
+  {q:"HDI 2024 की Theme/Title क्या थी?",opts:["Climate and Development","A Matter of Choice: People & Possibilities in the Age of AI","Sustainable Development","Human Progress"],ans:1,exp:"HDI 2024 की Theme: 'A Matter of Choice: People & Possibilities in the Age of AI'",src:"Current Affairs 2024"},
+  {q:"NHB किस क्षेत्र की शीर्षस्थ संस्था है?",opts:["कृषि","उद्योग","आवास वित्त","विदेशी व्यापार"],ans:2,exp:"NHB = National Housing Bank — आवास वित्त (Housing Finance) की शीर्षस्थ नियामक संस्था है।",src:"BPSC 2021"},
+  {q:"PDS में MSP का क्या अर्थ है?",opts:["Maximum Support Price","Minimum Support Price","Medium Sales Price","Market Sale Price"],ans:1,exp:"MSP = Minimum Support Price (न्यूनतम समर्थन मूल्य) — FCI इस मूल्य पर किसानों से अनाज खरीदती है।",src:"UPSC 2018"},
+  {q:"भारत का पड़ोसी देश HDI में सबसे बेहतर रैंक पर है?",opts:["Pakistan","Bangladesh","Sri Lanka","China"],ans:3,exp:"HDI 2024 में: China=78, Sri Lanka=89 > India(130) > Bangladesh(130) > Nepal(145) > Pakistan(168)।",src:"Current Affairs 2024"},
+  {q:"विनिवेश (Disinvestment) का संबंध किससे है?",opts:["Tax में कमी","PSU में सरकारी हिस्सेदारी बेचना","Import बढ़ाना","FPS खोलना"],ans:1,exp:"Disinvestment = PSU (सरकारी उपक्रम) में सरकार की हिस्सेदारी को बेचना/कम करना। यह Privatization का हिस्सा है।",src:"UPSC 2020"}
+];
+
+let scores={c:0,w:0,a:0};
+let ans={};
+
+function renderMCQ(qs,cid,pre){
+  const c=document.getElementById(cid);c.innerHTML='';
+  qs.forEach((q,i)=>{
+    const id=pre+i;
+    const d=document.createElement('div');d.className='mcq-c';
+    d.innerHTML=`<div class="mcq-q"><span class="qn">Q${i+1}.</span>${q.q}<span class="src badge bc">${q.src}</span></div>
+    <div class="opts">${q.opts.map((o,j)=>`<button class="ob" id="${id}-${j}" onclick="pick('${id}',${j},${q.ans})">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}</div>
+    <div class="exp" id="${id}-e">💡 ${q.exp}</div>
+    <div class="sl" id="${id}-s"></div>`;
+    c.appendChild(d);
+  });
+}
+
+function pick(id,ch,cor){
+  if(ans[id]!==undefined)return;
+  ans[id]=ch;
+  for(let j=0;j<4;j++){const b=document.getElementById(`${id}-${j}`);if(b)b.disabled=true;}
+  const cb=document.getElementById(`${id}-${ch}`);
+  const corb=document.getElementById(`${id}-${cor}`);
+  if(ch===cor){cb.classList.add('correct');scores.c++;
+    document.getElementById(`${id}-s`).innerHTML='<span style="color:var(--green)">✅ +1 अंक</span>';
+  }else{cb.classList.add('wrong');corb.classList.add('reveal');scores.w++;
+    document.getElementById(`${id}-s`).innerHTML='<span style="color:var(--red)">❌ −⅓ अंक</span>';
+  }
+  scores.a++;
+  document.getElementById(`${id}-e`).style.display='block';
+  updBar();
+}
+
+function updBar(){
+  const tot=rjQ.length+stQ.length;
+  document.getElementById('sb-c').textContent=scores.c;
+  document.getElementById('sb-w').textContent=scores.w;
+  document.getElementById('sb-l').textContent=tot-scores.a;
+  document.getElementById('score-bar').classList.add('vis');
+}
+
+function submitMCQ(){
+  const tot=rjQ.length+stQ.length;
+  const fs=scores.c-(scores.w/3);
+  const pct=((fs/tot)*100).toFixed(1);
+  let gr=pct>=80?'🏆 Excellent! परीक्षा Ready':pct>=60?'👍 Good!':pct>=40?'📚 Average — Revision करें':'⚠️ More Practice';
+  document.getElementById('rs').textContent=fs.toFixed(2);
+  document.getElementById('rs').style.color=fs>tot/2?'var(--green)':'var(--red)';
+  document.getElementById('rd').innerHTML=`Total: ${tot} | सही: ${scores.c} | गलत: ${scores.w}<br>Net Score: ${fs.toFixed(2)} / ${tot}<br>Percentage: ${pct}%<br><br><strong>${gr}</strong>`;
+  document.getElementById('res-pop').classList.add('show');
+}
+
+function resetMCQ(){
+  scores={c:0,w:0,a:0};ans={};
+  renderMCQ(rjQ,'rj-mcq','rj');
+  renderMCQ(stQ,'st-mcq','st');
+  document.getElementById('score-bar').classList.remove('vis');
+  document.getElementById('sb-c').textContent=0;
+  document.getElementById('sb-w').textContent=0;
+  document.getElementById('sb-l').textContent=50;
+}
+
+function showTab(id,btn){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='rjpyq'||id==='statepyq') document.getElementById('score-bar').classList.add('vis');
+}
+
+renderMCQ(rjQ,'rj-mcq','rj');
+renderMCQ(stQ,'st-mcq','st');
+</script>
+</body>
+</html>

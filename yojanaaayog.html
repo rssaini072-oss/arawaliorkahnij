@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>अर्थशास्त्र रिवीजन | RPSC SI/RAS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap');
+
+  :root {
+    --bg: #0f0f1a;
+    --surface: #1a1a2e;
+    --surface2: #16213e;
+    --card: #0d1b2a;
+    --accent1: #e94560;
+    --accent2: #f5a623;
+    --accent3: #00d4aa;
+    --accent4: #7b68ee;
+    --accent5: #ff6b9d;
+    --text: #e8eaf6;
+    --text2: #9fa8da;
+    --border: #2a2a4a;
+    --green: #4caf50;
+    --red: #ef5350;
+    --yellow: #ffeb3b;
+    --blue: #42a5f5;
+    --purple: #ab47bc;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Noto Sans Devanagari', 'Baloo 2', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(135deg, #1a0533 0%, #0d1b2a 50%, #1a1a2e 100%);
+    padding: 16px 20px 0;
+    text-align: center;
+    border-bottom: 2px solid var(--accent1);
+    position: sticky; top:0; z-index:100;
+  }
+  .header h1 {
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.4rem; font-weight:800;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+  }
+  .header p { font-size:.75rem; color:var(--text2); margin:2px 0 8px; }
+
+  /* ── TABS ── */
+  .tabs {
+    display:flex; gap:0; overflow-x:auto;
+    scrollbar-width:none; margin-top:8px;
+  }
+  .tabs::-webkit-scrollbar { display:none; }
+  .tab-btn {
+    flex:none; padding:10px 18px;
+    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:.82rem;
+    border:none; background:transparent; color:var(--text2);
+    cursor:pointer; border-bottom:3px solid transparent;
+    transition:all .3s; white-space:nowrap;
+  }
+  .tab-btn.active { color:#fff; border-bottom-color:var(--accent1); }
+  .tab-btn:hover:not(.active) { color:var(--text); background:rgba(255,255,255,.04); }
+
+  .tab-content { display:none; padding:16px; animation:fadeIn .4s ease; }
+  .tab-content.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── GRID ── */
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media(max-width:640px) { .grid2 { grid-template-columns:1fr; } }
+
+  /* ── TOPIC CARDS ── */
+  .topic-card {
+    background:var(--surface); border-radius:12px;
+    padding:14px; border-left:4px solid var(--accent1);
+    position:relative; overflow:hidden;
+  }
+  .topic-card::before {
+    content:''; position:absolute; top:-30px; right:-30px;
+    width:80px; height:80px; border-radius:50%;
+    background:rgba(255,255,255,.03);
+  }
+  .topic-card.red    { border-left-color:var(--accent1); }
+  .topic-card.orange { border-left-color:var(--accent2); }
+  .topic-card.green  { border-left-color:var(--accent3); }
+  .topic-card.purple { border-left-color:var(--accent4); }
+  .topic-card.pink   { border-left-color:var(--accent5); }
+  .topic-card.blue   { border-left-color:var(--blue); }
+
+  .card-title {
+    font-family:'Baloo 2',sans-serif; font-weight:800;
+    font-size:1rem; margin-bottom:8px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .badge {
+    display:inline-block; padding:2px 8px; border-radius:20px;
+    font-size:.65rem; font-weight:700;
+    background:rgba(255,255,255,.1); color:var(--accent2);
+  }
+
+  /* ── MINI TABLE ── */
+  .mini-table { width:100%; border-collapse:collapse; margin:8px 0; font-size:.8rem; }
+  .mini-table th {
+    background:rgba(255,255,255,.08); padding:5px 8px;
+    text-align:left; font-weight:700; color:var(--accent3);
+  }
+  .mini-table td { padding:4px 8px; border-bottom:1px solid var(--border); }
+  .mini-table tr:hover td { background:rgba(255,255,255,.03); }
+
+  /* ── MNEMONIC BOX ── */
+  .mnemonic {
+    background:linear-gradient(135deg,rgba(233,69,96,.12),rgba(245,166,35,.08));
+    border:1px solid rgba(245,166,35,.3);
+    border-radius:8px; padding:8px 10px; margin-top:8px;
+    font-size:.78rem;
+  }
+  .mnemonic-title { color:var(--accent2); font-weight:700; font-size:.72rem; margin-bottom:3px; }
+
+  /* ── INFO PILLS ── */
+  .pill-row { display:flex; flex-wrap:wrap; gap:5px; margin:6px 0; }
+  .pill {
+    padding:3px 10px; border-radius:20px; font-size:.72rem; font-weight:600;
+    background:rgba(255,255,255,.06); color:var(--text2);
+  }
+  .pill.r { background:rgba(233,69,96,.15); color:var(--accent1); }
+  .pill.g { background:rgba(0,212,170,.12); color:var(--accent3); }
+  .pill.o { background:rgba(245,166,35,.12); color:var(--accent2); }
+  .pill.p { background:rgba(123,104,238,.15); color:var(--accent4); }
+  .pill.b { background:rgba(66,165,245,.12); color:var(--blue); }
+
+  /* ── SECTION HEADING ── */
+  .sec-head {
+    font-family:'Baloo 2',sans-serif; font-size:1.1rem; font-weight:800;
+    color:var(--accent3); margin:16px 0 10px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .sec-head::after { content:''; flex:1; height:1px; background:var(--border); }
+
+  /* ── SUMMARY TABLE ── */
+  .sum-table { width:100%; border-collapse:collapse; font-size:.78rem; }
+  .sum-table th {
+    background:linear-gradient(90deg,var(--accent1),var(--accent4));
+    padding:8px 10px; text-align:left; font-weight:700; color:#fff;
+  }
+  .sum-table td { padding:6px 10px; border-bottom:1px solid var(--border); }
+  .sum-table tr:nth-child(even) td { background:rgba(255,255,255,.03); }
+  .sum-table tr:hover td { background:rgba(233,69,96,.07); }
+
+  /* ── MCQ ── */
+  .mcq-card {
+    background:var(--surface2); border-radius:12px;
+    padding:16px; margin-bottom:14px;
+    border:1px solid var(--border);
+  }
+  .mcq-num { font-size:.7rem; color:var(--text2); margin-bottom:6px; }
+  .mcq-q { font-size:.88rem; font-weight:600; line-height:1.5; margin-bottom:10px; }
+  .mcq-opts { display:grid; gap:6px; }
+  .opt-btn {
+    padding:8px 12px; border-radius:8px; border:1px solid var(--border);
+    background:rgba(255,255,255,.04); color:var(--text);
+    font-size:.82rem; cursor:pointer; text-align:left;
+    font-family:'Noto Sans Devanagari',sans-serif;
+    transition:all .2s;
+  }
+  .opt-btn:hover:not([disabled]) { background:rgba(233,69,96,.12); border-color:var(--accent1); }
+  .opt-btn.correct   { background:rgba(76,175,80,.2); border-color:var(--green); color:#a5d6a7; }
+  .opt-btn.incorrect { background:rgba(239,83,80,.2); border-color:var(--red); color:#ef9a9a; }
+  .opt-btn.reveal    { background:rgba(76,175,80,.1); border-color:var(--green); }
+  .mcq-exp {
+    margin-top:8px; padding:8px 10px; border-radius:6px;
+    background:rgba(0,212,170,.08); border:1px solid rgba(0,212,170,.2);
+    font-size:.75rem; color:var(--accent3); display:none;
+  }
+  .score-bar {
+    position:sticky; top:80px; z-index:50;
+    background:var(--surface); padding:8px 16px;
+    display:flex; gap:16px; align-items:center;
+    border-radius:10px; margin-bottom:12px; font-size:.8rem;
+  }
+  .score-item { display:flex; align-items:center; gap:4px; }
+  .score-dot { width:10px;height:10px;border-radius:50%; }
+
+  /* ── RESULT POPUP ── */
+  .popup-overlay {
+    display:none; position:fixed; inset:0;
+    background:rgba(0,0,0,.85); z-index:999;
+    align-items:center; justify-content:center;
+  }
+  .popup-overlay.show { display:flex; }
+  .popup-box {
+    background:var(--surface); border-radius:16px;
+    padding:28px 24px; max-width:380px; width:90%;
+    text-align:center; border:2px solid var(--accent1);
+    animation:popIn .4s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes popIn { from{transform:scale(.6);opacity:0} to{transform:scale(1);opacity:1} }
+  .popup-emoji { font-size:3rem; margin-bottom:8px; }
+  .popup-score { font-size:2rem; font-weight:800; color:var(--accent2); }
+  .popup-close {
+    margin-top:14px; padding:10px 28px; border-radius:8px;
+    background:var(--accent1); color:#fff; border:none;
+    font-size:.9rem; cursor:pointer; font-weight:700;
+  }
+
+  /* ── LAST MINUTE ── */
+  .lm-card {
+    background:linear-gradient(135deg,var(--surface),var(--surface2));
+    border-radius:10px; padding:12px;
+    border:1px solid var(--border); margin-bottom:10px;
+  }
+  .lm-title {
+    font-family:'Baloo 2',sans-serif; font-weight:800;
+    color:var(--accent1); font-size:.9rem; margin-bottom:6px;
+  }
+  .lm-trick {
+    background:rgba(245,166,35,.1); border-left:3px solid var(--accent2);
+    padding:6px 10px; border-radius:4px; font-size:.78rem;
+    margin-top:6px; line-height:1.6;
+  }
+  .lm-pts { font-size:.78rem; line-height:1.7; color:var(--text2); }
+  .lm-pts strong { color:var(--text); }
+
+  .full-card { grid-column:1/-1; }
+
+  /* ── PROGRESS ── */
+  .progress-wrap { background:var(--border); border-radius:4px; height:4px; margin:8px 0; }
+  .progress-bar  { height:4px; border-radius:4px; background:linear-gradient(90deg,var(--accent1),var(--accent2)); transition:width .5s; }
+
+  /* ── SUBMIT BTN ── */
+  .submit-btn {
+    display:block; margin:20px auto 0;
+    padding:12px 36px; border-radius:10px;
+    background:linear-gradient(90deg,var(--accent1),var(--accent4));
+    color:#fff; font-size:.95rem; font-weight:700;
+    border:none; cursor:pointer; transition:transform .2s;
+  }
+  .submit-btn:hover { transform:scale(1.04); }
+
+  ul.dot-list { padding-left:16px; font-size:.8rem; line-height:1.8; color:var(--text2); }
+  ul.dot-list strong { color:var(--text); }
+
+  .highlight { color:var(--accent2); font-weight:700; }
+  .tag-row { display:flex; flex-wrap:wrap; gap:4px; margin:4px 0; }
+  .tag { background:rgba(123,104,238,.15); color:var(--accent4); padding:2px 8px; border-radius:4px; font-size:.7rem; }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 अर्थशास्त्र रिवीजन</h1>
+  <p>RPSC SI · RAS Pre · मुद्रास्फीति · योजना आयोग · गरीबी · करंट इकोनॉमी</p>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('revision',this)">📚 Revision</button>
+    <button class="tab-btn" onclick="switchTab('summary',this)">📋 Summary Table</button>
+    <button class="tab-btn" onclick="switchTab('mcq',this)">🎯 PYQ MCQ (50)</button>
+    <button class="tab-btn" onclick="switchTab('lastmin',this)">⚡ Last Minute</button>
+  </div>
+</div>
+
+<!-- ═══════════ TAB 1: REVISION ═══════════ -->
+<div id="tab-revision" class="tab-content active">
+
+  <!-- योजना आयोग -->
+  <div class="sec-head">🏛️ योजना आयोग (Planning Commission)</div>
+  <div class="grid2">
+    <div class="topic-card red">
+      <div class="card-title">📅 स्थापना एवं संरचना <span class="badge">MOST IMP</span></div>
+      <table class="mini-table">
+        <tr><th>बिंदु</th><th>तथ्य</th></tr>
+        <tr><td>स्थापना</td><td class="highlight">15 मार्च 1950</td></tr>
+        <tr><td>सिफारिश</td><td>K.C. Neogi समिति</td></tr>
+        <tr><td>मुख्यालय</td><td>नई दिल्ली</td></tr>
+        <tr><td>प्रकृति</td><td>गैर-संवैधानिक + सलाहकारी</td></tr>
+        <tr><td>अध्यक्ष</td><td>PM (पदेन)</td></tr>
+        <tr><td>1st अध्यक्ष</td><td class="highlight">पं. जवाहरलाल नेहरू</td></tr>
+        <tr><td>अंतिम अध्यक्ष</td><td class="highlight">नरेंद्र मोदी</td></tr>
+        <tr><td>1st उपाध्यक्ष</td><td>गुलजारी लाल नंदा</td></tr>
+        <tr><td>अंतिम उपाध्यक्ष</td><td class="highlight">मोंटेक सिंह अहलूवालिया</td></tr>
+        <tr><td>समाप्ति</td><td class="highlight">15 Aug 2014 (लाल किला)</td></tr>
+      </table>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "नेहरू का नंदा, मोदी का मोंटेक"</div>
+        योजना आयोग → पहला अध्यक्ष <strong>नेहरू</strong>, पहला उपाध्यक्ष <strong>नंदा</strong> | अंतिम: <strong>मोदी</strong> + <strong>मोंटेक</strong>
+      </div>
+    </div>
+
+    <div class="topic-card green">
+      <div class="card-title">🏢 NITI आयोग <span class="badge">MOST IMP</span></div>
+      <table class="mini-table">
+        <tr><th>बिंदु</th><th>तथ्य</th></tr>
+        <tr><td>स्थापना</td><td class="highlight">1 जनवरी 2015</td></tr>
+        <tr><td>Full Form</td><td>National Institute for Transforming India</td></tr>
+        <tr><td>मुख्यालय</td><td>नई दिल्ली</td></tr>
+        <tr><td>प्रकृति</td><td>कार्यकारी + सलाहकारी + गैर-संवैधानिक</td></tr>
+        <tr><td>अध्यक्ष</td><td>PM (पदेन) → मोदी जी</td></tr>
+        <tr><td>1st उपाध्यक्ष</td><td class="highlight">अरविंद पनगढ़िया</td></tr>
+        <tr><td>वर्तमान उपाध्यक्ष</td><td class="highlight">सुमन बेरी</td></tr>
+        <tr><td>1st CEO</td><td class="highlight">सिंधुश्री खुल्लर</td></tr>
+        <tr><td>वर्तमान CEO</td><td class="highlight">B.V.R. सुब्रमण्यम</td></tr>
+        <tr><td>अन्य नाम</td><td>Think Tank (बौद्धिक संस्थान)</td></tr>
+      </table>
+      <div class="pill-row">
+        <span class="pill g">7 स्तंभ (Pillars)</span>
+        <span class="pill o">4 कार्य</span>
+        <span class="pill p">सहकारी संघवाद</span>
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 7 Pillars याद करो: "जस भाप स समा पा ट"</div>
+        <strong>ज</strong>नता · <strong>स</strong>क्रियता · <strong>भा</strong>गीदारी · <strong>स</strong>शक्तिकरण · <strong>स</strong>मावेशिता · <strong>स</strong>मानता · <strong>पा</strong>रदर्शिता
+      </div>
+    </div>
+
+    <div class="topic-card orange full-card">
+      <div class="card-title">⚖️ योजना आयोग vs NITI आयोग तुलना</div>
+      <table class="mini-table">
+        <tr><th>बिंदु</th><th>योजना आयोग</th><th>NITI आयोग</th></tr>
+        <tr><td>स्थापना</td><td>1950</td><td>2015</td></tr>
+        <tr><td>कार्य</td><td>पंचवर्षीय योजना बनाना</td><td>नीति सलाह + समन्वय</td></tr>
+        <tr><td>राज्यों की भूमिका</td><td>कम</td><td>ज्यादा (Co-op. Federalism)</td></tr>
+        <tr><td>उपाध्यक्ष नाम</td><td>मोंटेक → अंतिम</td><td>सुमन बेरी → वर्तमान</td></tr>
+        <tr><td>CEO</td><td>❌</td><td>B.V.R. सुब्रमण्यम</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- मुद्रास्फीति -->
+  <div class="sec-head">💰 मुद्रास्फीति (Inflation)</div>
+  <div class="grid2">
+    <div class="topic-card purple">
+      <div class="card-title">📖 परिभाषा एवं प्रभाव</div>
+      <ul class="dot-list">
+        <li>वस्तुओं और सेवाओं की कीमतों में <strong>लगातार वृद्धि</strong></li>
+        <li>मुद्रा की <strong>क्रय-शक्ति घटती</strong> है</li>
+      </ul>
+      <table class="mini-table" style="margin-top:8px">
+        <tr><th>वर्ष</th><th>मुद्रास्फीति %</th><th>नोट</th></tr>
+        <tr><td>2005</td><td>16%</td><td>मुद्रा का मूल्य ↓↓</td></tr>
+        <tr><td>2009</td><td>12%</td><td>—</td></tr>
+        <tr><td>2014</td><td>8%</td><td>—</td></tr>
+        <tr><td>2019</td><td>4%</td><td>—</td></tr>
+        <tr><td>2024</td><td class="highlight">1%</td><td>क्रय-शक्ति ↑</td></tr>
+      </table>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "16-12-8-4-1 = सीढ़ी नीचे उतरी"</div>
+        2005→2009→2014→2019→2024 = <strong>16→12→8→4→1</strong> (हर 5 साल में घटती गई)
+      </div>
+    </div>
+
+    <div class="topic-card blue">
+      <div class="card-title">🔥 मुद्रास्फीति के कारण (6)</div>
+      <div class="pill-row">
+        <span class="pill r">धन-आपूर्ति ↑↑</span>
+        <span class="pill o">कच्चा तेल ↑</span>
+        <span class="pill g">वेतन ↑</span>
+        <span class="pill p">जनसंख्या ↑</span>
+        <span class="pill b">कर्ज + रुचि</span>
+        <span class="pill r">सस्ती मौद्रिक नीति</span>
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "धन कच वे ज क सस"</div>
+        <strong>ध</strong>न-आपूर्ति · <strong>क</strong>च्चा तेल · <strong>व</strong>ेतन · <strong>ज</strong>नसंख्या · <strong>क</strong>र्ज-रुचि · <strong>स</strong>स्ती नीति
+      </div>
+    </div>
+
+    <div class="topic-card pink">
+      <div class="card-title">📊 मुद्रास्फीति के प्रकार (कारण अनुसार)</div>
+      <table class="mini-table">
+        <tr><th>प्रकार</th><th>English</th><th>सूत्र</th></tr>
+        <tr><td class="highlight">मांग-जनित</td><td>Demand-Pull</td><td>मांग(D)↑ = कीमत↑</td></tr>
+        <tr><td class="highlight">लागत-जनित</td><td>Cost-Pull</td><td>लागत↑ = कीमत↑</td></tr>
+        <tr><td class="highlight">संरचनात्मक</td><td>Structural</td><td>उत्पादन↓ = Supply↓ = Price↑</td></tr>
+        <tr><td class="highlight">अवरुद्ध</td><td>Repressed</td><td>आपूर्ति↓ = कीमत↑</td></tr>
+      </table>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "मां लागत संगी अव"</div>
+        <strong>मां</strong>ग-जनित · <strong>लागत</strong>-जनित · <strong>सं</strong>रचनात्मक · <strong>अव</strong>रुद्ध
+      </div>
+    </div>
+
+    <div class="topic-card green">
+      <div class="card-title">🚀 गति अनुसार मुद्रास्फीति (5)</div>
+      <table class="mini-table">
+        <tr><th>प्रकार</th><th>दर</th><th>स्थिति</th></tr>
+        <tr><td>रेंगती (Creeping)</td><td>0-3%</td><td class="highlight">अच्छी</td></tr>
+        <tr><td>चलती (Walking)</td><td>3-10%</td><td style="color:var(--accent2)">चेतावनी</td></tr>
+        <tr><td>दौड़ती (Running)</td><td>10-20%</td><td style="color:var(--accent1)">गंभीर</td></tr>
+        <tr><td>कूदती (Jumping)</td><td>20-100%</td><td style="color:var(--red)">बहुत गंभीर</td></tr>
+        <tr><td>अति-मुद्रास्फीति (Hyper)</td><td>>100%</td><td style="color:var(--red)">खतरनाक</td></tr>
+      </table>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "रेंगते हुए चलो, दौड़ो नहीं, वरना कूदोगे Hyper में!"</div>
+        रेंगती(0-3) → चलती(3-10) → दौड़ती(10-20) → कूदती(20-100) → Hyper(100+)
+      </div>
+    </div>
+
+    <div class="topic-card red full-card">
+      <div class="card-title">📏 मुद्रास्फीति का मापन — WPI vs CPI <span class="badge">EXAM FAVO</span></div>
+      <table class="mini-table">
+        <tr><th>बिंदु</th><th>WPI (थोक मूल्य सूचकांक)</th><th>CPI (उपभोक्ता मूल्य सूचकांक)</th></tr>
+        <tr><td>Full Form</td><td>Wholesale Price Index</td><td>Consumer Price Index</td></tr>
+        <tr><td>मापन स्तर</td><td>उत्पादक/थोक स्तर</td><td>उपभोक्ता स्तर</td></tr>
+        <tr><td>शामिल</td><td>केवल वस्तुएं ✓</td><td>वस्तु + सेवा दोनों ✓</td></tr>
+        <tr><td>जीवन यापन</td><td>सटीक नहीं</td><td>बेहतर दशा दर्शाता है</td></tr>
+        <tr><td>विभाजन</td><td>—</td><td>CPI-R, CPI-U, CPI-C</td></tr>
+      </table>
+      <div class="pill-row">
+        <span class="pill g">CPI-R → Rural → CPI-AL</span>
+        <span class="pill b">CPI-U → Urban → CPI-IW</span>
+        <span class="pill p">CPI-C → Composite → R+U</span>
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "WPI = वस्तु पे बस | CPI = वस्तु + सेवा दोनों"</div>
+        WPI थोक पर, CPI घर के लिए | <strong>Retailing में CPI ही असली मुद्रास्फीति दर्शाता है</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- मुद्रा के प्रकार -->
+  <div class="sec-head">💎 मुद्रा के प्रकार (Types of Currency)</div>
+  <div class="grid2">
+    <div class="topic-card orange">
+      <div class="card-title">🪙 मुद्रा के 8 प्रकार</div>
+      <table class="mini-table">
+        <tr><th>#</th><th>प्रकार</th><th>उदाहरण</th></tr>
+        <tr><td>1</td><td>धातु मुद्रा</td><td>सभी सिक्के (Coins)</td></tr>
+        <tr><td>2</td><td>प्लास्टिक/स्मार्ट मनी</td><td>Debit/Credit Card</td></tr>
+        <tr><td>3</td><td>कागजी मुद्रा</td><td>नोट (सरकार/केंद्रीय बैंक)</td></tr>
+        <tr><td>4</td><td>डिजिटल करेंसी</td><td>Bitcoin, Ethereum, e-Rupee</td></tr>
+        <tr><td>5</td><td>दुर्लभ (Hard)</td><td>मांग > Supply</td></tr>
+        <tr><td>6</td><td>सुलभ (Soft)</td><td>Supply > मांग</td></tr>
+        <tr><td>7</td><td>गर्म मुद्रा (Hot)</td><td>पलायन प्रवृत्ति ज्यादा</td></tr>
+        <tr><td>8</td><td>विधिक (Legal)</td><td>कानून द्वारा जारी</td></tr>
+      </table>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "1 रुपए का नोट = वित्त मंत्रालय" (RBI नहीं!)</div>
+        1₹ नोट पर <strong>वित्त सचिव (GOI)</strong> के हस्ताक्षर | बाकी सब RBI गवर्नर
+      </div>
+    </div>
+
+    <div class="topic-card purple">
+      <div class="card-title">🏭 मुद्रणालय (Printing Press) — 4 जगह</div>
+      <div class="pill-row">
+        <span class="pill r">1. देवास (MP)</span>
+        <span class="pill g">2. मैसूर (Karnataka)</span>
+        <span class="pill o">3. नासिक (Maharashtra)</span>
+        <span class="pill b">4. सालबोनी (पश्चिम बंगाल)</span>
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "दे मैं ना सा" (Desi भाषा में)</div>
+        <strong>दे</strong>वास · <strong>मैं</strong>सूर · <strong>ना</strong>सिक · <strong>सा</strong>लबोनी
+      </div>
+    </div>
+  </div>
+
+  <!-- गरीबी -->
+  <div class="sec-head">🏚️ गरीबी एवं बेरोजगारी (Poverty & Unemployment)</div>
+  <div class="grid2">
+    <div class="topic-card red">
+      <div class="card-title">📉 गरीबी (Poverty) <span class="badge">HIGH FREQ</span></div>
+      <ul class="dot-list">
+        <li><strong>परिभाषा:</strong> मूलभूत आवश्यकताओं से वंचित रहना</li>
+        <li><strong>सर्वप्रथम मापन:</strong> दादाभाई नौरोजी (पुस्तक: "Poverty & Un-British Rule in India")</li>
+        <li><strong>वर्तमान मापन:</strong> NSO (राष्ट्रीय सांख्यिकी कार्यालय)</li>
+        <li><strong>पूर्व में:</strong> NSSO द्वारा</li>
+      </ul>
+      <table class="mini-table" style="margin-top:8px">
+        <tr><th>प्रकार</th><th>विवरण</th><th>मापन</th></tr>
+        <tr><td class="highlight">सापेक्ष गरीबी</td><td>आय वितरण की तुलना</td><td>लोरेंज वक्र, गिनी गुणांक</td></tr>
+        <tr><td class="highlight">निरपेक्ष गरीबी</td><td>गरीबों की संख्या</td><td>Head-Count Method</td></tr>
+      </table>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "दादा ने पहले गिना, अब NSO गिनता है"</div>
+        <strong>दादाभाई नौरोजी</strong> = पहले · <strong>NSO</strong> = अभी
+      </div>
+    </div>
+
+    <div class="topic-card green">
+      <div class="card-title">📐 लोरेंज वक्र & गिनी गुणांक</div>
+      <ul class="dot-list">
+        <li><strong>लोरेंज वक्र:</strong> 1905 (Prof. Lorenz) — आय असमानता दर्शाता है</li>
+        <li>वक्र समता रेखा से दूर = असमानता ↑</li>
+        <li>वक्र समता रेखा के पास = असमानता ↓</li>
+        <li><strong>गिनी गुणांक:</strong> 1912 (Corrado Gini)</li>
+        <li>मान: 0 से 1 के मध्य</li>
+        <li>0 → पूर्ण समानता | 1 → पूर्ण असमानता</li>
+      </ul>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "0 मतलब ओके, 1 मतलब खराब"</div>
+        गिनी → 0 = सब बराबर (Good) | 1 = सब अमीर/गरीब (Bad)
+      </div>
+    </div>
+
+    <div class="topic-card orange full-card">
+      <div class="card-title">📋 गरीबी समितियाँ (Chronological) <span class="badge">PYQ FAVO</span></div>
+      <table class="mini-table">
+        <tr><th>वर्ष</th><th>समिति</th><th>Key Point</th></tr>
+        <tr><td>1971</td><td class="highlight">दाण्डेकर एवं एन रथ समिति</td><td>पहली बड़ी गरीबी समिति</td></tr>
+        <tr><td>1977</td><td class="highlight">अलघ समिति</td><td>कैलोरी आधारित रेखा</td></tr>
+        <tr><td>1990</td><td class="highlight">लकड़ावाला समिति</td><td>राज्यवार गरीबी रेखा</td></tr>
+        <tr><td>2005</td><td class="highlight">सुरेश तेंदुलकर समिति</td><td>उपभोग आधारित</td></tr>
+        <tr><td>2012</td><td class="highlight">रंगराजन समिति</td><td>सबसे नवीन</td></tr>
+      </table>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "दा अल लक सु रं" (दाल-लकड़ी-सुरंग!)</div>
+        <strong>दा</strong>ण्डेकर(71) → <strong>अल</strong>घ(77) → <strong>ल</strong>कड़ावाला(90) → <strong>सु</strong>रेश तेंदुलकर(05) → <strong>रं</strong>गराजन(12)
+      </div>
+    </div>
+  </div>
+
+  <!-- करंट इकोनॉमी -->
+  <div class="sec-head">📡 करंट इकोनॉमी (Current Affairs)</div>
+  <div class="grid2">
+    <div class="topic-card blue">
+      <div class="card-title">📈 FY 2025-26 विकास दर <span class="badge">CURRENT</span></div>
+      <table class="mini-table">
+        <tr><th>संस्था</th><th>नवीनतम अनुमान</th></tr>
+        <tr><td>फिच रेटिंग</td><td class="highlight">7.4%</td></tr>
+        <tr><td>RBI</td><td class="highlight">7.3%</td></tr>
+        <tr><td>IMF</td><td class="highlight">6.6%</td></tr>
+        <tr><td>विश्व बैंक</td><td class="highlight">6.5%</td></tr>
+        <tr><td>S&P</td><td class="highlight">6.5%</td></tr>
+      </table>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick: "फिच सबसे Rich (7.4) | IMF-WB सबसे Thin (6.5)"</div>
+        Fitch &gt; RBI &gt; IMF = विश्व बैंक = S&P
+      </div>
+    </div>
+
+    <div class="topic-card pink">
+      <div class="card-title">🏦 मौद्रिक नीति समीक्षा (Dec 2025)</div>
+      <ul class="dot-list">
+        <li><strong>बैठक:</strong> 3-5 दिसम्बर 2025</li>
+        <li><strong>अध्यक्षता:</strong> संजय मल्होत्रा (RBI गवर्नर)</li>
+        <li>Repo Rate: <strong class="highlight">5.50% → 5.25%</strong> (25 bps कटौती)</li>
+        <li>Bank Rate: <strong>5.75% → 5.50%</strong></li>
+        <li>MSF Rate: <strong>5.75% → 5.50%</strong></li>
+        <li>SDF Rate: <strong>5.25% → 5.0%</strong></li>
+        <li><strong>Oct 2025:</strong> CPI मुद्रास्फीति = <span class="highlight">0.25%</span></li>
+        <li>FY25-26 Q2: GDP वृद्धि = <span class="highlight">8.2%</span></li>
+      </ul>
+    </div>
+
+    <div class="topic-card orange full-card">
+      <div class="card-title">💼 GST 2.0 एवं राजकोषीय नीति</div>
+      <table class="mini-table">
+        <tr><th>बिंदु</th><th>तथ्य</th></tr>
+        <tr><td>GST 2.0 लागू</td><td class="highlight">22 सितम्बर 2025</td></tr>
+        <tr><td>कटौती</td><td>375 वस्तुओं पर GST दरों में कमी</td></tr>
+        <tr><td>Nov 2025 संग्रह</td><td class="highlight">₹1,70,276 करोड़</td></tr>
+        <tr><td>Nov 2024 संग्रह</td><td>₹1,69,016 करोड़</td></tr>
+        <tr><td>वृद्धि</td><td>0.7%</td></tr>
+        <tr><td>CGST</td><td>₹34,843 करोड़</td></tr>
+        <tr><td>SGST</td><td>₹42,522 करोड़</td></tr>
+        <tr><td>IGST</td><td>₹92,910 करोड़</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ TAB 2: SUMMARY TABLE ═══════════ -->
+<div id="tab-summary" class="tab-content">
+
+  <div class="sec-head">📋 Master Quick Reference Table</div>
+
+  <table class="sum-table" style="margin-bottom:20px">
+    <thead><tr><th>Topic</th><th>Key Fact 1</th><th>Key Fact 2</th><th>Exam Trick</th></tr></thead>
+    <tbody>
+      <tr><td>योजना आयोग स्थापना</td><td>15 मार्च 1950</td><td>K.C. Neogi सिफारिश</td><td>गैर-संवैधानिक</td></tr>
+      <tr><td>योजना आयोग अध्यक्ष</td><td>पहला: नेहरू</td><td>अंतिम: मोदी</td><td>PM पदेन होता है</td></tr>
+      <tr><td>योजना आयोग उपाध्यक्ष</td><td>पहला: गुलजारी लाल नंदा</td><td>अंतिम: मोंटेक सिंह</td><td>PM द्वारा नियुक्त</td></tr>
+      <tr><td>योजना आयोग समाप्ति</td><td>15 अगस्त 2014</td><td>लाल किले से घोषणा</td><td>मोदी ने की</td></tr>
+      <tr><td>NITI आयोग स्थापना</td><td>1 जनवरी 2015</td><td>National Institute for Transforming India</td><td>Think Tank</td></tr>
+      <tr><td>NITI उपाध्यक्ष</td><td>पहला: अरविंद पनगढ़िया</td><td>वर्तमान: सुमन बेरी</td><td>PM द्वारा नियुक्त</td></tr>
+      <tr><td>NITI CEO</td><td>पहली: सिंधुश्री खुल्लर</td><td>वर्तमान: B.V.R. सुब्रमण्यम</td><td>अलग पद है</td></tr>
+      <tr><td>मुद्रास्फीति परिभाषा</td><td>कीमतों में लगातार वृद्धि</td><td>क्रय-शक्ति घटती है</td><td>Inverse relation</td></tr>
+      <tr><td>Demand-Pull Inflation</td><td>मांग↑ = कीमत↑</td><td>आपदा, वेतन वृद्धि कारण</td><td>कोरोना में हुई</td></tr>
+      <tr><td>Cost-Pull Inflation</td><td>लागत↑ = कीमत↑</td><td>किराया, मजदूरी, ब्याज बढ़ने से</td><td>कच्चा तेल मुख्य</td></tr>
+      <tr><td>Creeping Inflation</td><td>0-3%</td><td>अच्छी स्थिति</td><td>विकास के लिए जरूरी</td></tr>
+      <tr><td>Hyper Inflation</td><td>>100%</td><td>खतरनाक</td><td>Germany 1920s उदाहरण</td></tr>
+      <tr><td>WPI</td><td>थोक स्तर पर मापन</td><td>केवल वस्तुएं</td><td>सेवाएं नहीं</td></tr>
+      <tr><td>CPI</td><td>उपभोक्ता स्तर</td><td>वस्तु + सेवा</td><td>जीवन यापन बेहतर दर्शाता</td></tr>
+      <tr><td>CPI-R/U/C</td><td>Rural/Urban/Composite</td><td>CPI-AL, CPI-IW, CPI(R+U)</td><td>3 श्रेणियां</td></tr>
+      <tr><td>1₹ नोट</td><td>वित्त मंत्रालय जारी करता है</td><td>वित्त सचिव हस्ताक्षर</td><td>RBI नहीं!</td></tr>
+      <tr><td>मुद्रणालय</td><td>देवास + मैसूर + नासिक + सालबोनी</td><td>4 जगह</td><td>"दे मैं ना सा"</td></tr>
+      <tr><td>गरीबी सर्वप्रथम</td><td>दादाभाई नौरोजी</td><td>Poverty & Un-British Rule</td><td>पुस्तक 1901</td></tr>
+      <tr><td>वर्तमान मापन</td><td>NSO</td><td>पूर्व में NSSO</td><td>National Statistical Office</td></tr>
+      <tr><td>लोरेंज वक्र</td><td>1905, Prof. Lorenz</td><td>आय असमानता</td><td>दूर = ज्यादा असमानता</td></tr>
+      <tr><td>गिनी गुणांक</td><td>1912, Corrado Gini</td><td>0 से 1 के मध्य</td><td>0=अच्छा, 1=बुरा</td></tr>
+      <tr><td>तेंदुलकर समिति</td><td>2005</td><td>उपभोग आधारित गरीबी रेखा</td><td>सबसे प्रचलित</td></tr>
+      <tr><td>रंगराजन समिति</td><td>2012</td><td>सबसे नवीन</td><td>गरीबी रेखा ऊंची की</td></tr>
+      <tr><td>FY25-26 Fitch</td><td>7.4%</td><td>सबसे ज्यादा अनुमान</td><td>Fitch > RBI</td></tr>
+      <tr><td>Repo Rate Dec 2025</td><td>5.25%</td><td>25 bps कटौती</td><td>5.50 से घटाया</td></tr>
+      <tr><td>GST 2.0</td><td>22 Sept 2025</td><td>375 वस्तुएं</td><td>दरों में कमी</td></tr>
+      <tr><td>Nov 2025 GST</td><td>₹1,70,276 करोड़</td><td>0.7% वृद्धि</td><td>Record collection</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-head">⚡ Quick Reference: Topic-wise Priority</div>
+  <table class="sum-table">
+    <thead><tr><th>Priority</th><th>Topic</th><th>Expected Qs</th><th>Focus Points</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--accent1)">★★★ HIGH</td><td>NITI आयोग</td><td>2-3</td><td>CEO, उपाध्यक्ष नाम, स्थापना तिथि</td></tr>
+      <tr><td style="color:var(--accent1)">★★★ HIGH</td><td>मुद्रास्फीति प्रकार</td><td>2-3</td><td>Demand-Pull vs Cost-Pull, गति अनुसार</td></tr>
+      <tr><td style="color:var(--accent1)">★★★ HIGH</td><td>WPI vs CPI</td><td>1-2</td><td>अंतर, CPI के उपप्रकार</td></tr>
+      <tr><td style="color:var(--accent2)">★★ MED</td><td>गरीबी समितियाँ</td><td>1-2</td><td>साल और नाम सही क्रम में</td></tr>
+      <tr><td style="color:var(--accent2)">★★ MED</td><td>लोरेंज + गिनी</td><td>1</td><td>मान और अर्थ</td></tr>
+      <tr><td style="color:var(--accent2)">★★ MED</td><td>करंट: Repo Rate</td><td>1</td><td>दिसम्बर 2025 निर्णय</td></tr>
+      <tr><td style="color:var(--accent3)">★ LOW</td><td>मुद्रणालय</td><td>0-1</td><td>4 स्थान</td></tr>
+      <tr><td style="color:var(--accent3)">★ LOW</td><td>मुद्रा के प्रकार</td><td>0-1</td><td>1₹ नोट ट्रिक</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════ TAB 3: MCQ ═══════════ -->
+<div id="tab-mcq" class="tab-content">
+  <div class="score-bar">
+    <div class="score-item"><div class="score-dot" style="background:var(--green)"></div> सही: <strong id="sRight">0</strong></div>
+    <div class="score-item"><div class="score-dot" style="background:var(--red)"></div> गलत: <strong id="sWrong">0</strong></div>
+    <div class="score-item"><div class="score-dot" style="background:var(--text2)"></div> छोड़े: <strong id="sSkip">0</strong></div>
+    <div style="margin-left:auto;font-size:.75rem;color:var(--accent2)">+1 / −⅓</div>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="mcqProgress" style="width:0%"></div></div>
+  <div id="mcq-container"></div>
+  <button class="submit-btn" onclick="submitAll()">📊 Result देखें</button>
+</div>
+
+<!-- ═══════════ TAB 4: LAST MINUTE ═══════════ -->
+<div id="tab-lastmin" class="tab-content">
+  <div class="grid2">
+
+    <div class="lm-card">
+      <div class="lm-title">🏛️ योजना आयोग — Super 6</div>
+      <div class="lm-pts">
+        <strong>15 मार्च 1950</strong> — स्थापना<br>
+        <strong>नेहरू/मोदी</strong> — पहला/अंतिम अध्यक्ष<br>
+        <strong>नंदा/मोंटेक</strong> — पहला/अंतिम उपाध्यक्ष<br>
+        <strong>15 Aug 2014</strong> — लाल किले से समाप्ति<br>
+        <strong>K.C. Neogi</strong> — सिफारिश समिति<br>
+        <strong>गैर-संवैधानिक + सलाहकारी</strong>
+      </div>
+      <div class="lm-trick">🔥 "नेहरू का नंदा, मोदी का मोंटेक — बाप-बेटे की जोड़ी!"</div>
+    </div>
+
+    <div class="lm-card">
+      <div class="lm-title">🏢 NITI आयोग — Super 6</div>
+      <div class="lm-pts">
+        <strong>1 जनवरी 2015</strong> — स्थापना<br>
+        <strong>National Institute for Transforming India</strong><br>
+        <strong>मोदी</strong> — 1st एवं वर्तमान अध्यक्ष<br>
+        <strong>पनगढ़िया → सुमन बेरी</strong> — उपाध्यक्ष<br>
+        <strong>खुल्लर → सुब्रमण्यम</strong> — CEO<br>
+        <strong>Think Tank</strong> = बौद्धिक संस्थान
+      </div>
+      <div class="lm-trick">🔥 "New Year 2015 को NITI आई — पनगढ़िया के साथ, खुल्लर साथ!"</div>
+    </div>
+
+    <div class="lm-card">
+      <div class="lm-title">💰 मुद्रास्फीति — 5 Types (Speed)</div>
+      <div class="lm-pts">
+        <strong>0-3%</strong> = रेंगती (Good)<br>
+        <strong>3-10%</strong> = चलती (Warning)<br>
+        <strong>10-20%</strong> = दौड़ती (Serious)<br>
+        <strong>20-100%</strong> = कूदती (Danger)<br>
+        <strong>>100%</strong> = अति/Hyper (Worst)
+      </div>
+      <div class="lm-trick">🔥 "रेंग-चल-दौड़-कूद-उड़! 3-10-20-100 याद करो बस!"</div>
+    </div>
+
+    <div class="lm-card">
+      <div class="lm-title">📊 WPI vs CPI — 30 सेकंड</div>
+      <div class="lm-pts">
+        <strong>WPI</strong> = थोक · वस्तु ONLY · जीवन यापन नहीं<br>
+        <strong>CPI</strong> = उपभोक्ता · वस्तु+सेवा · जीवन यापन ✓<br>
+        <strong>CPI-R</strong> = Rural → CPI-AL<br>
+        <strong>CPI-U</strong> = Urban → CPI-IW<br>
+        <strong>CPI-C</strong> = Composite = R+U
+      </div>
+      <div class="lm-trick">🔥 "WPI वाला थोकड़ा है, CPI वाला ग्राहक!" (राजस्थानी style)</div>
+    </div>
+
+    <div class="lm-card">
+      <div class="lm-title">🏚️ गरीबी समितियाँ — Dates First!</div>
+      <div class="lm-pts">
+        <strong>1971</strong> — दाण्डेकर + एन.रथ<br>
+        <strong>1977</strong> — अलघ समिति<br>
+        <strong>1990</strong> — लकड़ावाला समिति<br>
+        <strong>2005</strong> — सुरेश तेंदुलकर<br>
+        <strong>2012</strong> — रंगराजन (Latest)
+      </div>
+      <div class="lm-trick">🔥 "दाल-अल-लड्डू-तेंदुल-रंग!" (Mewati भाषा में: दाल खा अल्लाह भी देगा!)</div>
+    </div>
+
+    <div class="lm-card">
+      <div class="lm-title">💎 लोरेंज + गिनी — 60 Sec</div>
+      <div class="lm-pts">
+        <strong>लोरेंज वक्र</strong> = 1905, Prof. Lorenz<br>
+        → आय असमानता दर्शाता है<br>
+        → दूर = ज्यादा असमानता<br><br>
+        <strong>गिनी गुणांक</strong> = 1912, Corrado Gini<br>
+        → 0 से 1 के बीच<br>
+        → 0 = पूर्ण समानता | 1 = पूर्ण असमानता
+      </div>
+      <div class="lm-trick">🔥 "लोरेंज देखता है, गिनी नापता है! 0=Zero Problem, 1=One Big Problem!"</div>
+    </div>
+
+    <div class="lm-card full-card">
+      <div class="lm-title">⚡ 1 Min Blast — सब कुछ एक में</div>
+      <div class="grid2" style="gap:8px;margin-top:6px">
+        <div>
+          <div class="lm-pts">
+            <strong>1₹ नोट</strong> → वित्त मंत्रालय (RBI नहीं)<br>
+            <strong>प्रेस</strong> → "दे मैं ना सा" (देवास, मैसूर, नासिक, सालबोनी)<br>
+            <strong>दादाभाई</strong> → गरीबी सर्वप्रथम मापा<br>
+            <strong>NSO</strong> → अभी मापता है (पहले NSSO)
+          </div>
+        </div>
+        <div>
+          <div class="lm-pts">
+            <strong>Repo Rate Dec25</strong> → 5.25% (5.50 से घटा)<br>
+            <strong>Fitch</strong> → FY26 GDP 7.4%<br>
+            <strong>GST 2.0</strong> → 22 Sept 2025<br>
+            <strong>Nov 25 GST</strong> → ₹1.70 लाख करोड़+
+          </div>
+        </div>
+      </div>
+      <div class="lm-trick">🔥 Final Mantra: "योजना→1950·NITI→2015·Inflation 0-3 Good·Lorenz 1905·Gini 1912·दाभाई पहले·NSO अभी"</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- RESULT POPUP -->
+<div class="popup-overlay" id="resultPopup">
+  <div class="popup-box">
+    <div class="popup-emoji" id="popEmoji">🎯</div>
+    <div id="popTitle" style="font-size:1.2rem;font-weight:800;margin-bottom:4px"></div>
+    <div class="popup-score" id="popScore"></div>
+    <div style="font-size:.82rem;color:var(--text2);margin-top:8px" id="popDetails"></div>
+    <div style="font-size:.75rem;color:var(--accent3);margin-top:6px" id="popGrade"></div>
+    <button class="popup-close" onclick="document.getElementById('resultPopup').classList.remove('show')">बंद करें</button>
+  </div>
+</div>
+
+<script>
+// ── TAB SWITCH ──
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── MCQ DATA ──
+const questions = [
+  // योजना आयोग
+  {q:"योजना आयोग की स्थापना किस तिथि को हुई थी?",opts:["1 जनवरी 1950","15 मार्च 1950","26 जनवरी 1950","15 अगस्त 1947"],ans:1,exp:"योजना आयोग की स्थापना 15 मार्च 1950 को K.C. Neogi समिति की सिफारिश पर हुई।"},
+  {q:"योजना आयोग के प्रथम उपाध्यक्ष कौन थे?",opts:["मोंटेक सिंह अहलूवालिया","अरविंद पनगढ़िया","गुलजारी लाल नंदा","जवाहरलाल नेहरू"],ans:2,exp:"योजना आयोग के प्रथम उपाध्यक्ष गुलजारी लाल नंदा थे।"},
+  {q:"योजना आयोग की प्रकृति क्या थी?",opts:["संवैधानिक एवं सलाहकारी","गैर-संवैधानिक एवं कार्यकारी","गैर-संवैधानिक एवं सलाहकारी","संवैधानिक एवं कार्यकारी"],ans:2,exp:"योजना आयोग गैर-संवैधानिक एवं सलाहकारी निकाय था।"},
+  {q:"योजना आयोग को भंग करने की घोषणा कहाँ से की गई?",opts:["संसद भवन","राष्ट्रपति भवन","लाल किला","विज्ञान भवन"],ans:2,exp:"PM मोदी ने 15 अगस्त 2014 को लाल किले से योजना आयोग को भंग करने की घोषणा की।"},
+  {q:"योजना आयोग के अंतिम उपाध्यक्ष कौन थे?",opts:["गुलजारी लाल नंदा","अरविंद पनगढ़िया","सुमन बेरी","मोंटेक सिंह अहलूवालिया"],ans:3,exp:"मोंटेक सिंह अहलूवालिया योजना आयोग के अंतिम उपाध्यक्ष थे।"},
+
+  // NITI आयोग
+  {q:"NITI आयोग की स्थापना किस तिथि को हुई?",opts:["15 मार्च 2015","1 जनवरी 2015","26 जनवरी 2015","15 अगस्त 2014"],ans:1,exp:"NITI आयोग की स्थापना 1 जनवरी 2015 को योजना आयोग के स्थान पर की गई।"},
+  {q:"NITI का पूर्ण रूप क्या है?",opts:["National Innovation and Technology Institute","National Institute for Transforming India","New India Training Institute","National Integrated Think-tank of India"],ans:1,exp:"NITI = National Institute for Transforming India"},
+  {q:"NITI आयोग के प्रथम उपाध्यक्ष कौन थे?",opts:["सुमन बेरी","अरविंद पनगढ़िया","मोंटेक सिंह","राजीव कुमार"],ans:1,exp:"NITI आयोग के प्रथम उपाध्यक्ष अरविंद पनगढ़िया थे।"},
+  {q:"NITI आयोग के वर्तमान CEO कौन हैं?",opts:["सिंधुश्री खुल्लर","अरविंद पनगढ़िया","B.V.R. सुब्रमण्यम","सुमन बेरी"],ans:2,exp:"B.V.R. सुब्रमण्यम वर्तमान में NITI आयोग के CEO हैं।"},
+  {q:"NITI आयोग को किस नाम से भी जाना जाता है?",opts:["राष्ट्रीय योजना संस्था","थिंक टैंक (बौद्धिक संस्थान)","नीति नियोजन केंद्र","विकास परिषद"],ans:1,exp:"NITI आयोग को Think Tank (बौद्धिक संस्थान) भी कहते हैं।"},
+  {q:"NITI आयोग के कितने स्तंभ (Pillars) हैं?",opts:["5","6","7","8"],ans:2,exp:"NITI आयोग के 7 स्तंभ हैं: जनता, सक्रियता, भागीदारी, सशक्तिकरण, समावेशिता, समानता, पारदर्शिता"},
+  {q:"NITI आयोग की स्थापना किसके स्थान पर की गई?",opts:["वित्त आयोग","योजना आयोग","राष्ट्रीय विकास परिषद","आर्थिक सलाहकार परिषद"],ans:1,exp:"NITI आयोग की स्थापना योजना आयोग के स्थान पर 1 जनवरी 2015 को हुई।"},
+
+  // मुद्रास्फीति परिभाषा और प्रकार
+  {q:"मुद्रास्फीति में क्या होता है?",opts:["मुद्रा की क्रय-शक्ति बढ़ती है","मुद्रा की क्रय-शक्ति घटती है","उत्पादन बढ़ता है","बेरोजगारी घटती है"],ans:1,exp:"मुद्रास्फीति में कीमतें बढ़ती हैं जिससे मुद्रा की क्रय-शक्ति घटती है।"},
+  {q:"'मांग-जनित मुद्रास्फीति' (Demand-Pull Inflation) किसके कारण होती है?",opts:["उत्पादन लागत में वृद्धि","वस्तुओं की मांग में वृद्धि","आपूर्ति में कमी","कच्चे माल की कमी"],ans:1,exp:"जब वस्तुओं/सेवाओं की मांग बढ़ती है तो Demand-Pull Inflation होती है।"},
+  {q:"'लागत-जनित मुद्रास्फीति' (Cost-Pull Inflation) में सूत्र क्या है?",opts:["मांग↑ = कीमत↑","लागत↑ = कीमत↑","उत्पादन↑ = कीमत↑","आयात↑ = कीमत↑"],ans:1,exp:"Cost-Pull में उत्पादन लागत बढ़ने से कीमतें बढ़ती हैं: लागत↑ = कीमत↑"},
+  {q:"'संरचनात्मक मुद्रास्फीति' (Structural Inflation) का सूत्र क्या है?",opts:["मांग↑ = कीमत↑","उत्पादन↓ = Supply↓ = Price↑","लागत↑ = कीमत↑","आपूर्ति↑ = कीमत↑"],ans:1,exp:"Structural Inflation में औद्योगिक उत्पादन घटने से Supply घटती है और कीमत बढ़ती है।"},
+  {q:"'रेंगती मुद्रास्फीति' (Creeping Inflation) की दर क्या होती है?",opts:["10-20%","3-10%","0-3%","20-100%"],ans:2,exp:"0-3% = रेंगती (Creeping) Inflation — यह अच्छी स्थिति मानी जाती है।"},
+  {q:"'अति मुद्रास्फीति' (Hyper Inflation) की दर क्या होती है?",opts:["20-100%","10-20%","100% से अधिक","50-100%"],ans:2,exp:"Hyper Inflation = 100% से अधिक कीमत वृद्धि — सबसे खतरनाक।"},
+  {q:"'दौड़ती मुद्रास्फीति' (Running Inflation) की दर क्या है?",opts:["0-3%","3-10%","10-20%","20-100%"],ans:2,exp:"10-20% = Running (दौड़ती) Inflation — गंभीर दशा।"},
+  {q:"कोरोना महामारी के दौरान किस प्रकार की मुद्रास्फीति होने की संभावना अधिक थी?",opts:["लागत-जनित","मांग-जनित","संरचनात्मक","अवरुद्ध"],ans:0,exp:"कोरोना में मांग अचानक बढ़ने से Demand-Pull Inflation हुई, लेकिन आपूर्ति बाधित होने से Cost-Push भी थी।"},
+
+  // WPI और CPI
+  {q:"WPI (थोक मूल्य सूचकांक) किस स्तर पर मापता है?",opts:["उपभोक्ता स्तर","उत्पादक/थोक स्तर","खुदरा स्तर","आयात स्तर"],ans:1,exp:"WPI उत्पादक/थोक स्तर पर मापन करता है।"},
+  {q:"WPI में क्या शामिल होता है?",opts:["केवल वस्तुएं","वस्तु + सेवा दोनों","केवल सेवाएं","वस्तु + आयात"],ans:0,exp:"WPI में केवल वस्तुएं शामिल होती हैं, सेवाएं नहीं।"},
+  {q:"CPI (Consumer Price Index) किसके लिए बेहतर संकेतक है?",opts:["थोक व्यापार","उपभोक्ता जीवन यापन लागत","निर्यात मूल्य","उत्पादन लागत"],ans:1,exp:"CPI जीवन यापन लागत की बेहतर दशा दर्शाता है।"},
+  {q:"CPI-AL किसे कहते हैं?",opts:["Consumer Price Index for Urban Workers","Consumer Price Index for Agricultural Labourers","Consumer Price Index for All Levels","Consumer Price Index for Annual Labour"],ans:1,exp:"CPI-AL = Consumer Price Index for Agricultural Labourers (CPI-R यानी ग्रामीण श्रमिकों के लिए)"},
+  {q:"CPI-IW का पूर्ण रूप क्या है?",opts:["Consumer Price Index for Industrial Workers","Consumer Price Index for International Workers","Consumer Price Index for Integrated Wholesale","Consumer Price Index for Indian Workers"],ans:0,exp:"CPI-IW = Consumer Price Index for Industrial Workers (CPI-U यानी शहरी श्रमिकों के लिए)"},
+  {q:"CPI-C (Composite) किसके बराबर है?",opts:["CPI-R","CPI-U","CPI-R + CPI-U","CPI-AL + CPI-IW"],ans:2,exp:"CPI-C = CPI Composite = CPI-R + CPI-U (ग्रामीण + शहरी)"},
+
+  // मुद्रा के प्रकार
+  {q:"1 रुपए का नोट जारी करने का अधिकार किसे है?",opts:["भारतीय रिज़र्व बैंक","भारत सरकार (वित्त मंत्रालय)","SBI","SEBI"],ans:1,exp:"1 रुपए का नोट एवं सभी सिक्के वित्त मंत्रालय (भारत सरकार) जारी करता है। इस पर वित्त सचिव के हस्ताक्षर होते हैं।"},
+  {q:"'दुर्लभ मुद्रा' (Hard Currency) की विशेषता क्या है?",opts:["आपूर्ति > मांग","मांग > आपूर्ति","मांग = आपूर्ति","भौतिक अस्तित्व नहीं"],ans:1,exp:"Hard Currency में मांग(D) > Supply होती है, अर्थात् यह दुर्लभ होती है।"},
+  {q:"'सुलभ मुद्रा' (Soft Currency) की विशेषता क्या है?",opts:["मांग > आपूर्ति","आपूर्ति > मांग","भौतिक नोट","डिजिटल रूप"],ans:1,exp:"Soft Currency में Supply > मांग होती है, यह आसानी से उपलब्ध होती है।"},
+  {q:"e-Rupee किस श्रेणी की मुद्रा है?",opts:["धातु मुद्रा","कागजी मुद्रा","डिजिटल करेंसी","प्लास्टिक करेंसी"],ans:2,exp:"e-Rupee डिजिटल करेंसी है — इसका भौतिक अस्तित्व नहीं होता।"},
+  {q:"भारत में करेंसी नोट छापने का कार्य कौन सी जगह नहीं होता?",opts:["देवास (MP)","मैसूर (Karnataka)","मुंबई (Maharashtra)","नासिक (Maharashtra)"],ans:2,exp:"मुंबई में कोई मुद्रणालय नहीं है। 4 मुद्रणालय: देवास, मैसूर, नासिक, सालबोनी।"},
+
+  // गरीबी
+  {q:"भारत में गरीबी का सर्वप्रथम मापन किसने किया?",opts:["अमर्त्य सेन","दादाभाई नौरोजी","महात्मा गांधी","जगदीश भगवती"],ans:1,exp:"दादाभाई नौरोजी ने 'Poverty & Un-British Rule in India' पुस्तक में गरीबी का सर्वप्रथम मापन किया।"},
+  {q:"वर्तमान में भारत में गरीबी का मापन कौन करता है?",opts:["NSSO","NSO (राष्ट्रीय सांख्यिकी कार्यालय)","RBI","NITI आयोग"],ans:1,exp:"वर्तमान में NSO (National Statistical Office) गरीबी मापता है। पहले NSSO करता था।"},
+  {q:"'लोरेंज वक्र' (Lorenz Curve) किसने प्रतिपादित किया?",opts:["कोरेडो गिनी (1912)","प्रो. लोरेंज (1905)","दादाभाई नौरोजी (1901)","अमर्त्य सेन (1995)"],ans:1,exp:"लोरेंज वक्र का प्रतिपादन 1905 में Prof. Lorenz ने किया। यह आय की असमानता दर्शाता है।"},
+  {q:"'गिनी गुणांक' (Gini Coefficient) का मान कितने के बीच होता है?",opts:["0 से 100","0 से 1","−1 से 1","1 से 10"],ans:1,exp:"गिनी गुणांक का मान 0 से 1 के मध्य होता है। 0 = पूर्ण समानता, 1 = पूर्ण असमानता।"},
+  {q:"गिनी गुणांक का मान 0 की ओर जाने पर क्या होता है?",opts:["असमानता बढ़ती है","समानता बढ़ती है","मुद्रास्फीति बढ़ती है","बेरोजगारी बढ़ती है"],ans:1,exp:"0 की ओर जाने पर समानता बढ़ती है और असमानता घटती है।"},
+  {q:"लकड़ावाला समिति किस वर्ष बनाई गई?",opts:["1971","1977","1990","2005"],ans:2,exp:"लकड़ावाला समिति 1990 में बनाई गई। इसने राज्यवार गरीबी रेखा की सिफारिश की।"},
+  {q:"सुरेश तेंदुलकर समिति (2005) ने किस पर आधारित गरीबी रेखा सुझाई?",opts:["कैलोरी","उपभोग व्यय","आय","बहुआयामी सूचकांक"],ans:1,exp:"तेंदुलकर समिति ने उपभोग व्यय (Consumption Expenditure) आधारित गरीबी रेखा सुझाई।"},
+  {q:"'अलघ समिति' का संबंध किससे है?",opts:["मुद्रास्फीति","गरीबी रेखा","NITI आयोग","GST"],ans:1,exp:"अलघ समिति (1977) गरीबी रेखा से संबंधित है। इसने कैलोरी आधारित रेखा सुझाई।"},
+  {q:"'रंगराजन समिति' (2012) का संबंध क्या है?",opts:["NITI आयोग से","GST से","गरीबी रेखा से","मुद्रास्फीति नियंत्रण से"],ans:2,exp:"रंगराजन समिति (2012) गरीबी रेखा से संबंधित सबसे नवीन समिति है।"},
+  {q:"लोरेंज वक्र में 'समता रेखा' से वक्र जितना दूर होगा:",opts:["आय असमानता कम होगी","आय असमानता ज्यादा होगी","मुद्रास्फीति बढ़ेगी","GDP घटेगी"],ans:1,exp:"लोरेंज वक्र समता रेखा से जितना दूर होगा, आय की विषमता (असमानता) उतनी ज्यादा होगी।"},
+
+  // करंट इकोनॉमी
+  {q:"वित्तीय वर्ष (Financial Year) भारत में कब से कब तक होता है?",opts:["1 जनवरी से 31 दिसम्बर","1 अप्रैल से 31 मार्च","1 जुलाई से 30 जून","1 मार्च से 28 फरवरी"],ans:1,exp:"भारत में वित्तीय वर्ष 1 अप्रैल से 31 मार्च तक होता है।"},
+  {q:"FY 2025-26 में Fitch Rating ने भारत की GDP वृद्धि दर कितनी अनुमानित की?",opts:["6.5%","6.6%","7.3%","7.4%"],ans:3,exp:"Fitch Rating ने FY 2025-26 के लिए भारत की GDP वृद्धि दर 7.4% अनुमानित की।"},
+  {q:"RBI की मौद्रिक नीति समीक्षा (दिसम्बर 2025) में Repo Rate कितना किया गया?",opts:["5.50%","5.25%","6.00%","5.75%"],ans:1,exp:"दिसम्बर 2025 MPC बैठक में Repo Rate 5.50% से घटाकर 5.25% (25 bps कटौती) किया गया।"},
+  {q:"दिसम्बर 2025 MPC बैठक की अध्यक्षता किसने की?",opts:["शक्तिकांत दास","संजय मल्होत्रा","अरविंद पनगढ़िया","T. Rabi Sankar"],ans:1,exp:"दिसम्बर 2025 MPC बैठक की अध्यक्षता RBI गवर्नर संजय मल्होत्रा ने की।"},
+  {q:"GST 2.0 कब से लागू हुआ?",opts:["1 जनवरी 2025","22 सितम्बर 2025","1 अप्रैल 2025","15 अगस्त 2025"],ans:1,exp:"GST 2.0 22 सितम्बर 2025 से लागू हुआ जिसमें 375 वस्तुओं पर GST दरों में कटौती की गई।"},
+  {q:"FY 2025-26 की Q2 में भारत की GDP वृद्धि दर कितनी रही?",opts:["6.5%","7.3%","8.2%","9.0%"],ans:2,exp:"FY 2025-26 की Q2 (जुलाई-सितम्बर) में GDP वृद्धि दर 8.2% रही।"},
+  {q:"IMF ने FY 2025-26 के लिए भारत की GDP वृद्धि दर कितनी अनुमानित की?",opts:["7.4%","7.3%","6.6%","6.5%"],ans:2,exp:"IMF ने FY 2025-26 के लिए 6.6% GDP वृद्धि दर अनुमानित की।"},
+  {q:"नवम्बर 2025 में कुल GST संग्रह कितना रहा?",opts:["₹1,69,016 करोड़","₹1,70,276 करोड़","₹1,80,000 करोड़","₹1,65,000 करोड़"],ans:1,exp:"नवम्बर 2025 में कुल GST संग्रह ₹1,70,276 करोड़ रहा — नवम्बर 2024 से 0.7% अधिक।"},
+  {q:"अक्टूबर 2025 में CPI आधारित खुदरा मुद्रास्फीति दर क्या थी?",opts:["1.5%","0.5%","0.25%","2.0%"],ans:2,exp:"अक्टूबर 2025 में CPI आधारित खुदरा मुद्रास्फीति दर मात्र 0.25% रही।"},
+  {q:"GST 2.0 में कुल कितनी वस्तुओं पर दरों में कटौती की गई?",opts:["175","275","375","475"],ans:2,exp:"GST 2.0 में 375 वस्तुओं पर GST दरों में कटौती की गई।"}
+];
+
+// ── RENDER MCQ ──
+let userAnswers = new Array(questions.length).fill(-1);
+let scored = new Array(questions.length).fill(0); // 0=unattempted,1=correct,-1=wrong
+
+function renderMCQ() {
+  const container = document.getElementById('mcq-container');
+  container.innerHTML = '';
+  questions.forEach((q, qi) => {
+    const card = document.createElement('div');
+    card.className = 'mcq-card';
+    card.innerHTML = `
+      <div class="mcq-num">प्रश्न ${qi+1} / ${questions.length}</div>
+      <div class="mcq-q">${q.q}</div>
+      <div class="mcq-opts" id="opts-${qi}">
+        ${q.opts.map((o,oi)=>`<button class="opt-btn" onclick="selectAnswer(${qi},${oi})">${String.fromCharCode(65+oi)}. ${o}</button>`).join('')}
+      </div>
+      <div class="mcq-exp" id="exp-${qi}">💡 ${q.exp}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function selectAnswer(qi, oi) {
+  if (userAnswers[qi] !== -1) return; // already answered
+  userAnswers[qi] = oi;
+  const opts = document.querySelectorAll(`#opts-${qi} .opt-btn`);
+  opts.forEach(b => b.disabled = true);
+  if (oi === questions[qi].ans) {
+    opts[oi].classList.add('correct');
+    scored[qi] = 1;
+  } else {
+    opts[oi].classList.add('incorrect');
+    opts[questions[qi].ans].classList.add('reveal');
+    scored[qi] = -1;
+  }
+  document.getElementById(`exp-${qi}`).style.display = 'block';
+  updateScore();
+  updateProgress();
+}
+
+function updateScore() {
+  const right = scored.filter(s=>s===1).length;
+  const wrong = scored.filter(s=>s===-1).length;
+  const skip  = scored.filter(s=>s===0).length;
+  document.getElementById('sRight').textContent = right;
+  document.getElementById('sWrong').textContent = wrong;
+  document.getElementById('sSkip').textContent  = skip;
+}
+
+function updateProgress() {
+  const done = userAnswers.filter(a=>a!==-1).length;
+  document.getElementById('mcqProgress').style.width = (done/questions.length*100)+'%';
+}
+
+function submitAll() {
+  const right = scored.filter(s=>s===1).length;
+  const wrong = scored.filter(s=>s===-1).length;
+  const skip  = scored.filter(s=>s===0).length;
+  const total = right - wrong/3;
+  const pct   = Math.round((right/questions.length)*100);
+
+  let emoji, title, grade;
+  if(pct>=85){emoji='🏆';title='शानदार! टॉपर बनोगे!';grade='Grade: A+ | RPSC Ready! ✅'}
+  else if(pct>=70){emoji='🎯';title='बहुत अच्छा!';grade='Grade: A | थोड़ी और मेहनत!'}
+  else if(pct>=55){emoji='👍';title='ठीक है! और पढ़ो!';grade='Grade: B | Revision करो'}
+  else if(pct>=40){emoji='📚';title='अभी बहुत पढ़ना है!';grade='Grade: C | फिर से पढ़ो'}
+  else{emoji='💪';title='हार मत! फिर कोशिश करो!';grade='Grade: D | Revision जरूरी'}
+
+  document.getElementById('popEmoji').textContent = emoji;
+  document.getElementById('popTitle').textContent = title;
+  document.getElementById('popScore').textContent = `Score: ${total.toFixed(2)} / ${questions.length}`;
+  document.getElementById('popDetails').textContent = `✅ सही: ${right}  ❌ गलत: ${wrong}  ⬜ छोड़े: ${skip}`;
+  document.getElementById('popGrade').textContent = grade;
+  document.getElementById('resultPopup').classList.add('show');
+}
+
+renderMCQ();
+</script>
+</body>
+</html>

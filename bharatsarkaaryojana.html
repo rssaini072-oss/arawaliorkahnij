@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>भारत सरकार की योजनाएँ | RPSC RAS/PSI Revision</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --saffron: #FF6B2B;
+  --deep-saffron: #E85520;
+  --green: #138808;
+  --deep-green: #0A5E04;
+  --navy: #1A2240;
+  --gold: #F5A623;
+  --cream: #FFF8F0;
+  --light-bg: #F4F6FA;
+  --card-blue: #1E3A8A;
+  --card-purple: #6B21A8;
+  --card-teal: #0F766E;
+  --card-rose: #9F1239;
+  --card-amber: #92400E;
+  --white: #FFFFFF;
+  --text-dark: #1A1A2E;
+  --text-muted: #555;
+  --shadow: 0 4px 20px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.18);
+  --border-radius: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans Devanagari', 'Baloo 2', sans-serif;
+  background: var(--light-bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, var(--navy) 0%, #2D4070 50%, var(--navy) 100%);
+  padding: 18px 20px 14px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--saffron), var(--white), var(--green));
+}
+.header h1 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+.header p {
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  color: #CBD5E1;
+  margin-top: 4px;
+}
+.badges {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.badge {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* TABS */
+.tab-nav {
+  display: flex;
+  background: var(--navy);
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex: 1;
+  min-width: 80px;
+  padding: 12px 8px;
+  border: none;
+  background: transparent;
+  color: #94A3B8;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: clamp(0.65rem, 2vw, 0.82rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--white); background: rgba(255,255,255,0.08); }
+.tab-btn.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+  background: rgba(245,166,35,0.1);
+}
+
+/* TAB CONTENT */
+.tab-content { display: none; padding: 16px; max-width: 1200px; margin: 0 auto; }
+.tab-content.active { display: block; }
+
+/* SECTION TITLES */
+.section-title {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 20px 0 12px;
+  padding-left: 12px;
+  border-left: 4px solid var(--saffron);
+}
+
+/* CATEGORY HEADER */
+.cat-header {
+  background: linear-gradient(90deg, var(--saffron), var(--deep-saffron));
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 18px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* SCHEME CARDS GRID */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+/* SCHEME CARD */
+.scheme-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--saffron);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+.scheme-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+.scheme-card.blue { border-left-color: #1E3A8A; }
+.scheme-card.green { border-left-color: var(--green); }
+.scheme-card.purple { border-left-color: #7C3AED; }
+.scheme-card.teal { border-left-color: #0F766E; }
+.scheme-card.rose { border-left-color: #BE123C; }
+.scheme-card.amber { border-left-color: #D97706; }
+.scheme-card.pink { border-left-color: #DB2777; }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.card-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.card-abbr {
+  background: var(--navy);
+  color: var(--gold);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin: 6px 0;
+}
+.info-item {
+  background: var(--light-bg);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+}
+.info-label {
+  color: var(--saffron);
+  font-weight: 700;
+  display: block;
+  font-size: 0.65rem;
+}
+.info-val { color: var(--text-dark); font-weight: 600; }
+
+.card-objective {
+  background: #FFF3E8;
+  border: 1px solid #FFDAB9;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  color: #7A3700;
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.mnemonic-box {
+  background: linear-gradient(135deg, #FFF0F5, #FFE4EC);
+  border: 1px dashed #F9A8D4;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  margin-top: 6px;
+}
+.mnemonic-label {
+  color: #BE185D;
+  font-weight: 700;
+  font-size: 0.65rem;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.key-point {
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.73rem;
+  color: #1E40AF;
+  margin-top: 6px;
+}
+.key-label {
+  color: #1D4ED8;
+  font-weight: 700;
+  font-size: 0.65rem;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* SUMMARY TABLE */
+.table-wrapper { overflow-x: auto; margin-bottom: 20px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+thead tr {
+  background: linear-gradient(90deg, var(--navy), #2D4070);
+  color: white;
+}
+th {
+  padding: 10px 8px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+td {
+  padding: 8px 8px;
+  border-bottom: 1px solid #E2E8F0;
+  vertical-align: top;
+  line-height: 1.4;
+}
+tr:hover td { background: #F0F9FF; }
+tr:nth-child(even) td { background: #FAFBFF; }
+tr:nth-child(even):hover td { background: #E0F2FE; }
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+.tag-ag { background: #D1FAE5; color: #065F46; }
+.tag-he { background: #FEE2E2; color: #991B1B; }
+.tag-fi { background: #DBEAFE; color: #1E40AF; }
+.tag-ho { background: #EDE9FE; color: #5B21B6; }
+.tag-sk { background: #FEF9C3; color: #92400E; }
+.tag-ru { background: #FFE4E6; color: #9F1239; }
+.tag-ur { background: #F0FDF4; color: #14532D; }
+.tag-di { background: #FFF7ED; color: #9A3412; }
+.tag-ed { background: #F5F3FF; color: #4C1D95; }
+.tag-en { background: #ECFDF5; color: #064E3B; }
+
+/* MCQ SECTION */
+.mcq-header {
+  background: linear-gradient(135deg, var(--navy), #1E3A8A);
+  color: white;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.score-board {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.score-item {
+  background: rgba(255,255,255,0.15);
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.mcq-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--navy);
+}
+.mcq-card.answered-correct { border-left-color: var(--green); background: #F0FDF4; }
+.mcq-card.answered-wrong { border-left-color: #DC2626; background: #FFF5F5; }
+
+.q-num {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--saffron);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.q-text {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+@media(max-width:500px){ .options-grid { grid-template-columns: 1fr; } }
+
+.opt-btn {
+  padding: 8px 12px;
+  border: 2px solid #E2E8F0;
+  border-radius: 8px;
+  background: var(--light-bg);
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  line-height: 1.4;
+}
+.opt-btn:hover:not(:disabled) {
+  border-color: var(--navy);
+  background: #EEF2FF;
+  transform: translateX(3px);
+}
+.opt-btn.correct { background: #DCFCE7; border-color: var(--green); color: #14532D; font-weight: 700; }
+.opt-btn.wrong { background: #FEE2E2; border-color: #DC2626; color: #7F1D1D; }
+.opt-btn.reveal { background: #DBEAFE; border-color: #1D4ED8; color: #1E3A8A; }
+.opt-btn:disabled { cursor: default; }
+
+.explanation {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #EFF6FF;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: #1E40AF;
+  display: none;
+  line-height: 1.5;
+}
+.explanation.show { display: block; }
+
+.mcq-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--navy); color: white; }
+.btn-primary:hover { background: #0F1D3A; transform: translateY(-2px); }
+.btn-success { background: var(--green); color: white; }
+.btn-danger { background: #DC2626; color: white; }
+.btn-reset { background: #64748B; color: white; }
+
+/* RESULT POPUP */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.popup-overlay.show { display: flex; }
+.popup {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  animation: popIn 0.4s ease;
+}
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.popup-emoji { font-size: 3rem; margin-bottom: 10px; }
+.popup h2 { font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+.popup-score {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--saffron);
+  margin: 10px 0;
+}
+.popup-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+}
+.popup-stat {
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.ps-green { background: #DCFCE7; color: #14532D; }
+.ps-red { background: #FEE2E2; color: #7F1D1D; }
+.ps-gray { background: #F1F5F9; color: #475569; }
+.popup-msg { font-size: 0.9rem; color: #555; margin: 8px 0 16px; }
+
+/* LAST MINUTE TAB */
+.lm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 12px;
+}
+.lm-card {
+  background: white;
+  border-radius: 12px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  border-top: 4px solid var(--saffron);
+}
+.lm-card.b { border-top-color: #1E3A8A; }
+.lm-card.g { border-top-color: var(--green); }
+.lm-card.p { border-top-color: #7C3AED; }
+.lm-card.t { border-top-color: #0F766E; }
+.lm-card.r { border-top-color: #BE123C; }
+
+.lm-name {
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.lm-rows { font-size: 0.72rem; color: #444; }
+.lm-row { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px dotted #E2E8F0; }
+.lm-key { color: #777; }
+.lm-val { font-weight: 700; color: var(--text-dark); text-align: right; }
+
+.super-mnemonic {
+  background: linear-gradient(135deg, #FFF0F5, #FEE2E2);
+  border: 2px dashed #FDA4AF;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+.sm-title {
+  font-weight: 800;
+  color: #BE123C;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sm-content { font-size: 0.8rem; line-height: 1.8; color: #3D0914; }
+.sm-word { font-weight: 700; color: #BE123C; }
+
+/* QUICK REF TABLE */
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.qr-card {
+  background: white;
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-size: 0.75rem;
+}
+.qr-scheme { font-weight: 700; color: var(--navy); font-size: 0.8rem; }
+.qr-year { display: inline-block; background: var(--saffron); color: white; padding: 1px 6px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; margin: 3px 0; }
+.qr-pm { color: #555; font-size: 0.7rem; }
+
+/* PROGRESS BAR */
+.progress-wrap {
+  background: #E2E8F0;
+  border-radius: 10px;
+  height: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--saffron), var(--gold));
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+/* RESPONSIVE */
+@media(max-width: 600px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .info-row { grid-template-columns: 1fr; }
+  .tab-content { padding: 10px; }
+}
+
+/* FILTER BUTTONS */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.filter-btn {
+  padding: 5px 12px;
+  border: 2px solid #CBD5E1;
+  border-radius: 20px;
+  background: white;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #555;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: white;
+}
+
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  z-index: 200;
+  display: none;
+  transition: all 0.2s;
+}
+.scroll-top.show { display: block; }
+.scroll-top:hover { background: var(--saffron); transform: scale(1.1); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🇮🇳 भारत सरकार की योजनाएँ</h1>
+  <p>Vinay Sir Notes — RPSC RAS Pre & PSI Exam Revision</p>
+  <div class="badges">
+    <span class="badge">📚 30+ PYQ MCQ</span>
+    <span class="badge">🧠 Mnemonics</span>
+    <span class="badge">📊 Summary Table</span>
+    <span class="badge">⚡ Last Minute</span>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('revision')">📖 Revision</button>
+  <button class="tab-btn" onclick="showTab('summary')">📊 Summary</button>
+  <button class="tab-btn" onclick="showTab('mcq')">❓ PYQ MCQ</button>
+  <button class="tab-btn" onclick="showTab('lastminute')">⚡ Last Minute</button>
+</div>
+
+<!-- ======================== TAB 1: REVISION ======================== -->
+<div id="revision" class="tab-content active">
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterCards('all', this)">सभी</button>
+    <button class="filter-btn" onclick="filterCards('ag', this)">🌾 कृषि</button>
+    <button class="filter-btn" onclick="filterCards('he', this)">🏥 स्वास्थ्य</button>
+    <button class="filter-btn" onclick="filterCards('fi', this)">💰 वित्तीय</button>
+    <button class="filter-btn" onclick="filterCards('ho', this)">🏠 आवास</button>
+    <button class="filter-btn" onclick="filterCards('sk', this)">🎓 कौशल</button>
+    <button class="filter-btn" onclick="filterCards('di', this)">📱 डिजिटल</button>
+  </div>
+
+  <!-- AGRICULTURAL -->
+  <div class="cat-header">🌾 कृषि एवं ग्रामीण विकास योजनाएँ</div>
+  <div class="cards-grid">
+
+    <div class="scheme-card green" data-cat="ag">
+      <div class="card-header">
+        <span class="card-title">PM धन-धान्य कृषि योजना</span>
+        <span class="card-abbr">PM-DDKY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">बजट 2025-26</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">वित्त मंत्री</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: कृषि उत्पादकता बढ़ाना, फसल विविधीकरण, सिंचाई सुविधा, पंचायत स्तर पर फसल कटाई के बाद भंडारण बढ़ाना।</div>
+      <div class="key-point"><span class="key-label">🔑 मुख्य बिंदु</span>कृषि जिलों के विकास पर केंद्रित | किसानों की आय बढ़ाना | दीर्घकालिक व अल्पकालिक ऋण</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"धन-धान्य = WEALTH-GRAIN" → कृषि समृद्धि + लचीलापन</div>
+    </div>
+
+    <div class="scheme-card teal" data-cat="ag">
+      <div class="card-header">
+        <span class="card-title">आत्मनिर्भरता दालों में</span>
+        <span class="card-abbr">Aatmanirbhar Pulses</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">बजट 2025-26</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">वित्त मंत्री</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: दालों के उत्पादन में आत्मनिर्भरता | जलवायु-लचीले बीज | प्रोटीन सामग्री बढ़ाना | उत्पादकता बढ़ाना</div>
+      <div class="key-point"><span class="key-label">🔑 मुख्य बिंदु</span>दालों का आयात घटाना | घरेलू उत्पादन बढ़ावा | Aatmanirbhar Bharat का हिस्सा</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"DAL = Domestically Achieved Legumes" → आयात कम, उत्पादन ज्यादा</div>
+    </div>
+
+    <div class="scheme-card amber" data-cat="ag">
+      <div class="card-header">
+        <span class="card-title">PM किसान सम्मान निधि</span>
+        <span class="card-abbr">PM-KISAN</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">24 फरवरी 2019</span></div>
+        <div class="info-item"><span class="info-label">📍 कहाँ</span><span class="info-val">गोरखपुर, UP</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: सभी भूमिधारक किसान परिवारों को आय सहायता</div>
+      <div class="key-point"><span class="key-label">🔑 मुख्य बिंदु</span>₹6,000/वर्ष → 3 किस्त × ₹2,000 → सीधे बैंक खाते में DBT</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"2-2-2 = 2000×3 = 6000" → तीन समान किस्तें</div>
+    </div>
+
+    <div class="scheme-card blue" data-cat="ag">
+      <div class="card-header">
+        <span class="card-title">PM फसल बीमा योजना</span>
+        <span class="card-abbr">PMFBY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">18 फरवरी 2016</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मोदी</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: प्राकृतिक आपदाओं, कीटों से फसल नुकसान पर बीमा कवरेज</div>
+      <div class="key-point"><span class="key-label">🔑 प्रीमियम</span>खरीफ: 2% | रबी: 1.5% | व्यावसायिक/बागवानी: 5%</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"2-1.5-5 = खरीफ-रबी-बागवानी" → बाकी प्रीमियम सरकार भरे</div>
+    </div>
+
+    <div class="scheme-card green" data-cat="ag">
+      <div class="card-header">
+        <span class="card-title">PM कृषि सिंचाई योजना</span>
+        <span class="card-abbr">PMKSY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">1 जुलाई 2015</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मोदी</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: 'हर खेत को पानी' | सिंचाई कवरेज विस्तार</div>
+      <div class="key-point"><span class="key-label">🔑 Slogan</span>"पर ड्रॉप मोर क्रॉप" | सूक्ष्म सिंचाई | जल संचयन</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"PMKSY = Paani Milega Khet Saare Yahan" → हर खेत को पानी</div>
+    </div>
+
+    <div class="scheme-card teal" data-cat="ag">
+      <div class="card-header">
+        <span class="card-title">ई-नाम (e-NAM)</span>
+        <span class="card-abbr">Electronic National Agriculture Market</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">14 अप्रैल 2016</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मोदी</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: राष्ट्रीय कृषि बाजार – एकीकृत ऑनलाइन ट्रेडिंग प्लेटफॉर्म</div>
+      <div class="key-point"><span class="key-label">🔑 मुख्य बिंदु</span>बेहतर मूल्य खोज | पारदर्शिता | किसानों के लिए अधिक बाजार पहुँच</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"e-NAM = eléctronique National Agriculture Market" → किसान घर बैठे बेचे</div>
+    </div>
+
+    <div class="scheme-card amber" data-cat="ag">
+      <div class="card-header">
+        <span class="card-title">PM कुसुम योजना</span>
+        <span class="card-abbr">KUSUM</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">2019</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">MNRE</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: किसानों को सौर ऊर्जा से डीजल/बिजली निर्भरता कम करना | अतिरिक्त आय</div>
+      <div class="key-point"><span class="key-label">🔑 Full Form</span>Kisan Urja Suraksha evam Utthaan Mahabhiyan | सौर कृषि पंप</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"KUSUM = Kisanon Ujaale Se Umeed Milegi" → सूरज से सिंचाई</div>
+    </div>
+
+    <div class="scheme-card blue" data-cat="ag">
+      <div class="card-header">
+        <span class="card-title">ऑपरेशन ग्रीन योजना</span>
+        <span class="card-abbr">TOP→TOT</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">नवंबर 2018</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">खाद्य प्रसंस्करण मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: टमाटर, प्याज, आलू (TOP) फसलों के मूल्य में अस्थिरता स्थिर करना</div>
+      <div class="key-point"><span class="key-label">🔑 Extension</span>TOP से सभी फल-सब्जियाँ (TOT) तक विस्तारित</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"TOP = Tomato Onion Potato" → सब्जी मूल्य स्थिरता</div>
+    </div>
+
+    <div class="scheme-card green" data-cat="ag">
+      <div class="card-header">
+        <span class="card-title">राष्ट्रीय बांस मिशन (NBM)</span>
+        <span class="card-abbr">NBM</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">2018 (पुनर्गठन)</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">कृषि मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: बांस क्षेत्र विकास | किसान आय | जलवायु परिवर्तन मुकाबला</div>
+      <div class="key-point"><span class="key-label">🔑 मुख्य</span>मूल्य श्रृंखला दृष्टिकोण | रोपण | हस्तशिल्प | उत्पाद विकास</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"बांस = Green Gold" → पर्यावरण + आमदनी दोनों</div>
+    </div>
+
+    <div class="scheme-card teal" data-cat="ag">
+      <div class="card-header">
+        <span class="card-title">PM कृषि उड़ान योजना</span>
+        <span class="card-abbr">PM-KUY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">अगस्त 2020</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">नागरिक उड्डयन मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: कृषि उत्पादों के परिवहन में सहायता | पूर्वोत्तर व आदिवासी क्षेत्र | बेहतर मूल्य</div>
+      <div class="key-point"><span class="key-label">🔑 मुख्य</span>हवाई मार्ग से कृषि उत्पाद परिवहन | मूल्य श्रृंखला एकीकरण</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"खेत से हवाई जहाज" → ताजी फसल, ज्यादा दाम</div>
+    </div>
+
+  </div>
+
+  <!-- FINANCIAL -->
+  <div class="cat-header">💰 वित्तीय समावेशन एवं बीमा योजनाएँ</div>
+  <div class="cards-grid">
+
+    <div class="scheme-card blue" data-cat="fi">
+      <div class="card-header">
+        <span class="card-title">PM जन धन योजना</span>
+        <span class="card-abbr">PMJDY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">28 अगस्त 2014</span></div>
+        <div class="info-item"><span class="info-label">📍 कहाँ</span><span class="info-val">नई दिल्ली</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: हर परिवार को बैंकिंग, बचत, ऋण, बीमा, पेंशन – वित्तीय समावेशन</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>Zero Balance खाता | ₹10,000 OD | ₹2 लाख दुर्घटना बीमा | RuPay Card</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"PMJDY = 28 August 2014 → 2+8=10, Aug=8 → OD ₹10,000!" याद करो: जन = हर परिवार</div>
+    </div>
+
+    <div class="scheme-card amber" data-cat="fi">
+      <div class="card-header">
+        <span class="card-title">अटल पेंशन योजना</span>
+        <span class="card-abbr">APY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">9 मई 2015</span></div>
+        <div class="info-item"><span class="info-label">📍 कहाँ</span><span class="info-val">कोलकाता</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: असंगठित क्षेत्र के श्रमिकों को वृद्धावस्था सुरक्षा</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>18-40 वर्ष | 60 के बाद ₹1,000-₹5,000 मासिक पेंशन</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"APY = Age 18-40, Pension Yojana → तीनों 9 May 2015 को!" (APY, PMSBY, PMJJBY)</div>
+    </div>
+
+    <div class="scheme-card rose" data-cat="fi">
+      <div class="card-header">
+        <span class="card-title">PM सुरक्षा बीमा योजना</span>
+        <span class="card-abbr">PMSBY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">9 मई 2015</span></div>
+        <div class="info-item"><span class="info-label">📍 कहाँ</span><span class="info-val">कोलकाता</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: कम प्रीमियम पर दुर्घटना मृत्यु/विकलांगता बीमा</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>18-70 वर्ष | ₹20 वार्षिक प्रीमियम | ₹2 लाख दुर्घटना बीमा</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"₹20 = बीस रुपये = Bees → PMSBY" | याद: 20 रुपये, 2 लाख</div>
+    </div>
+
+    <div class="scheme-card blue" data-cat="fi">
+      <div class="card-header">
+        <span class="card-title">PM जीवन ज्योति बीमा योजना</span>
+        <span class="card-abbr">PMJJBY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">9 मई 2015</span></div>
+        <div class="info-item"><span class="info-label">📍 कहाँ</span><span class="info-val">कोलकाता</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: कम प्रीमियम पर जीवन बीमा</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>18-50 वर्ष | ₹436 वार्षिक प्रीमियम | ₹2 लाख जीवन बीमा</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"₹436 ≈ ₹1.2/दिन" | 9 May 2015 को APY+PMSBY+PMJJBY – तीनों एक साथ!</div>
+    </div>
+
+    <div class="scheme-card green" data-cat="fi">
+      <div class="card-header">
+        <span class="card-title">PM मुद्रा योजना</span>
+        <span class="card-abbr">PMMY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">8 अप्रैल 2015</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मोदी</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: गैर-कॉर्पोरेट, गैर-कृषि लघु/सूक्ष्म उद्यमों को ₹20 लाख तक ऋण</div>
+      <div class="key-point"><span class="key-label">🔑 तीन श्रेणी</span>शिशु: ₹50K | किशोर: ₹50K-₹5L | तरुण: ₹5L-₹10L | नई: तरुण+ ₹20L</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"शिशु→किशोर→तरुण = बच्चे से जवान" → ऋण भी बढ़ता है | MUDRA = Micro Units Dev Refinance Agency</div>
+    </div>
+
+    <div class="scheme-card purple" data-cat="fi">
+      <div class="card-header">
+        <span class="card-title">PM श्रम योगी मान-धन</span>
+        <span class="card-abbr">PMSYM</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">फरवरी 2019</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">श्रम मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: असंगठित क्षेत्र श्रमिकों को वृद्धावस्था सुरक्षा + सामाजिक सुरक्षा</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>18-40 वर्ष | ₹55-₹200 मासिक | 60 के बाद ₹3,000 न्यूनतम पेंशन</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"PM-SYM = Shramik = ₹3000 guaranteed" | APY से अंतर: यह असंगठित श्रमिक</div>
+    </div>
+
+    <div class="scheme-card amber" data-cat="fi">
+      <div class="card-header">
+        <span class="card-title">PM वय वंदना योजना</span>
+        <span class="card-abbr">PMVVY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">4 मई 2017</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">LIC (वित्त सेवा विभाग)</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: 60+ वरिष्ठ नागरिकों को पेंशन</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>गारंटीकृत रिटर्न | मासिक/तिमाही पेंशन | 31 मार्च 2023 तक उपलब्ध (अब विस्तारित नहीं)</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"वय = Age (60+), वंदना = सम्मान → बुजुर्गों का सम्मान"</div>
+    </div>
+
+  </div>
+
+  <!-- HEALTH -->
+  <div class="cat-header">🏥 स्वास्थ्य एवं पोषण योजनाएँ</div>
+  <div class="cards-grid">
+
+    <div class="scheme-card rose" data-cat="he">
+      <div class="card-header">
+        <span class="card-title">आयुष्मान भारत (AB-PMJAY)</span>
+        <span class="card-abbr">AB-PMJAY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">23 सितंबर 2018</span></div>
+        <div class="info-item"><span class="info-label">📍 कहाँ</span><span class="info-val">रांची, झारखंड</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: ₹5 लाख/वर्ष स्वास्थ्य बीमा | द्वितीयक व तृतीयक देखभाल</div>
+      <div class="key-point"><span class="key-label">🔑 World Record</span>विश्व की सबसे बड़ी सरकारी स्वास्थ्य बीमा योजना | 10.74 करोड़+ परिवार | नकदी रहित उपचार</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"5 लाख × 10 करोड़ = विश्व की सबसे बड़ी!" | PMJAY = Pradhan Mantri Jan Arogya Yojana</div>
+    </div>
+
+    <div class="scheme-card green" data-cat="he">
+      <div class="card-header">
+        <span class="card-title">मिशन इंद्रधनुष</span>
+        <span class="card-abbr">Mission Indradhanush</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">25 दिसंबर 2014</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">केंद्रीय स्वास्थ्य मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: अधूरे/बिना टीकाकरण वाले बच्चों व गर्भवती महिलाओं का पूर्ण टीकाकरण</div>
+      <div class="key-point"><span class="key-label">🔑 12 बीमारियाँ</span>डिफ्थीरिया, काली खाँसी, टेटनस, पोलियो, टीबी, हेपेटाइटिस-B, खसरा, जापानी इंसेफेलाइटिस, रोटावायरस, HiB, न्यूमोकोकल, MR</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"इंद्रधनुष = 7 रंग = 7 मूल वैक्सीन" | 25 Dec = क्रिसमस = तोहफा स्वास्थ्य का</div>
+    </div>
+
+    <div class="scheme-card blue" data-cat="he">
+      <div class="card-header">
+        <span class="card-title">सक्षम आंगनवाड़ी और पोषण 2.0</span>
+        <span class="card-abbr">Saksham Anganwadi & Poshan 2.0</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">बजट 2025-26</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">महिला एवं बाल विकास मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: 8 करोड़ बच्चे, 1 करोड़ माताएं, 20 लाख किशोरियों को पोषण सहायता</div>
+      <div class="key-point"><span class="key-label">🔑 मुख्य</span>पोषण अभियान + आंगनवाड़ी सेवाओं का एकीकरण | स्टंटिंग, एनीमिया कम करना</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"8+1+20 = बच्चे+माएं+किशोरी" | POSHAN = PM's Overarching Scheme for Holistic Nutrition</div>
+    </div>
+
+    <div class="scheme-card purple" data-cat="he">
+      <div class="card-header">
+        <span class="card-title">पोषण अभियान (राष्ट्रीय पोषण मिशन)</span>
+        <span class="card-abbr">NNM</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">8 मार्च 2018</span></div>
+        <div class="info-item"><span class="info-label">📍 कहाँ</span><span class="info-val">झुंझुनू, राजस्थान</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: बच्चों, किशोरियों, गर्भवती, स्तनपान माताओं में कुपोषण दूर करना</div>
+      <div class="key-point"><span class="key-label">🔑 मुख्य</span>स्टंटिंग, अल्पपोषण, एनीमिया, जन्म पर कम वजन कम करना | Technology-based monitoring</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"8 मार्च = महिला दिवस = पोषण अभियान" | झुंझुनू राजस्थान (RAS के लिए महत्वपूर्ण!)</div>
+    </div>
+
+    <div class="scheme-card teal" data-cat="he">
+      <div class="card-header">
+        <span class="card-title">PM भारतीय जनऔषधि परियोजना</span>
+        <span class="card-abbr">PMBJP</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">नवंबर 2008 (PMBJP 2015)</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">फार्मास्यूटिकल्स विभाग</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: सस्ती, गुणवत्तापूर्ण जेनेरिक दवाएं सभी को उपलब्ध कराना</div>
+      <div class="key-point"><span class="key-label">🔑 मुख्य</span>जनऔषधि केंद्र स्थापित | दवाओं की लागत कम</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"जन = आम आदमी, औषधि = दवा → सबको सस्ती दवा" | Generic = सस्ता</div>
+    </div>
+
+    <div class="scheme-card rose" data-cat="he">
+      <div class="card-header">
+        <span class="card-title">PM मातृ वंदना योजना</span>
+        <span class="card-abbr">PMMVY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">1 जनवरी 2017</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">महिला एवं बाल विकास</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: गर्भवती/स्तनपान माताओं को ₹5,000 नकद प्रोत्साहन</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>3 किस्तों में DBT | पहले बच्चे के जन्म पर लागू | मजदूरी हानि मुआवजा</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"5000 = 1000+2000+2000 तीन किस्त" | मातृ = माँ का सम्मान</div>
+    </div>
+
+  </div>
+
+  <!-- HOUSING & SANITATION -->
+  <div class="cat-header">🏠 आवास एवं स्वच्छता योजनाएँ</div>
+  <div class="cards-grid">
+
+    <div class="scheme-card blue" data-cat="ho">
+      <div class="card-header">
+        <span class="card-title">PM आवास योजना</span>
+        <span class="card-abbr">PMAY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">25 जून 2015</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मोदी</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: "सभी के लिए आवास" – शहरी और ग्रामीण दोनों क्षेत्र</div>
+      <div class="key-point"><span class="key-label">🔑 दो भाग</span>PMAY-Urban: In-situ slum rehab, Credit-linked subsidy | PMAY-Gramin: Indira Awas Yojana का पुनर्गठन</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"25 June 2015 = Smart City Mission भी! याद: जून में दो बड़ी योजनाएँ"</div>
+    </div>
+
+    <div class="scheme-card green" data-cat="ho">
+      <div class="card-header">
+        <span class="card-title">स्वच्छ भारत अभियान</span>
+        <span class="card-abbr">SBM</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">2 अक्टूबर 2014</span></div>
+        <div class="info-item"><span class="info-label">📍 कहाँ</span><span class="info-val">नई दिल्ली (राजघाट)</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: 2019 तक ODF (खुले में शौच मुक्त) भारत | ठोस/तरल अपशिष्ट प्रबंधन</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>SBM-Gramin + SBM-Urban | शौचालय निर्माण | गांधी जयंती पर शुरू</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"2 Oct = Gandhi Ji का जन्मदिन = स्वच्छता का जन्म" | ODF = Open Defecation Free</div>
+    </div>
+
+    <div class="scheme-card amber" data-cat="ho">
+      <div class="card-header">
+        <span class="card-title">सौभाग्य योजना</span>
+        <span class="card-abbr">SAUBHAGYA</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">25 सितंबर 2017</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मोदी</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: देश के सभी घरों का विद्युतीकरण सुनिश्चित करना</div>
+      <div class="key-point"><span class="key-label">🔑 Full Form</span>PM Sahaj Bijli Har Ghar Yojana | ग्रामीण + शहरी सभी गैर-विद्युतीकृत घर</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"सौभाग्य = Good Fortune = हर घर बिजली" | SAUBHAGYA = Sahaj Urja</div>
+    </div>
+
+    <div class="scheme-card purple" data-cat="ho">
+      <div class="card-header">
+        <span class="card-title">PM उज्ज्वला योजना</span>
+        <span class="card-abbr">PMUY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">1 मई 2016</span></div>
+        <div class="info-item"><span class="info-label">📍 कहाँ</span><span class="info-val">बलिया, UP</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: BPL परिवारों की महिलाओं को मुफ्त LPG कनेक्शन</div>
+      <div class="key-point"><span class="key-label">🔑 मुख्य</span>स्वच्छ ईंधन | महिलाओं का स्वास्थ्य सुरक्षा | ग्रामीण/वंचित परिवार</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"उज्ज्वला = उजाला = धुआँ मुक्त रसोई" | 1 May = Labour Day = माँ का सम्मान</div>
+    </div>
+
+    <div class="scheme-card rose" data-cat="ho">
+      <div class="card-header">
+        <span class="card-title">नमामि गंगे / NMCG</span>
+        <span class="card-abbr">NMCG</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">जून 2014</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">जल शक्ति मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: गंगा नदी का संरक्षण और कायाकल्प | प्रदूषण कम करना | जैव विविधता संरक्षण</div>
+      <div class="key-point"><span class="key-label">🔑 Full Form</span>National Mission for Clean Ganga | नदी पुनरुद्धार</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"नमामि = नमस्कार गंगा मैया को" | जल शक्ति मंत्रालय याद रखें</div>
+    </div>
+
+  </div>
+
+  <!-- SKILL & EMPLOYMENT -->
+  <div class="cat-header">🎓 कौशल, शिक्षा एवं रोजगार योजनाएँ</div>
+  <div class="cards-grid">
+
+    <div class="scheme-card blue" data-cat="sk">
+      <div class="card-header">
+        <span class="card-title">PM कौशल विकास योजना</span>
+        <span class="card-abbr">PMKVY</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">15 जुलाई 2015</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मोदी</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: युवाओं को उद्योग-प्रासंगिक कौशल प्रशिक्षण</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>अल्पकालिक प्रशिक्षण | RPL (Recognition of Prior Learning) | रोजगार सहायता</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"15 July = World Youth Skills Day" | PMKVY = Skills ke liye Modi ki Yojana</div>
+    </div>
+
+    <div class="scheme-card green" data-cat="sk">
+      <div class="card-header">
+        <span class="card-title">MGNREGA</span>
+        <span class="card-abbr">महात्मा गांधी NREGA</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">2 फरवरी 2006</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मनमोहन सिंह</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: ग्रामीण परिवारों को 100 दिन गारंटीकृत मजदूरी रोजगार</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>कानूनी अधिकार | अकुशल शारीरिक कार्य | महिला सशक्तिकरण | 2005 में अधिनियम</span></div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"100 दिन = 1 सौ = मनमोहन सिंह की सौगात" | शुरू अनंतपुर, आंध्रप्रदेश</div>
+    </div>
+
+    <div class="scheme-card purple" data-cat="sk">
+      <div class="card-header">
+        <span class="card-title">DAY-NRLM</span>
+        <span class="card-abbr">दीनदयाल अंत्योदय</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">जून 2011 (नाम 2015)</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">ग्रामीण विकास मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: ग्रामीण गरीब महिलाओं को SHG में संगठित कर गरीबी कम करना</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>SHG वित्तीय समावेशन | क्षमता निर्माण | माइक्रो-फाइनेंस | कौशल विकास</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"NRLM → DAY = दीनदयाल → गरीब महिला → SHG → ताकत"</div>
+    </div>
+
+    <div class="scheme-card teal" data-cat="sk">
+      <div class="card-header">
+        <span class="card-title">DDU-GKY</span>
+        <span class="card-abbr">दीनदयाल उपाध्याय ग्रामीण कौशल्या</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">25 सितंबर 2014</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">ग्रामीण विकास मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: ग्रामीण गरीब युवाओं को Placement-linked कौशल</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>15-35 वर्ष | न्यूनतम 70% प्लेसमेंट गारंटी | PMKVY से अंतर: Rural youth focused</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"DDU = Deen Dayal Upadhyaya = गांव के युवा = नौकरी गारंटी 70%"</div>
+    </div>
+
+    <div class="scheme-card amber" data-cat="sk">
+      <div class="card-header">
+        <span class="card-title">सर्व शिक्षा अभियान</span>
+        <span class="card-abbr">SSA</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">2001</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM वाजपेयी (MHRD)</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: 6-14 वर्ष के सभी बच्चों को प्रारंभिक शिक्षा</div>
+      <div class="key-point"><span class="key-label">🔑 Status</span>अब समग्र शिक्षा अभियान में शामिल | स्कूल बुनियादी ढांचा, शिक्षक प्रशिक्षण</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"SSA = Sabhi Shala Abhiyan → 6-14 = RTE Act" | वाजपेयी = 2001</div>
+    </div>
+
+  </div>
+
+  <!-- DIGITAL & INDUSTRY -->
+  <div class="cat-header">📱 डिजिटल, उद्योग एवं अवसंरचना योजनाएँ</div>
+  <div class="cards-grid">
+
+    <div class="scheme-card blue" data-cat="di">
+      <div class="card-header">
+        <span class="card-title">डिजिटल इंडिया</span>
+        <span class="card-abbr">Digital India</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">1 जुलाई 2015</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मोदी</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: भारत को डिजिटल सशक्त समाज + ज्ञान अर्थव्यवस्था में बदलना</div>
+      <div class="key-point"><span class="key-label">🔑 3 स्तंभ</span>डिजिटल बुनियादी ढांचा | शासन और सेवाएं | नागरिक डिजिटल सशक्तिकरण</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"1 July = Doctor's Day = Digital Health too!" | Digital India = 3D: Infrastructure, Delivery, Digital literacy</div>
+    </div>
+
+    <div class="scheme-card green" data-cat="di">
+      <div class="card-header">
+        <span class="card-title">मेक इन इंडिया</span>
+        <span class="card-abbr">Make in India</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">25 सितंबर 2014</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मोदी</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: भारत को वैश्विक विनिर्माण केंद्र बनाना | विदेशी निवेश आकर्षित करना</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>25 प्रमुख क्षेत्र | Ease of Doing Business | शेर का लोगो (चक्र वाला)</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"MII = Manufacturing Is Important" | Lion = India Roars in Manufacturing</div>
+    </div>
+
+    <div class="scheme-card purple" data-cat="di">
+      <div class="card-header">
+        <span class="card-title">स्टार्टअप इंडिया</span>
+        <span class="card-abbr">Startup India</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">16 जनवरी 2016</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मोदी</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: नवाचार और उद्यमिता का पारिस्थितिकी तंत्र | आर्थिक विकास + रोजगार</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>आयकर छूट | आसान पंजीकरण | Fund of Funds | पेटेंट आवेदन में तेजी</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"16 Jan 2016 = 1-6-1-6 → Start-Up का नया दौर" | "Fund of Funds = पैसे का पैसा"</div>
+    </div>
+
+    <div class="scheme-card teal" data-cat="di">
+      <div class="card-header">
+        <span class="card-title">स्मार्ट सिटी मिशन</span>
+        <span class="card-abbr">Smart City</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">25 जून 2015</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">PM मोदी</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: शहरों को 'स्मार्ट' समाधानों से रहने योग्य और टिकाऊ बनाना</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>100 स्मार्ट शहर | एकीकृत शहरी नियोजन | डिजिटल और सतत समाधान</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"25 June = PMAY + Smart City – दोनों एक ही दिन 2015!" | 100 cities</div>
+    </div>
+
+    <div class="scheme-card amber" data-cat="di">
+      <div class="card-header">
+        <span class="card-title">UDAN योजना</span>
+        <span class="card-abbr">उड़े देश का आम नागरिक</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">27 अक्टूबर 2016</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">नागरिक उड्डयन मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: क्षेत्रीय हवाई कनेक्टिविटी + आम आदमी के लिए सस्ती उड़ान</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>क्षेत्रीय मार्गों पर एयरलाइंस को प्रोत्साहन | निर्धारित किराए की सीमा</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"उड़े देश का आम नागरिक = UDAN = उड़ान सबके लिए" | सस्ती उड़ान = 2500 km = ₹2500</div>
+    </div>
+
+    <div class="scheme-card blue" data-cat="di">
+      <div class="card-header">
+        <span class="card-title">भारतमाला परियोजना</span>
+        <span class="card-abbr">Bharatmala</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">24 अक्टूबर 2017</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">सड़क परिवहन मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: देश के सड़क नेटवर्क में सुधार | आर्थिक गलियारे, फीडर सड़कें</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>83,677 km सड़क निर्माण | लॉजिस्टिक्स दक्षता | आर्थिक कॉरिडोर</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"भारतमाला = भारत की माला = सड़कों से देश को जोड़ना" | 83677 = लगभग 84 हजार km</div>
+    </div>
+
+  </div>
+
+  <!-- WOMEN & SOCIAL -->
+  <div class="cat-header">👩 महिला एवं सामाजिक सुरक्षा योजनाएँ</div>
+  <div class="cards-grid">
+
+    <div class="scheme-card rose" data-cat="ru">
+      <div class="card-header">
+        <span class="card-title">बेटी बचाओ बेटी पढ़ाओ</span>
+        <span class="card-abbr">BBBP</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">22 जनवरी 2015</span></div>
+        <div class="info-item"><span class="info-label">📍 कहाँ</span><span class="info-val">पानीपत, हरियाणा</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: लिंगानुपात सुधार | लड़कियों की शिक्षा | महिला सशक्तिकरण</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>जन्म के समय लिंगानुपात सुधार | लड़कियों का अस्तित्व, सुरक्षा, शिक्षा</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"पानीपत = 3 युद्ध + 1 सामाजिक युद्ध (लड़कियों के लिए)" | 22 Jan = नई शुरुआत</div>
+    </div>
+
+    <div class="scheme-card purple" data-cat="ru">
+      <div class="card-header">
+        <span class="card-title">वन स्टॉप सेंटर (सखी)</span>
+        <span class="card-abbr">OSC / Sakhi</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">2015</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">महिला एवं बाल विकास</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: हिंसा से प्रभावित महिलाओं को एक ही छत के नीचे एकीकृत सहायता</div>
+      <div class="key-point"><span class="key-label">🔑 Services</span>चिकित्सा | कानूनी | मनोवैज्ञानिक परामर्श | अस्थायी आश्रय</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"सखी = दोस्त = मुसीबत में साथ" | One Stop = एक ही जगह सब कुछ</div>
+    </div>
+
+    <div class="scheme-card teal" data-cat="ru">
+      <div class="card-header">
+        <span class="card-title">स्वदेश दर्शन योजना</span>
+        <span class="card-abbr">Swadesh Darshan</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">2014-15</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">पर्यटन मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: थीम-आधारित पर्यटन सर्किट विकसित करना</div>
+      <div class="key-point"><span class="key-label">🔑 Circuits</span>बौद्ध, हिमालयन, कृष्णा, रामायण, डेजर्ट, ट्राइबल आदि</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"स्वदेश = अपना देश देखो" | PRASHAD (तीर्थ स्थल) के साथ याद करें</div>
+    </div>
+
+    <div class="scheme-card amber" data-cat="ru">
+      <div class="card-header">
+        <span class="card-title">PRASHAD योजना</span>
+        <span class="card-abbr">तीर्थयात्रा कायाकल्प</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">2014-15</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">पर्यटन मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: भारत में तीर्थ स्थलों और विरासत शहरों का विकास</div>
+      <div class="key-point"><span class="key-label">🔑 Full Form</span>Pilgrimage Rejuvenation And Spiritual Heritage Augmentation Drive</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"PRASHAD = प्रसाद = तीर्थ स्थलों का प्रसाद" | Swadesh Darshan के साथ एक ही वर्ष</div>
+    </div>
+
+    <div class="scheme-card rose" data-cat="ru">
+      <div class="card-header">
+        <span class="card-title">RUSA</span>
+        <span class="card-abbr">राष्ट्रीय उच्चतर शिक्षा अभियान</span>
+      </div>
+      <div class="info-row">
+        <div class="info-item"><span class="info-label">📅 लॉन्च</span><span class="info-val">2013</span></div>
+        <div class="info-item"><span class="info-label">👤 किसने</span><span class="info-val">शिक्षा मंत्रालय</span></div>
+      </div>
+      <div class="card-objective">उद्देश्य: राज्य उच्च शिक्षा संस्थानों में Equity, पहुँच, उत्कृष्टता</div>
+      <div class="key-point"><span class="key-label">🔑 Features</span>बुनियादी ढांचा | संकाय विकास | अनुसंधान को बढ़ावा</div>
+      <div class="mnemonic-box"><span class="mnemonic-label">🧠 Trick</span>"RUSA = Rashtriya Ucchatar Shiksha Abhiyan = University ka upgrade" | 2013 UPA सरकार</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================== TAB 2: SUMMARY ======================== -->
+<div id="summary" class="tab-content">
+
+  <div class="section-title">📊 Master Summary Table – सरकारी योजनाएँ</div>
+
+  <div class="table-wrapper">
+    <table id="masterTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>योजना का नाम</th>
+          <th>संक्षिप्त</th>
+          <th>लॉन्च तिथि</th>
+          <th>किसने लॉन्च की</th>
+          <th>मंत्रालय/विभाग</th>
+          <th>श्रेणी</th>
+          <th>मुख्य उद्देश्य</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>PM जन धन योजना</td><td>PMJDY</td><td>28 Aug 2014</td><td>PM मोदी</td><td>वित्त मंत्रालय</td><td><span class="tag tag-fi">वित्तीय</span></td><td>वित्तीय समावेशन, Zero Balance खाता</td></tr>
+        <tr><td>2</td><td>स्वच्छ भारत अभियान</td><td>SBM</td><td>2 Oct 2014</td><td>PM मोदी</td><td>पेयजल एवं स्वच्छता</td><td><span class="tag tag-ho">आवास</span></td><td>ODF, स्वच्छता</td></tr>
+        <tr><td>3</td><td>मेक इन इंडिया</td><td>MII</td><td>25 Sep 2014</td><td>PM मोदी</td><td>वाणिज्य मंत्रालय</td><td><span class="tag tag-sk">उद्योग</span></td><td>विनिर्माण केंद्र</td></tr>
+        <tr><td>4</td><td>DDU-GKY</td><td>DDU-GKY</td><td>25 Sep 2014</td><td>ग्रामीण विकास</td><td>ग्रामीण विकास मंत्रालय</td><td><span class="tag tag-sk">कौशल</span></td><td>ग्रामीण युवा कौशल</td></tr>
+        <tr><td>5</td><td>मिशन इंद्रधनुष</td><td>MI</td><td>25 Dec 2014</td><td>स्वास्थ्य मंत्रालय</td><td>स्वास्थ्य एवं परिवार कल्याण</td><td><span class="tag tag-he">स्वास्थ्य</span></td><td>पूर्ण टीकाकरण</td></tr>
+        <tr><td>6</td><td>स्वदेश दर्शन / PRASHAD</td><td>SD/PRASHAD</td><td>2014-15</td><td>पर्यटन मंत्रालय</td><td>पर्यटन मंत्रालय</td><td><span class="tag tag-ur">शहरी</span></td><td>पर्यटन विकास</td></tr>
+        <tr><td>7</td><td>बेटी बचाओ बेटी पढ़ाओ</td><td>BBBP</td><td>22 Jan 2015</td><td>PM मोदी</td><td>WCD+स्वास्थ्य+शिक्षा</td><td><span class="tag tag-ru">ग्रामीण</span></td><td>लिंगानुपात सुधार</td></tr>
+        <tr><td>8</td><td>PM आवास योजना</td><td>PMAY</td><td>25 Jun 2015</td><td>PM मोदी</td><td>आवास मंत्रालय</td><td><span class="tag tag-ho">आवास</span></td><td>सभी के लिए आवास</td></tr>
+        <tr><td>9</td><td>स्मार्ट सिटी मिशन</td><td>SCM</td><td>25 Jun 2015</td><td>PM मोदी</td><td>शहरी विकास मंत्रालय</td><td><span class="tag tag-ur">शहरी</span></td><td>100 स्मार्ट शहर</td></tr>
+        <tr><td>10</td><td>डिजिटल इंडिया</td><td>DI</td><td>1 Jul 2015</td><td>PM मोदी</td><td>IT मंत्रालय</td><td><span class="tag tag-di">डिजिटल</span></td><td>डिजिटल अर्थव्यवस्था</td></tr>
+        <tr><td>11</td><td>PM कृषि सिंचाई योजना</td><td>PMKSY</td><td>1 Jul 2015</td><td>PM मोदी</td><td>जल शक्ति मंत्रालय</td><td><span class="tag tag-ag">कृषि</span></td><td>हर खेत को पानी</td></tr>
+        <tr><td>12</td><td>PM कौशल विकास योजना</td><td>PMKVY</td><td>15 Jul 2015</td><td>PM मोदी</td><td>कौशल विकास मंत्रालय</td><td><span class="tag tag-sk">कौशल</span></td><td>युवा कौशल प्रशिक्षण</td></tr>
+        <tr><td>13</td><td>अटल पेंशन योजना</td><td>APY</td><td>9 May 2015</td><td>PM मोदी</td><td>वित्त मंत्रालय</td><td><span class="tag tag-fi">वित्तीय</span></td><td>वृद्धावस्था पेंशन</td></tr>
+        <tr><td>14</td><td>PM सुरक्षा बीमा योजना</td><td>PMSBY</td><td>9 May 2015</td><td>PM मोदी</td><td>वित्त मंत्रालय</td><td><span class="tag tag-fi">वित्तीय</span></td><td>₹20/वर्ष दुर्घटना बीमा</td></tr>
+        <tr><td>15</td><td>PM जीवन ज्योति बीमा</td><td>PMJJBY</td><td>9 May 2015</td><td>PM मोदी</td><td>वित्त मंत्रालय</td><td><span class="tag tag-fi">वित्तीय</span></td><td>₹436/वर्ष जीवन बीमा</td></tr>
+        <tr><td>16</td><td>PM मुद्रा योजना</td><td>PMMY</td><td>8 Apr 2015</td><td>PM मोदी</td><td>वित्त मंत्रालय</td><td><span class="tag tag-fi">वित्तीय</span></td><td>SME ऋण ₹10-20 लाख</td></tr>
+        <tr><td>17</td><td>e-NAM</td><td>e-NAM</td><td>14 Apr 2016</td><td>PM मोदी</td><td>कृषि मंत्रालय</td><td><span class="tag tag-ag">कृषि</span></td><td>ऑनलाइन कृषि बाजार</td></tr>
+        <tr><td>18</td><td>PM फसल बीमा योजना</td><td>PMFBY</td><td>18 Feb 2016</td><td>PM मोदी</td><td>कृषि मंत्रालय</td><td><span class="tag tag-ag">कृषि</span></td><td>फसल हानि बीमा</td></tr>
+        <tr><td>19</td><td>PM उज्ज्वला योजना</td><td>PMUY</td><td>1 May 2016</td><td>PM मोदी</td><td>पेट्रोलियम मंत्रालय</td><td><span class="tag tag-ho">आवास</span></td><td>BPL महिलाओं को LPG</td></tr>
+        <tr><td>20</td><td>स्टार्टअप इंडिया</td><td>SI</td><td>16 Jan 2016</td><td>PM मोदी</td><td>DPIIT</td><td><span class="tag tag-sk">उद्योग</span></td><td>स्टार्टअप पारिस्थितिकी</td></tr>
+        <tr><td>21</td><td>UDAN योजना</td><td>UDAN</td><td>27 Oct 2016</td><td>नागरिक उड्डयन</td><td>नागरिक उड्डयन मंत्रालय</td><td><span class="tag tag-di">इन्फ्रा</span></td><td>सस्ती उड़ान</td></tr>
+        <tr><td>22</td><td>PM मातृ वंदना योजना</td><td>PMMVY</td><td>1 Jan 2017</td><td>WCD मंत्रालय</td><td>महिला एवं बाल विकास</td><td><span class="tag tag-he">स्वास्थ्य</span></td><td>₹5,000 मातृत्व प्रोत्साहन</td></tr>
+        <tr><td>23</td><td>सौभाग्य</td><td>SAUBHAGYA</td><td>25 Sep 2017</td><td>PM मोदी</td><td>विद्युत मंत्रालय</td><td><span class="tag tag-ho">आवास</span></td><td>हर घर बिजली</td></tr>
+        <tr><td>24</td><td>भारतमाला परियोजना</td><td>BMP</td><td>24 Oct 2017</td><td>सड़क परिवहन</td><td>सड़क मंत्रालय</td><td><span class="tag tag-di">इन्फ्रा</span></td><td>83,677 km सड़क</td></tr>
+        <tr><td>25</td><td>पोषण अभियान</td><td>NNM</td><td>8 Mar 2018</td><td>PM मोदी</td><td>WCD मंत्रालय</td><td><span class="tag tag-he">स्वास्थ्य</span></td><td>कुपोषण दूर करना, झुंझुनू</td></tr>
+        <tr><td>26</td><td>AB-PMJAY</td><td>PMJAY</td><td>23 Sep 2018</td><td>PM मोदी</td><td>स्वास्थ्य मंत्रालय</td><td><span class="tag tag-he">स्वास्थ्य</span></td><td>₹5 लाख स्वास्थ्य बीमा</td></tr>
+        <tr><td>27</td><td>PM किसान सम्मान निधि</td><td>PM-KISAN</td><td>24 Feb 2019</td><td>PM मोदी</td><td>कृषि मंत्रालय</td><td><span class="tag tag-ag">कृषि</span></td><td>₹6,000/वर्ष किसान आय</td></tr>
+        <tr><td>28</td><td>PM श्रम योगी मान-धन</td><td>PMSYM</td><td>Feb 2019</td><td>श्रम मंत्रालय</td><td>श्रम एवं रोजगार</td><td><span class="tag tag-fi">वित्तीय</span></td><td>असंगठित श्रमिक पेंशन ₹3000</td></tr>
+        <tr><td>29</td><td>PM कृषि उड़ान योजना</td><td>KUY</td><td>Aug 2020</td><td>नागरिक उड्डयन</td><td>नागरिक उड्डयन मंत्रालय</td><td><span class="tag tag-ag">कृषि</span></td><td>कृषि उत्पाद हवाई परिवहन</td></tr>
+        <tr><td>30</td><td>PM धन-धान्य कृषि योजना</td><td>PM-DDKY</td><td>बजट 2025-26</td><td>वित्त मंत्री</td><td>कृषि मंत्रालय</td><td><span class="tag tag-ag">कृषि</span></td><td>कृषि उत्पादकता + भंडारण</td></tr>
+        <tr><td>31</td><td>सक्षम आंगनवाड़ी/पोषण 2.0</td><td>Poshan 2.0</td><td>बजट 2025-26</td><td>WCD मंत्रालय</td><td>महिला एवं बाल विकास</td><td><span class="tag tag-he">स्वास्थ्य</span></td><td>8 करोड़ बच्चे, 20 लाख किशोरी</td></tr>
+        <tr><td>32</td><td>आत्मनिर्भरता दालों में</td><td>Pulse</td><td>बजट 2025-26</td><td>वित्त मंत्री</td><td>कृषि मंत्रालय</td><td><span class="tag tag-ag">कृषि</span></td><td>दाल उत्पादन आत्मनिर्भरता</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">⚡ Quick Reference – वर्षवार सॉर्ट (2014-2026)</div>
+  <div class="qr-grid" id="qrGrid">
+    <!-- Populated by JS -->
+  </div>
+
+  <div class="section-title">🏛️ मंत्रालयवार योजना सूची</div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>मंत्रालय/विभाग</th><th>योजनाएँ</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>वित्त मंत्रालय / DFSB</strong></td><td>PMJDY, APY, PMSBY, PMJJBY, PMMY, PMSYM, PMVVY</td></tr>
+        <tr><td><strong>कृषि एवं किसान कल्याण</strong></td><td>PM-KISAN, PMFBY, PMKSY, e-NAM, PMKUY, KUSUM, NBM, PM-DDKY, Pulses</td></tr>
+        <tr><td><strong>महिला एवं बाल विकास</strong></td><td>PMMVY, BBBP, Sakhi/OSC, Poshan 2.0, Saksham Anganwadi</td></tr>
+        <tr><td><strong>स्वास्थ्य एवं परिवार कल्याण</strong></td><td>AB-PMJAY, Mission Indradhanush, PMBJP, Poshan Abhiyan (NNM)</td></tr>
+        <tr><td><strong>ग्रामीण विकास</strong></td><td>MGNREGA, DAY-NRLM, DDU-GKY, PMAY-Gramin</td></tr>
+        <tr><td><strong>शहरी विकास / आवास</strong></td><td>Smart City, PMAY-Urban, SBM-Urban, SAUBHAGYA</td></tr>
+        <tr><td><strong>IT मंत्रालय</strong></td><td>Digital India</td></tr>
+        <tr><td><strong>वाणिज्य / DPIIT</strong></td><td>Make in India, Startup India</td></tr>
+        <tr><td><strong>पर्यटन मंत्रालय</strong></td><td>Swadesh Darshan, PRASHAD</td></tr>
+        <tr><td><strong>नागरिक उड्डयन</strong></td><td>UDAN, PM Krishi Udaan</td></tr>
+        <tr><td><strong>पेट्रोलियम</strong></td><td>PMUY (उज्ज्वला)</td></tr>
+        <tr><td><strong>जल शक्ति</strong></td><td>PMKSY, NMCG/Namami Gange</td></tr>
+        <tr><td><strong>सड़क परिवहन</strong></td><td>Bharatmala</td></tr>
+        <tr><td><strong>MNRE (नवीकरणीय ऊर्जा)</strong></td><td>PM KUSUM</td></tr>
+        <tr><td><strong>शिक्षा मंत्रालय</strong></td><td>SSA (अब Samagra Shiksha), RUSA</td></tr>
+        <tr><td><strong>श्रम एवं रोजगार</strong></td><td>PMKVY, PMSYM</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">📅 महत्वपूर्ण तिथियाँ – एक नजर</div>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>तिथि</th><th>योजना</th><th>विशेषता</th></tr></thead>
+      <tbody>
+        <tr><td>28 Aug 2014</td><td>PMJDY</td><td>वित्तीय समावेशन दिवस</td></tr>
+        <tr><td>2 Oct 2014</td><td>SBM</td><td>गाँधी जयंती पर</td></tr>
+        <tr><td>25 Dec 2014</td><td>Mission Indradhanush</td><td>Good Governance Day</td></tr>
+        <tr><td>22 Jan 2015</td><td>BBBP</td><td>पानीपत, हरियाणा</td></tr>
+        <tr><td>9 May 2015</td><td>APY + PMSBY + PMJJBY</td><td>तीनों एक साथ, कोलकाता</td></tr>
+        <tr><td>25 Jun 2015</td><td>PMAY + Smart City</td><td>दोनों एक साथ!</td></tr>
+        <tr><td>1 Jul 2015</td><td>Digital India + PMKSY</td><td>दोनों एक साथ!</td></tr>
+        <tr><td>15 Jul 2015</td><td>PMKVY</td><td>World Youth Skills Day</td></tr>
+        <tr><td>16 Jan 2016</td><td>Startup India</td><td>राष्ट्रीय स्टार्टअप दिवस</td></tr>
+        <tr><td>18 Feb 2016</td><td>PMFBY</td><td>PM मोदी</td></tr>
+        <tr><td>1 May 2016</td><td>PMUY</td><td>श्रमिक दिवस, बलिया UP</td></tr>
+        <tr><td>14 Apr 2016</td><td>e-NAM</td><td>अम्बेडकर जयंती</td></tr>
+        <tr><td>8 Mar 2018</td><td>Poshan Abhiyan</td><td>महिला दिवस, झुंझुनू राजस्थान</td></tr>
+        <tr><td>23 Sep 2018</td><td>AB-PMJAY</td><td>रांची, झारखंड</td></tr>
+        <tr><td>24 Feb 2019</td><td>PM-KISAN</td><td>गोरखपुर, UP</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ======================== TAB 3: MCQ ======================== -->
+<div id="mcq" class="tab-content">
+  <div class="mcq-header">
+    <div>
+      <div style="font-size:1.1rem;font-weight:800;">❓ PYQ MCQ – सरकारी योजनाएँ</div>
+      <div style="font-size:0.75rem;color:#94A3B8;margin-top:3px;">RPSC RAS Pre / PSI / Rajasthan GK</div>
+    </div>
+    <div class="score-board">
+      <div class="score-item">📝 <span id="totalQ">30</span> प्रश्न</div>
+      <div class="score-item">✅ <span id="correct">0</span> सही</div>
+      <div class="score-item">❌ <span id="wrong">0</span> गलत</div>
+      <div class="score-item">⏭️ <span id="skipped">30</span> शेष</div>
+      <div class="score-item">📊 <span id="liveScore">0</span> अंक</div>
+    </div>
+  </div>
+
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+
+  <div id="mcqContainer"></div>
+
+  <div class="mcq-controls">
+    <button class="btn btn-success" onclick="showResult()">📊 परिणाम देखें</button>
+    <button class="btn btn-reset" onclick="resetMCQ()">🔄 रीसेट करें</button>
+  </div>
+</div>
+
+<!-- ======================== TAB 4: LAST MINUTE ======================== -->
+<div id="lastminute" class="tab-content">
+
+  <div class="super-mnemonic">
+    <div class="sm-title">🧠 Super Mnemonic #1 – 9 May 2015 Triple Launch</div>
+    <div class="sm-content">
+      <span class="sm-word">"APY + PMSBY + PMJJBY"</span> = तीनों 9 मई 2015 को कोलकाता से लॉन्च<br>
+      याद करें: <span class="sm-word">"कोलकाता में तीन = APY(18-40) + PMSBY(₹20) + PMJJBY(₹436)"</span>
+    </div>
+  </div>
+
+  <div class="super-mnemonic" style="background:linear-gradient(135deg,#F0FDF4,#D1FAE5);border-color:#6EE7B7;">
+    <div class="sm-title" style="color:#065F46;">🧠 Super Mnemonic #2 – June 25, 2015 Twin Launch</div>
+    <div class="sm-content" style="color:#064E3B;">
+      <span class="sm-word" style="color:#065F46;">"25 June 2015 = PMAY + Smart City Mission"</span><br>
+      "जून में दो मकान: 1. अपना घर (PMAY), 2. स्मार्ट घर (Smart City)"
+    </div>
+  </div>
+
+  <div class="super-mnemonic" style="background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border-color:#93C5FD;">
+    <div class="sm-title" style="color:#1E3A8A;">🧠 Super Mnemonic #3 – July 1, 2015 Twin Launch</div>
+    <div class="sm-content" style="color:#1E3A8A;">
+      <span class="sm-word">"1 July = Digital India + PMKSY (हर खेत को पानी)"</span><br>
+      "जुलाई 1 = Doctor's Day = Digital + Krishi दोनों"
+    </div>
+  </div>
+
+  <div class="super-mnemonic" style="background:linear-gradient(135deg,#FFF7ED,#FED7AA);border-color:#FDBA74;">
+    <div class="sm-title" style="color:#92400E;">🧠 Super Mnemonic #4 – MUDRA 3 Levels</div>
+    <div class="sm-content" style="color:#7C2D12;">
+      <span class="sm-word">"शिशु → किशोर → तरुण → तरुण+"</span><br>
+      ₹50K → ₹5L → ₹10L → ₹20L (नई सीमा)<br>
+      "बच्चे से जवान = ऋण बढ़ता जाता है!"
+    </div>
+  </div>
+
+  <div class="super-mnemonic" style="background:linear-gradient(135deg,#FDF4FF,#F3E8FF);border-color:#C4B5FD;">
+    <div class="sm-title" style="color:#4C1D95;">🧠 Super Mnemonic #5 – PMFBY Premium</div>
+    <div class="sm-content" style="color:#3B0764;">
+      <span class="sm-word">"2-1.5-5 = खरीफ-रबी-बागवानी"</span><br>
+      2% खरीफ | 1.5% रबी | 5% बागवानी/व्यावसायिक<br>
+      बाकी सरकार भरती है!
+    </div>
+  </div>
+
+  <div class="section-title">⚡ Compact Quick Cards</div>
+  <div class="lm-grid" id="lmGrid">
+    <!-- Populated by JS -->
+  </div>
+
+  <div class="section-title">📌 परीक्षा में सबसे ज्यादा पूछे जाने वाले तथ्य</div>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Topic</th><th>Most Asked Fact</th></tr></thead>
+      <tbody>
+        <tr><td>PMJDY</td><td>28 August 2014, नई दिल्ली, Zero Balance, ₹10,000 OD, RuPay</td></tr>
+        <tr><td>MGNREGA</td><td>2005 अधिनियम, 2 Feb 2006 लागू, 100 दिन, मनमोहन सिंह, अनंतपुर AP</td></tr>
+        <tr><td>PMJAY</td><td>₹5 लाख, विश्व की सबसे बड़ी, रांची 2018</td></tr>
+        <tr><td>PM-KISAN</td><td>₹6,000 (3×₹2,000), 24 Feb 2019, गोरखपुर UP</td></tr>
+        <tr><td>APY/PMSBY/PMJJBY</td><td>तीनों 9 May 2015, कोलकाता</td></tr>
+        <tr><td>PMUY</td><td>BPL महिलाएं, LPG, 1 May 2016, बलिया UP</td></tr>
+        <tr><td>SBM</td><td>2 Oct 2014, राजघाट, ODF, गांधी जयंती</td></tr>
+        <tr><td>PMFBY</td><td>18 Feb 2016, प्रीमियम 2%-1.5%-5%</td></tr>
+        <tr><td>Poshan Abhiyan</td><td>8 March 2018, झुंझुनू (Rajasthan!), PM मोदी</td></tr>
+        <tr><td>Poshaan 2.0</td><td>बजट 2025-26, 8 करोड़ बच्चे, WCD मंत्रालय</td></tr>
+        <tr><td>BBBP</td><td>22 Jan 2015, पानीपत हरियाणा, लिंगानुपात</td></tr>
+        <tr><td>e-NAM</td><td>14 April 2016, Electronic National Agriculture Market</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- RESULT POPUP -->
+<div class="popup-overlay" id="resultPopup">
+  <div class="popup">
+    <div class="popup-emoji" id="popupEmoji">🎯</div>
+    <h2 id="popupTitle">परिणाम</h2>
+    <div class="popup-score" id="popupScore">0</div>
+    <div style="color:#666;font-size:0.82rem;">कुल अंक (Marks)</div>
+    <div class="popup-stats">
+      <div class="popup-stat ps-green">✅ सही<br><strong id="ps1">0</strong></div>
+      <div class="popup-stat ps-red">❌ गलत<br><strong id="ps2">0</strong></div>
+      <div class="popup-stat ps-gray">⏭️ छोड़े<br><strong id="ps3">0</strong></div>
+    </div>
+    <div class="popup-msg" id="popupMsg">शानदार प्रदर्शन!</div>
+    <button class="btn btn-primary" onclick="closePopup()">✕ बंद करें</button>
+    &nbsp;
+    <button class="btn btn-reset" onclick="resetMCQ();closePopup()">🔄 फिर से</button>
+  </div>
+</div>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ======================== QUIZ DATA ========================
+const questions = [
+  {q:"PM जन धन योजना (PMJDY) की शुरुआत किस तिथि को हुई?",opts:["15 अगस्त 2014","28 अगस्त 2014","2 अक्टूबर 2014","26 जनवरी 2015"],ans:1,exp:"PMJDY को 28 अगस्त 2014 को PM नरेंद्र मोदी ने नई दिल्ली से शुरू किया था।"},
+  {q:"PMJDY के अंतर्गत ओवरड्राफ्ट सुविधा कितनी है?",opts:["₹5,000","₹10,000","₹15,000","₹20,000"],ans:1,exp:"PMJDY में Zero Balance खाते पर ₹10,000 तक ओवरड्राफ्ट सुविधा दी जाती है।"},
+  {q:"MGNREGA किस वर्ष अधिनियम पारित हुआ और कब लागू हुआ?",opts:["2004 में, 1 Jan 2005","2005 में, 2 Feb 2006","2006 में, 1 Apr 2007","2003 में, 1 Feb 2004"],ans:1,exp:"MGNREGA अधिनियम 2005 में पारित हुआ और 2 फरवरी 2006 को लागू हुआ। इसे PM मनमोहन सिंह ने अनंतपुर, AP से शुरू किया।"},
+  {q:"MGNREGA के अंतर्गत ग्रामीण परिवारों को एक वित्त वर्ष में कितने दिन काम की गारंटी है?",opts:["50 दिन","75 दिन","100 दिन","150 दिन"],ans:2,exp:"MGNREGA में ग्रामीण परिवारों को प्रत्येक वित्त वर्ष में न्यूनतम 100 दिन का गारंटीकृत रोजगार मिलता है।"},
+  {q:"'स्वच्छ भारत अभियान' किस तिथि और स्थान से शुरू किया गया?",opts:["15 Aug 2014, लाल किला","2 Oct 2014, राजघाट","26 Jan 2015, कर्तव्य पथ","1 Nov 2014, सरदार पटेल चौक"],ans:1,exp:"SBM को 2 अक्टूबर 2014 (गाँधी जयंती) को राजघाट, नई दिल्ली से PM मोदी ने शुरू किया।"},
+  {q:"APY, PMSBY और PMJJBY तीनों योजनाएं एक साथ किस तिथि और शहर से लॉन्च की गईं?",opts:["8 April 2015, मुंबई","9 May 2015, कोलकाता","1 July 2015, दिल्ली","15 August 2015, दिल्ली"],ans:1,exp:"तीनों योजनाएं 9 मई 2015 को कोलकाता से PM मोदी ने एक साथ शुरू कीं।"},
+  {q:"प्रधानमंत्री आवास योजना (PMAY) कब शुरू की गई?",opts:["1 July 2015","25 June 2015","15 August 2015","2 October 2015"],ans:1,exp:"PMAY 25 जून 2015 को PM मोदी ने शुरू की। इसी दिन Smart City Mission भी लॉन्च हुई।"},
+  {q:"आयुष्मान भारत PM-JAY के अंतर्गत प्रति परिवार कितना स्वास्थ्य बीमा कवर मिलता है?",opts:["₹2 लाख","₹3 लाख","₹5 लाख","₹10 लाख"],ans:2,exp:"AB-PMJAY में प्रति परिवार प्रति वर्ष ₹5 लाख तक का स्वास्थ्य बीमा मिलता है।"},
+  {q:"AB-PMJAY को कहाँ से लॉन्च किया गया था?",opts:["नई दिल्ली","पटना","रांची, झारखंड","भोपाल"],ans:2,exp:"AB-PMJAY को 23 सितंबर 2018 को रांची, झारखंड से PM मोदी ने लॉन्च किया।"},
+  {q:"PM-KISAN योजना के तहत किसानों को प्रति वर्ष कितनी राशि मिलती है?",opts:["₹2,000","₹4,000","₹6,000","₹8,000"],ans:2,exp:"PM-KISAN में किसानों को ₹6,000 प्रति वर्ष, तीन समान किस्तों (₹2,000 × 3) में सीधे बैंक खाते में मिलती है।"},
+  {q:"PM-KISAN योजना कहाँ से शुरू की गई?",opts:["नई दिल्ली","गोरखपुर, उत्तर प्रदेश","वाराणसी","लखनऊ"],ans:1,exp:"PM-KISAN 24 फरवरी 2019 को गोरखपुर, उत्तर प्रदेश से PM मोदी ने शुरू की।"},
+  {q:"PMFBY (PM फसल बीमा योजना) में खरीफ फसलों के लिए किसानों को कितना प्रीमियम देना होता है?",opts:["1%","1.5%","2%","5%"],ans:2,exp:"PMFBY में खरीफ फसलों के लिए 2%, रबी के लिए 1.5% और बागवानी/व्यावसायिक के लिए 5% प्रीमियम देना होता है।"},
+  {q:"PM मुद्रा योजना के अंतर्गत 'तरुण' श्रेणी में कितना ऋण मिलता है?",opts:["₹50,000 तक","₹50,000-₹5 लाख","₹5 लाख-₹10 लाख","₹10 लाख-₹20 लाख"],ans:2,exp:"MUDRA में तीन श्रेणियाँ हैं: शिशु (₹50K), किशोर (₹50K-5L), तरुण (₹5L-₹10L)। नई श्रेणी तरुण+ ₹20 लाख तक है।"},
+  {q:"MUDRA का पूर्ण रूप क्या है?",opts:["Micro Unit Development Refinance Agency","Medium Unit Development Regulatory Authority","Micro Urban Development Refinance Agency","Ministry of Urban Development Regulatory Act"],ans:0,exp:"MUDRA = Micro Units Development & Refinance Agency. यह छोटे व्यापारियों को वित्तीय सहायता देता है।"},
+  {q:"PM उज्ज्वला योजना किस स्थान से शुरू हुई?",opts:["नई दिल्ली","वाराणसी","बलिया, उत्तर प्रदेश","लखनऊ"],ans:2,exp:"PMUY 1 मई 2016 को बलिया, उत्तर प्रदेश से PM मोदी ने शुरू की। यह BPL महिलाओं को मुफ्त LPG देती है।"},
+  {q:"'डिजिटल इंडिया' कार्यक्रम कब शुरू हुआ?",opts:["25 जून 2015","1 जुलाई 2015","15 जुलाई 2015","14 अगस्त 2015"],ans:1,exp:"Digital India 1 जुलाई 2015 को PM मोदी ने शुरू किया। इसी दिन PMKSY भी लॉन्च हुई।"},
+  {q:"'UDAN' का पूर्ण रूप क्या है?",opts:["Under Development Aviation Nation","Ude Desh ka Aam Naagrik","Urban Development and Aviation Network","United Development for Air Navigation"],ans:1,exp:"UDAN = Ude Desh ka Aam Naagrik (उड़े देश का आम नागरिक) - 27 Oct 2016 को नागरिक उड्डयन मंत्रालय ने लॉन्च किया।"},
+  {q:"पोषण अभियान (NNM) कहाँ से और कब शुरू हुआ?",opts:["8 March 2018, झुंझुनू, राजस्थान","15 Nov 2017, जयपुर","26 Jan 2018, दिल्ली","1 April 2018, मुंबई"],ans:0,exp:"पोषण अभियान 8 मार्च 2018 (महिला दिवस) को झुंझुनू, राजस्थान से PM मोदी ने शुरू किया। RAS के लिए बहुत महत्वपूर्ण!"},
+  {q:"'बेटी बचाओ, बेटी पढ़ाओ' योजना कहाँ से शुरू हुई?",opts:["नई दिल्ली","जयपुर","पानीपत, हरियाणा","लुधियाना"],ans:2,exp:"BBBP 22 जनवरी 2015 को PM मोदी ने पानीपत, हरियाणा से शुरू की। इसका उद्देश्य लिंगानुपात सुधार और लड़कियों की शिक्षा है।"},
+  {q:"अटल पेंशन योजना (APY) में 60 वर्ष के बाद न्यूनतम कितनी मासिक पेंशन मिलती है?",opts:["₹500","₹1,000","₹2,000","₹5,000"],ans:1,exp:"APY में 18-40 वर्ष की आयु के व्यक्ति जुड़ सकते हैं और 60 के बाद ₹1,000 से ₹5,000 तक मासिक पेंशन मिलती है।"},
+  {q:"PM सुरक्षा बीमा योजना (PMSBY) का वार्षिक प्रीमियम कितना है?",opts:["₹12","₹20","₹50","₹100"],ans:1,exp:"PMSBY में मात्र ₹20 वार्षिक प्रीमियम पर ₹2 लाख का दुर्घटना बीमा कवर मिलता है।"},
+  {q:"PM जीवन ज्योति बीमा योजना (PMJJBY) का वार्षिक प्रीमियम कितना है?",opts:["₹230","₹330","₹436","₹540"],ans:2,exp:"PMJJBY में 18-50 वर्ष की आयु के लिए ₹436 वार्षिक प्रीमियम पर ₹2 लाख का जीवन बीमा मिलता है।"},
+  {q:"e-NAM (ई-नाम) का पूर्ण रूप क्या है?",opts:["Electronic National Agriculture Market","Electric-National Agriculture Management","Electronic National Agro-Medium","Electronic-Network Agriculture Market"],ans:0,exp:"e-NAM = Electronic National Agriculture Market. 14 अप्रैल 2016 को लॉन्च, एकीकृत ऑनलाइन कृषि बाजार।"},
+  {q:"DAY-NRLM (दीनदयाल अंत्योदय योजना) किस मंत्रालय ने लॉन्च की?",opts:["महिला एवं बाल विकास","ग्रामीण विकास मंत्रालय","श्रम मंत्रालय","कृषि मंत्रालय"],ans:1,exp:"DAY-NRLM को ग्रामीण विकास मंत्रालय ने 2011 में 'आजीविका मिशन' के रूप में शुरू किया, 2015 में यह नाम मिला।"},
+  {q:"PM श्रम योगी मान-धन (PMSYM) में 60 वर्ष के बाद कितनी न्यूनतम पेंशन मिलती है?",opts:["₹1,000","₹2,000","₹3,000","₹5,000"],ans:2,exp:"PMSYM में 60 वर्ष के बाद ₹3,000 प्रति माह न्यूनतम सुनिश्चित पेंशन मिलती है। APY से अंतर: यह असंगठित क्षेत्र के श्रमिकों के लिए है।"},
+  {q:"'स्मार्ट सिटी मिशन' में कितने शहरों का चयन किया गया?",opts:["50","75","100","150"],ans:2,exp:"Smart City Mission में 100 शहरों का चयन किया गया। यह 25 जून 2015 को PM मोदी ने शुरू किया।"},
+  {q:"PM KUSUM का पूर्ण रूप क्या है?",opts:["Kisan Urja Suraksha evam Utthaan Mahabhiyan","Kisan Unnati Scheme Udaan Mahabhiyan","Kisan Urja Solar Utthaan Mission","Krishi Urja Suraksha Utthaan Mahabhiyan"],ans:0,exp:"KUSUM = Kisan Urja Suraksha evam Utthaan Mahabhiyan. 2019 में MNRE ने लॉन्च किया, किसानों को सौर ऊर्जा पंप मिलते हैं।"},
+  {q:"'Mission Indradhanush' किस तिथि को और किस मंत्रालय ने शुरू किया?",opts:["25 Dec 2014, स्वास्थ्य मंत्रालय","2 Oct 2014, WCD मंत्रालय","1 Jan 2015, MOHFW","15 Aug 2014, शिक्षा मंत्रालय"],ans:0,exp:"मिशन इंद्रधनुष 25 दिसंबर 2014 (Good Governance Day) को केंद्रीय स्वास्थ्य मंत्रालय ने शुरू किया।"},
+  {q:"'ऑपरेशन ग्रीन योजना' में मूल रूप से कौन सी फसलें शामिल थीं (TOP)?",opts:["तम्बाकू, प्याज, पालक","टमाटर, प्याज, आलू","तुअर, प्याज, पालक","टमाटर, पत्तागोभी, आलू"],ans:1,exp:"ऑपरेशन ग्रीन में TOP = Tomato (टमाटर) + Onion (प्याज) + Potato (आलू). अब TOT यानी सभी फल-सब्जियों तक विस्तारित।"},
+  {q:"'भारतमाला परियोजना' किस मंत्रालय ने लॉन्च की और इसमें कुल कितने km सड़क बनाने का लक्ष्य था?",opts:["सड़क परिवहन मंत्रालय, 83,677 km","रेलवे मंत्रालय, 75,000 km","शहरी विकास, 50,000 km","ग्रामीण विकास, 1,00,000 km"],ans:0,exp:"भारतमाला परियोजना सड़क परिवहन और राजमार्ग मंत्रालय ने 24 अक्टूबर 2017 को शुरू की, लक्ष्य 83,677 km सड़क निर्माण।"},
+];
+
+let correctCount = 0, wrongCount = 0;
+
+function renderMCQ() {
+  const container = document.getElementById('mcqContainer');
+  container.innerHTML = '';
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'mcq-card';
+    card.id = `q${i}`;
+    card.innerHTML = `
+      <div class="q-num">प्रश्न ${i+1} / ${questions.length}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="options-grid" id="opts${i}">
+        ${q.opts.map((opt, j) => `<button class="opt-btn" onclick="attempt(${i},${j})">${String.fromCharCode(65+j)}) ${opt}</button>`).join('')}
+      </div>
+      <div class="explanation" id="exp${i}">💡 ${q.exp}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function attempt(qi, oi) {
+  const optContainer = document.getElementById(`opts${qi}`);
+  const btns = optContainer.querySelectorAll('.opt-btn');
+  if (btns[0].disabled) return;
+  btns.forEach(b => b.disabled = true);
+  const card = document.getElementById(`q${qi}`);
+  const exp = document.getElementById(`exp${qi}`);
+  if (oi === questions[qi].ans) {
+    btns[oi].classList.add('correct');
+    card.classList.add('answered-correct');
+    correctCount++;
+    document.getElementById('correct').textContent = correctCount;
+  } else {
+    btns[oi].classList.add('wrong');
+    btns[questions[qi].ans].classList.add('reveal');
+    card.classList.add('answered-wrong');
+    wrongCount++;
+    document.getElementById('wrong').textContent = wrongCount;
+  }
+  exp.classList.add('show');
+  const answered = correctCount + wrongCount;
+  const skipped = questions.length - answered;
+  document.getElementById('skipped').textContent = skipped;
+  const score = (correctCount - wrongCount/3).toFixed(2);
+  document.getElementById('liveScore').textContent = score;
+  document.getElementById('progressBar').style.width = (answered/questions.length*100)+'%';
+}
+
+function showResult() {
+  const answered = correctCount + wrongCount;
+  const skipped = questions.length - answered;
+  const score = (correctCount - wrongCount/3).toFixed(2);
+  document.getElementById('popupScore').textContent = score;
+  document.getElementById('ps1').textContent = correctCount;
+  document.getElementById('ps2').textContent = wrongCount;
+  document.getElementById('ps3').textContent = skipped;
+  const pct = correctCount/questions.length*100;
+  let emoji='😐',title='मेहनत जारी रखें',msg='और पढ़ाई करें, सफलता जरूर मिलेगी।';
+  if(pct>=80){emoji='🏆';title='शानदार!';msg='आप RAS/PSI crack करने के करीब हैं!';}
+  else if(pct>=60){emoji='👍';title='अच्छा प्रदर्शन!';msg='और थोड़ी मेहनत और सफलता पक्की!';}
+  else if(pct>=40){emoji='💪';title='और मेहनत चाहिए';msg='Revision tab फिर से पढ़ें।';}
+  document.getElementById('popupEmoji').textContent=emoji;
+  document.getElementById('popupTitle').textContent=title;
+  document.getElementById('popupMsg').textContent=msg;
+  document.getElementById('resultPopup').classList.add('show');
+}
+
+function closePopup(){ document.getElementById('resultPopup').classList.remove('show'); }
+
+function resetMCQ() {
+  correctCount=0;wrongCount=0;
+  ['correct','wrong'].forEach(id=>document.getElementById(id).textContent='0');
+  document.getElementById('skipped').textContent=questions.length;
+  document.getElementById('liveScore').textContent='0';
+  document.getElementById('progressBar').style.width='0%';
+  renderMCQ();
+}
+
+// ======================== FILTER ========================
+function filterCards(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.scheme-card').forEach(card => {
+    if(cat==='all'||card.dataset.cat===cat) card.style.display='';
+    else card.style.display='none';
+  });
+}
+
+// ======================== TABS ========================
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ======================== QUICK REF ========================
+const qrData = [
+  {name:"PMJDY",year:"Aug 2014",pm:"PM मोदी",key:"Zero Balance + RuPay"},
+  {name:"SBM",year:"Oct 2014",pm:"PM मोदी",key:"ODF भारत 2019"},
+  {name:"MII",year:"Sep 2014",pm:"PM मोदी",key:"25 सेक्टर विनिर्माण"},
+  {name:"BBBP",year:"Jan 2015",pm:"PM मोदी",key:"पानीपत, लिंगानुपात"},
+  {name:"APY",year:"May 2015",pm:"PM मोदी",key:"18-40, ₹1K-5K पेंशन"},
+  {name:"PMSBY",year:"May 2015",pm:"PM मोदी",key:"₹20 प्रीमियम, ₹2L"},
+  {name:"PMJJBY",year:"May 2015",pm:"PM मोदी",key:"₹436 प्रीमियम, ₹2L"},
+  {name:"PMMY",year:"Apr 2015",pm:"PM मोदी",key:"शिशु-किशोर-तरुण"},
+  {name:"PMAY",year:"Jun 2015",pm:"PM मोदी",key:"सभी के लिए घर"},
+  {name:"Smart City",year:"Jun 2015",pm:"PM मोदी",key:"100 शहर"},
+  {name:"Digital India",year:"Jul 2015",pm:"PM मोदी",key:"ज्ञान अर्थव्यवस्था"},
+  {name:"PMKSY",year:"Jul 2015",pm:"PM मोदी",key:"हर खेत को पानी"},
+  {name:"PMKVY",year:"Jul 2015",pm:"PM मोदी",key:"15 July = Skills Day"},
+  {name:"PMFBY",year:"Feb 2016",pm:"PM मोदी",key:"2%-1.5%-5% प्रीमियम"},
+  {name:"e-NAM",year:"Apr 2016",pm:"PM मोदी",key:"Online Agri Market"},
+  {name:"PMUY",year:"May 2016",pm:"PM मोदी",key:"BPL, LPG, बलिया"},
+  {name:"Startup India",year:"Jan 2016",pm:"PM मोदी",key:"Tax छूट, Fund of Funds"},
+  {name:"UDAN",year:"Oct 2016",pm:"Civil Aviation",key:"सस्ती उड़ान"},
+  {name:"PMMVY",year:"Jan 2017",pm:"WCD Ministry",key:"₹5,000 माँ को"},
+  {name:"SAUBHAGYA",year:"Sep 2017",pm:"PM मोदी",key:"हर घर बिजली"},
+  {name:"Bharatmala",year:"Oct 2017",pm:"Road Ministry",key:"83,677 km roads"},
+  {name:"Poshan Abhiyan",year:"Mar 2018",pm:"PM मोदी",key:"झुंझुनू Raj."},
+  {name:"AB-PMJAY",year:"Sep 2018",pm:"PM मोदी",key:"₹5L, रांची JH"},
+  {name:"PM-KISAN",year:"Feb 2019",pm:"PM मोदी",key:"₹6K/year, Gorakhpur"},
+  {name:"PMSYM",year:"Feb 2019",pm:"Labour Min.",key:"₹3K पेंशन, असंगठित"},
+  {name:"KUSUM",year:"2019",pm:"MNRE",key:"Solar Pumps"},
+  {name:"PM-KUY",year:"Aug 2020",pm:"Civil Aviation",key:"कृषि उड़ान"},
+  {name:"PM-DDKY",year:"2025-26",pm:"वित्त मंत्री",key:"भंडारण+उत्पादकता"},
+  {name:"Poshan 2.0",year:"2025-26",pm:"WCD Min.",key:"8 Cr बच्चे"},
+];
+
+function renderQR() {
+  const grid = document.getElementById('qrGrid');
+  if(!grid) return;
+  grid.innerHTML = qrData.map(d=>`
+    <div class="qr-card">
+      <div class="qr-scheme">${d.name}</div>
+      <span class="qr-year">${d.year}</span>
+      <div class="qr-pm">👤 ${d.pm}</div>
+      <div style="font-size:0.72rem;color:#333;margin-top:3px;">🔑 ${d.key}</div>
+    </div>
+  `).join('');
+}
+
+// ======================== LAST MINUTE CARDS ========================
+const lmData = [
+  {name:"PM जन धन योजना (PMJDY)",b:"blue",rows:[["तिथि","28 Aug 2014"],["स्थान","नई दिल्ली"],["OD","₹10,000"],["बीमा","₹2 लाख"],["कार्ड","RuPay"]]},
+  {name:"MGNREGA",b:"green",rows:[["अधिनियम","2005"],["लागू","2 Feb 2006"],["काम","100 दिन"],["PM","मनमोहन सिंह"],["स्थान","अनंतपुर, AP"]]},
+  {name:"AB-PMJAY",b:"rose",rows:[["तिथि","23 Sep 2018"],["स्थान","रांची, JH"],["कवर","₹5 लाख/वर्ष"],["परिवार","10.74 Cr+"],["कैश","रहित उपचार"]]},
+  {name:"PM-KISAN",b:"amber",rows:[["तिथि","24 Feb 2019"],["स्थान","गोरखपुर UP"],["राशि","₹6,000/वर्ष"],["किस्त","₹2000 × 3"],["DBT","सीधे बैंक"]]},
+  {name:"APY + PMSBY + PMJJBY",b:"purple",rows:[["तिथि","9 May 2015"],["स्थान","कोलकाता"],["APY पेंशन","₹1K-5K"],["PMSBY","₹20 = ₹2L"],["PMJJBY","₹436 = ₹2L"]]},
+  {name:"PM मुद्रा (PMMY)",b:"teal",rows:[["तिथि","8 Apr 2015"],["शिशु","₹50K"],["किशोर","₹5L तक"],["तरुण","₹10L"],["तरुण+","₹20L"]]},
+  {name:"स्वच्छ भारत (SBM)",b:"green",rows:[["तिथि","2 Oct 2014"],["स्थान","राजघाट"],["लक्ष्य","ODF 2019"],["दो भाग","ग्रामीण+शहरी"],["PM","मोदी"]]},
+  {name:"PM उज्ज्वला (PMUY)",b:"amber",rows:[["तिथि","1 May 2016"],["स्थान","बलिया UP"],["लाभार्थी","BPL महिला"],["ईंधन","मुफ्त LPG"],["उद्देश्य","स्वच्छ ईंधन"]]},
+  {name:"Poshan Abhiyan (NNM)",b:"rose",rows:[["तिथि","8 Mar 2018"],["स्थान","झुंझुनू, Raj."],["PM","मोदी"],["लक्ष्य","कुपोषण कम"],["विशेष","Women's Day"]]},
+  {name:"PMFBY",b:"blue",rows:[["तिथि","18 Feb 2016"],["खरीफ प्रीमियम","2%"],["रबी","1.5%"],["बागवानी","5%"],["बाकी","सरकार"]]},
+  {name:"डिजिटल इंडिया",b:"blue",rows:[["तिथि","1 Jul 2015"],["3 स्तंभ","Infrastructure+Delivery+Literacy"],["PM","मोदी"],["लक्ष्य","ज्ञान अर्थव्यवस्था"]]},
+  {name:"BBBP",b:"rose",rows:[["तिथि","22 Jan 2015"],["स्थान","पानीपत, Haryana"],["3 मंत्रालय","WCD+Health+Education"],["लक्ष्य","लिंगानुपात सुधार"]]},
+];
+
+function renderLM() {
+  const grid = document.getElementById('lmGrid');
+  if(!grid) return;
+  grid.innerHTML = lmData.map(d=>`
+    <div class="lm-card ${d.b}">
+      <div class="lm-name">${d.name}</div>
+      <div class="lm-rows">
+        ${d.rows.map(r=>`<div class="lm-row"><span class="lm-key">${r[0]}</span><span class="lm-val">${r[1]}</span></div>`).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+// ======================== SCROLL TOP ========================
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('scrollTop');
+  if(window.scrollY > 300) btn.classList.add('show');
+  else btn.classList.remove('show');
+});
+
+// ======================== INIT ========================
+renderMCQ();
+renderQR();
+renderLM();
+</script>
+</body>
+</html>

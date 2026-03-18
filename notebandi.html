@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>बजट | GST | अवमूल्यन | विमुद्रीकरण — RPSC/PSI Revision</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;900&family=Baloo+2:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0f1a;
+  --bg2: #13162a;
+  --card: #1a1e35;
+  --card2: #1f2440;
+  --border: #2a3060;
+  --accent: #f7c948;
+  --accent2: #ff6b35;
+  --accent3: #4ecdc4;
+  --accent4: #a78bfa;
+  --green: #22c55e;
+  --red: #ef4444;
+  --blue: #60a5fa;
+  --pink: #f472b6;
+  --text: #e8eaf0;
+  --text2: #9aa3c8;
+  --glow: 0 0 20px rgba(247,201,72,0.15);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans Devanagari', 'Baloo 2', sans-serif;
+  min-height: 100vh;
+  background-image: radial-gradient(ellipse at 20% 0%, rgba(167,139,250,0.08) 0%, transparent 50%),
+                    radial-gradient(ellipse at 80% 100%, rgba(247,201,72,0.06) 0%, transparent 50%);
+}
+
+/* ---- HEADER ---- */
+.header {
+  background: linear-gradient(135deg, #1a1e35 0%, #0d0f1a 100%);
+  border-bottom: 2px solid var(--accent);
+  padding: 16px 24px;
+  text-align: center;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+.header h1 {
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+}
+.header p { font-size: 0.75rem; color: var(--text2); margin-top: 4px; }
+
+/* ---- TABS ---- */
+.tabs {
+  display: flex; gap: 4px; padding: 12px 16px;
+  overflow-x: auto; background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  padding: 8px 18px; border-radius: 30px; border: 1.5px solid var(--border);
+  background: var(--card); color: var(--text2);
+  cursor: pointer; font-family: inherit; font-size: 0.82rem; font-weight: 600;
+  white-space: nowrap; transition: all 0.25s;
+}
+.tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #000; border-color: transparent;
+  box-shadow: 0 0 16px rgba(247,201,72,0.4);
+}
+
+/* ---- TAB CONTENT ---- */
+.tab-content { display: none; padding: 20px 16px; max-width: 1200px; margin: 0 auto; }
+.tab-content.active { display: block; }
+
+/* ---- UNDERLINE IMPORTANT ---- */
+.imp { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+
+/* ---- SECTION HEADING ---- */
+.sec-head {
+  font-size: 1.1rem; font-weight: 800;
+  color: var(--accent);
+  border-left: 4px solid var(--accent);
+  padding-left: 12px; margin: 24px 0 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ---- 2-COLUMN GRID ---- */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:640px){ .grid2 { grid-template-columns: 1fr; } }
+
+/* ---- CARD ---- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+.card-title {
+  font-size: 0.95rem; font-weight: 700;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.card-body { font-size: 0.82rem; color: var(--text2); line-height: 1.8; }
+.card-body strong { color: var(--text); }
+
+/* COLOR CARDS */
+.card-yellow { border-color: var(--accent); border-left: 4px solid var(--accent); }
+.card-orange { border-color: var(--accent2); border-left: 4px solid var(--accent2); }
+.card-teal   { border-color: var(--accent3); border-left: 4px solid var(--accent3); }
+.card-purple { border-color: var(--accent4); border-left: 4px solid var(--accent4); }
+.card-green  { border-color: var(--green);   border-left: 4px solid var(--green); }
+.card-pink   { border-color: var(--pink);    border-left: 4px solid var(--pink); }
+.card-blue   { border-color: var(--blue);    border-left: 4px solid var(--blue); }
+
+/* ---- MNEMONIC BOX ---- */
+.mnemonic {
+  background: linear-gradient(135deg, rgba(247,201,72,0.12), rgba(255,107,53,0.08));
+  border: 1px solid rgba(247,201,72,0.3);
+  border-radius: 10px; padding: 10px 14px;
+  margin-top: 10px; font-size: 0.8rem;
+}
+.mnemonic span { color: var(--accent); font-weight: 700; }
+
+/* ---- TABLE ---- */
+.tbl-wrap { overflow-x: auto; margin-top: 10px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+th {
+  background: linear-gradient(90deg, rgba(247,201,72,0.2), rgba(167,139,250,0.1));
+  color: var(--accent); font-weight: 700;
+  padding: 9px 10px; text-align: left;
+  border-bottom: 2px solid var(--accent);
+}
+td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--text2); }
+tr:hover td { background: rgba(255,255,255,0.03); color: var(--text); }
+.td-y { color: var(--accent); font-weight: 600; }
+.td-g { color: var(--green); font-weight: 600; }
+.td-r { color: var(--accent2); font-weight: 600; }
+.td-b { color: var(--blue); font-weight: 600; }
+.td-p { color: var(--accent4); font-weight: 600; }
+
+/* ---- BADGE ---- */
+.badge {
+  display: inline-block; padding: 2px 10px; border-radius: 20px;
+  font-size: 0.7rem; font-weight: 700;
+}
+.badge-y { background: rgba(247,201,72,0.2); color: var(--accent); }
+.badge-g { background: rgba(34,197,94,0.2); color: var(--green); }
+.badge-r { background: rgba(239,68,68,0.2); color: var(--red); }
+.badge-b { background: rgba(96,165,250,0.2); color: var(--blue); }
+.badge-p { background: rgba(167,139,250,0.2); color: var(--accent4); }
+.badge-t { background: rgba(78,205,196,0.2); color: var(--accent3); }
+
+/* ---- MCQ ---- */
+.mcq-container { display: flex; flex-direction: column; gap: 18px; }
+.mcq-card {
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px;
+}
+.mcq-q { font-size: 0.88rem; font-weight: 600; margin-bottom: 12px; line-height: 1.6; }
+.mcq-q .qnum { color: var(--accent); font-weight: 800; margin-right: 6px; }
+.mcq-q .source { font-size: 0.7rem; color: var(--text2); margin-left: 6px; }
+.mcq-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media(max-width:500px){ .mcq-opts { grid-template-columns: 1fr; } }
+.opt-btn {
+  padding: 9px 12px; border-radius: 9px; border: 1.5px solid var(--border);
+  background: var(--card); color: var(--text2);
+  cursor: pointer; font-family: inherit; font-size: 0.8rem;
+  text-align: left; transition: all 0.2s;
+}
+.opt-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.opt-btn.correct { background: rgba(34,197,94,0.15); border-color: var(--green); color: var(--green); }
+.opt-btn.wrong   { background: rgba(239,68,68,0.15); border-color: var(--red); color: var(--red); }
+.opt-btn.reveal  { background: rgba(34,197,94,0.1); border-color: var(--green); color: var(--green); opacity: 0.7; }
+.mcq-exp { font-size: 0.78rem; color: var(--accent3); margin-top: 10px; padding: 8px 12px; background: rgba(78,205,196,0.07); border-radius: 8px; display: none; }
+.mcq-score-line { font-size: 0.75rem; color: var(--text2); margin-top: 6px; }
+
+/* ---- SCORE BAR ---- */
+#score-bar {
+  position: sticky; top: 54px; z-index: 50;
+  background: var(--bg2); border-bottom: 1px solid var(--border);
+  padding: 8px 16px; display: none; gap: 16px; align-items: center;
+  font-size: 0.82rem;
+}
+#score-bar.visible { display: flex; }
+.score-val { font-weight: 700; }
+.sv-g { color: var(--green); }
+.sv-r { color: var(--red); }
+.sv-y { color: var(--accent); }
+#submit-mcq {
+  margin-left: auto; padding: 6px 18px; border-radius: 20px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border: none; color: #000; font-weight: 700; cursor: pointer;
+  font-family: inherit; font-size: 0.8rem;
+}
+
+/* ---- RESULT POPUP ---- */
+#result-popup {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.8); z-index: 999;
+  align-items: center; justify-content: center;
+}
+#result-popup.show { display: flex; }
+.result-box {
+  background: var(--card2); border: 2px solid var(--accent);
+  border-radius: 20px; padding: 36px 40px; text-align: center;
+  max-width: 380px; width: 90%;
+  animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes popIn { from{transform:scale(0.5);opacity:0} to{transform:scale(1);opacity:1} }
+.result-box h2 { font-size: 1.6rem; color: var(--accent); margin-bottom: 8px; }
+.result-score { font-size: 2.8rem; font-weight: 900; margin: 12px 0; }
+.result-detail { color: var(--text2); font-size: 0.85rem; line-height: 2; }
+.close-result {
+  margin-top: 20px; padding: 10px 30px; border-radius: 30px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border: none; color: #000; font-weight: 700; cursor: pointer;
+  font-family: inherit; font-size: 0.9rem;
+}
+#reset-mcq {
+  padding: 6px 16px; border-radius: 20px;
+  background: rgba(96,165,250,0.15); border: 1px solid var(--blue);
+  color: var(--blue); font-family: inherit; font-size: 0.8rem; cursor: pointer;
+}
+
+/* ---- LAST MINUTE COMPACT ---- */
+.lm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.lm-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 14px;
+  font-size: 0.8rem;
+}
+.lm-head { font-weight: 700; font-size: 0.88rem; margin-bottom: 8px; }
+.lm-item { padding: 3px 0; color: var(--text2); display: flex; gap: 6px; }
+.lm-item::before { content: "▸"; color: var(--accent); flex-shrink: 0; }
+.super-mnemonic {
+  background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(247,201,72,0.1));
+  border: 2px solid var(--accent4);
+  border-radius: 16px; padding: 20px; margin: 20px 0;
+  text-align: center;
+}
+.super-mnemonic h3 { color: var(--accent4); font-size: 1rem; margin-bottom: 10px; }
+.sm-text { font-size: 1.1rem; font-weight: 700; color: var(--accent); letter-spacing: 1px; line-height: 2; }
+.sm-sub { font-size: 0.78rem; color: var(--text2); margin-top: 8px; }
+
+/* ---- FULL CARD ---- */
+.full-card { grid-column: 1 / -1; }
+
+/* ---- PILL LIST ---- */
+.pill-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.pill {
+  padding: 3px 12px; border-radius: 20px; font-size: 0.75rem;
+  background: rgba(255,255,255,0.07); border: 1px solid var(--border);
+}
+.pill-y { background: rgba(247,201,72,0.12); border-color: var(--accent); color: var(--accent); }
+.pill-g { background: rgba(34,197,94,0.12); border-color: var(--green); color: var(--green); }
+.pill-b { background: rgba(96,165,250,0.12); border-color: var(--blue); color: var(--blue); }
+.pill-p { background: rgba(167,139,250,0.12); border-color: var(--accent4); color: var(--accent4); }
+.pill-r { background: rgba(239,68,68,0.12); border-color: var(--red); color: var(--red); }
+.pill-t { background: rgba(78,205,196,0.12); border-color: var(--accent3); color: var(--accent3); }
+
+/* ---- DIVIDER ---- */
+.divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📚 बजट | GST | अवमूल्यन | विमुद्रीकरण — Master Revision</h1>
+  <p>RPSC RAS Pre • PSI • SI 2025 | Vinay Sir Notes Based</p>
+</div>
+
+<div id="score-bar">
+  <span>✅ सही: <span class="score-val sv-g" id="sb-correct">0</span></span>
+  <span>❌ गलत: <span class="score-val sv-r" id="sb-wrong">0</span></span>
+  <span>⏭️ बाकी: <span class="score-val sv-y" id="sb-left">50</span></span>
+  <button id="reset-mcq" onclick="resetMCQ()">Reset</button>
+  <button id="submit-mcq" onclick="submitMCQ()">Submit & Result</button>
+</div>
+
+<div id="result-popup">
+  <div class="result-box">
+    <h2>🏆 Result</h2>
+    <div class="result-score" id="r-score">0</div>
+    <div class="result-detail" id="r-detail"></div>
+    <button class="close-result" onclick="document.getElementById('result-popup').classList.remove('show')">बंद करें</button>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('revision')">📖 Revision</button>
+  <button class="tab-btn" onclick="showTab('summary')">📊 Summary Table</button>
+  <button class="tab-btn" onclick="showTab('rjpyq')">🏜️ RJ PYQ (25)</button>
+  <button class="tab-btn" onclick="showTab('statepyq')">🗺️ States PYQ (25)</button>
+  <button class="tab-btn" onclick="showTab('lastmin')">⚡ Last Minute</button>
+</div>
+
+<!-- ======= TAB 1: REVISION ======= -->
+<div class="tab-content active" id="tab-revision">
+
+  <!-- KARADHAN -->
+  <div class="sec-head">💰 करों की प्रणाली (System of Taxation)</div>
+  <div class="grid2">
+    <div class="card card-yellow">
+      <div class="card-title">🔼 प्रगतिशील कर (Progressive Tax)</div>
+      <div class="card-body">
+        <strong>नियम:</strong> <span class="imp">Income ↑↑ = Tax Rate ↑↑</span><br>
+        जैसे-जैसे आय बढ़ती है, कर की दर भी बढ़ती है।<br><br>
+        <strong>Budget 2025-26 में (₹ में):</strong>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>आय (लाख)</th><th>दर</th></tr>
+            <tr><td>0–4</td><td class="td-g">0%</td></tr>
+            <tr><td>4–8</td><td>5%</td></tr>
+            <tr><td>8–12</td><td>10%</td></tr>
+            <tr><td>12–16</td><td>15%</td></tr>
+            <tr><td>16–20</td><td>20%</td></tr>
+            <tr><td>20–24</td><td>25%</td></tr>
+            <tr><td><strong>25 लाख से ज़्यादा</strong></td><td class="td-r">30%</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "प्रगति = आगे बढ़ना → दर भी बढ़ती है" — P for Progress = P for Plus</div>
+    </div>
+    <div class="card card-orange">
+      <div class="card-title">🔽 प्रतिगामी कर (Regressive Tax)</div>
+      <div class="card-body">
+        <strong>नियम:</strong> <span class="imp">Income ↑↑ = Tax Rate ↓↓</span><br>
+        प्रगतिशील का उल्टा। अमीर को कम दर, गरीब को ज़्यादा बोझ।<br><br>
+        यह <strong>सामाजिक असमानता</strong> बढ़ाती है।
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "Regressive = Reverse" — R for Reverse = दर घटती है</div>
+    </div>
+    <div class="card card-teal">
+      <div class="card-title">⚖️ अनुपातिक कर (Proportional Tax)</div>
+      <div class="card-body">
+        <strong>नियम:</strong> <span class="imp">कर की दर स्थिर = आय ↑ या ↓ कोई फर्क नहीं</span><br>
+        Tax rate fixed रहती है। Budget 2025-26 में <strong>25 लाख से ज़्यादा पर 30%</strong> — यह अनुपातिक है।
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "Proportional = Patthar (पत्थर)" — पत्थर जैसी ठोस, हिलती नहीं</div>
+    </div>
+    <div class="card card-purple">
+      <div class="card-title">📉 अधोगामी कर (Degressive Tax)</div>
+      <div class="card-body">
+        <strong>नियम:</strong> पहले Progressive (बढ़ती है) + फिर Proportional (स्थिर)<br>
+        <span class="imp">भारत में यही प्रणाली अपनाई गई है!</span><br><br>
+        प्रगतिशील + अनुपातिक = दोनों के गुण।
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "Degressive = D for Double" — दोनों प्रणालियों का मिश्रण</div>
+    </div>
+  </div>
+
+  <!-- DIRECT / INDIRECT -->
+  <div class="sec-head">📋 कर के प्रकार (Types of Tax)</div>
+  <div class="grid2">
+    <div class="card card-green">
+      <div class="card-title">🎯 प्रत्यक्ष कर (Direct Tax)</div>
+      <div class="card-body">
+        जिस पर लगाया = वही भरता है।<br><br>
+        <div class="pill-list">
+          <span class="pill pill-g">आयकर (Income Tax)</span>
+          <span class="pill pill-g">संपत्ति कर (Wealth Tax)</span>
+          <span class="pill pill-g">निगम कर (Corporate Tax)</span>
+          <span class="pill pill-g">Property Tax</span>
+          <span class="pill pill-g">Gift Tax</span>
+        </div>
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "Direct = डायरेक्ट जेब से" — बोझ टालना नामुमकिन</div>
+    </div>
+    <div class="card card-pink">
+      <div class="card-title">🔄 अप्रत्यक्ष कर (Indirect Tax)</div>
+      <div class="card-body">
+        लगाया किसी पर, भरता कोई और।<br><br>
+        <div class="pill-list">
+          <span class="pill pill-p">GST</span>
+          <span class="pill pill-p">Services Tax</span>
+          <span class="pill pill-p">VAT</span>
+          <span class="pill pill-p">Excise Duty</span>
+          <span class="pill pill-p">Custom Duty</span>
+          <span class="pill pill-p">Sales Tax</span>
+          <span class="pill pill-p">मनोरंजन कर</span>
+        </div>
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "Indirect = Idhar se Udhar" — बोझ Transfer होता है</div>
+    </div>
+  </div>
+
+  <!-- BUDGET -->
+  <div class="sec-head">📜 बजट (Budget) — मूल तथ्य</div>
+  <div class="grid2">
+    <div class="card card-yellow">
+      <div class="card-title">🏛️ बजट की उत्पत्ति व परिभाषा</div>
+      <div class="card-body">
+        • फ्रांसीसी शब्द <span class="imp">"Bougette"</span> से → चमड़े का थैला (Leather Bag)<br>
+        • संविधान में "बजट" शब्द का <strong>उल्लेख नहीं</strong><br>
+        • संविधान में — <span class="imp">वार्षिक वित्तीय विवरण (Annual Financial Statement)</span><br>
+        • <strong>Art. 112</strong> → केंद्र का बजट<br>
+        • <strong>Art. 202</strong> → राज्य का बजट<br>
+        • <strong>समवर्ती सूची</strong> का विषय ✓
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "112 = एक-एक-दो = एक केंद्र, 202 = दो-राज्य"</div>
+    </div>
+    <div class="card card-orange">
+      <div class="card-title">📅 वित्तीय वर्ष व बजट तिथि</div>
+      <div class="card-body">
+        • भारत का वित्तीय वर्ष: <span class="imp">1 April – 31 March</span><br>
+        • केंद्रीय बजट पेश: <span class="imp">1 February</span> (वित्त मंत्री द्वारा)<br>
+        • राज्य बजट: राज्य वित्त मंत्री<br><br>
+        <strong>Budget 2025 का वित्तीय वर्ष:</strong><br>
+        • Economic Survey: 1 April 2024 – 31 March 2025<br>
+        • Budget: <span class="imp">1 April 2025 – 31 March 2026</span>
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "February First = वित्त मंत्री First" — 1 फरवरी पक्का</div>
+    </div>
+    <div class="card card-teal">
+      <div class="card-title">👤 महत्त्वपूर्ण व्यक्तित्व</div>
+      <div class="card-body">
+        • <span class="imp">James Wilson (1860)</span> → भारत में सर्वप्रथम बजट पेश = <strong>Father of Indian Budget</strong><br>
+        • <span class="imp">R.K. Shanmukham Chetty</span> → स्वतंत्र भारत का पहला बजट (26 Nov 1947)<br>
+        • <span class="imp">John Mathai (1950)</span> → गणतंत्र भारत का पहला बजट<br>
+        • <span class="imp">Morarji Desai</span> → सर्वाधिक 10 बार बजट पेश<br>
+        • <span class="imp">Nirmala Sitharaman</span> → लगातार 8 बार (2018-2025) | पहला Digital Budget FY 2021-22
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "James → Father, Chetty → First Free, Mathai → Republic, Morarji → Most (10), Nirmala → Now (Digital)"</div>
+    </div>
+    <div class="card card-purple">
+      <div class="card-title">🚂 रेल बजट का विलय</div>
+      <div class="card-body">
+        • <span class="imp">Acworth Committee (1925)</span> → रेल बजट और आम बजट को अलग-अलग पेश करने की सिफारिश<br>
+        • वित्त मंत्री → John Mathai<br><br>
+        • <span class="imp">Vivek Debroy Committee (2016)</span> → रेल बजट और आम बजट का विलय (Merger)<br>
+        • वित्त मंत्री → Suresh Prabhu<br>
+        • <strong>2017</strong> से रेल बजट आम बजट में मिला दिया गया
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "Acworth = Apart (अलग), Vivek = Vilay (विलय)" — विपरीत काम किया</div>
+    </div>
+  </div>
+
+  <!-- ARTHIK SARVEKSHAN -->
+  <div class="sec-head">📈 आर्थिक सर्वेक्षण (Economic Survey)</div>
+  <div class="grid2">
+    <div class="card card-blue">
+      <div class="card-title">📊 Economic Survey — Key Facts</div>
+      <div class="card-body">
+        • किसी देश का <strong>आर्थिक परिदृश्य</strong> का विवरण<br>
+        • सर्वप्रथम: <span class="imp">1950-51</span> में पेश<br>
+        • 1963 तक बजट के साथ, <span class="imp">1964 से बजट से एक दिन पूर्व</span> पेश<br>
+        • निर्माण: <strong>DEA (Dept of Economic Affairs)</strong> — वित्त मंत्रालय<br>
+        • निर्देशन: <span class="imp">CEA (Chief Economic Advisor)</span>
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "Survey = पहले देखो फिर बजट बनाओ" — एक दिन पहले आता है</div>
+    </div>
+    <div class="card card-green">
+      <div class="card-title">🏦 लोक बजट (Public Budget) के भाग</div>
+      <div class="card-body">
+        <strong>① लोक आय (Public Receipt):</strong> सरकार को आगामी वर्ष में मिलने वाली आय<br>
+        &nbsp;&nbsp;→ राजस्व आय + पूंजीगत आय<br><br>
+        <strong>② लोक व्यय (Public Expenditure):</strong> आगामी वर्ष में सरकार का कुल खर्च<br>
+        &nbsp;&nbsp;→ राजस्व व्यय + पूंजीगत व्यय
+      </div>
+    </div>
+  </div>
+
+  <!-- RAJASWA / POONJIGAT -->
+  <div class="sec-head">💵 राजस्व बनाम पूंजीगत — आय व व्यय</div>
+  <div class="grid2">
+    <div class="card card-yellow">
+      <div class="card-title">📥 राजस्व आय (Revenue Income)</div>
+      <div class="card-body">
+        सरकार की ऐसी आय जिससे:<br>
+        ✗ सरकार की संपत्ति में कमी नहीं<br>
+        ✗ सरकार के ऋण में वृद्धि नहीं<br><br>
+        <div class="pill-list">
+          <span class="pill pill-y">Tax (Direct + Indirect)</span>
+          <span class="pill pill-y">PSU से लाभ</span>
+          <span class="pill pill-y">ब्याज प्राप्ति</span>
+        </div>
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "Revenue = Regular Income" — रोज़ाना की कमाई जैसी</div>
+    </div>
+    <div class="card card-orange">
+      <div class="card-title">📈 पूंजीगत आय (Capital Receipt)</div>
+      <div class="card-body">
+        सरकार की ऐसी आय जिससे:<br>
+        ✓ सरकार की संपत्ति (Asset) में कमी <strong>OR</strong><br>
+        ✓ सरकार के ऋण (Loan) में वृद्धि<br><br>
+        <div class="pill-list">
+          <span class="pill pill-r">PSU का विनिवेश</span>
+          <span class="pill pill-r">उधार (Borrowing)</span>
+          <span class="pill pill-r">आंतरिक उधार</span>
+          <span class="pill pill-r">बाह्य उधार (IMF,WB,ADB)</span>
+        </div>
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "Capital = Carpenter काटता है" — Asset कटती है या Loan बढ़ता है</div>
+    </div>
+    <div class="card card-teal">
+      <div class="card-title">📤 राजस्व व्यय (Revenue Expenditure)</div>
+      <div class="card-body">
+        सरकार का ऐसा खर्च जिससे:<br>
+        ✗ सरकार की संपत्ति में वृद्धि नहीं<br>
+        ✗ सरकार के ऋण में कमी नहीं<br><br>
+        <div class="pill-list">
+          <span class="pill pill-t">वेतन (Salary)</span>
+          <span class="pill pill-t">Pension</span>
+          <span class="pill pill-t">Scholarship</span>
+          <span class="pill pill-t">ब्याज भुगतान</span>
+          <span class="pill pill-t">आपदा व्यय</span>
+          <span class="pill pill-t">योजनाएं</span>
+        </div>
+      </div>
+    </div>
+    <div class="card card-purple">
+      <div class="card-title">🏗️ पूंजीगत व्यय (Capital Expenditure)</div>
+      <div class="card-body">
+        सरकार का ऐसा खर्च जिससे:<br>
+        ✓ सरकार की संपत्ति (Asset) में वृद्धि <strong>OR</strong><br>
+        ✓ सरकार के ऋण में कमी<br><br>
+        <div class="pill-list">
+          <span class="pill pill-p">पार्क/भवन/सड़क/Airport निर्माण</span>
+          <span class="pill pill-p">ऋण की अदायगी (Loan Payment)</span>
+        </div>
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "Capital Expenditure = Capital बनता है" — संपत्ति बढ़ती है</div>
+    </div>
+  </div>
+
+  <!-- BUDGET TYPES -->
+  <div class="sec-head">⚖️ बजट के प्रकार (Types of Budget)</div>
+  <div class="grid2">
+    <div class="card card-green">
+      <div class="card-title">✅ संतुलित बजट (Balanced Budget)</div>
+      <div class="card-body">कुल आय = कुल व्यय <br><span style="color:var(--accent);font-weight:700">100 = 100</span></div>
+    </div>
+    <div class="card card-yellow">
+      <div class="card-title">📈 बजट अधिशेष (Surplus Budget)</div>
+      <div class="card-body">कुल आय > कुल व्यय <br><span style="color:var(--green);font-weight:700">150 > 100</span><br>विकासशील देशों के लिए उचित नहीं</div>
+    </div>
+    <div class="card card-orange full-card">
+      <div class="card-title">📉 घाटे का बजट (Deficit Budget)</div>
+      <div class="card-body">
+        कुल व्यय > कुल आय &nbsp;<span style="color:var(--red);font-weight:700">100 > 80</span><br>
+        <span class="imp">भारत में यही अपनाया जाता है।</span> विकासशील देशों के लिए उपयुक्त।<br><br>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>घाटे का प्रकार</th><th>सूत्र</th><th>महत्त्व</th></tr>
+            <tr><td><strong>राजकोषीय घाटा (Fiscal Deficit)</strong></td><td>कुल व्यय – राजस्व प्राप्ति – पूंजीगत प्राप्ति (उधार छोड़कर)</td><td class="td-y">सबसे महत्त्वपूर्ण</td></tr>
+            <tr><td><strong>राजस्व घाटा (Revenue Deficit)</strong></td><td>राजस्व व्यय – राजस्व आय</td><td>दैनिक खर्च की कमी</td></tr>
+            <tr><td><strong>प्राथमिक घाटा (Primary Deficit)</strong></td><td>राजकोषीय घाटा – ब्याज भुगतान</td><td>वास्तविक उधारी</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GST -->
+  <div class="sec-head">🛒 GST (Goods and Services Tax)</div>
+  <div class="grid2">
+    <div class="card card-yellow">
+      <div class="card-title">📌 GST — परिचय</div>
+      <div class="card-body">
+        • <span class="imp">वस्तु एवं सेवा कर</span> (Goods & Services Tax)<br>
+        • <strong>अप्रत्यक्ष कर</strong> (Indirect Tax)<br>
+        • <strong>गंतव्य-आधारित कर</strong> (Destination-Based Tax)<br>
+        • <strong>बहु-स्तरीय कर</strong> (Multi-Level Tax)<br>
+        • <span class="imp">सर्वप्रथम लागू: 1954 — फ्रांस</span><br>
+        • <span class="imp">भारत में: 1 July 2017</span><br>
+        • नारा: <strong>"एक कर, एक बाज़ार, एक राष्ट्र"</strong>
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "GST = Gaya Sub Tax" — पुराने 17 indirect taxes खत्म</div>
+    </div>
+    <div class="card card-orange">
+      <div class="card-title">📋 GST — समितियां व राज्य</div>
+      <div class="card-body">
+        <strong>सिफारिश करने वाली समितियां:</strong><br>
+        • <span class="imp">विजय केलकर समिति</span><br>
+        • <span class="imp">विजय केलकर टास्क फोर्स</span><br><br>
+        <strong>राज्यों का क्रम:</strong><br>
+        • 1st राज्य: <span class="imp">असम</span><br>
+        • 2nd राज्य: <span class="imp">बिहार</span><br>
+        • अंतिम राज्य: <span class="imp">J&K</span><br>
+        • GST दिवस: <span class="imp">1 July</span>
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "A se Assam (First), B se Bihar (Second), J se J&K (Last)"</div>
+    </div>
+    <div class="card card-teal full-card">
+      <div class="card-title">📊 GST दरें (GST Rates)</div>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>दर</th><th>वस्तुएं/सेवाएं</th></tr>
+          <tr><td class="td-g"><strong>0%</strong></td><td>अनाज, दूध, अंडा, सब्जियां, किताबें, जरूरी खाद्य</td></tr>
+          <tr><td class="td-b"><strong>5%</strong></td><td>Sugar, Tea, Coffee, Edible Oil, ट्रेन टिकट</td></tr>
+          <tr><td class="td-y"><strong>12%</strong></td><td>Computer, Processed food, Medicine</td></tr>
+          <tr><td class="td-r"><strong>18%</strong></td><td>AC, फ्रिज, कैमरा, बैंकिंग सेवाएं (सबसे ज़्यादा Revenue वाला slab)</td></tr>
+          <tr><td><strong>28%</strong></td><td>Car, Tobacco, Luxury items, Cement</td></tr>
+          <tr><td class="td-p"><strong>28%+Cess</strong></td><td>Pan Masala, Luxury Cars, Demerit goods</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVMULYAN -->
+  <div class="sec-head">📉 अवमूल्यन (Devaluation)</div>
+  <div class="grid2">
+    <div class="card card-blue">
+      <div class="card-title">🔑 परिभाषा व उद्देश्य</div>
+      <div class="card-body">
+        • घरेलू मुद्रा (₹) को विदेशी मुद्रा की तुलना में <span class="imp">जानबूझकर कम या गिरा देना</span><br>
+        • देश की केंद्रीय बैंक (RBI) द्वारा किया जाता है<br><br>
+        <strong>उद्देश्य (Objectives):</strong><br>
+        ① Export (निर्यात) ↑↑<br>
+        ② विदेशी मुद्रा भंडार ↑↑<br>
+        ③ विदेशी व्यापार ↑↑<br>
+        ④ विदेशी व्यापार घाटा ↓↓<br>
+        ⑤ विदेशी निवेश ↑↑
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "Devalue = Dollar को Value, Rupee को Down" — Export सस्ता होता है</div>
+    </div>
+    <div class="card card-pink">
+      <div class="card-title">⚠️ नुकसान (Disadvantages)</div>
+      <div class="card-body">
+        ① आयात (Import) महंगा होगा<br>
+        ② घरेलू मुद्रा की क्रय-शक्ति ↓↓<br>
+        ③ विदेशी ऋण (कर्ज) महंगे होंगे
+      </div>
+    </div>
+    <div class="card card-green full-card">
+      <div class="card-title">🇮🇳 भारत में 3 बार अवमूल्यन</div>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>#</th><th>वर्ष</th><th>PM</th><th>RBI Governor</th><th>President</th><th>% अवमूल्यन</th></tr>
+          <tr><td class="td-y">1st</td><td>Sept 1949</td><td class="td-g">Pt. Jawaharlal Nehru</td><td>Benegal Rama Rao</td><td>—</td><td>30.5%</td></tr>
+          <tr><td class="td-y">2nd</td><td>6 June 1966</td><td class="td-g">Indira Gandhi</td><td>P.C. Bhattacharya</td><td>Sarvepalli Radhakrishnan</td><td>57%</td></tr>
+          <tr><td class="td-y">3rd</td><td>1991 (2 चरण: 1 July + 3 July)</td><td class="td-g">P.V. Narasimha Rao</td><td>S. Venkitaraman</td><td>R. Venkataraman</td><td>18-19%</td></tr>
+        </table>
+      </div>
+      <div style="margin-top:8px;font-size:0.8rem;color:var(--text2)">3rd में: वित्त मंत्री = <span style="color:var(--accent)">Dr. Manmohan Singh Ji</span></div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "NIG = Nehru, Indira, Narasimha → 3 बार अवमूल्यन" | "57% = Indira की Biggest"</div>
+    </div>
+  </div>
+
+  <!-- VIMUDRAIKARAN -->
+  <div class="sec-head">🚫 विमुद्रीकरण / नोटबंदी (Demonetization)</div>
+  <div class="grid2">
+    <div class="card card-yellow">
+      <div class="card-title">📌 परिभाषा व कारण</div>
+      <div class="card-body">
+        पुरानी मुद्रा (Old Currency) को चलन से बाहर करना।<br><br>
+        <strong>कारण:</strong>
+        <div class="pill-list">
+          <span class="pill pill-r">Black Money ↓↓</span>
+          <span class="pill pill-r">नकली नोट समाप्त</span>
+          <span class="pill pill-r">Corruption ↓↓</span>
+          <span class="pill pill-g">Digitalisation ↑↑</span>
+          <span class="pill pill-r">Terror Funding ↓↓</span>
+        </div>
+      </div>
+    </div>
+    <div class="card card-orange full-card">
+      <div class="card-title">🇮🇳 भारत में 3 बार नोटबंदी</div>
+      <div class="tbl-wrap">
+        <table>
+          <tr><th>#</th><th>दिनांक</th><th>सरकार/PM</th><th>RBI Governor</th><th>President</th><th>नोट बंद</th></tr>
+          <tr><td class="td-y">1st</td><td>12 Jan 1946</td><td>British (Lord Wavell)</td><td class="td-b">C.D. Deshmukh</td><td>—</td><td>1000, 10000 के नोट</td></tr>
+          <tr><td class="td-y">2nd</td><td>16 Jan 1978</td><td>Morarji Desai</td><td class="td-b">I.G. Patel</td><td>Neelam Sanjiva Reddy</td><td>1K, 5K, 10K के नोट</td></tr>
+          <tr><td class="td-y">3rd</td><td>8 Nov 2016</td><td class="td-g">Narendra Modi</td><td class="td-b">Urjit Patel</td><td>Pranab Mukherjee</td><td>500, 1000 के नोट</td></tr>
+        </table>
+      </div>
+      <div style="margin-top:10px;font-size:0.8rem;color:var(--text2)">
+        <strong>RBI Report 2018 (2016 नोटबंदी के बाद):</strong><br>
+        • मौजूद मुद्रा = 15.41 लाख करोड़ | बैंकों में वापसी = 15.31 लाख करोड़ | शेष = 0.7%
+      </div>
+      <div class="mnemonic"><span>🧠 Trick:</span> "W (Wavell), D (Desai), M (Modi) = WDM Engine की तरह 3 बार चली नोटबंदी" 🚂</div>
+    </div>
+  </div>
+
+</div>
+<!-- ======= END REVISION ======= -->
+
+<!-- ======= TAB 2: SUMMARY ======= -->
+<div class="tab-content" id="tab-summary">
+
+  <div class="sec-head">📊 Master Summary Table</div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Topic</th><th>Key Fact</th><th>Year/Number</th><th>Person</th></tr>
+      <tr><td><strong>बजट शब्द उत्पत्ति</strong></td><td>French "Bougette" — चमड़े का थैला</td><td class="td-y">—</td><td>—</td></tr>
+      <tr><td><strong>Constitution Article</strong></td><td>केंद्र बजट = Art.112, राज्य = Art.202</td><td class="td-y">112 / 202</td><td>—</td></tr>
+      <tr><td><strong>Father of Indian Budget</strong></td><td>भारत में सर्वप्रथम बजट</td><td class="td-y">1860</td><td class="td-g">James Wilson</td></tr>
+      <tr><td><strong>1st Free India Budget</strong></td><td>स्वतंत्र भारत का पहला बजट</td><td class="td-y">26 Nov 1947</td><td class="td-g">R.K. Shanmukham Chetty</td></tr>
+      <tr><td><strong>1st Republic Budget</strong></td><td>गणतंत्र भारत का पहला बजट</td><td class="td-y">1950</td><td class="td-g">John Mathai</td></tr>
+      <tr><td><strong>Most Budgets</strong></td><td>सर्वाधिक बार बजट पेश</td><td class="td-y">10 बार</td><td class="td-g">Morarji Desai</td></tr>
+      <tr><td><strong>Consecutive Budgets</strong></td><td>लगातार सर्वाधिक + 1st Digital Budget</td><td class="td-y">8 बार / FY21-22</td><td class="td-g">Nirmala Sitharaman</td></tr>
+      <tr><td><strong>Rail Budget Separate</strong></td><td>रेल बजट अलग</td><td class="td-y">1925</td><td class="td-g">Acworth Committee</td></tr>
+      <tr><td><strong>Rail Budget Merger</strong></td><td>रेल + आम बजट विलय (2017 से)</td><td class="td-y">2016</td><td class="td-g">Vivek Debroy Committee</td></tr>
+      <tr><td><strong>Economic Survey Start</strong></td><td>सर्वप्रथम</td><td class="td-y">1950-51</td><td>—</td></tr>
+      <tr><td><strong>Economic Survey Before Budget</strong></td><td>बजट से 1 दिन पहले</td><td class="td-y">1964 से</td><td>—</td></tr>
+      <tr><td><strong>GST Start (World)</strong></td><td>सर्वप्रथम विश्व में</td><td class="td-y">1954</td><td>France</td></tr>
+      <tr><td><strong>GST India</strong></td><td>भारत में GST लागू</td><td class="td-y">1 July 2017</td><td>—</td></tr>
+      <tr><td><strong>GST 1st State</strong></td><td>GST पारित करने वाला 1st राज्य</td><td class="td-y">—</td><td class="td-g">असम</td></tr>
+      <tr><td><strong>GST Last State</strong></td><td>अंतिम राज्य</td><td class="td-y">—</td><td class="td-g">J&K</td></tr>
+      <tr><td><strong>Devaluation 1st</strong></td><td>1st अवमूल्यन</td><td class="td-y">Sept 1949 (30.5%)</td><td class="td-g">Nehru (PM), B.R. Rao (RBI)</td></tr>
+      <tr><td><strong>Devaluation 2nd</strong></td><td>2nd अवमूल्यन (सर्वाधिक)</td><td class="td-y">6 June 1966 (57%)</td><td class="td-g">Indira (PM), P.C. Bhattacharya</td></tr>
+      <tr><td><strong>Devaluation 3rd</strong></td><td>3rd अवमूल्यन (LPG reforms)</td><td class="td-y">1991 (18-19%)</td><td class="td-g">Narasimha Rao (PM), Manmohan (FM)</td></tr>
+      <tr><td><strong>Demonetization 1st</strong></td><td>1st नोटबंदी</td><td class="td-y">12 Jan 1946</td><td class="td-g">British, C.D. Deshmukh (RBI)</td></tr>
+      <tr><td><strong>Demonetization 2nd</strong></td><td>2nd नोटबंदी</td><td class="td-y">16 Jan 1978</td><td class="td-g">Morarji Desai, I.G. Patel (RBI)</td></tr>
+      <tr><td><strong>Demonetization 3rd</strong></td><td>3rd नोटबंदी</td><td class="td-y">8 Nov 2016</td><td class="td-g">Modi, Urjit Patel (RBI)</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-head" style="margin-top:30px">⚡ Quick Reference — Tax Types</div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Tax System</th><th>नियम</th><th>भारत में?</th><th>Example</th></tr>
+      <tr><td class="td-y"><strong>Progressive</strong></td><td>Income↑ = Rate↑</td><td class="td-g">✓ (0-24 लाख)</td><td>Income Tax slabs</td></tr>
+      <tr><td class="td-r"><strong>Regressive</strong></td><td>Income↑ = Rate↓</td><td class="td-r">✗</td><td>—</td></tr>
+      <tr><td class="td-b"><strong>Proportional</strong></td><td>Rate Fixed</td><td class="td-g">✓ (25L+ पर 30%)</td><td>Flat 30%</td></tr>
+      <tr><td class="td-p"><strong>Degressive</strong></td><td>Progressive + Proportional</td><td class="td-g">✓ अपनाया गया</td><td>India's System</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-head" style="margin-top:30px">💹 GST Slabs Quick Reference</div>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Slab</th><th>Items</th><th>Note</th></tr>
+      <tr><td class="td-g"><strong>0%</strong></td><td>अनाज, दूध, अंडे, सब्जी, किताब</td><td>आवश्यक वस्तुएं</td></tr>
+      <tr><td class="td-b"><strong>5%</strong></td><td>Sugar, Tea, Coffee, Edible Oil</td><td>—</td></tr>
+      <tr><td class="td-y"><strong>12%</strong></td><td>Computer, Medicine</td><td>—</td></tr>
+      <tr><td class="td-r"><strong>18%</strong></td><td>AC, Fridge, Banking services</td><td class="td-y">Max Revenue Slab</td></tr>
+      <tr><td style="color:#ff3c3c"><strong>28%</strong></td><td>Car, Tobacco, Cement, Luxury</td><td>Highest slab</td></tr>
+    </table>
+  </div>
+
+  <div class="sec-head" style="margin-top:30px">🏦 Budget 2025-26 की मुख्य विशेषताएं</div>
+  <div class="grid2">
+    <div class="card card-yellow">
+      <div class="card-title">📌 Income Tax (New Regime) 2025-26</div>
+      <div class="card-body">
+        • <span class="imp">₹12 लाख तक — Zero Tax</span> (Rebate u/s 87A)<br>
+        • नए स्लैब: 0–4L(0%), 4–8L(5%), 8–12L(10%),<br>&nbsp;&nbsp;12–16L(15%), 16–20L(20%), 20–24L(25%), 24L+(30%)<br>
+        • Standard Deduction: ₹75,000<br>
+        • टीडीएस सीमा बढ़ाई गई
+      </div>
+    </div>
+    <div class="card card-teal">
+      <div class="card-title">🎯 मुख्य घोषणाएं</div>
+      <div class="card-body">
+        • Viksit Bharat 2047 का लक्ष्य<br>
+        • कृषि के लिए PM Dhan-Dhanya Yojana<br>
+        • बिहार में Makhana Board<br>
+        • Nuclear Energy Mission (100 GW)<br>
+        • <span class="imp">Fiscal Deficit Target: 4.4% of GDP</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ======= TAB 3: RJ PYQ ======= -->
+<div class="tab-content" id="tab-rjpyq">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+    <div class="sec-head" style="margin:0">🏜️ Rajasthan PYQ — 25 Questions</div>
+    <span class="badge badge-y">+1 सही | −⅓ गलत</span>
+  </div>
+  <div class="mcq-container" id="rj-mcq">
+  </div>
+</div>
+
+<!-- ======= TAB 4: STATES PYQ ======= -->
+<div class="tab-content" id="tab-statepyq">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+    <div class="sec-head" style="margin:0">🗺️ Other States PYQ — 25 Questions</div>
+    <span class="badge badge-b">+1 सही | −⅓ गलत</span>
+  </div>
+  <div class="mcq-container" id="state-mcq">
+  </div>
+</div>
+
+<!-- ======= TAB 5: LAST MINUTE ======= -->
+<div class="tab-content" id="tab-lastmin">
+
+  <div class="super-mnemonic">
+    <h3>⚡ SUPER MNEMONIC — सब याद करो 1 मिनट में</h3>
+    <div class="sm-text">
+      "James Wilson Father, Chetty First Free,<br>
+      Mathai Republic, Morarji Ten-Times,<br>
+      Nirmala Eight + Digital Twenty-Twenty-One"
+    </div>
+    <div class="sm-sub">James(1860) → Chetty(1947) → Mathai(1950) → Morarji(10) → Nirmala(8+Digital)</div>
+  </div>
+
+  <div class="super-mnemonic" style="border-color:var(--accent2)">
+    <h3 style="color:var(--accent2)">⚡ नोटबंदी याद करो — "WDM"</h3>
+    <div class="sm-text" style="font-size:1rem">
+      <span style="color:#60a5fa">W</span>avell(1946 British) → <span style="color:#22c55e">D</span>esai(1978) → <span style="color:#f7c948">M</span>odi(2016)<br>
+      RBI: Deshmukh → I.G.Patel → Urjit Patel
+    </div>
+  </div>
+
+  <div class="super-mnemonic" style="border-color:var(--accent3)">
+    <h3 style="color:var(--accent3)">⚡ अवमूल्यन — "NIN"</h3>
+    <div class="sm-text" style="font-size:1rem">
+      <span style="color:#60a5fa">N</span>ehru(1949, 30.5%) → <span style="color:#f472b6">I</span>ndira(1966, 57%) → <span style="color:#f7c948">N</span>arasimha Rao(1991, 18-19%)<br>
+      RBI: B.R.Rao → P.C.Bhattacharya → S.Venkitaraman
+    </div>
+  </div>
+
+  <div class="sec-head">⚡ Compact Key Points</div>
+  <div class="lm-grid">
+    <div class="lm-card card-yellow">
+      <div class="lm-head" style="color:var(--accent)">📜 बजट</div>
+      <div class="lm-item">French "Bougette" = चमड़े का थैला</div>
+      <div class="lm-item">Art.112 = केंद्र, Art.202 = राज्य</div>
+      <div class="lm-item">Budget = Annual Financial Statement</div>
+      <div class="lm-item">1 Feb = केंद्रीय बजट दिनांक</div>
+      <div class="lm-item">Concurrent List का विषय</div>
+      <div class="lm-item">वित्त वर्ष = 1 April–31 March</div>
+    </div>
+    <div class="lm-card card-orange">
+      <div class="lm-head" style="color:var(--accent2)">👥 बजट — व्यक्ति</div>
+      <div class="lm-item">James Wilson = Father (1860)</div>
+      <div class="lm-item">Chetty = 1st Free (1947)</div>
+      <div class="lm-item">John Mathai = 1st Republic (1950)</div>
+      <div class="lm-item">Morarji = Most = 10 times</div>
+      <div class="lm-item">Nirmala = 8 Consecutive + Digital</div>
+      <div class="lm-item">Acworth 1925 = अलग, Vivek 2016 = विलय</div>
+    </div>
+    <div class="lm-card card-teal">
+      <div class="lm-head" style="color:var(--accent3)">🛒 GST</div>
+      <div class="lm-item">1 July 2017 = भारत में लागू</div>
+      <div class="lm-item">1954 = France (1st in World)</div>
+      <div class="lm-item">1st State = Assam, Last = J&K</div>
+      <div class="lm-item">Kelkar Committee = सिफारिश</div>
+      <div class="lm-item">Slogan = एक कर, एक बाज़ार, एक राष्ट्र</div>
+      <div class="lm-item">GST Day = 1 July</div>
+      <div class="lm-item">Indirect + Destination-Based Tax</div>
+    </div>
+    <div class="lm-card card-purple">
+      <div class="lm-head" style="color:var(--accent4)">📉 अवमूल्यन</div>
+      <div class="lm-item">1949: Nehru, B.R.Rao, 30.5%</div>
+      <div class="lm-item">1966: Indira, P.C.Bhat., 57% (max)</div>
+      <div class="lm-item">1991: Narasimha Rao, Manmohan FM</div>
+      <div class="lm-item">1991 RBI = S.Venkitaraman</div>
+      <div class="lm-item">Rashtrapati 1991 = R.Venkataraman</div>
+      <div class="lm-item">Export↑, Import महंगा</div>
+    </div>
+    <div class="lm-card card-green">
+      <div class="lm-head" style="color:var(--green)">🚫 नोटबंदी</div>
+      <div class="lm-item">1946: British, Deshmukh, 1000+10000</div>
+      <div class="lm-item">1978: Morarji, I.G.Patel, 1K+5K+10K</div>
+      <div class="lm-item">2016: Modi(8Nov), Urjit Patel</div>
+      <div class="lm-item">2016 President = Pranab Mukherjee</div>
+      <div class="lm-item">2016 = 500+1000 बंद</div>
+      <div class="lm-item">RBI 2018: 99.3% वापस आए</div>
+    </div>
+    <div class="lm-card card-pink">
+      <div class="lm-head" style="color:var(--pink)">💰 करों की प्रणाली</div>
+      <div class="lm-item">Progressive = Income↑ → Rate↑</div>
+      <div class="lm-item">Regressive = Income↑ → Rate↓</div>
+      <div class="lm-item">Proportional = Rate Fixed</div>
+      <div class="lm-item">Degressive = P+P दोनों = भारत!</div>
+      <div class="lm-item">Direct Tax = जिस पर वही भरे</div>
+      <div class="lm-item">Indirect = GST, VAT, Excise</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ===== MCQ DATA =====
+const rjQuestions = [
+  { q: "भारत में पहली बार केंद्रीय बजट किसने पेश किया था?", opts: ["R.K. Shanmukham Chetty", "James Wilson", "John Mathai", "Morarji Desai"], ans: 1, exp: "James Wilson ने 1860 में भारत में सर्वप्रथम बजट पेश किया — इन्हें 'Father of Indian Budget' कहते हैं।", src: "RPSC RAS Pre 2013" },
+  { q: "स्वतंत्र भारत का पहला बजट किसने पेश किया?", opts: ["John Mathai", "James Wilson", "R.K. Shanmukham Chetty", "Morarji Desai"], ans: 2, exp: "R.K. Shanmukham Chetty ने 26 नवंबर 1947 को स्वतंत्र भारत का पहला बजट पेश किया।", src: "RPSC SI 2021" },
+  { q: "भारतीय संविधान के किस अनुच्छेद में केंद्रीय बजट का प्रावधान है?", opts: ["Art. 202", "Art. 110", "Art. 112", "Art. 115"], ans: 2, exp: "Art. 112 में केंद्र का बजट (Annual Financial Statement) और Art. 202 में राज्य के बजट का प्रावधान है।", src: "RPSC RAS Pre 2016" },
+  { q: "सर्वाधिक बार केंद्रीय बजट पेश करने का रिकॉर्ड किसके नाम है?", opts: ["Nirmala Sitharaman", "Morarji Desai", "P. Chidambaram", "Manmohan Singh"], ans: 1, exp: "Morarji Desai ने 10 बार बजट पेश किया। Nirmala Sitharaman ने लगातार 8 बार (2018-2025)।", src: "RPSC Patwari 2021" },
+  { q: "भारत में GST कब लागू हुआ?", opts: ["1 April 2017", "1 July 2017", "1 January 2018", "15 August 2017"], ans: 1, exp: "GST भारत में 1 July 2017 को लागू हुआ। GST दिवस = 1 July।", src: "RPSC RAS Pre 2018" },
+  { q: "GST सबसे पहले किस देश में लागू हुआ?", opts: ["USA", "UK", "France", "Germany"], ans: 2, exp: "GST सर्वप्रथम 1954 में France में लागू हुआ।", src: "RSMSSB 2020" },
+  { q: "भारत में GST लागू करने की सिफारिश किसने की?", opts: ["Vijay Kelkar Committee", "Vivek Debroy Committee", "Acworth Committee", "14th Finance Commission"], ans: 0, exp: "Vijay Kelkar Committee और Vijay Kelkar Task Force ने GST लागू करने की सिफारिश की।", src: "RPSC SI 2022" },
+  { q: "GST लागू करने वाला भारत का पहला राज्य कौन सा था?", opts: ["Bihar", "Telangana", "Assam", "Rajasthan"], ans: 2, exp: "Assam GST Bill पास करने वाला पहला राज्य था। Bihar 2nd और J&K अंतिम।", src: "RPSC RAS Pre 2021" },
+  { q: "भारत में पहली बार अवमूल्यन (Devaluation) कब हुआ?", opts: ["1966", "1991", "1949", "1975"], ans: 2, exp: "भारत में पहला अवमूल्यन September 1949 में 30.5% हुआ — PM Nehru, RBI Governor B.R. Rao।", src: "RPSC RAS Pre 2019" },
+  { q: "1966 में अवमूल्यन के समय भारत के प्रधानमंत्री कौन थे?", opts: ["Nehru", "Indira Gandhi", "Morarji Desai", "Lal Bahadur Shastri"], ans: 1, exp: "6 June 1966 को Indira Gandhi के PM काल में 57% अवमूल्यन हुआ — सबसे अधिक।", src: "RPSC 2nd Grade 2022" },
+  { q: "1991 के अवमूल्यन के समय वित्त मंत्री कौन थे?", opts: ["P.V. Narasimha Rao", "Dr. Manmohan Singh", "S. Venkitaraman", "R. Venkataraman"], ans: 1, exp: "1991 में PM P.V. Narasimha Rao और FM Dr. Manmohan Singh थे। RBI Gov = S. Venkitaraman।", src: "RPSC RAS Pre 2018" },
+  { q: "8 नवंबर 2016 की नोटबंदी के समय RBI के गवर्नर कौन थे?", opts: ["Raghuram Rajan", "Shaktikanta Das", "Urjit Patel", "D. Subbarao"], ans: 2, exp: "8 November 2016 को PM Modi ने नोटबंदी की। RBI Governor = Urjit Patel।", src: "RPSC SI 2021" },
+  { q: "2016 की नोटबंदी में कौन से नोट बंद किए गए?", opts: ["100 और 500", "500 और 1000", "1000 और 2000", "200 और 500"], ans: 1, exp: "8 November 2016 को ₹500 और ₹1000 के नोट बंद किए गए।", src: "RSMSSB 2020" },
+  { q: "भारत में प्रथम नोटबंदी कब हुई?", opts: ["1978", "1946", "2016", "1984"], ans: 1, exp: "भारत में पहली नोटबंदी 12 January 1946 को British सरकार द्वारा (Lord Wavell) हुई। RBI = C.D. Deshmukh।", src: "RPSC RAS Pre 2022" },
+  { q: "केंद्रीय बजट 'वार्षिक वित्तीय विवरण' के रूप में किस सूची का विषय है?", opts: ["राज्य सूची", "केंद्र सूची", "समवर्ती सूची", "अवशिष्ट सूची"], ans: 2, exp: "बजट समवर्ती सूची (Concurrent List) का विषय है।", src: "RPSC 2022" },
+  { q: "रेलवे बजट को आम बजट में किस समिति की सिफारिश पर विलय किया गया?", opts: ["Acworth Committee", "Kelkar Committee", "Vivek Debroy Committee", "14th FC"], ans: 2, exp: "Vivek Debroy Committee (2016) की सिफारिश पर रेल बजट का आम बजट में विलय हुआ। 2017 से लागू।", src: "RPSC RAS Pre 2018" },
+  { q: "भारत में Economic Survey सर्वप्रथम कब पेश किया गया?", opts: ["1947-48", "1950-51", "1960-61", "1955-56"], ans: 1, exp: "Economic Survey सर्वप्रथम 1950-51 में पेश किया गया। 1964 से बजट से एक दिन पहले।", src: "RPSC 2nd Grade 2023" },
+  { q: "GST का नारा क्या है?", opts: ["एक देश, एक नीति", "एक कर, एक बाज़ार, एक राष्ट्र", "एक भारत, श्रेष्ठ भारत", "सबका साथ, सबका विकास"], ans: 1, exp: "GST का नारा है — 'एक कर, एक बाज़ार, एक राष्ट्र' (One Tax, One Market, One Nation)।", src: "RPSC PSI 2021" },
+  { q: "अवमूल्यन का मुख्य उद्देश्य क्या है?", opts: ["आयात बढ़ाना", "निर्यात बढ़ाना और विदेशी मुद्रा भंडार बढ़ाना", "घरेलू उत्पादन घटाना", "Tax Revenue बढ़ाना"], ans: 1, exp: "अवमूल्यन से Export सस्ता → विदेशी मुद्रा भंडार बढ़ता है। Import महंगा होता है।", src: "RPSC RAS Mains 2020" },
+  { q: "GST में सर्वाधिक राजस्व देने वाला Slab कौन सा है?", opts: ["5%", "12%", "18%", "28%"], ans: 2, exp: "18% GST slab सर्वाधिक Revenue देता है क्योंकि इसमें सबसे ज़्यादा वस्तुएं और सेवाएं हैं।", src: "RPSC SI 2022" },
+  { q: "प्रत्यक्ष कर (Direct Tax) का उदाहरण है:", opts: ["GST", "Excise Duty", "Income Tax", "Custom Duty"], ans: 2, exp: "Income Tax प्रत्यक्ष कर है — जिस पर लगाया जाता है, वही भरता है।", src: "RSMSSB 2021" },
+  { q: "Budget 2025-26 में कितनी आय तक Zero Tax है?", opts: ["₹7 लाख", "₹10 लाख", "₹12 लाख", "₹8 लाख"], ans: 2, exp: "Budget 2025-26 में New Tax Regime में ₹12 लाख तक Rebate (u/s 87A) से Zero Tax।", src: "Current Affairs 2025" },
+  { q: "1978 की नोटबंदी के समय राष्ट्रपति कौन थे?", opts: ["V.V. Giri", "Fakhruddin Ali Ahmed", "Neelam Sanjiva Reddy", "Giani Zail Singh"], ans: 2, exp: "16 January 1978 — PM Morarji Desai, President Neelam Sanjiva Reddy, RBI = I.G. Patel।", src: "RPSC RAS 2023" },
+  { q: "पूंजीगत व्यय (Capital Expenditure) का उदाहरण है:", opts: ["वेतन भुगतान", "Pension", "सड़क निर्माण", "ब्याज भुगतान"], ans: 2, exp: "सड़क/भवन/Airport निर्माण — Capital Expenditure है क्योंकि Asset बनती है।", src: "RPSC 2022" },
+  { q: "Degressive Tax System (अधोगामी कर प्रणाली) किस देश में अपनाई गई है?", opts: ["USA", "France", "भारत", "UK"], ans: 2, exp: "भारत में Degressive Tax System अपनाया गया है — Progressive + Proportional का मिश्रण।", src: "RPSC RAS Pre 2019" }
+];
+
+const stateQuestions = [
+  { q: "GST किस प्रकार का कर है?", opts: ["प्रत्यक्ष + अप्रत्यक्ष", "केवल प्रत्यक्ष", "अप्रत्यक्ष एवं गंतव्य-आधारित", "प्रत्यक्ष एवं उत्पत्ति-आधारित"], ans: 2, exp: "GST अप्रत्यक्ष कर (Indirect) और गंतव्य-आधारित (Destination-Based) कर है।", src: "UPPSC 2018" },
+  { q: "विश्व में GST सर्वप्रथम किस वर्ष लागू हुआ?", opts: ["1950", "1954", "1960", "1975"], ans: 1, exp: "1954 में France ने सर्वप्रथम GST लागू किया।", src: "MPPSC 2019" },
+  { q: "भारत में बजट प्रस्तुत करने की संवैधानिक अनिवार्यता किस अनुच्छेद में है?", opts: ["Article 110", "Article 112", "Article 360", "Article 266"], ans: 1, exp: "Article 112 — केंद्र का Annual Financial Statement (बजट)।", src: "BPSC 2020" },
+  { q: "राजस्व घाटा (Revenue Deficit) किसके बराबर है?", opts: ["कुल व्यय – कुल आय", "राजस्व व्यय – राजस्व आय", "पूंजीगत व्यय – पूंजीगत आय", "Fiscal Deficit – ब्याज"], ans: 1, exp: "Revenue Deficit = Revenue Expenditure – Revenue Income।", src: "UPSC Prelims 2017" },
+  { q: "प्राथमिक घाटा (Primary Deficit) = ?", opts: ["Fiscal Deficit + ब्याज", "Fiscal Deficit – ब्याज भुगतान", "Revenue Deficit + Capital Deficit", "Total Deficit"], ans: 1, exp: "Primary Deficit = Fiscal Deficit – Interest Payment। यह वास्तविक नई उधारी दर्शाता है।", src: "UPSC Prelims 2019" },
+  { q: "भारत में अब तक कितनी बार नोटबंदी हुई है?", opts: ["एक", "दो", "तीन", "चार"], ans: 2, exp: "1946, 1978, और 2016 — तीन बार नोटबंदी हुई।", src: "SSC CGL 2019" },
+  { q: "1991 में LPG सुधारों के दौरान अवमूल्यन कितने चरणों में हुआ?", opts: ["एक", "दो", "तीन", "चार"], ans: 1, exp: "1991 में 2 चरणों में — 1 July और 3 July को 18-19% अवमूल्यन हुआ।", src: "MPPSC 2021" },
+  { q: "'Destination-Based Tax' से GST में क्या तात्पर्य है?", opts: ["जहां उत्पादन हो वहां कर", "जहां उपभोग हो वहां कर", "जहां Export हो वहां कर", "जहां Import हो वहां कर"], ans: 1, exp: "GST Destination-Based है — जहां वस्तु/सेवा का उपभोग होता है, वहां Tax जाता है।", src: "UPSC Prelims 2018" },
+  { q: "प्रगतिशील कर प्रणाली (Progressive Tax System) का सही विवरण है:", opts: ["आय बढ़ने पर दर घटती है", "आय बढ़ने पर दर स्थिर रहती है", "आय बढ़ने पर दर बढ़ती है", "आय पर कोई कर नहीं"], ans: 2, exp: "Progressive Tax: Income ↑ = Tax Rate ↑ — भारत की Income Tax slab प्रणाली।", src: "UPPSC 2020" },
+  { q: "Economic Survey कौन तैयार करता है?", opts: ["NITI Aayog", "RBI", "DEA (Dept of Economic Affairs)", "CSO"], ans: 2, exp: "Economic Survey का निर्माण — DEA (Finance Ministry), निर्देशन — CEA (Chief Economic Advisor)।", src: "UPSC Prelims 2016" },
+  { q: "सरकारी उपक्रम (PSU) का विनिवेश (Disinvestment) किस प्रकार की आय है?", opts: ["राजस्व आय", "पूंजीगत आय", "राजस्व व्यय", "पूंजीगत व्यय"], ans: 1, exp: "PSU Disinvestment = Capital Receipt (पूंजीगत आय) — क्योंकि सरकारी Asset घटती है।", src: "UPSC Prelims 2020" },
+  { q: "भारत में अवमूल्यन की कौन सी घटना सबसे बड़ी थी (प्रतिशत में)?", opts: ["1949 (30.5%)", "1991 (18-19%)", "1966 (57%)", "1985 (25%)"], ans: 2, exp: "1966 में Indira Gandhi के समय 57% अवमूल्यन — भारत में सर्वाधिक।", src: "UPPSC 2019" },
+  { q: "Acworth Committee (1925) की सिफारिश क्या थी?", opts: ["GST लागू करना", "रेल बजट को आम बजट में मिलाना", "रेल बजट को अलग करना", "बजट 1 फरवरी को पेश करना"], ans: 2, exp: "Acworth Committee ने रेल बजट को आम बजट से अलग पेश करने की सिफारिश की।", src: "BPSC 2018" },
+  { q: "GST Council का अध्यक्ष कौन होता है?", opts: ["RBI Governor", "राष्ट्रपति", "केंद्रीय वित्त मंत्री", "CEA"], ans: 2, exp: "GST Council का अध्यक्ष केंद्रीय वित्त मंत्री होते हैं।", src: "UPSC Prelims 2017" },
+  { q: "Proportional Tax System में:", opts: ["Income बढ़ने पर दर बढ़ती है", "Income बढ़ने पर दर घटती है", "दर हमेशा स्थिर रहती है", "दर जीरो होती है"], ans: 2, exp: "Proportional Tax में कर की दर (Tax Rate) हमेशा स्थिर (Stable) रहती है।", src: "UPPSC 2021" },
+  { q: "भारत में 1978 की नोटबंदी में कौन से नोट बंद हुए?", opts: ["500 और 1000", "100 और 500", "1000, 5000, और 10000", "200 और 2000"], ans: 2, exp: "1978 में Morarji Desai सरकार ने ₹1000, ₹5000, और ₹10,000 के नोट बंद किए।", src: "SSC 2020" },
+  { q: "संतुलित बजट (Balanced Budget) का अर्थ है:", opts: ["Revenue > Expenditure", "Revenue < Expenditure", "Revenue = Expenditure", "No Borrowing"], ans: 2, exp: "Balanced Budget: कुल आय = कुल व्यय।", src: "RPSC 2nd Grade 2022" },
+  { q: "निम्न में से कौन अप्रत्यक्ष कर (Indirect Tax) नहीं है?", opts: ["GST", "Custom Duty", "Income Tax", "Excise Duty"], ans: 2, exp: "Income Tax एक Direct Tax है। GST, Custom Duty, Excise Duty — सभी Indirect Tax हैं।", src: "CGL 2022" },
+  { q: "भारत में बजट किसके द्वारा पेश किया जाता है?", opts: ["राष्ट्रपति", "प्रधानमंत्री", "वित्त मंत्री", "RBI Governor"], ans: 2, exp: "बजट वित्त मंत्री द्वारा पेश किया जाता है — केंद्र में 1 February को।", src: "UPSC 2016" },
+  { q: "GST में 'IGST' किसे कहते हैं?", opts: ["Inter-Goods Service Tax", "Integrated Goods and Services Tax", "Indian GST", "Indirect GST"], ans: 1, exp: "IGST = Integrated GST — राज्यों के बीच/विदेश व्यापार पर लगने वाला GST।", src: "UPSC 2019" },
+  { q: "विमुद्रीकरण (Demonetization) का अर्थ है:", opts: ["नई मुद्रा छापना", "पुरानी मुद्रा को चलन से बाहर करना", "विदेशी मुद्रा का अवमूल्यन", "सोने का भंडारण"], ans: 1, exp: "Demonetization = पुरानी मुद्रा को Legal Tender से हटाना।", src: "MPPSC 2018" },
+  { q: "केंद्रीय बजट 2025 पेश किया गया?", opts: ["Nirmala Sitharaman", "Manmohan Singh", "Arun Jaitley", "Piyush Goyal"], ans: 0, exp: "Budget 2025-26 (1 Feb 2025) Nirmala Sitharaman ने पेश किया — 8वीं बार लगातार।", src: "Current Affairs 2025" },
+  { q: "Regressive Tax System की मुख्य समस्या क्या है?", opts: ["Revenue कम होता है", "सामाजिक असमानता बढ़ती है", "Tax Compliance घटती है", "GDP घटती है"], ans: 1, exp: "Regressive Tax में अमीर को कम बोझ, गरीब को अधिक — सामाजिक असमानता बढ़ती है।", src: "UPSC Prelims 2021" },
+  { q: "भारत में 2016 की नोटबंदी के बारे में RBI Report 2018 के अनुसार कितना पैसा वापस आया?", opts: ["98%", "99.3%", "95%", "97%"], ans: 1, exp: "RBI Report 2018: ₹15.41 लाख करोड़ में से ₹15.31 लाख करोड़ वापस = लगभग 99.3%।", src: "UPSC 2019" },
+  { q: "बजट 2025-26 में Income Tax में Standard Deduction कितनी है?", opts: ["₹50,000", "₹60,000", "₹75,000", "₹1,00,000"], ans: 2, exp: "Budget 2025-26 में Standard Deduction ₹75,000 (New Tax Regime)।", src: "Current Affairs 2025" }
+];
+
+// ===== RENDER MCQ =====
+let scores = { correct: 0, wrong: 0, attempted: 0 };
+let answers = {};
+
+function renderMCQ(questions, containerId, prefix) {
+  const c = document.getElementById(containerId);
+  c.innerHTML = '';
+  questions.forEach((q, i) => {
+    const id = prefix + i;
+    const div = document.createElement('div');
+    div.className = 'mcq-card';
+    div.innerHTML = `
+      <div class="mcq-q">
+        <span class="qnum">Q${i+1}.</span>${q.q}
+        <span class="source badge badge-b">${q.src}</span>
+      </div>
+      <div class="mcq-opts">
+        ${q.opts.map((o, j) => `<button class="opt-btn" id="${id}-${j}" onclick="selectOpt('${id}',${j},${q.ans},'${containerId}')">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}
+      </div>
+      <div class="mcq-exp" id="${id}-exp">💡 ${q.exp}</div>
+      <div class="mcq-score-line" id="${id}-sl"></div>
+    `;
+    c.appendChild(div);
+  });
+}
+
+function selectOpt(id, chosen, correct, containerId) {
+  if (answers[id] !== undefined) return;
+  answers[id] = chosen;
+
+  for (let j = 0; j < 4; j++) {
+    const btn = document.getElementById(`${id}-${j}`);
+    if (btn) btn.disabled = true;
+  }
+
+  const chosenBtn = document.getElementById(`${id}-${chosen}`);
+  const correctBtn = document.getElementById(`${id}-${correct}`);
+
+  if (chosen === correct) {
+    chosenBtn.classList.add('correct');
+    scores.correct++;
+    document.getElementById(`${id}-sl`).textContent = '✅ +1 अंक';
+    document.getElementById(`${id}-sl`).style.color = 'var(--green)';
+  } else {
+    chosenBtn.classList.add('wrong');
+    correctBtn.classList.add('reveal');
+    scores.wrong++;
+    document.getElementById(`${id}-sl`).textContent = '❌ −⅓ अंक';
+    document.getElementById(`${id}-sl`).style.color = 'var(--red)';
+  }
+  scores.attempted++;
+  document.getElementById(`${id}-exp`).style.display = 'block';
+  updateScoreBar();
+}
+
+function updateScoreBar() {
+  const total = rjQuestions.length + stateQuestions.length;
+  document.getElementById('sb-correct').textContent = scores.correct;
+  document.getElementById('sb-wrong').textContent = scores.wrong;
+  document.getElementById('sb-left').textContent = total - scores.attempted;
+  document.getElementById('score-bar').classList.add('visible');
+}
+
+function submitMCQ() {
+  const total = rjQuestions.length + stateQuestions.length;
+  const finalScore = scores.correct - (scores.wrong / 3);
+  const pct = ((finalScore / total) * 100).toFixed(1);
+  let grade = '';
+  if (pct >= 80) grade = '🏆 Excellent! परीक्षा Ready';
+  else if (pct >= 60) grade = '👍 Good! थोड़ी और मेहनत';
+  else if (pct >= 40) grade = '📚 Average — Revision करें';
+  else grade = '⚠️ More Practice Needed';
+
+  document.getElementById('r-score').textContent = finalScore.toFixed(2);
+  document.getElementById('r-score').style.color = finalScore > total/2 ? 'var(--green)' : 'var(--red)';
+  document.getElementById('r-detail').innerHTML = `
+    Total: ${total} | सही: ${scores.correct} | गलत: ${scores.wrong}<br>
+    Net Score: ${finalScore.toFixed(2)} / ${total}<br>
+    Percentage: ${pct}%<br><br>
+    <strong>${grade}</strong>
+  `;
+  document.getElementById('result-popup').classList.add('show');
+}
+
+function resetMCQ() {
+  scores = { correct: 0, wrong: 0, attempted: 0 };
+  answers = {};
+  renderMCQ(rjQuestions, 'rj-mcq', 'rj');
+  renderMCQ(stateQuestions, 'state-mcq', 'st');
+  updateScoreBar();
+  document.getElementById('score-bar').classList.remove('visible');
+}
+
+// ===== TABS =====
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+
+  if (id === 'rjpyq' || id === 'statepyq') {
+    document.getElementById('score-bar').classList.add('visible');
+  }
+}
+
+// ===== INIT =====
+renderMCQ(rjQuestions, 'rj-mcq', 'rj');
+renderMCQ(stateQuestions, 'state-mcq', 'st');
+</script>
+</body>
+</html>
