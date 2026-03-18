@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>राज्यपाल - RPSC RAS/PSI Revision</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Baloo+2:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --saffron: #FF6B00;
+  --saffron-light: #FF8C2A;
+  --saffron-pale: #FFF0E0;
+  --green: #138808;
+  --green-light: #1AAB0A;
+  --green-pale: #E8F5E9;
+  --navy: #1A237E;
+  --navy-light: #283593;
+  --blue-pale: #E8EAF6;
+  --gold: #F9A825;
+  --gold-pale: #FFFDE7;
+  --red: #C62828;
+  --red-pale: #FFEBEE;
+  --purple: #6A1B9A;
+  --purple-pale: #F3E5F5;
+  --teal: #00695C;
+  --teal-pale: #E0F2F1;
+  --bg: #FAFAF8;
+  --card-bg: #FFFFFF;
+  --text: #1A1A2E;
+  --text-light: #555566;
+  --border: #E0E0E0;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans Devanagari', 'Baloo 2', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: linear-gradient(135deg, #FF6B00 0%, #FF8C2A 30%, #1A237E 70%, #283593 100%);
+  padding: 20px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
+}
+.header h1 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 1;
+}
+.header p {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9rem;
+  margin-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+.exam-badges {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.badge {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+/* ===== TABS ===== */
+.tabs-wrapper {
+  background: #fff;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+.tabs {
+  display: flex;
+  overflow-x: auto;
+  padding: 0 16px;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  padding: 14px 20px;
+  cursor: pointer;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tab.active {
+  color: var(--saffron);
+  border-bottom-color: var(--saffron);
+}
+.tab:hover { color: var(--navy); background: var(--blue-pale); }
+
+/* ===== CONTENT AREA ===== */
+.content { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
+.content.active { display: block; }
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--saffron);
+  transition: all 0.3s;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.card.green { border-left-color: var(--green); }
+.card.navy { border-left-color: var(--navy); }
+.card.gold { border-left-color: var(--gold); }
+.card.red { border-left-color: var(--red); }
+.card.purple { border-left-color: var(--purple); }
+.card.teal { border-left-color: var(--teal); }
+
+.card-title {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-title .icon { font-size: 1.3rem; }
+
+/* ===== 2-COLUMN GRID ===== */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 768px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .grid-3 { grid-template-columns: 1fr; }
+}
+
+/* ===== INFO ROWS ===== */
+.info-row {
+  display: flex;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+}
+.info-row:last-child { border-bottom: none; }
+.info-label {
+  font-weight: 700;
+  color: var(--navy);
+  min-width: 140px;
+  flex-shrink: 0;
+}
+.info-value { color: var(--text); line-height: 1.5; }
+
+/* ===== ARTICLE PILLS ===== */
+.art-pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--navy);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-right: 6px;
+  margin-bottom: 4px;
+}
+
+/* ===== MNEMONIC BOX ===== */
+.mnemonic {
+  background: linear-gradient(135deg, #FFF8E1, #FFF3CD);
+  border: 2px dashed var(--gold);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 14px;
+}
+.mnemonic-title {
+  font-weight: 700;
+  color: #856404;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mnemonic-content {
+  font-size: 0.9rem;
+  color: #5a4400;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ===== HIGHLIGHT BOX ===== */
+.highlight-box {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  margin: 8px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.highlight-box.orange { background: var(--saffron-pale); color: #8B3A00; border-left: 3px solid var(--saffron); }
+.highlight-box.green { background: var(--green-pale); color: #1B5E20; border-left: 3px solid var(--green); }
+.highlight-box.blue { background: var(--blue-pale); color: #0D47A1; border-left: 3px solid var(--navy); }
+.highlight-box.red { background: var(--red-pale); color: #B71C1C; border-left: 3px solid var(--red); }
+.highlight-box.purple { background: var(--purple-pale); color: #4A148C; border-left: 3px solid var(--purple); }
+
+/* ===== TABLES ===== */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin: 10px 0;
+}
+.styled-table th {
+  background: var(--navy);
+  color: #fff;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+.styled-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.styled-table tr:nth-child(even) td { background: #F8F9FF; }
+.styled-table tr:hover td { background: var(--blue-pale); }
+
+/* ===== MCQ ===== */
+.mcq-header {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: #fff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.mcq-score-display {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gold);
+}
+.mcq-stats { display: flex; gap: 16px; flex-wrap: wrap; }
+.stat-item { text-align: center; }
+.stat-num { font-size: 1.2rem; font-weight: 700; }
+.stat-label { font-size: 0.7rem; opacity: 0.8; }
+
+.question-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--navy);
+  position: relative;
+}
+.question-card.pyq-tag::before {
+  content: 'PYQ';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--saffron);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.question-card.future-tag::before {
+  content: 'Expected';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.q-num {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+.q-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  color: var(--text);
+  font-weight: 500;
+}
+.options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media (max-width: 600px) { .options { grid-template-columns: 1fr; } }
+.option {
+  padding: 10px 14px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+}
+.option:hover { border-color: var(--navy); background: var(--blue-pale); }
+.option.correct { background: var(--green-pale); border-color: var(--green); color: #1B5E20; font-weight: 600; }
+.option.wrong { background: var(--red-pale); border-color: var(--red); color: var(--red); }
+.option.reveal-correct { background: var(--green-pale); border-color: var(--green); }
+.opt-label { font-weight: 700; color: var(--navy); min-width: 20px; }
+.option.correct .opt-label { color: var(--green); }
+.option.wrong .opt-label { color: var(--red); }
+.explanation {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--gold-pale);
+  border-left: 3px solid var(--gold);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #5a4400;
+  display: none;
+}
+.explanation.visible { display: block; }
+
+/* ===== MCQ CONTROLS ===== */
+.mcq-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--navy); color: #fff; }
+.btn-primary:hover { background: var(--navy-light); transform: translateY(-1px); }
+.btn-success { background: var(--green); color: #fff; }
+.btn-success:hover { background: var(--green-light); }
+.btn-danger { background: var(--red); color: #fff; }
+.btn-warning { background: var(--gold); color: #fff; }
+
+/* ===== RESULT POPUP ===== */
+.popup-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  display: none;
+  padding: 20px;
+}
+.popup-overlay.show { display: flex; }
+.popup {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes popIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.popup-emoji { font-size: 4rem; margin-bottom: 10px; }
+.popup-score { font-family: 'Baloo 2', sans-serif; font-size: 3rem; font-weight: 800; color: var(--navy); }
+.popup-msg { color: var(--text-light); margin: 10px 0 20px; font-size: 1rem; }
+.popup-details { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 16px 0; }
+.popup-stat { padding: 12px; border-radius: 10px; }
+.popup-stat.c { background: var(--green-pale); }
+.popup-stat.w { background: var(--red-pale); }
+.popup-stat.s { background: var(--blue-pale); }
+.popup-stat-num { font-size: 1.6rem; font-weight: 800; }
+.popup-stat.c .popup-stat-num { color: var(--green); }
+.popup-stat.w .popup-stat-num { color: var(--red); }
+.popup-stat.s .popup-stat-num { color: var(--navy); }
+.popup-stat-label { font-size: 0.75rem; color: var(--text-light); }
+
+/* ===== LAST MINUTE CARDS ===== */
+.lm-card {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.lm-title {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.lm-point {
+  font-size: 0.88rem;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  gap: 8px;
+  line-height: 1.4;
+}
+.lm-point:last-child { border-bottom: none; }
+.lm-bullet { color: var(--saffron-light); font-weight: 700; flex-shrink: 0; }
+
+.super-mnemonic {
+  background: linear-gradient(135deg, #FF6B00, #FF8C2A);
+  color: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.sm-title {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+.sm-content {
+  font-size: 1.3rem;
+  font-weight: 800;
+  font-family: 'Baloo 2', sans-serif;
+  line-height: 1.5;
+}
+.sm-explain { font-size: 0.82rem; margin-top: 8px; opacity: 0.85; line-height: 1.5; }
+
+/* ===== SECTION HEADINGS ===== */
+.section-heading {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 24px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--saffron);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ===== TAG ===== */
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin: 2px;
+}
+.tag.saffron { background: var(--saffron-pale); color: var(--saffron); }
+.tag.green { background: var(--green-pale); color: var(--green); }
+.tag.navy { background: var(--blue-pale); color: var(--navy); }
+.tag.red { background: var(--red-pale); color: var(--red); }
+
+/* Progress bar */
+.progress-bar-wrap { background: rgba(255,255,255,0.2); border-radius: 10px; height: 6px; margin-top: 10px; }
+.progress-bar-fill { height: 100%; border-radius: 10px; background: var(--gold); transition: width 0.5s; }
+
+/* Scrolltop */
+.scroll-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  display: none;
+  z-index: 200;
+  transition: all 0.3s;
+}
+.scroll-top.show { display: flex; align-items: center; justify-content: center; }
+.scroll-top:hover { background: var(--saffron); transform: translateY(-3px); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>⚖️ राज्यपाल (Governor)</h1>
+  <p>भारतीय संविधान | भाग-6 | अनुच्छेद 153-161</p>
+  <div class="exam-badges">
+    <span class="badge">🎯 RPSC RAS Pre</span>
+    <span class="badge">👮 PSI Exam</span>
+    <span class="badge">📚 राजस्थान GK</span>
+    <span class="badge">🏛️ Indian Polity</span>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrapper">
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('revision')">📖 Revision</div>
+    <div class="tab" onclick="showTab('summary')">📊 Summary Table</div>
+    <div class="tab" onclick="showTab('mcq')">❓ RJ PYQ (56 MCQ)</div>
+    <div class="tab" onclick="showTab('lastminute')">⚡ Last Minute</div>
+  </div>
+</div>
+
+<!-- ==================== REVISION TAB ==================== -->
+<div id="revision" class="content active">
+
+  <!-- राज्य सरकार Overview -->
+  <h2 class="section-heading">🏛️ राज्य सरकार - संरचना</h2>
+  <div class="card navy">
+    <div class="card-title"><span class="icon">🗺️</span> राज्य सरकार (भाग-6, अनु॰ 152-237)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;text-align:center;margin-top:10px;">
+      <div style="background:var(--saffron-pale);padding:12px;border-radius:10px;">
+        <div style="font-weight:700;color:var(--saffron);font-size:1rem;">🏛️ विधायिका</div>
+        <div style="font-size:0.82rem;margin-top:6px;color:var(--text-light);">कानून बनाना<br>→ विधानसभा<br>→ विधानपरिषद</div>
+      </div>
+      <div style="background:var(--green-pale);padding:12px;border-radius:10px;">
+        <div style="font-weight:700;color:var(--green);font-size:1rem;">⚙️ कार्यपालिका</div>
+        <div style="font-size:0.82rem;margin-top:6px;color:var(--text-light);">कानून लागू करना<br>→ <strong>राज्यपाल</strong><br>→ मुख्यमंत्री<br>→ मंत्रिपरिषद</div>
+      </div>
+      <div style="background:var(--blue-pale);padding:12px;border-radius:10px;">
+        <div style="font-weight:700;color:var(--navy);font-size:1rem;">⚖️ न्यायपालिका</div>
+        <div style="font-size:0.82rem;margin-top:6px;color:var(--text-light);">कानून की जांच<br>→ उच्च न्यायालय<br>(High Court)</div>
+      </div>
+    </div>
+    <div class="mnemonic">
+      <div class="mnemonic-title">🧠 Trick</div>
+      <div class="mnemonic-content">"<strong>विकाजू</strong>" = <strong>वि</strong>धायिका + <strong>का</strong>र्यपालिका + <strong>जू</strong>न्यायपालिका — तीनों अंग याद रहेंगे!</div>
+    </div>
+  </div>
+
+  <!-- GOVERNOR INTRO -->
+  <h2 class="section-heading">👤 राज्यपाल - परिचय</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><span class="icon">📌</span> मुख्य बिंदु</div>
+      <div class="info-row"><span class="info-label">संवैधानिक प्रमुख</span><span class="info-value">राज्यपाल (Nominal Head)</span></div>
+      <div class="info-row"><span class="info-label">वास्तविक प्रमुख</span><span class="info-value">मुख्यमंत्री (Real Head)</span></div>
+      <div class="info-row"><span class="info-label">संबोधन</span><span class="info-value">माननीय / सम्माननीय / आदरणीय</span></div>
+      <div class="info-row"><span class="info-label">पद का नाम</span><span class="info-value">Governor (राज्यपाल)</span></div>
+      <div class="info-row"><span class="info-label">महामहिम राज्यपाल</span><span class="info-value">❌ (यह सही नहीं है)</span></div>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick</div>
+        <div class="mnemonic-content">"<strong>राजा दिखता है, मंत्री चलाता है</strong>" — राज्यपाल दिखावटी प्रमुख, CM असली बॉस!</div>
+      </div>
+    </div>
+    <div class="card green">
+      <div class="card-title"><span class="icon">📜</span> विवादास्पद पद</div>
+      <div class="highlight-box orange">⚠️ भारतीय संविधान का <strong>सबसे विवादित पद → राज्यपाल</strong></div>
+      <div class="highlight-box blue">🔄 7वाँ संविधान संशोधन 1956: एक व्यक्ति 2 या अधिक राज्यों का राज्यपाल हो सकता है</div>
+      <div class="highlight-box green">✅ राज्यपाल का स्थानान्तरण → राष्ट्रपति करता है</div>
+      <div style="margin-top:12px;">
+        <span class="art-pill">अनु॰ 153</span> हर राज्य में एक राज्यपाल होगा
+      </div>
+      <div class="mnemonic">
+        <div class="mnemonic-title">🧠 Trick</div>
+        <div class="mnemonic-content">"<strong>सात नंबर पर सात राज्य</strong>" — 7वें संशोधन से एक राज्यपाल कई राज्यों का। 1956 = States Reorganisation Act का साल!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLES 153-161 -->
+  <h2 class="section-heading">📚 अनुच्छेद 153-161 विस्तार से</h2>
+
+  <!-- Art 153 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">📋</span><span class="art-pill">अनु॰ 153</span> राज्यपाल की नियुक्ति</div>
+    <div class="info-row"><span class="info-label">नियुक्ति</span><span class="info-value">राष्ट्रपति द्वारा हस्ताक्षर एवं मुद्रा सहित अधिपत्र जारी करके</span></div>
+    <div class="info-row"><span class="info-label">Note</span><span class="info-value">राष्ट्रपति द्वारा जारी अधिपत्र को विधानसभा में <strong>राज्य का मुख्य सचिव</strong> पढ़कर सुनाता है</span></div>
+    <div class="mnemonic">
+      <div class="mnemonic-title">🧠 Trick</div>
+      <div class="mnemonic-content">"<strong>राष्ट्रपति पत्र देता है, Chief Secretary पढ़ता है</strong>" — नियुक्ति का क्रम!</div>
+    </div>
+  </div>
+
+  <!-- Art 154 -->
+  <div class="card green">
+    <div class="card-title"><span class="icon">⚙️</span><span class="art-pill">अनु॰ 154</span> कार्यकारी शक्तियाँ</div>
+    <div class="highlight-box green">✅ राज्य की समस्त कार्यकारी शक्तियाँ राज्यपाल में निहित होंगी जिनका प्रयोग राज्यपाल स्वयं अथवा अपने अधीनस्थ अधिकारियों के माध्यम से कर सकता है।</div>
+  </div>
+
+  <!-- Art 155 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">📝</span><span class="art-pill">अनु॰ 155</span> नियुक्ति की प्रक्रिया + परंपराएं</div>
+    <div style="margin-bottom:10px;">
+      <strong>परंपराएं (Conventions):</strong>
+      <div class="highlight-box orange">① राज्यपाल संबंधित राज्य का निवासी नहीं होगा</div>
+      <div class="highlight-box orange">② राज्यपाल की नियुक्ति से पहले संबंधित राज्य के मुख्यमंत्री से सलाह लेनी चाहिए <span class="tag red">❌ अनिवार्य नहीं</span></div>
+    </div>
+  </div>
+
+  <!-- Art 156 -->
+  <div class="card navy">
+    <div class="card-title"><span class="icon">⏰</span><span class="art-pill">अनु॰ 156</span> राज्यपाल का कार्यकाल</div>
+    <table class="styled-table">
+      <tr><th>बिंदु</th><th>विवरण</th></tr>
+      <tr><td>सामान्य कार्यकाल</td><td><strong>5 वर्ष</strong> (पद ग्रहण से)</td></tr>
+      <tr><td>राज्यपाल कार्य करेगा</td><td>राष्ट्रपति के <strong>प्रसाद पर्यन्त</strong> (इच्छा तक)</td></tr>
+      <tr><td>त्यागपत्र</td><td>राज्यपाल → <strong>राष्ट्रपति</strong> को देगा</td></tr>
+      <tr><td>उत्तराधिकारी तक</td><td>5 साल बाद भी पद पर बना रहेगा</td></tr>
+    </table>
+    <div class="highlight-box red">⚠️ राज्यपाल को हटाने के कारण और स्थानान्तरण का उल्लेख संविधान में <strong>नहीं</strong> किया गया!</div>
+    <div class="mnemonic">
+      <div class="mnemonic-title">🧠 Trick</div>
+      <div class="mnemonic-content">"<strong>5P</strong>" = 5 साल, Pleasure (प्रसाद), President को पत्र — तीनों 'P' याद!</div>
+    </div>
+  </div>
+
+  <!-- Art 157 -->
+  <div class="card gold">
+    <div class="card-title"><span class="icon">✅</span><span class="art-pill">अनु॰ 157</span> राज्यपाल की योग्यताएं</div>
+    <div class="grid-2">
+      <div class="highlight-box green">① <strong>भारत का नागरिक</strong> होना चाहिए</div>
+      <div class="highlight-box green">② <strong>35 वर्ष</strong> की आयु पूर्ण कर चुका हो</div>
+    </div>
+    <div class="mnemonic">
+      <div class="mnemonic-title">🧠 Trick</div>
+      <div class="mnemonic-content">"<strong>राज्यपाल = राष्ट्रपति जैसी योग्यता</strong>" — दोनों के लिए भारत का नागरिक + 35 साल! (राष्ट्रपति के लिए अतिरिक्त Lok Sabha योग्यता भी चाहिए)</div>
+    </div>
+  </div>
+
+  <!-- Art 158 -->
+  <div class="card purple">
+    <div class="card-title"><span class="icon">📋</span><span class="art-pill">अनु॰ 158</span> राज्यपाल की शर्तें</div>
+    <div class="info-row"><span class="info-label">① संसद/विधानमंडल</span><span class="info-value">सदस्य <strong>नहीं</strong> होगा</span></div>
+    <div class="info-row"><span class="info-label">② लाभ का पद</span><span class="info-value">अन्य कोई लाभ का पद <strong>नहीं</strong> होगा</span></div>
+    <div class="info-row"><span class="info-label">③ आवास</span><span class="info-value">बिना किराए का आवास मिलेगा (Raj Bhawan)</span></div>
+    <div class="info-row"><span class="info-label">④ वेतन में कटौती</span><span class="info-value">कार्यकाल में वेतन <strong>कम नहीं</strong> होगा</span></div>
+    <div class="info-row"><span class="info-label">💰 वेतन</span><span class="info-value"><strong>3.50 लाख/माह</strong></span></div>
+    <div class="highlight-box orange">📌 यदि एक व्यक्ति 2 राज्यों का राज्यपाल हो तो वेतन राष्ट्रपति निर्धारित करेगा कि दोनों राज्य किस अनुपात में देंगे।</div>
+    <div class="mnemonic">
+      <div class="mnemonic-title">🧠 Trick</div>
+      <div class="mnemonic-content">"<strong>साल नंबर 3.50 लाख पर ताला</strong>" = वेतन 3.50 लाख और घटाया नहीं जा सकता (ताला लगा है वेतन पर!)</div>
+    </div>
+  </div>
+
+  <!-- Art 159 -->
+  <div class="card teal">
+    <div class="card-title"><span class="icon">🙏</span><span class="art-pill">अनु॰ 159</span> राज्यपाल की शपथ</div>
+    <div class="info-row"><span class="info-label">शपथ दिलाता है</span><span class="info-value">HC का <strong>मुख्य न्यायाधीश</strong></span></div>
+    <div class="info-row"><span class="info-label">अनुपलब्ध होने पर</span><span class="info-value">HC का <strong>वरिष्ठ न्यायाधीश</strong></span></div>
+    <div class="mnemonic">
+      <div class="mnemonic-title">🧠 Trick</div>
+      <div class="mnemonic-content">"<strong>राज्यपाल को HC का CJ शपथ दिलाता है</strong>" — जैसे राष्ट्रपति को CJI!</div>
+    </div>
+  </div>
+
+  <!-- Art 160 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🔄</span><span class="art-pill">अनु॰ 160</span> आकस्मिक परिस्थितियाँ</div>
+    <div class="highlight-box blue">राष्ट्रपति → आकस्मिक परिस्थितियों में राज्यपाल के कार्य निर्वहन हेतु नियुक्त कर सकता है:<br>① HC का मुख्य न्यायाधीश<br>② अन्य राज्य के राज्यपाल (अतिरिक्त प्रभार)</div>
+  </div>
+
+  <!-- Art 161 -->
+  <div class="card red">
+    <div class="card-title"><span class="icon">🕊️</span><span class="art-pill">अनु॰ 161</span> क्षमादान शक्तियाँ</div>
+    <div class="highlight-box red">⚠️ <strong>Note:</strong> राज्यपाल के पास <strong>मृत्युदंड</strong> व <strong>सैन्य न्यायालय</strong> द्वारा दी गई सजा की <strong>क्षमा करने का अधिकार नहीं</strong> है।</div>
+    <div class="info-row"><span class="info-label">क्षमा शक्तियाँ</span><span class="info-value">लघुकरण, परिहार, विराम, प्रविलम्बन</span></div>
+    <div class="mnemonic">
+      <div class="mnemonic-title">🧠 Trick</div>
+      <div class="mnemonic-content">"<strong>लप विप</strong>" = <strong>ल</strong>घुकरण + <strong>प</strong>रिहार + <strong>वि</strong>राम + <strong>प</strong>्रविलम्बन — 4 क्षमा शक्तियाँ!</div>
+    </div>
+  </div>
+
+  <!-- POWERS OF GOVERNOR -->
+  <h2 class="section-heading">💪 राज्यपाल की शक्तियाँ</h2>
+
+  <div class="card">
+    <div class="card-title"><span class="icon">🗂️</span> शक्तियों का वर्गीकरण</div>
+    <div class="grid-2">
+      <div>
+        <div class="highlight-box orange">⚙️ <strong>कार्यकारी शक्तियाँ</strong></div>
+        <div class="highlight-box blue">📜 <strong>विधायी शक्तियाँ</strong></div>
+        <div class="highlight-box green">⚖️ <strong>न्यायिक शक्तियाँ</strong></div>
+        <div class="highlight-box purple">💰 <strong>वित्तीय शक्तियाँ</strong></div>
+        <div class="highlight-box red">🎯 <strong>स्वविवेकीय शक्तियाँ</strong></div>
+      </div>
+      <div style="padding:10px;background:var(--saffron-pale);border-radius:10px;">
+        <strong style="color:var(--saffron);">राज्यपाल द्वारा की जाने वाली नियुक्तियाँ:</strong>
+        <div style="font-size:0.85rem;margin-top:8px;line-height:2;">
+          ➤ मुख्यमंत्री व मंत्रिपरिषद<br>
+          ➤ महाधिवक्ता<br>
+          ➤ राज्य वित्त आयोग अध्यक्ष/सदस्य<br>
+          ➤ राज्य निर्वाचन आयोग<br>
+          ➤ राज्य लोक सेवा आयोग<br>
+          ➤ राज्य मानवाधिकार आयोग<br>
+          ➤ लोकायुक्त<br>
+          ➤ राज्य सूचना आयोग
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXECUTIVE POWERS -->
+  <div class="card green">
+    <div class="card-title"><span class="icon">⚙️</span> कार्यकारी शक्तियाँ (Art 154, 164, 165)</div>
+    <div class="info-row"><span class="info-label">Art 154</span><span class="info-value">राज्य की समस्त कार्यकारी शक्तियाँ राज्यपाल में निहित</span></div>
+    <div class="info-row"><span class="info-label">Art 164</span><span class="info-value">मुख्यमंत्री की नियुक्ति राज्यपाल करता है; CM की सलाह से मंत्रिपरिषद</span></div>
+    <div class="info-row"><span class="info-label">Art 165</span><span class="info-value">राज्य महाधिवक्ता की नियुक्ति राज्यपाल करेगा</span></div>
+    <div class="info-row"><span class="info-label">Art 166</span><span class="info-value">राज्य के सभी कार्य राज्यपाल के नाम से जाएंगे</span></div>
+    <div class="info-row"><span class="info-label">Art 167</span><span class="info-value">मुख्यमंत्री का कर्तव्य — शासन-प्रशासन की जानकारी राज्यपाल को देना</span></div>
+    <div class="info-row"><span class="info-label">University</span><span class="info-value">राज्यपाल → राज्य विश्वविद्यालयों का कुलाधिपति + सभी राज्य विवि के कुलपति नियुक्त करता है</span></div>
+    <div class="info-row"><span class="info-label">Art 233</span><span class="info-value">जिला न्यायाधीश की नियुक्ति राज्यपाल करता है</span></div>
+  </div>
+
+  <!-- LEGISLATIVE POWERS -->
+  <div class="card purple">
+    <div class="card-title"><span class="icon">📜</span> विधायी शक्तियाँ</div>
+    <table class="styled-table">
+      <tr><th>अनुच्छेद</th><th>विषय</th><th>विवरण</th></tr>
+      <tr><td><span class="art-pill">Art 168</span></td><td>विधानमंडल संरचना</td><td>विधानसभा + विधानपरिषद + राज्यपाल</td></tr>
+      <tr><td><span class="art-pill">Art 171</span></td><td>विधानपरिषद में मनोनयन</td><td>1/6 सदस्य (साहित्य, कला, विज्ञान, समाजसेवा, सहकारी आन्दोलन)</td></tr>
+      <tr><td><span class="art-pill">Art 174</span></td><td>सत्र</td><td>राज्यपाल → सत्र आहूत + सत्रावसान + विघटन</td></tr>
+      <tr><td><span class="art-pill">Art 175</span></td><td>संदेश</td><td>राज्यपाल विधानमंडल को संदेश भेजेगा</td></tr>
+      <tr><td><span class="art-pill">Art 176</span></td><td>अभिभाषण</td><td>राज्यपाल विधानमंडल में अभिभाषण देगा</td></tr>
+      <tr><td><span class="art-pill">Art 188</span></td><td>शपथ</td><td>प्रोटेम स्पीकर के माध्यम से सदस्यों को शपथ</td></tr>
+      <tr><td><span class="art-pill">Art 192</span></td><td>अयोग्यता</td><td>ECI की सलाह पर विधानसभा सदस्यों की अयोग्यता का निर्धारण</td></tr>
+      <tr><td><span class="art-pill">Art 200</span></td><td>विधेयक पर निर्णय</td><td>स्वीकृति / अस्वीकृति / पुनर्विचार / राष्ट्रपति के लिए आरक्षित</td></tr>
+      <tr><td><span class="art-pill">Art 201</span></td><td>आरक्षित विधेयक</td><td>राष्ट्रपति → स्वीकृति/अस्वीकृति/पुनर्विचार (6 माह में)</td></tr>
+      <tr><td><span class="art-pill">Art 213</span></td><td>अध्यादेश</td><td>सत्र न चलने पर राज्यसूची/समवर्ती सूची पर अध्यादेश (न्यायिक पुनर्मलोकन ❌)</td></tr>
+      <tr><td><span class="art-pill">Art 333</span></td><td>आंग्ल-भारतीय</td><td>विधानमंडल में एक आंग्ल-भारतीय मनोनीत (104वाँ संशोधन 2019 से समाप्त)</td></tr>
+    </table>
+    <div class="mnemonic">
+      <div class="mnemonic-title">🧠 Trick — Art 200 पर 4 विकल्प</div>
+      <div class="mnemonic-content">"<strong>स अ पु रा</strong>" = <strong>स</strong>्वीकृति + <strong>अ</strong>स्वीकृति + <strong>पु</strong>नर्विचार + <strong>रा</strong>ष्ट्रपति हेतु आरक्षित!</div>
+    </div>
+  </div>
+
+  <!-- Art 200-201 Detail -->
+  <div class="card gold">
+    <div class="card-title"><span class="icon">🔄</span> Art 200-201: पुनर्विचार का चक्र</div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:200px;background:var(--green-pale);padding:14px;border-radius:10px;">
+        <strong style="color:var(--green);">पुनर्विचार के बाद (Art 200)</strong><br>
+        <div style="font-size:0.85rem;margin-top:8px;">
+          विधानमंडल → Bill → पुनर्विचार → राज्यपाल<br>
+          <strong>→ हस्ताक्षर करना अनिवार्य</strong>
+        </div>
+      </div>
+      <div style="flex:1;min-width:200px;background:var(--red-pale);padding:14px;border-radius:10px;">
+        <strong style="color:var(--red);">आरक्षित + पुनर्विचार (Art 201)</strong><br>
+        <div style="font-size:0.85rem;margin-top:8px;">
+          राष्ट्रपति → पुनर्विचार → राज्यपाल → 6 माह में विधानमंडल के सामने<br>
+          <strong>→ राष्ट्रपति के लिए हस्ताक्षर अनिवार्य नहीं</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINANCIAL POWERS -->
+  <div class="card teal">
+    <div class="card-title"><span class="icon">💰</span> वित्तीय शक्तियाँ</div>
+    <div class="info-row"><span class="info-label">Art 199</span><span class="info-value">विधानसभा में धन विधेयक राज्यपाल की पूर्वानुमति से</span></div>
+    <div class="info-row"><span class="info-label">Art 202</span><span class="info-value">वित्तमंत्री → राज्यपाल के नाम से प्रतिवर्ष वार्षिक वित्तीय विवरण (बजट) पेश करेगा</span></div>
+  </div>
+
+  <!-- DISCRETIONARY POWERS -->
+  <div class="card red">
+    <div class="card-title"><span class="icon">🎯</span> स्वविवेकीय शक्तियाँ (Discretionary Powers)</div>
+    <div class="highlight-box orange">① किसी राजनीतिक दल को पूर्ण बहुमत न होने पर → राज्यपाल मुख्यमंत्री की नियुक्ति <strong>अपने विवेक से</strong> करता है</div>
+    <div class="highlight-box red">② अनु॰ 356 के तहत राज्य में <strong>राष्ट्रपति शासन</strong> लागू करने की सिफारिश</div>
+    <div class="highlight-box purple">③ अनु॰ 201 (Art 201)</div>
+  </div>
+
+  <!-- COMMITTEES ON GOVERNOR -->
+  <h2 class="section-heading">📋 राज्यपाल पद पर समितियाँ/आयोग</h2>
+  <div class="card">
+    <div class="card-title"><span class="icon">🏛️</span> प्रमुख समितियाँ</div>
+    <table class="styled-table">
+      <tr><th>समिति</th><th>वर्ष</th><th>अध्यक्ष</th><th>मुख्य सिफारिशें</th></tr>
+      <tr><td>प्रथम प्रशासनिक सुधार आयोग</td><td>1966</td><td>मोरारजी देसाई (बाद में क. हनुमन्तैया)</td><td>राज्यपाल की नियुक्ति में CM से सलाह; सामाजिक-प्रशासनिक जानकार की नियुक्ति हो</td></tr>
+      <tr><td>राजमन्नार समिति</td><td>1969</td><td>P.V. राजमन्नार</td><td>CM से सलाह; सेवानिवृत्ति बाद पुन: नियुक्ति नहीं; HC से हटाया जाए; मंत्री CM के बाद काम नहीं करें; पद समाप्त हो</td></tr>
+      <tr><td>भगवान सहाय समिति</td><td>1970</td><td>—</td><td>—</td></tr>
+      <tr><td>सरकारिया समिति</td><td>1983 (Report 1988)</td><td>रणजीत सिंह सरकारिया</td><td>① CM सलाह पर नियुक्ति ② राज्य का निवासी नहीं ③ सर्वाधिक सीट वाले दल का नेता CM ④ 5 वर्ष से पूर्व राजनीतिक कारण से नहीं हटाना</td></tr>
+      <tr><td>पुंछी आयोग</td><td>2007 (Report 2010)</td><td>मदन मोहन पुंछी</td><td>① महाभियोग से हटाया जाए ② 2 वर्ष बाद राजनीति में सक्रिय नहीं ③ एक समिति की सिफारिश पर नियुक्ति (PM, HM, विपक्ष नेता, VP, CM)</td></tr>
+    </table>
+    <div class="mnemonic">
+      <div class="mnemonic-title">🧠 Trick — समितियाँ याद करें</div>
+      <div class="mnemonic-content">"<strong>पहले राजा भगा सरकार पुंछी</strong>" = <strong>प</strong>्रथम प्रशासनिक + <strong>रा</strong>जमन्नार + <strong>भ</strong>गवान सहाय + <strong>स</strong>रकारिया + <strong>पुं</strong>छी आयोग!</div>
+    </div>
+  </div>
+
+  <!-- RAJASTHAN SPECIFIC -->
+  <h2 class="section-heading">🏜️ राजस्थान के राज्यपाल - विशेष तथ्य</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><span class="icon">👩</span> राजस्थान की महिला राज्यपाल</div>
+      <div class="info-row"><span class="info-label">① प्रतिभा पाटिल</span><span class="info-value">2004-07</span></div>
+      <div class="info-row"><span class="info-label">② प्रभा राव</span><span class="info-value">2009-10</span></div>
+      <div class="info-row"><span class="info-label">③ मारग्रेट अल्वा</span><span class="info-value">2012-14</span></div>
+    </div>
+    <div class="card green">
+      <div class="card-title"><span class="icon">⏱️</span> कार्यकाल रिकॉर्ड</div>
+      <div class="info-row"><span class="info-label">सर्वाधिक कार्यकाल</span><span class="info-value">गुरुमुख निहाल सिंह</span></div>
+      <div class="info-row"><span class="info-label">न्यूनतम कार्यकाल</span><span class="info-value">T.V. राजेश्वर</span></div>
+      <div class="info-row"><span class="info-label">5 वर्ष पूरे करने वाले</span><span class="info-value">सवाई मानसिंह-II, गुरुमुख निहाल सिंह, सम्पूर्णानन्द, कलराज सिंह, कलराज मिश्र</span></div>
+      <div class="info-row"><span class="info-label">पद पर रहते निधन</span><span class="info-value">दरबारा सिंह, निर्मल चन्द्र जैन, शैलेन्द्र कुमार, प्रसाद राव</span></div>
+    </div>
+    <div class="card navy">
+      <div class="card-title"><span class="icon">🔄</span> पुनः राजनीति में</div>
+      <div class="info-row"><span class="info-label">पुनः सक्रिय राजनीति</span><span class="info-value">मदनलाल खुराना</span></div>
+      <div class="info-row"><span class="info-label">CM भी रहे (राज. के राज्यपाल)</span><span class="info-value">सम्पूर्णानन्द-UP, कल्याण सिंह-UP, गुरुमुख निहाल सिंह-Delhi, बसन्त पाटिल-महाराष्ट्र, मार्टिन्डा रेड्डी-AP</span></div>
+    </div>
+    <div class="card gold">
+      <div class="card-title"><span class="icon">🏛️</span> संस्थान अध्यक्ष/सदस्य भी रहे</div>
+      <div class="info-row"><span class="info-label">RPSC सदस्य → राज्यपाल</span><span class="info-value">रघुइल तिलक (सर्वोच्च वरिष्ठ)</span></div>
+      <div class="info-row"><span class="info-label">UPSC अध्यक्ष → राज्यपाल</span><span class="info-value">A.R. किदवई</span></div>
+      <div class="info-row"><span class="info-label">UPSC सदस्य → राज्यपाल</span><span class="info-value">स्वरूप सिंह</span></div>
+      <div class="info-row"><span class="info-label">विधानसभा अध्यक्ष</span><span class="info-value">दरबारा सिंह-पंजाब, गुरुमुख निहाल सिंह-Delhi, धनिक मंडल-Bihar, हरिभाऊ बागड़े-महाराष्ट्र</span></div>
+    </div>
+  </div>
+
+  <!-- UNIVERSITY KALADHIPATI -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🎓</span> विश्वविद्यालय कुलाधिपति (Important for PSC)</div>
+    <table class="styled-table">
+      <tr><th>विश्वविद्यालय</th><th>कुलाधिपति</th></tr>
+      <tr><td>राज्य की विधि विश्वविद्यालय</td><td>HC के मुख्य जज</td></tr>
+      <tr><td>राज्य की राज्य विश्वविद्यालय</td><td><strong>राज्यपाल</strong></td></tr>
+      <tr><td>केन्द्रीय विश्वविद्यालय</td><td><strong>राष्ट्रपति</strong></td></tr>
+      <tr><td>दिल्ली विश्वविद्यालय</td><td><strong>उप-राष्ट्रपति</strong></td></tr>
+      <tr><td>विश्व भारती (कोलकाता)</td><td><strong>प्रधानमंत्री</strong></td></tr>
+    </table>
+    <div class="mnemonic">
+      <div class="mnemonic-title">🧠 Trick — कुलाधिपति याद करें</div>
+      <div class="mnemonic-content">"<strong>जज → राज्यपाल → राष्ट्रपति → VP → PM</strong>" — कानून से शुरू करके PM तक जाओ (Law → State → Central → Delhi → विश्व भारती)</div>
+    </div>
+  </div>
+
+</div>
+<!-- END REVISION TAB -->
+
+<!-- ==================== SUMMARY TABLE TAB ==================== -->
+<div id="summary" class="content">
+
+  <h2 class="section-heading">📊 Master Summary Table</h2>
+  <div class="card" style="overflow-x:auto;">
+    <table class="styled-table">
+      <tr>
+        <th>अनुच्छेद</th>
+        <th>विषय</th>
+        <th>मुख्य बिंदु</th>
+        <th>Trick/Note</th>
+      </tr>
+      <tr><td>153</td><td>नियुक्ति</td><td>हर राज्य में एक राज्यपाल; 7वें संशोधन से एक व्यक्ति 2+ राज्यों का</td><td>7वां संशोधन 1956</td></tr>
+      <tr><td>154</td><td>कार्यकारी शक्ति</td><td>सब शक्तियाँ राज्यपाल में; खुद या अधीनस्थ से</td><td>PM की तरह CM</td></tr>
+      <tr><td>155</td><td>नियुक्ति प्रक्रिया</td><td>राष्ट्रपति द्वारा अधिपत्र; CS पढ़ता है</td><td>Chief Secretary पढ़ेगा</td></tr>
+      <tr><td>156</td><td>कार्यकाल</td><td>5 वर्ष / राष्ट्रपति के प्रसाद तक; त्यागपत्र राष्ट्रपति को</td><td>5P Trick</td></tr>
+      <tr><td>157</td><td>योग्यता</td><td>भारत नागरिक + 35 साल</td><td>राष्ट्रपति जैसी योग्यता</td></tr>
+      <tr><td>158</td><td>शर्तें</td><td>संसद/विधान सदस्य नहीं; लाभ का पद नहीं; ₹3.50L/माह; आवास मुफ्त</td><td>3.50 लाख ताला</td></tr>
+      <tr><td>159</td><td>शपथ</td><td>HC का CJ शपथ दिलाता है</td><td>HC CJ = Oath Giver</td></tr>
+      <tr><td>160</td><td>आकस्मिक</td><td>राष्ट्रपति → HC CJ या अन्य राज्य राज्यपाल को अतिरिक्त प्रभार</td><td>Emergency Role</td></tr>
+      <tr><td>161</td><td>क्षमादान</td><td>मृत्युदंड और सैन्य न्यायालय की सजा माफ नहीं; लघुकरण, परिहार, विराम, प्रविलम्बन</td><td>लप विप Trick</td></tr>
+      <tr><td>164</td><td>CM नियुक्ति</td><td>राज्यपाल CM नियुक्त करता है; CM सलाह से मंत्रिपरिषद</td><td>CM First, Then Cabinet</td></tr>
+      <tr><td>165</td><td>महाधिवक्ता</td><td>राज्यपाल नियुक्त करता है</td><td>AG की तरह</td></tr>
+      <tr><td>166</td><td>राज्य के कार्य</td><td>राज्यपाल के नाम से होंगे</td><td>In Governor's Name</td></tr>
+      <tr><td>167</td><td>CM का कर्तव्य</td><td>शासन जानकारी राज्यपाल को देना</td><td>CM informs Gov.</td></tr>
+      <tr><td>168</td><td>विधानमंडल</td><td>विधानसभा + विधानपरिषद + राज्यपाल</td><td>3 = Legislature</td></tr>
+      <tr><td>171</td><td>विधानपरिषद</td><td>1/6 सदस्य मनोनीत (साहित्य, कला, विज्ञान, समाजसेवा, सहकारी)</td><td>SASK + C</td></tr>
+      <tr><td>174</td><td>सत्र</td><td>आहूत + सत्रावसान + विघटन</td><td>3 सत्र क्रिया</td></tr>
+      <tr><td>188</td><td>शपथ</td><td>प्रोटेम स्पीकर → राज्यपाल नियुक्त/शपथ → नवीनतम सदस्यों की शपथ</td><td>Protem = Governor's Man</td></tr>
+      <tr><td>192</td><td>अयोग्यता</td><td>ECI सलाह पर निर्धारण</td><td>EC decides</td></tr>
+      <tr><td>199</td><td>धन विधेयक</td><td>राज्यपाल की पूर्वानुमति से</td><td>Money Bill = Prior Nod</td></tr>
+      <tr><td>200</td><td>विधेयक पर निर्णय</td><td>स्वीकृति/अस्वीकृति/पुनर्विचार/राष्ट्रपति हेतु आरक्षित</td><td>स अ पु रा</td></tr>
+      <tr><td>201</td><td>आरक्षित विधेयक</td><td>राष्ट्रपति → स्वीकृति/अस्वीकृति/पुनर्विचार; राज्यपाल 6 माह में विधानमंडल में रखेगा</td><td>6 Month Rule</td></tr>
+      <tr><td>202</td><td>बजट</td><td>वित्तमंत्री राज्यपाल के नाम से पेश करेगा</td><td>Budget in Gov. Name</td></tr>
+      <tr><td>213</td><td>अध्यादेश</td><td>सत्र न चलने पर; राज्य/समवर्ती सूची; न्यायिक पुनर्मलोकन नहीं</td><td>Ordinance Power</td></tr>
+      <tr><td>233</td><td>जिला न्यायाधीश</td><td>राज्यपाल नियुक्त करता है</td><td>District Judge = Gov.</td></tr>
+      <tr><td>333</td><td>आंग्ल-भारतीय</td><td>104वें संशोधन 2019 से समाप्त</td><td>Gone in 2019</td></tr>
+      <tr><td>356</td><td>राष्ट्रपति शासन</td><td>राज्यपाल की सिफारिश पर लागू होता है</td><td>Governor recommends</td></tr>
+    </table>
+  </div>
+
+  <!-- QUICK REFERENCE TABLE -->
+  <h2 class="section-heading">⚡ Quick Reference Table</h2>
+  <div class="grid-2">
+    <div class="card" style="overflow-x:auto;">
+      <div class="card-title"><span class="icon">👥</span> नियुक्तकर्ता & नियुक्त</div>
+      <table class="styled-table">
+        <tr><th>नियुक्तकर्ता</th><th>नियुक्त</th></tr>
+        <tr><td>राष्ट्रपति</td><td>राज्यपाल</td></tr>
+        <tr><td>राज्यपाल</td><td>CM, मंत्रिपरिषद, महाधिवक्ता, जिला न्यायाधीश, राज्य PSC, लोकायुक्त, SIC, SHC</td></tr>
+        <tr><td>HC CJ</td><td>राज्यपाल को शपथ</td></tr>
+        <tr><td>प्रोटेम स्पीकर</td><td>विधायकों को शपथ</td></tr>
+      </table>
+    </div>
+    <div class="card" style="overflow-x:auto;">
+      <div class="card-title"><span class="icon">📌</span> महत्वपूर्ण संख्याएं</div>
+      <table class="styled-table">
+        <tr><th>विषय</th><th>संख्या/तथ्य</th></tr>
+        <tr><td>कार्यकाल</td><td>5 वर्ष</td></tr>
+        <tr><td>न्यूनतम आयु</td><td>35 वर्ष</td></tr>
+        <tr><td>वेतन</td><td>₹3.50 लाख/माह</td></tr>
+        <tr><td>विधानपरिषद मनोनयन</td><td>1/6 सदस्य</td></tr>
+        <tr><td>Art 200 विकल्प</td><td>4 (स अ पु रा)</td></tr>
+        <tr><td>Art 201 समय सीमा</td><td>6 माह</td></tr>
+        <tr><td>7वाँ संविधान संशोधन</td><td>1956</td></tr>
+        <tr><td>104वाँ संशोधन</td><td>2019 (आंग्ल-भारतीय समाप्त)</td></tr>
+      </table>
+    </div>
+    <div class="card" style="overflow-x:auto;">
+      <div class="card-title"><span class="icon">❌✅</span> क्या कर सकता है / नहीं</div>
+      <table class="styled-table">
+        <tr><th>कर सकता है ✅</th><th>नहीं कर सकता ❌</th></tr>
+        <tr><td>CM की नियुक्ति</td><td>मृत्युदंड माफ</td></tr>
+        <tr><td>विधेयक आरक्षित करना</td><td>सैन्य न्यायालय की सजा माफ</td></tr>
+        <tr><td>अध्यादेश जारी करना</td><td>लाभ का पद रखना</td></tr>
+        <tr><td>अयोग्यता निर्धारण (ECI सलाह)</td><td>संसद/विधान सदस्य बनना</td></tr>
+        <tr><td>विधानमंडल विघटित करना</td><td>स्वयं राष्ट्रपति शासन लागू करना</td></tr>
+      </table>
+    </div>
+    <div class="card" style="overflow-x:auto;">
+      <div class="card-title"><span class="icon">🎓</span> कुलाधिपति Quick Ref</div>
+      <table class="styled-table">
+        <tr><th>विश्वविद्यालय</th><th>कुलाधिपति</th></tr>
+        <tr><td>राज्य विधि विवि</td><td style="color:var(--navy);font-weight:600;">HC मुख्य जज</td></tr>
+        <tr><td>राज्य विश्वविद्यालय</td><td style="color:var(--saffron);font-weight:600;">राज्यपाल</td></tr>
+        <tr><td>केन्द्रीय विवि</td><td style="color:var(--green);font-weight:600;">राष्ट्रपति</td></tr>
+        <tr><td>दिल्ली विवि</td><td style="color:var(--purple);font-weight:600;">उप-राष्ट्रपति</td></tr>
+        <tr><td>विश्व भारती</td><td style="color:var(--teal);font-weight:600;">प्रधानमंत्री</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- COMMITTEES SUMMARY -->
+  <h2 class="section-heading">📋 समितियाँ - Quick Summary</h2>
+  <div class="card" style="overflow-x:auto;">
+    <table class="styled-table">
+      <tr><th>समिति</th><th>वर्ष</th><th>अध्यक्ष</th><th>Key Recommendation</th></tr>
+      <tr><td>प्रथम प्रशासनिक सुधार</td><td>1966</td><td>मोरारजी देसाई → क.हनुमन्तैया</td><td>CM सलाह अनिवार्य; सामाजिक-प्रशासनिक जानकार</td></tr>
+      <tr><td>राजमन्नार</td><td>1969</td><td>P.V. राजमन्नार</td><td>पद ही समाप्त करो; HC से हटाना; सेवानिवृत्ति बाद पुन: नियुक्ति नहीं</td></tr>
+      <tr><td>भगवान सहाय</td><td>1970</td><td>भगवान सहाय</td><td>केन्द्र-राज्य संबंध</td></tr>
+      <tr><td>सरकारिया</td><td>1983/1988</td><td>रणजीत सिंह सरकारिया</td><td>CM सलाह; 5 साल से पहले राजनीतिक कारण से नहीं हटाना; अधिकतम सीट वाला CM</td></tr>
+      <tr><td>पुंछी</td><td>2007/2010</td><td>मदन मोहन पुंछी</td><td>महाभियोग से हटाओ; 2 साल तक राजनीति में नहीं; समिति सिफारिश (PM+HM+विपक्ष+VP+CM)</td></tr>
+    </table>
+  </div>
+
+</div>
+<!-- END SUMMARY TAB -->
+
+<!-- ==================== MCQ TAB ==================== -->
+<div id="mcq" class="content">
+  <div class="mcq-header">
+    <div>
+      <div style="font-family:'Baloo 2',sans-serif;font-size:1.1rem;font-weight:700;">राज्यपाल - MCQ Practice</div>
+      <div style="font-size:0.8rem;opacity:0.8;margin-top:4px;">+1 सही | -1/3 गलत | RAS/PSI Style</div>
+      <div class="progress-bar-wrap" style="width:200px;margin-top:8px;">
+        <div class="progress-bar-fill" id="progressBar" style="width:0%"></div>
+      </div>
+    </div>
+    <div class="mcq-stats">
+      <div class="stat-item"><div class="stat-num" id="scoreDisplay" style="color:var(--gold)">0.00</div><div class="stat-label">Score</div></div>
+      <div class="stat-item"><div class="stat-num" id="correctCount" style="color:#4ade80">0</div><div class="stat-label">सही</div></div>
+      <div class="stat-item"><div class="stat-num" id="wrongCount" style="color:#f87171">0</div><div class="stat-label">गलत</div></div>
+      <div class="stat-item"><div class="stat-num" id="attemptCount" style="color:#93c5fd">0</div><div class="stat-label">Attempt</div></div>
+    </div>
+  </div>
+
+  <div class="mcq-controls">
+    <button class="btn btn-danger" onclick="resetQuiz()">🔄 Reset</button>
+    <button class="btn btn-success" onclick="submitAll()">✅ Submit All & Result</button>
+  </div>
+
+  <div id="questions-container"></div>
+
+  <div class="mcq-controls">
+    <button class="btn btn-danger" onclick="resetQuiz()">🔄 Reset</button>
+    <button class="btn btn-success" onclick="submitAll()">✅ Submit All & Result</button>
+  </div>
+</div>
+<!-- END MCQ TAB -->
+
+<!-- ==================== LAST MINUTE TAB ==================== -->
+<div id="lastminute" class="content">
+
+  <h2 class="section-heading">⚡ Last Minute Revision - Super Compact</h2>
+
+  <!-- SUPER MNEMONICS -->
+  <div class="super-mnemonic">
+    <div class="sm-title">🔥 SUPER MNEMONIC #1 — Articles याद करें</div>
+    <div class="sm-content">"153 को 61 है प्यार"</div>
+    <div class="sm-explain">= 153 (नियुक्ति) से शुरू → 154 (शक्ति) → 155 (नियुक्ति) → 156 (कार्यकाल) → 157 (योग्यता) → 158 (शर्त) → 159 (शपथ) → 160 (आकस्मिक) → 161 (क्षमादान)</div>
+  </div>
+
+  <div class="super-mnemonic" style="background:linear-gradient(135deg,#138808,#1AAB0A);">
+    <div class="sm-title">🔥 SUPER MNEMONIC #2 — समितियाँ</div>
+    <div class="sm-content">"पहले राजा भगवान की सरकार पुंछी"</div>
+    <div class="sm-explain">पहले (प्रथम प्रशासनिक) → राजा (राजमन्नार 1969) → भगवान (भगवान सहाय 1970) → सरकार (सरकारिया 1983) → पुंछी (पुंछी 2007)</div>
+  </div>
+
+  <div class="super-mnemonic" style="background:linear-gradient(135deg,#6A1B9A,#7B1FA2);">
+    <div class="sm-title">🔥 SUPER MNEMONIC #3 — Art 200 के 4 विकल्प</div>
+    <div class="sm-content">"स अ पु रा" (सापुरा पहाड़ जैसे याद करो!)</div>
+    <div class="sm-explain"><strong>स</strong>्वीकृति + <strong>अ</strong>स्वीकृति + <strong>पु</strong>नर्विचार + <strong>रा</strong>ष्ट्रपति हेतु आरक्षित</div>
+  </div>
+
+  <div class="super-mnemonic" style="background:linear-gradient(135deg,#00695C,#00897B);">
+    <div class="sm-title">🔥 SUPER MNEMONIC #4 — कुलाधिपति</div>
+    <div class="sm-content">"जज रे राष्ट्र, VP पीएम!"</div>
+    <div class="sm-explain"><strong>ज</strong>ज = विधि विवि | <strong>र</strong>े (राज्यपाल) = राज्य विवि | <strong>राष्ट्र</strong>पति = केन्द्रीय विवि | <strong>VP</strong> = दिल्ली विवि | <strong>PM</strong> = विश्व भारती</div>
+  </div>
+
+  <div class="super-mnemonic" style="background:linear-gradient(135deg,#C62828,#D32F2F);">
+    <div class="sm-title">🔥 SUPER MNEMONIC #5 — राज्यपाल की क्षमा शक्ति (लप विप)</div>
+    <div class="sm-content">"लप विप — लाखों का हिसाब"</div>
+    <div class="sm-explain"><strong>ल</strong>घुकरण + <strong>प</strong>रिहार + <strong>वि</strong>राम + <strong>प</strong>्रविलम्बन — मृत्युदंड और सैन्य न्यायालय की सजा माफ नहीं!</div>
+  </div>
+
+  <!-- COMPACT CARDS -->
+  <div class="grid-2">
+    <div class="lm-card">
+      <div class="lm-title">⚡ नियुक्ति & कार्यकाल</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>नियुक्ति: राष्ट्रपति द्वारा (Art 155)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>कार्यकाल: 5 वर्ष (Art 156)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>प्रसाद पर्यन्त: राष्ट्रपति की इच्छा तक</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>त्यागपत्र: राष्ट्रपति को</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>7वाँ संशोधन 1956: एक व्यक्ति 2+ राज्य</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>CS अधिपत्र पढ़ता है विधानसभा में</div>
+    </div>
+
+    <div class="lm-card">
+      <div class="lm-title">⚡ योग्यता & शर्तें</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>भारत का नागरिक (Art 157)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>35 वर्ष की आयु</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>वेतन: 3.50 लाख/माह (Art 158)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>आवास: बिना किराए का (राजभवन)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>संसद/विधान सदस्य नहीं होगा</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>वेतन में कटौती नहीं</div>
+    </div>
+
+    <div class="lm-card">
+      <div class="lm-title">⚡ शपथ & विशेष</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>शपथ: HC का Chief Justice (Art 159)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>CJ अनुपस्थित → वरिष्ठ जज</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>संबंधित राज्य का निवासी नहीं</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>CM से सलाह परंपरा है, अनिवार्य नहीं</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>सबसे विवादित पद → राज्यपाल</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>स्थानान्तरण → राष्ट्रपति</div>
+    </div>
+
+    <div class="lm-card">
+      <div class="lm-title">⚡ क्षमादान व विधायी</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>क्षमा ❌: मृत्युदंड, सैन्य न्यायालय</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>क्षमा ✅: लघुकरण, परिहार, विराम, प्रविलम्बन</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>Art 200: स अ पु रा (4 विकल्प)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>Art 201: 6 माह में विधानमंडल में</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>Art 213: अध्यादेश (न्यायिक पुनर्मलोकन नहीं)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>विधानपरिषद: 1/6 मनोनीत</div>
+    </div>
+
+    <div class="lm-card">
+      <div class="lm-title">⚡ राजस्थान Special</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>प्रथम महिला राज्यपाल: प्रतिभा पाटिल (2004-07)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>सर्वाधिक कार्यकाल: गुरुमुख निहाल सिंह</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>न्यूनतम कार्यकाल: T.V. राजेश्वर</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>पुनः राजनीति: मदनलाल खुराना</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>UPSC अध्यक्ष → राज्यपाल: A.R. किदवई</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>RPSC सदस्य → राज्यपाल: रघुइल तिलक</div>
+    </div>
+
+    <div class="lm-card">
+      <div class="lm-title">⚡ समितियाँ की Year List</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>1966: प्रथम प्रशासनिक (मोरारजी→हनुमन्तैया)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>1969: राजमन्नार (P.V. राजमन्नार)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>1970: भगवान सहाय</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>1983/88: सरकारिया (रणजीत सिंह)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>2007/10: पुंछी (मदन मोहन पुंछी)</div>
+      <div class="lm-point"><span class="lm-bullet">→</span>सरकारिया: सदस्य B. शिकमत + S.R. सेन</div>
+    </div>
+  </div>
+
+  <!-- RAPID FIRE -->
+  <h2 class="section-heading">🔥 Rapid Fire Points</h2>
+  <div class="card red">
+    <div class="card-title"><span class="icon">⚡</span> 60 सेकंड में याद करो</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:0.85rem;">
+      <div class="highlight-box orange">153 → हर राज्य एक राज्यपाल</div>
+      <div class="highlight-box blue">154 → शक्ति राज्यपाल में</div>
+      <div class="highlight-box green">155 → राष्ट्रपति नियुक्त करता</div>
+      <div class="highlight-box orange">156 → 5 साल, प्रसाद पर्यन्त</div>
+      <div class="highlight-box blue">157 → नागरिक + 35 साल</div>
+      <div class="highlight-box green">158 → 3.50 लाख, संसद नहीं</div>
+      <div class="highlight-box orange">159 → HC CJ शपथ</div>
+      <div class="highlight-box blue">161 → मृत्युदंड माफ नहीं</div>
+      <div class="highlight-box green">200 → स अ पु रा</div>
+      <div class="highlight-box orange">201 → 6 माह</div>
+      <div class="highlight-box blue">213 → अध्यादेश</div>
+      <div class="highlight-box green">333 → 2019 में समाप्त</div>
+    </div>
+  </div>
+
+</div>
+<!-- END LASTMINUTE TAB -->
+
+<!-- RESULT POPUP -->
+<div class="popup-overlay" id="resultPopup">
+  <div class="popup">
+    <div class="popup-emoji" id="popupEmoji">🎉</div>
+    <div class="popup-score" id="popupScore">0.00</div>
+    <div id="popupMsg" class="popup-msg">परीक्षण समाप्त!</div>
+    <div class="popup-details">
+      <div class="popup-stat c"><div class="popup-stat-num" id="popupCorrect">0</div><div class="popup-stat-label">✅ सही</div></div>
+      <div class="popup-stat w"><div class="popup-stat-num" id="popupWrong">0</div><div class="popup-stat-label">❌ गलत</div></div>
+      <div class="popup-stat s"><div class="popup-stat-num" id="popupSkipped">0</div><div class="popup-stat-label">⏭️ छोड़े</div></div>
+    </div>
+    <div style="font-size:0.85rem;color:var(--text-light);margin:10px 0;">Accuracy: <strong id="popupAccuracy">0%</strong></div>
+    <button class="btn btn-primary" onclick="closePopup()" style="margin:6px;">✅ बंद करें</button>
+    <button class="btn btn-danger" onclick="resetQuiz();closePopup();" style="margin:6px;">🔄 फिर से करें</button>
+  </div>
+</div>
+
+<!-- Scroll Top -->
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ===== TABS =====
+function showTab(tabName) {
+  document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(tabName).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// ===== SCROLL TOP =====
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('scrollTopBtn');
+  if (window.scrollY > 300) btn.classList.add('show');
+  else btn.classList.remove('show');
+});
+
+// ===== MCQ DATA =====
+const questions = [
+  // ===== PYQ STYLE (26) =====
+  {type:'pyq', q:'भारतीय संविधान के किस अनुच्छेद के अंतर्गत प्रत्येक राज्य के लिए एक राज्यपाल होगा?', opts:['अनु॰ 152','अनु॰ 153','अनु॰ 154','अनु॰ 155'], ans:1, exp:'अनु॰ 153 — प्रत्येक राज्य का एक राज्यपाल होगा। 7वें संशोधन 1956 से एक व्यक्ति दो या अधिक राज्यों का राज्यपाल हो सकता है।'},
+  {type:'pyq', q:'राज्यपाल की नियुक्ति किसके द्वारा की जाती है?', opts:['प्रधानमंत्री','लोकसभा अध्यक्ष','राष्ट्रपति','उप-राष्ट्रपति'], ans:2, exp:'अनु॰ 155 — राज्यपाल की नियुक्ति राष्ट्रपति द्वारा हस्ताक्षर एवं मुद्रा सहित अधिपत्र जारी करके की जाती है।'},
+  {type:'pyq', q:'राज्यपाल बनने के लिए न्यूनतम आयु कितनी होनी चाहिए?', opts:['25 वर्ष','30 वर्ष','35 वर्ष','40 वर्ष'], ans:2, exp:'अनु॰ 157 — राज्यपाल के लिए न्यूनतम आयु 35 वर्ष है।'},
+  {type:'pyq', q:'राज्यपाल का कार्यकाल कितने वर्षों का होता है?', opts:['3 वर्ष','4 वर्ष','5 वर्ष','6 वर्ष'], ans:2, exp:'अनु॰ 156 — राज्यपाल सामान्यतः 5 वर्ष तक पद पर रहता है, परंतु राष्ट्रपति के प्रसाद पर्यन्त ही कार्य करता है।'},
+  {type:'pyq', q:'राज्यपाल को शपथ कौन दिलाता है?', opts:['राज्य के मुख्यमंत्री','राज्य HC का Chief Justice','राष्ट्रपति','लोकसभा अध्यक्ष'], ans:1, exp:'अनु॰ 159 — राज्यपाल को HC का मुख्य न्यायाधीश शपथ दिलाता है।'},
+  {type:'pyq', q:'राज्यपाल अपना त्यागपत्र किसे देता है?', opts:['मुख्यमंत्री','लोकसभा अध्यक्ष','राष्ट्रपति','प्रधानमंत्री'], ans:2, exp:'अनु॰ 156 — राज्यपाल अपना त्यागपत्र राष्ट्रपति को देता है।'},
+  {type:'pyq', q:'निम्न में से किसकी नियुक्ति राज्यपाल नहीं करता?', opts:['मुख्यमंत्री','महाधिवक्ता','जिला न्यायाधीश','हाईकोर्ट के न्यायाधीश'], ans:3, exp:'हाईकोर्ट के न्यायाधीशों की नियुक्ति राष्ट्रपति करता है। CM, महाधिवक्ता, जिला न्यायाधीश — ये सब राज्यपाल नियुक्त करता है।'},
+  {type:'pyq', q:'राज्यपाल के पास क्षमादान की कौन सी शक्ति नहीं होती?', opts:['लघुकरण','परिहार','मृत्युदंड की क्षमा','विराम'], ans:2, exp:'अनु॰ 161 — राज्यपाल के पास मृत्युदंड व सैन्य न्यायालय द्वारा दी गई सजा माफ करने का अधिकार नहीं है।'},
+  {type:'pyq', q:'राज्यपाल का वेतन कितना है (2024 तक)?', opts:['2.50 लाख/माह','3.00 लाख/माह','3.50 लाख/माह','4.00 लाख/माह'], ans:2, exp:'राज्यपाल का वेतन 3.50 लाख प्रति माह है।'},
+  {type:'pyq', q:'राज्यपाल के संबंध में कौन सा कथन सही है?', opts:['वह संसद का सदस्य हो सकता है','वह लाभ का पद धारण कर सकता है','उसे किराया मुक्त आवास मिलता है','कार्यकाल में वेतन बढ़ाया जा सकता है'], ans:2, exp:'अनु॰ 158 — राज्यपाल को राजभवन (बिना किराए का) आवास मिलता है।'},
+  {type:'pyq', q:'7वें संविधान संशोधन 1956 से राज्यपाल के संदर्भ में क्या बदलाव हुआ?', opts:['वेतन बढ़ा','एक व्यक्ति दो या अधिक राज्यों का राज्यपाल हो सकता है','कार्यकाल घटा','न्यूनतम आयु बदली'], ans:1, exp:'7वें संविधान संशोधन 1956 द्वारा यह व्यवस्था की गई कि एक ही व्यक्ति दो या दो से अधिक राज्यों का राज्यपाल हो सकता है।'},
+  {type:'pyq', q:'सरकारिया आयोग का गठन कब हुआ था?', opts:['1978','1980','1983','1988'], ans:2, exp:'सरकारिया आयोग का गठन 1983 में हुआ था। इसने अपनी रिपोर्ट 1988 में दी। इसके अध्यक्ष रणजीत सिंह सरकारिया थे।'},
+  {type:'pyq', q:'अनुच्छेद 200 के तहत राज्यपाल विधेयक पर कितने निर्णय ले सकता है?', opts:['2','3','4','5'], ans:2, exp:'Art 200 के तहत राज्यपाल 4 निर्णय ले सकता है: स्वीकृति, अस्वीकृति, पुनर्विचार, राष्ट्रपति के लिए आरक्षित।'},
+  {type:'pyq', q:'राज्यपाल द्वारा राष्ट्रपति को भेजे गए विधेयक के बारे में कौन सा सही है?', opts:['राष्ट्रपति 3 माह में निर्णय लेगा','राज्यपाल 6 माह में विधानमंडल में रखेगा','राज्यपाल हस्ताक्षर करने के लिए बाध्य है','राष्ट्रपति को हस्ताक्षर करना अनिवार्य है'], ans:1, exp:'Art 201 — राष्ट्रपति पुनर्विचार के लिए भेजे तो राज्यपाल 6 माह के भीतर-भीतर विधानमंडल के सामने रखेगा।'},
+  {type:'pyq', q:'राजस्थान की प्रथम महिला राज्यपाल कौन थीं?', opts:['मारग्रेट अल्वा','प्रभा राव','प्रतिभा पाटिल','कमला बेनीवाल'], ans:2, exp:'राजस्थान की प्रथम महिला राज्यपाल प्रतिभा पाटिल थीं (2004-07)।'},
+  {type:'pyq', q:'अनुच्छेद 213 के तहत राज्यपाल अध्यादेश जारी कर सकता है:', opts:['केवल राज्य सूची पर','केवल समवर्ती सूची पर','राज्य और समवर्ती सूची दोनों पर','केन्द्र सूची पर भी'], ans:2, exp:'Art 213 — राज्यपाल राज्य सूची और समवर्ती सूची दोनों पर अध्यादेश जारी कर सकता है, जब विधानमंडल का सत्र नहीं चल रहा हो।'},
+  {type:'pyq', q:'राज्यपाल विधानपरिषद में कितने सदस्य मनोनीत कर सकता है?', opts:['1/4','1/5','1/6','1/8'], ans:2, exp:'Art 171 — राज्यपाल विधानपरिषद में 1/6 सदस्य मनोनीत करता है (साहित्य, कला, विज्ञान, समाजसेवा, सहकारी आन्दोलन में ज्ञान रखने वाले)।'},
+  {type:'pyq', q:'किस समिति ने सिफारिश की कि राज्यपाल को महाभियोग प्रक्रिया से हटाया जाए?', opts:['सरकारिया','राजमन्नार','पुंछी आयोग','भगवान सहाय'], ans:2, exp:'पुंछी आयोग (2007) ने सिफारिश की कि राज्यपाल को महाभियोग प्रक्रिया से हटाया जाना चाहिए।'},
+  {type:'pyq', q:'अनुच्छेद 167 के अनुसार मुख्यमंत्री का क्या कर्तव्य है?', opts:['विधायकों को शपथ दिलाना','शासन-प्रशासन की जानकारी राज्यपाल को देना','राज्यपाल को बजट देना','विधेयक पारित करवाना'], ans:1, exp:'Art 167 — मुख्यमंत्री का कर्तव्य है कि वह शासन-प्रशासन की जानकारी राज्यपाल को दे।'},
+  {type:'pyq', q:'राज्य विश्वविद्यालयों का कुलाधिपति कौन होता है?', opts:['मुख्यमंत्री','राज्यपाल','राष्ट्रपति','HC मुख्य न्यायाधीश'], ans:1, exp:'राज्यपाल राज्य के सभी सरकारी विश्वविद्यालयों का कुलाधिपति होता है तथा कुलपति (कुलगुरु) की नियुक्ति भी करता है।'},
+  {type:'pyq', q:'राजमन्नार समिति (1969) के अध्यक्ष कौन थे?', opts:['रणजीत सिंह','P.V. राजमन्नार','मदन मोहन पुंछी','भगवान सहाय'], ans:1, exp:'राजमन्नार समिति (1969) के अध्यक्ष P.V. राजमन्नार थे। यह केन्द्र-राज्य संबंधों पर थी।'},
+  {type:'pyq', q:'अनुच्छेद 156 के तहत राज्यपाल की नियुक्ति के समय से कितने वर्षों की कार्यकाल होती है?', opts:['4 वर्ष','5 वर्ष','6 वर्ष','7 वर्ष'], ans:1, exp:'अनु॰ 156 — राज्यपाल सामान्यतः 5 वर्ष तक अपने पद पर बना रहता है (पद ग्रहण करने से)।'},
+  {type:'pyq', q:'भारतीय संविधान का सबसे विवादित पद कौन सा माना जाता है?', opts:['प्रधानमंत्री','राष्ट्रपति','राज्यपाल','मुख्यमंत्री'], ans:2, exp:'राज्यपाल को भारतीय संविधान का सबसे विवादित पद माना जाता है क्योंकि इसके हटाने के कारण और प्रक्रिया संविधान में स्पष्ट नहीं है।'},
+  {type:'pyq', q:'अनुच्छेद 188 के तहत प्रोटेम स्पीकर की नियुक्ति कौन करता है?', opts:['मुख्यमंत्री','राज्यपाल','विधानसभा सदस्य','HC CJ'], ans:1, exp:'Art 188 — प्रोटेम स्पीकर की नियुक्ति राज्यपाल करता है। प्रोटेम स्पीकर नवनिर्वाचित सदस्यों को शपथ दिलाता है।'},
+  {type:'pyq', q:'राजस्थान के सर्वाधिक कार्यकाल वाले राज्यपाल कौन हैं?', opts:['सवाई मानसिंह II','T.V. राजेश्वर','गुरुमुख निहाल सिंह','कलराज मिश्र'], ans:2, exp:'राजस्थान के सर्वाधिक कार्यकाल वाले राज्यपाल गुरुमुख निहाल सिंह हैं।'},
+  {type:'pyq', q:'अनुच्छेद 192 के तहत विधानसभा सदस्यों की अयोग्यता का निर्धारण कौन करता है?', opts:['मुख्यमंत्री','राज्यपाल स्वयं','ECI की सलाह पर राज्यपाल','हाईकोर्ट'], ans:2, exp:'Art 192 — राज्यपाल केन्द्रीय निर्वाचन आयोग (ECI) की सलाह पर विधानसभा सदस्यों की अयोग्यता का निर्धारण करता है।'},
+
+  // ===== EXPECTED/FUTURE PYQ STYLE (30) =====
+  {type:'future', q:'सरकारिया आयोग की रिपोर्ट किस वर्ष आई?', opts:['1983','1985','1988','1990'], ans:2, exp:'सरकारिया आयोग का गठन 1983 में हुआ था लेकिन इसकी रिपोर्ट 1988 में प्रस्तुत की गई।'},
+  {type:'future', q:'पुंछी आयोग किस वर्ष गठित हुआ और किस वर्ष रिपोर्ट दी?', opts:['2005 / 2008','2006 / 2009','2007 / 2010','2008 / 2011'], ans:2, exp:'पुंछी आयोग 2007 में गठित हुआ और 2010 में अपनी रिपोर्ट प्रस्तुत की। इसके अध्यक्ष मदन मोहन पुंछी थे।'},
+  {type:'future', q:'राज्यपाल द्वारा की जाने वाली नियुक्ति नहीं है:', opts:['महाधिवक्ता','लोकायुक्त','राज्य निर्वाचन आयुक्त','HC के न्यायाधीश'], ans:3, exp:'HC के न्यायाधीश की नियुक्ति राष्ट्रपति करता है (CJI और संबंधित HC CJ से परामर्श के बाद)। बाकी सब राज्यपाल करता है।'},
+  {type:'future', q:'राज्य की विधि विश्वविद्यालय का कुलाधिपति कौन होता है?', opts:['राज्यपाल','HC मुख्य न्यायाधीश','राष्ट्रपति','मुख्यमंत्री'], ans:1, exp:'राज्य की विधि विश्वविद्यालय के कुलाधिपति HC के मुख्य न्यायाधीश होते हैं।'},
+  {type:'future', q:'विश्व भारती विश्वविद्यालय (कोलकाता) का कुलाधिपति कौन होता है?', opts:['राज्यपाल','राष्ट्रपति','उप-राष्ट्रपति','प्रधानमंत्री'], ans:3, exp:'विश्व भारती विश्वविद्यालय (कोलकाता) के कुलाधिपति प्रधानमंत्री होते हैं।'},
+  {type:'future', q:'प्रोटेम स्पीकर का कार्यकाल कब तक होता है?', opts:['1 वर्ष','स्पीकर के चुनाव तक','विधानसभा कार्यकाल तक','राज्यपाल की इच्छा तक'], ans:1, exp:'प्रोटेम स्पीकर का कार्यकाल स्पीकर के चुनाव तक होता है। वह नवनिर्वाचित सदस्यों को शपथ दिलाता है।'},
+  {type:'future', q:'Art 174 के तहत राज्यपाल निम्न में से कौन सा कार्य नहीं कर सकता?', opts:['विधानमंडल का सत्र आहूत करना','सत्रावसान करना','विधानसभा विघटित करना','विधेयक पारित करना'], ans:3, exp:'विधेयक पारित करना विधानमंडल का कार्य है, न कि राज्यपाल का। Art 174 के तहत सत्र आहूत, सत्रावसान और विघटन राज्यपाल के अधिकार हैं।'},
+  {type:'future', q:'किस संविधान संशोधन से विधानमंडल में आंग्ल-भारतीय मनोनयन समाप्त हुआ?', opts:['100वाँ','101वाँ','104वाँ','105वाँ'], ans:2, exp:'104वें संविधान संशोधन 2019 से Art 333 के तहत विधानमंडल में आंग्ल-भारतीय मनोनयन समाप्त किया गया।'},
+  {type:'future', q:'राज्यपाल की स्वविवेकीय शक्ति का उदाहरण क्या है?', opts:['CM की नियुक्ति जब बहुमत स्पष्ट हो','बजट पेश करना','Art 356 की सिफारिश','HC CJ की नियुक्ति'], ans:2, exp:'Art 356 के तहत राष्ट्रपति शासन की सिफारिश राज्यपाल की स्वविवेकीय शक्ति का उदाहरण है।'},
+  {type:'future', q:'राज्यपाल के बारे में गलत कथन कौन सा है?', opts:['वह राज्य का संवैधानिक प्रमुख है','वह राष्ट्रपति के प्रसाद पर्यन्त कार्य करता है','वह संबंधित राज्य का निवासी होना आवश्यक है','वह संसद का सदस्य नहीं होगा'], ans:2, exp:'परंपरा के अनुसार राज्यपाल संबंधित राज्य का निवासी नहीं होना चाहिए (यह अनिवार्य शर्त नहीं लेकिन परंपरा है)। कथन 3 गलत है।'},
+  {type:'future', q:'दिल्ली विश्वविद्यालय का कुलाधिपति कौन होता है?', opts:['दिल्ली के LG','राष्ट्रपति','उप-राष्ट्रपति','प्रधानमंत्री'], ans:2, exp:'दिल्ली विश्वविद्यालय के कुलाधिपति उप-राष्ट्रपति होते हैं।'},
+  {type:'future', q:'अनुच्छेद 202 के अनुसार वार्षिक वित्तीय विवरण (बजट) कौन पेश करता है?', opts:['राज्यपाल स्वयं','वित्तमंत्री राज्यपाल के नाम से','CM','विधानसभा अध्यक्ष'], ans:1, exp:'Art 202 — वित्तमंत्री राज्यपाल के नाम से प्रतिवर्ष वार्षिक वित्तीय विवरण (बजट) विधानसभा में पेश करता है।'},
+  {type:'future', q:'राजस्थान में न्यूनतम कार्यकाल वाले राज्यपाल कौन रहे?', opts:['सवाई मानसिंह II','T.V. राजेश्वर','दरबारा सिंह','कलराज मिश्र'], ans:1, exp:'राजस्थान में न्यूनतम कार्यकाल वाले राज्यपाल T.V. राजेश्वर रहे हैं।'},
+  {type:'future', q:'पुंछी आयोग के अनुसार राज्यपाल की नियुक्ति में कौन शामिल होना चाहिए?', opts:['केवल PM और CM','PM, HM, विपक्ष नेता, VP, CM','केवल CM','PM और राज्यसभा अध्यक्ष'], ans:1, exp:'पुंछी आयोग ने कहा कि राज्यपाल की नियुक्ति एक समिति की सिफारिश पर हो जिसमें PM, HM (गृहमंत्री), विपक्ष का नेता, VP और CM हों।'},
+  {type:'future', q:'कौन सी समिति ने राज्यपाल पद को समाप्त करने की सिफारिश की?', opts:['सरकारिया','राजमन्नार','पुंछी','भगवान सहाय'], ans:1, exp:'राजमन्नार समिति (1969) ने राज्यपाल पद समाप्त करने की सिफारिश की थी।'},
+  {type:'future', q:'अनुच्छेद 199 के तहत विधानसभा में धन विधेयक पेश करने के लिए क्या आवश्यक है?', opts:['CM की अनुमति','राज्यपाल की पूर्वानुमति','विधानसभा अध्यक्ष की अनुमति','राष्ट्रपति की अनुमति'], ans:1, exp:'Art 199 — धन विधेयक विधानसभा में राज्यपाल की पूर्वानुमति से ही पेश किया जा सकता है।'},
+  {type:'future', q:'राजस्थान की दूसरी महिला राज्यपाल कौन थीं?', opts:['प्रतिभा पाटिल','प्रभा राव','मारग्रेट अल्वा','कमला बेनीवाल'], ans:1, exp:'राजस्थान की दूसरी महिला राज्यपाल प्रभा राव थीं (2009-10)।'},
+  {type:'future', q:'Art 200 के अनुसार पुनर्विचार के बाद यदि विधानमंडल पुनः वही विधेयक पारित करे तो:', opts:['राज्यपाल पुनः अस्वीकार कर सकता है','राज्यपाल को हस्ताक्षर करना अनिवार्य है','राष्ट्रपति को भेजा जाएगा','HC जांच करेगा'], ans:1, exp:'Art 200 — पुनर्विचार के बाद विधानमंडल द्वारा पुनः पारित विधेयक पर राज्यपाल को हस्ताक्षर करना अनिवार्य है।'},
+  {type:'future', q:'सरकारिया आयोग के सदस्यों में कौन शामिल थे?', opts:['B. शिकमत और S.R. सेन','A.R. किदवई और रघुइल तिलक','गुरुमुख निहाल सिंह','मदन मोहन पुंछी'], ans:0, exp:'सरकारिया आयोग (1983) में अध्यक्ष रणजीत सिंह सरकारिया के अलावा सदस्य B. शिकमत और S.R. सेन थे।'},
+  {type:'future', q:'Art 165 के तहत महाधिवक्ता की नियुक्ति कौन करता है?', opts:['CM','राज्यपाल','HC','राष्ट्रपति'], ans:1, exp:'Art 165 — राज्य के महाधिवक्ता (Advocate General) की नियुक्ति राज्यपाल करता है।'},
+  {type:'future', q:'राज्यपाल राज्य का कार्यकारी प्रमुख होता है। यह किस अनुच्छेद में है?', opts:['Art 152','Art 153','Art 154','Art 155'], ans:2, exp:'Art 154 — राज्य की समस्त कार्यकारी शक्तियाँ राज्यपाल में निहित होंगी। इसलिए वह कार्यकारी प्रमुख है।'},
+  {type:'future', q:'राजस्थान के किस राज्यपाल ने RPSC के सदस्य के रूप में कार्य किया था?', opts:['A.R. किदवई','रघुइल तिलक','स्वरूप सिंह','गुरुमुख निहाल सिंह'], ans:1, exp:'राजस्थान के राज्यपाल रघुइल तिलक RPSC के सर्वोच्च वरिष्ठ सदस्य रहे थे।'},
+  {type:'future', q:'केन्द्रीय विश्वविद्यालय का कुलाधिपति कौन होता है?', opts:['PM','राज्यपाल','राष्ट्रपति','उप-राष्ट्रपति'], ans:2, exp:'केन्द्रीय विश्वविद्यालय के कुलाधिपति राष्ट्रपति होते हैं।'},
+  {type:'future', q:'राज्यपाल के संदर्भ में Art 160 से क्या सम्बंधित है?', opts:['कार्यकाल','योग्यता','आकस्मिक परिस्थितियों में कार्य','क्षमादान'], ans:2, exp:'Art 160 — आकस्मिक परिस्थितियों में राज्यपाल के कार्यों का निर्वहन। राष्ट्रपति HC CJ या अन्य राज्य के राज्यपाल को यह दायित्व दे सकता है।'},
+  {type:'future', q:'प्रथम प्रशासनिक सुधार आयोग (1966) के दूसरे अध्यक्ष कौन थे?', opts:['मोरारजी देसाई','क. हनुमन्तैया','P.V. राजमन्नार','रणजीत सिंह'], ans:1, exp:'प्रथम प्रशासनिक सुधार आयोग (1966) के प्रथम अध्यक्ष मोरारजी देसाई थे (त्यागपत्र के बाद) और द्वितीय अध्यक्ष क. हनुमन्तैया/हनुमन्तेम्मा बने।'},
+  {type:'future', q:'राजस्थान के राज्यपाल जिनका पद पर रहते हुए निधन हुआ उनमें शामिल हैं:', opts:['दरबारा सिंह, निर्मल चन्द्र जैन','सवाई मानसिंह-II, गुरुमुख निहाल सिंह','प्रतिभा पाटिल, प्रभा राव','कलराज सिंह, T.V. राजेश्वर'], ans:0, exp:'राजस्थान के वे राज्यपाल जिनका पद पर रहते निधन हुआ: दरबारा सिंह, निर्मल चन्द्र जैन, शैलेन्द्र कुमार, प्रसाद राव।'},
+  {type:'future', q:'स्वविवेकीय शक्तियों का प्रयोग करते हुए राज्यपाल क्या कर सकता है?', opts:['हाईकोर्ट भंग करना','त्रिशंकु विधानसभा में CM नियुक्त करना','संसद में विधेयक पेश करना','सुप्रीम कोर्ट को आदेश देना'], ans:1, exp:'राज्यपाल की स्वविवेकीय शक्ति में: किसी दल को स्पष्ट बहुमत न होने पर CM की नियुक्ति और Art 356 के तहत राष्ट्रपति शासन की सिफारिश शामिल हैं।'},
+  {type:'future', q:'अनुच्छेद 156 के अनुसार राज्यपाल "प्रसाद पर्यन्त" किसके पद पर रहता है?', opts:['मुख्यमंत्री','प्रधानमंत्री','राष्ट्रपति','लोकसभा अध्यक्ष'], ans:2, exp:'Art 156 — राज्यपाल राष्ट्रपति के प्रसाद पर्यन्त (यानी जब तक राष्ट्रपति चाहे) पद पर रहता है।'},
+  {type:'future', q:'राजस्थान के वे राज्यपाल जो मुख्यमंत्री भी रहे, उनमें से गलत कौन है?', opts:['सम्पूर्णानन्द-UP','गुरुमुख निहाल सिंह-Delhi','कल्याण सिंह-UP','कलराज सिंह-UP'], ans:3, exp:'कलराज सिंह UP के CM नहीं रहे। सही नाम: सम्पूर्णानन्द, गुरुमुख निहाल सिंह, कल्याण सिंह, बसन्त पाटिल, मार्टिन्डा रेड्डी।'},
+];
+
+// ===== QUIZ STATE =====
+let answered = {};
+let score = 0;
+let correct = 0;
+let wrong = 0;
+
+function renderQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  questions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = `question-card ${q.type}-tag`;
+    div.id = `q${i}`;
+    div.innerHTML = `
+      <div class="q-num">Q${i+1}. <span style="font-size:0.75rem;background:${q.type==='pyq'?'var(--saffron)':'var(--green)'};color:#fff;padding:2px 8px;border-radius:10px;margin-left:6px;">${q.type==='pyq'?'PYQ':'Expected'}</span></div>
+      <div class="q-text">${q.q}</div>
+      <div class="options" id="opts${i}">
+        ${q.opts.map((o,j) => `<div class="option" onclick="selectOption(${i},${j})" id="opt${i}_${j}">
+          <span class="opt-label">${String.fromCharCode(65+j)}.</span> ${o}
+        </div>`).join('')}
+      </div>
+      <div class="explanation" id="exp${i}">💡 <strong>व्याख्या:</strong> ${q.exp}</div>
+    `;
+    container.appendChild(div);
+  });
+  updateScoreDisplay();
+}
+
+function selectOption(qIdx, optIdx) {
+  if (answered[qIdx] !== undefined) return;
+
+  const q = questions[qIdx];
+  answered[qIdx] = optIdx;
+
+  // Update progress
+  const prog = (Object.keys(answered).length / questions.length) * 100;
+  document.getElementById('progressBar').style.width = prog + '%';
+
+  // Mark options
+  for (let j = 0; j < q.opts.length; j++) {
+    const el = document.getElementById(`opt${qIdx}_${j}`);
+    if (j === q.ans) el.classList.add('correct');
+    else if (j === optIdx && optIdx !== q.ans) el.classList.add('wrong');
+    el.style.pointerEvents = 'none';
+  }
+
+  // Update score
+  if (optIdx === q.ans) {
+    correct++;
+    score += 1;
+  } else {
+    wrong++;
+    score -= (1/3);
+  }
+
+  // Show explanation
+  document.getElementById(`exp${qIdx}`).classList.add('visible');
+  updateScoreDisplay();
+
+  // Auto-submit check
+  if (Object.keys(answered).length === questions.length) {
+    setTimeout(showResult, 800);
+  }
+}
+
+function updateScoreDisplay() {
+  document.getElementById('scoreDisplay').textContent = score.toFixed(2);
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = wrong;
+  document.getElementById('attemptCount').textContent = Object.keys(answered).length;
+}
+
+function submitAll() {
+  // Reveal all unanswered
+  questions.forEach((q, i) => {
+    if (answered[i] === undefined) {
+      for (let j = 0; j < q.opts.length; j++) {
+        if (j === q.ans) document.getElementById(`opt${i}_${j}`).classList.add('reveal-correct');
+        document.getElementById(`opt${i}_${j}`).style.pointerEvents = 'none';
+      }
+      document.getElementById(`exp${i}`).classList.add('visible');
+    }
+  });
+  showResult();
+}
+
+function showResult() {
+  const total = questions.length;
+  const attempted = Object.keys(answered).length;
+  const skipped = total - attempted;
+  const accuracy = attempted > 0 ? Math.round((correct/attempted)*100) : 0;
+
+  document.getElementById('popupScore').textContent = score.toFixed(2);
+  document.getElementById('popupCorrect').textContent = correct;
+  document.getElementById('popupWrong').textContent = wrong;
+  document.getElementById('popupSkipped').textContent = skipped;
+  document.getElementById('popupAccuracy').textContent = accuracy + '%';
+
+  let emoji = '😢';
+  let msg = 'और मेहनत करें!';
+  const pct = (score/total)*100;
+  if (pct >= 80) { emoji = '🏆'; msg = 'शानदार! आप तैयार हैं!'; }
+  else if (pct >= 60) { emoji = '🎯'; msg = 'बढ़िया! थोड़ी और मेहनत!'; }
+  else if (pct >= 40) { emoji = '📚'; msg = 'ठीक है, Revision करें!'; }
+
+  document.getElementById('popupEmoji').textContent = emoji;
+  document.getElementById('popupMsg').textContent = msg;
+  document.getElementById('resultPopup').classList.add('show');
+}
+
+function closePopup() {
+  document.getElementById('resultPopup').classList.remove('show');
+}
+
+function resetQuiz() {
+  answered = {};
+  score = 0;
+  correct = 0;
+  wrong = 0;
+  renderQuestions();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Init
+renderQuestions();
+</script>
+</body>
+</html>
